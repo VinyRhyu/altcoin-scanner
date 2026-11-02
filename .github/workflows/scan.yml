@@ -39,6 +39,9 @@ jobs:
 
       - name: Run prototype signal analyzer (NO alerts)
         run: python analyzer.py
+      
+      - name: Historical replay V3 (research only)
+        run: python replay.py
 
       - name: Upload diagnostics and paper candidates
         if: always()
@@ -48,3 +51,4 @@ jobs:
           path: output/
           retention-days: 3
           if-no-files-found: warn
+      
