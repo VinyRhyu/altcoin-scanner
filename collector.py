@@ -400,6 +400,38 @@ def intraday_anomaly(candles15):
 
     return round(volume_ratio, 3), round(range_ratio, 3)
 
+def validated_liquidity(
+    candles15,
+    ticker_volume,
+    min_volume=2_000_000,
+    priority_volume=5_000_000,
+):
+    if len(candles15) < 96:
+        raise ValueError("Historico de volume insuficiente")
+
+    volume_24h = sum(
+        candle[6] for candle in candles15[-96:]
+    )
+
+    if volume_24h < min_volume:
+        raise ValueError("Liquidez abaixo do minimo")
+
+    if ticker_volume <= 0 or volume_24h <= 0:
+        raise ValueError("Volume invalido")
+
+    ratio = ticker_volume / volume_24h
+
+    if not 0.5 <= ratio <= 2.0:
+        raise ValueError("Divergencia entre ticker e candles")
+
+    tier = (
+        "priority"
+        if volume_24h >= priority_volume
+        else "exploratory"
+    )
+
+    return round(volume_24h, 2), tier
+
 
 def prescreen(candidates, max_size):
     buckets = [
@@ -533,6 +565,14 @@ def collect(venue, allowed, source, now_ms):
             c15 = candles(
                 venue, symbol, "15m", now_ms
             )
+            
+            volume, tier = validated_liquidity(
+                c15,
+                item["turnover_24h_usdt_est"],
+            )
+            item["turnover_24h_usdt_est"] = volume
+            item["liquidity_tier"] = tier
+
             vol_ratio, range_ratio = intraday_anomaly(c15)
 
             item["rel_volume_15m"] = vol_ratio
@@ -652,11 +692,13 @@ def main():
     now_ms = int(time.time() * 1000)
     allowed, source = eligible_bases()
 
+    
     venues = (
-        ["okx_swap", "binance_spot"]
+        ["okx_swap"]
         if MARKET_PROVIDER == "auto"
         else [MARKET_PROVIDER]
     )
+
 
     errors = {}
 
