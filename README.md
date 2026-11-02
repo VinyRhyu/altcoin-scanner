@@ -1,27 +1,33 @@
-# Altcoin Scanner — Fase 1: coleta de mercado
+# Altcoin Scanner — somente coleta pública
 
-Coleta pública **Bybit V5, mercado linear USDT**, sem API key, sem ordens e **sem sinais de negociação**. Filtra mercados por turnover 24h e seleciona até 20 ativos de altas, quedas e amplitude intraday (proxy de volatilidade, **não** detecção intraday de volume anormal). BTC e ETH excluídos. Ainda não verifica ranking de capitalização top 100, nem status via instruments-info; isso fica para a próxima etapa.
+O projeto consulta dados de contratos USDT perpétuos da OKX em 2h, 1h e 15m. **Não analisa sinais, não executa ordens e não envia notificações.**
 
-## Publicar no GitHub
+## Arquivos necessários
 
-1. Crie um repositório **privado** no GitHub, por exemplo `altcoin-scanner`.
-2. Extraia este ZIP e envie **todo o conteúdo**, incluindo `.github/workflows/scan.yml`, para a raiz do repositório.
-3. Abra **Actions → Collect altcoin OHLCV → Run workflow** para testar manualmente.
-4. Abra o job `collect` para conferir erros. Em **Artifacts**, baixe `market-data-...` e inspecione `market_data.json`.
-5. Com o workflow habilitado, o agendamento roda em torno de cada 15 minutos (GitHub pode atrasar ou pular execuções).
+- `collector.py`: coleta, checa velas fechadas, liquidez e validade dos dados.
+- `.github/workflows/scan.yml`: executa a cada 15 minutos e publica em GitHub Pages.
 
-## Execução local
+Os arquivos anteriores `analyzer.py`, `replay.py` e `tests/` podem continuar no repositório, mas este workflow não os executa.
 
-```bash
-python -m unittest discover -s tests -v
-python collector.py
-```
+## Configuração
 
-A saída é `output/market_data.json`, contendo dados de 2h, 1h e 15m, com candles fechados e timestamps em milissegundos UTC. **Nenhuma chave, senha ou permissão de trade é necessária.**
+1. GitHub → Settings → Pages → Source: **GitHub Actions**.
+2. Envie os dois arquivos acima para a branch `main`. Se o branch padrão tiver outro nome, ajuste `branches: [main]` no YAML.
+3. Execute Actions → **Coleta OKX para ChatGPT** → Run workflow (ou faça commit na `main`).
+4. Verifique ambos os jobs `collect` e `deploy`.
+5. Consulte `https://vinyrhyu.github.io/altcoin-scanner/market_data.json`.
 
-## Importante
+O GitHub Pages é público. Não publique segredos, tokens ou informações pessoais.
 
-- O script precisa de acesso HTTP externo e pode falhar por bloqueios regionais ou indisponibilidade da API. Falha de coleta **não** vira sinal.
-- O scanner ainda não analisa price action, score, stops, TP ou R:R. Isso exige implementar e testar um analisador em uma segunda etapa.
-- GitHub Actions não envia automaticamente dados para ChatGPT. Integração posterior exige workflow adicional ou serviço de análise.
-- O cron executa somente na branch padrão do repositório.
+## Variáveis
+
+- MARKET_PROVIDER=okx_swap: somente OKX perpétuos, nunca spot.
+- UNIVERSE_SIZE=50: máximo de ativos com dados completos (não necessariamente 50 disponíveis).
+- MIN_VALIDATED=15: exige pelo menos 15 ativos.
+- MAX_PRESCREEN=90: pré-coleta de até 90 ativos com liquidez.
+- MIN_VOLUME_USDT=2000000: volume de 24h para descoberta, não aprovação de operações.
+- PRIORITY_VOLUME_USDT=5000000: faixa informativa, não aprovação de operações.
+
+O universo ainda é limitado por uma lista curada de criptomoedas em `collector.py` e pela disponibilidade de contratos OKX. Isso é seleção de cobertura e qualidade da coleta, não julgamento de LONG/SHORT.
+
+A URL é lida sob demanda pelo ChatGPT quando houver acesso. Esta configuração **não cria** uma tarefa de monitoramento do ChatGPT e não garante alertas automáticos. Em caso de falha do workflow, o JSON antigo pode continuar servido; confira `collected_utc`.
