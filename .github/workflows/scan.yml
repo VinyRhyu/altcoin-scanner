@@ -1,43 +1,50 @@
 
-name: Collect altcoin OHLCV
+name: Altcoin Scanner V2 (research)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '7 * * * *'
 
 permissions:
   contents: read
 
 concurrency:
-  group: collect-altcoin-ohlcv
+  group: altcoin-scanner-v2
   cancel-in-progress: false
 
 jobs:
-  collect:
+  scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 14
+    env:
+      COINGECKO_DEMO_API_KEY: ${{ secrets.COINGECKO_DEMO_API_KEY }}
+      MARKET_PROVIDER: auto
+      UNIVERSE_SIZE: '20'
+      MIN_VALIDATED: '15'
+      MAX_PRESCREEN: '65'
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python 3.12
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Check Python syntax
-        run: python -m py_compile collector.py
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
 
-      - name: Collect market data
+      - name: Collect closed OHLCV
         run: python collector.py
 
-      - name: Upload market data and diagnostics
+      - name: Run prototype signal analyzer (NO alerts)
+        run: python analyzer.py
+
+      - name: Upload diagnostics and paper candidates
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: market-data-${{ github.run_id }}
+          name: altcoin-v2-${{ github.run_id }}
           path: output/
-          if-no-files-found: warn
           retention-days: 3
+          if-no-files-found: warn
