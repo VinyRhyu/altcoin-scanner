@@ -22,11 +22,6 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 14
-
-    permissions:
-      contents: read
-      pages: read
-
     env:
       MARKET_PROVIDER: okx_swap
       UNIVERSE_SIZE: '50'
