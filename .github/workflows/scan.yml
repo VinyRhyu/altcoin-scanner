@@ -1,124 +1,67 @@
-name: Coleta OKX para ChatGPT
+
+name: Coleta OKX - Dados para ChatGPT
 
 on:
   workflow_dispatch:
+
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
-      - 'collector.py'
-      - '.github/workflows/scan.yml'
+      - "collector.py"
+      - "validate_data.py"
+      - "scripts/publish-data.sh"
+      - ".github/workflows/scan.yml"
+
   schedule:
-    # UTC: 4 coletas/hora. GitHub pode atrasar execucoes agendadas.
-    - cron: '7,22,37,52 * * * *'
+    - cron: "7,22,37,52 * * * *"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: altcoin-market-data-pages
+  group: okx-market-data-publish
   cancel-in-progress: false
 
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 14
+    timeout-minutes: 25
+
     env:
       MARKET_PROVIDER: okx_swap
-      UNIVERSE_SIZE: '50'
-      MIN_VALIDATED: '15'
-      MAX_PRESCREEN: '90'
-      MIN_VOLUME_USDT: '2000000'
-      PRIORITY_VOLUME_USDT: '5000000'
+      UNIVERSE_SIZE: "50"
+      MIN_VALIDATED: "15"
+      MAX_PRESCREEN: "90"
+      MIN_VOLUME_USDT: "2000000"
+      PRIORITY_VOLUME_USDT: "5000000"
+      COINGECKO_DEMO_API_KEY: ${{ secrets.COINGECKO_DEMO_API_KEY }}
 
     steps:
-      - name: Checkout do repositorio
-        uses: actions/checkout@v4
-
-      - name: Configurar Python 3.12
-        uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
-          python-version: '3.12'
+          persist-credentials: true
 
-      - name: Coletar OKX perpetual (2h, 1h e 15m)
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Coletar candles da OKX
         run: python collector.py
 
-      - name: Validar e preparar publicacao
-        run: |
-          python - <<'PY'
-          import json
-          import shutil
-          import time
-          from datetime import datetime
-          from pathlib import Path
+      - name: Validar dados
+        run: python validate_data.py
 
-          source = Path('output/market_data.json')
-          data = json.loads(source.read_text(encoding='utf-8'))
-
-          assert data.get('status') == 'COLLECTED', 'Coleta invalida'
-          assert data.get('venue') == 'okx_swap', 'Mercado inesperado'
-          assert data.get('market_type') == 'USDT_PERPETUAL', 'Mercado nao perpetual'
-          assets = data.get('universe', [])
-          assert len(assets) >= 15, 'Menos de 15 ativos validos'
-
-          collected = datetime.fromisoformat(data['collected_utc'])
-          age = time.time() - collected.timestamp()
-          assert 0 <= age <= 900, f'Coleta desatualizada: {age:.0f}s'
-
-          candles = data.get('candles', {})
-          intervals = {'2h': 7200000, '1h': 3600000, '15m': 900000}
-          for asset in assets:
-              symbol = asset['symbol']
-              assert symbol in candles, f'Sem dados: {symbol}'
-              for timeframe, duration in intervals.items():
-                  rows = candles[symbol].get(timeframe, [])
-                  assert len(rows) >= 60, f'{symbol} {timeframe}: historico curto'
-                  assert all(
-                      b[0] - a[0] == duration
-                      for a, b in zip(rows, rows[1:])
-                  ), f'{symbol} {timeframe}: candles com lacunas'
-
-          site = Path('site')
-          site.mkdir(exist_ok=True)
-          shutil.copyfile(source, site / 'market_data.json')
-          (site / '.nojekyll').touch()
-          (site / 'index.html').write_text(
-              '<!doctype html><html lang="pt-BR"><meta charset="utf-8">'
-              '<title>OKX market data</title>'
-              '<h1>OKX market data</h1>'
-              '<p>Dados publicos; nao sao sinais de negociacao.</p>'
-              '<p><a href="market_data.json">market_data.json</a></p>'
-              '</html>',
-              encoding='utf-8'
-          )
-          print(f'Pronto para publicar: {len(assets)} ativos, {age:.0f}s de idade')
-          PY
-
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Enviar artefato para GitHub Pages
-        uses: actions/upload-pages-artifact@v4
+      - name: Salvar copia dos dados
+        uses: actions/upload-artifact@v6
         with:
-          path: site
-
-      - name: Salvar copia da coleta no Actions
-        uses: actions/upload-artifact@v4
-        with:
-          name: okx-data-${{ github.run_id }}
-          path: output/market_data.json
+          name: market-data-${{ github.run_id }}
+          path: |
+            output/market_data.json
+            output/manifest.json
           retention-days: 3
-          if-no-files-found: error
 
-  deploy:
-    needs: collect
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Publicar JSON no GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publicar JSON no GitHub
+        run: bash scripts/publish-data.sh
