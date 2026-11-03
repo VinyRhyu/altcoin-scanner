@@ -3,18 +3,13 @@ name: Coleta OKX - Dados para ChatGPT
 
 on:
   workflow_dispatch:
-
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - "collector.py"
-      - "validate_data.py"
-      - "scripts/publish-data.sh"
-      - ".github/workflows/scan.yml"
-
+      - collector.py
+      - .github/workflows/scan.yml
   schedule:
-    - cron: "7,22,37,52 * * * *"
+    - cron: '7,22,37,52 * * * *'
 
 permissions:
   contents: write
@@ -30,11 +25,11 @@ jobs:
 
     env:
       MARKET_PROVIDER: okx_swap
-      UNIVERSE_SIZE: "50"
-      MIN_VALIDATED: "15"
-      MAX_PRESCREEN: "90"
-      MIN_VOLUME_USDT: "2000000"
-      PRIORITY_VOLUME_USDT: "5000000"
+      UNIVERSE_SIZE: '50'
+      MIN_VALIDATED: '15'
+      MAX_PRESCREEN: '90'
+      MIN_VOLUME_USDT: '2000000'
+      PRIORITY_VOLUME_USDT: '5000000'
       COINGECKO_DEMO_API_KEY: ${{ secrets.COINGECKO_DEMO_API_KEY }}
 
     steps:
@@ -46,22 +41,144 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Coletar candles da OKX
         run: python collector.py
 
-      - name: Validar dados
-        run: python validate_data.py
+      - name: Validar JSON coletado
+        run: |
+          python - <<'PY'
+          import json
+          import math
+          import time
+          from datetime import datetime
+          from pathlib import Path
 
-      - name: Salvar copia dos dados
+          path = Path('output/market_data.json')
+          if not path.is_file():
+              raise RuntimeError(
+                  'collector.py nao gerou market_data.json'
+              )
+
+          data = json.loads(
+              path.read_text(encoding='utf-8')
+          )
+
+          assert data.get('status') == 'COLLECTED'
+          assert data.get('venue') == 'okx_swap'
+          assert data.get('market_type') == 'USDT_PERPETUAL'
+
+          assets = data.get('universe', [])
+          assert len(assets) >= 15, (
+              f'Somente {len(assets)} ativos'
+          )
+
+          stamp = datetime.fromisoformat(
+              data['collected_utc'].replace('Z', '+00:00')
+          )
+          assert stamp.tzinfo is not None
+
+          collected_ms = int(stamp.timestamp() * 1000)
+          age_ms = int(time.time() * 1000) - collected_ms
+
+          assert -60000 <= age_ms <= 1200000, (
+              f'Coleta antiga: {age_ms / 1000:.0f}s'
+          )
+
+          durations = {
+              '2h': 7200000,
+              '1h': 3600000,
+              '15m': 900000
+          }
+
+          all_candles = data.get('candles', {})
+          seen = set()
+
+          for asset in assets:
+              symbol = asset['symbol']
+
+              assert symbol not in seen
+              assert symbol.endswith('-USDT-SWAP')
+              seen.add(symbol)
+
+              price = float(asset['price'])
+              assert math.isfinite(price) and price > 0
+
+              series = all_candles.get(symbol, {})
+
+              for tf, duration in durations.items():
+                  rows = series.get(tf, [])
+
+                  assert len(rows) >= 60, (
+                      f'{symbol}: historico {tf} insuficiente'
+                  )
+
+                  assert all(
+                      len(row) == 7 for row in rows
+                  ), f'{symbol}: candle incompleto'
+
+                  assert all(
+                      int(b[0]) - int(a[0]) == duration
+                      for a, b in zip(rows, rows[1:])
+                  ), f'{symbol}: lacunas em {tf}'
+
+                  last_end = int(rows[-1][0]) + duration
+
+                  assert 0 <= collected_ms - last_end <= duration, (
+                      f'{symbol}: ultimo {tf} invalido'
+                  )
+
+          print(
+              f'VALIDADO: {len(assets)} contratos OKX; '
+              f'idade {age_ms / 1000:.0f}s'
+          )
+          PY
+
+      - name: Guardar copia no Actions
         uses: actions/upload-artifact@v6
         with:
-          name: market-data-${{ github.run_id }}
-          path: |
-            output/market_data.json
-            output/manifest.json
+          name: okx-data-${{ github.run_id }}
+          path: output/market_data.json
           retention-days: 3
+          if-no-files-found: error
 
-      - name: Publicar JSON no GitHub
-        run: bash scripts/publish-data.sh
+      - name: Publicar JSON na branch market-data
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cp output/market_data.json \
+            "$RUNNER_TEMP/market_data.json"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email \
+            '41898282+github-actions[bot]@users.noreply.github.com'
+
+          if git ls-remote --exit-code --heads \
+            origin market-data >/dev/null 2>&1; then
+
+            git fetch origin refs/heads/market-data
+            git switch --detach FETCH_HEAD
+
+          else
+            git switch --orphan market-data
+          fi
+
+          cp "$RUNNER_TEMP/market_data.json" \
+            market_data.json
+
+          git add market_data.json
+
+          if git diff --cached --quiet; then
+            echo 'Snapshot identico ao publicado.'
+          else
+            git commit -m \
+              "data: atualizar snapshot OKX $(date -u +%FT%TZ)"
+
+            git push origin \
+              HEAD:refs/heads/market-data
+          fi
+
+          echo "JSON publicado:"
+          echo "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/market_data.json"
