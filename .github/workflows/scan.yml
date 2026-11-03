@@ -1,40 +1,36 @@
 
-name: Coleta OKX - Dados para ChatGPT
+name: Coletar OKX e publicar JSON (sem Pages)
 
 on:
   workflow_dispatch:
-
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - "collector.py"
-      - "validate_data.py"
-      - "scripts/publish-data.sh"
-      - ".github/workflows/scan.yml"
-
+      - 'collector.py'
+      - '.github/workflows/scan.yml'
   schedule:
-    - cron: "7,22,37,52 * * * *"
+    - cron: '7,22,37,52 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: okx-market-data-publish
+  group: market-data-okx
   cancel-in-progress: false
 
 jobs:
-  collect:
+  coleta:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
     env:
       MARKET_PROVIDER: okx_swap
-      UNIVERSE_SIZE: "50"
-      MIN_VALIDATED: "15"
-      MAX_PRESCREEN: "90"
-      MIN_VOLUME_USDT: "2000000"
-      PRIORITY_VOLUME_USDT: "5000000"
+      UNIVERSE_SIZE: '50'
+      MIN_VALIDATED: '15'
+      MAX_PRESCREEN: '90'
+      MIN_VOLUME_USDT: '2000000'
+      PRIORITY_VOLUME_USDT: '5000000'
       COINGECKO_DEMO_API_KEY: ${{ secrets.COINGECKO_DEMO_API_KEY }}
 
     steps:
@@ -43,25 +39,149 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Configurar Python
+      - name: Python 3.12
         uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: '3.12'
+
+      - name: Conferir sintaxe do coletor
+        run: python -m py_compile collector.py
 
       - name: Coletar candles da OKX
         run: python collector.py
 
-      - name: Validar dados
-        run: python validate_data.py
+      - name: Validar coleta e gerar manifest
+        shell: bash
+        run: |
+          python - <<'PYVALIDATE'
+          import json
+          import math
+          import time
+          from datetime import datetime, timezone
+          from pathlib import Path
 
-      - name: Salvar copia dos dados
+          path = Path('output/market_data.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+
+          assert data.get('status') == 'COLLECTED', 'Coleta nao concluida'
+          assert data.get('venue') == 'okx_swap', 'Exchange inesperada'
+          assert data.get('market_type') == 'USDT_PERPETUAL', 'Nao e perpetual'
+          assert data.get('signals_allowed') is False, 'Sinais devem estar desligados'
+
+          def parse_ms(text):
+              dt = datetime.fromisoformat(text.replace('Z', '+00:00'))
+              assert dt.tzinfo is not None, 'Timestamp sem fuso'
+              return int(dt.timestamp() * 1000)
+
+          collected_ms = parse_ms(data['collected_utc'])
+          now_ms = int(time.time() * 1000)
+
+          assert -30_000 <= now_ms-collected_ms <= 1_200_000, 'Coleta antiga'
+
+          assets = data.get('universe', [])
+          candles = data.get('candles', {})
+
+          assert 15 <= len(assets) <= 50, 'Numero de ativos fora do intervalo'
+          assert len({x['symbol'] for x in assets}) == len(assets), 'Ativo duplicado'
+
+          periods = {
+              '2h': 7200000,
+              '1h': 3600000,
+              '15m': 900000
+          }
+
+          for asset in assets:
+              symbol = asset['symbol']
+
+              assert symbol.endswith('-USDT-SWAP'), 'Contrato nao perpetual: ' + symbol
+
+              price = float(asset['price'])
+              assert math.isfinite(price) and price > 0, 'Preco invalido: ' + symbol
+
+              age_ticker = collected_ms - parse_ms(asset['ticker_time_utc'])
+              assert -30_000 <= age_ticker <= 300_000, 'Ticker antigo: ' + symbol
+
+              for tf, duration in periods.items():
+                  series = candles[symbol][tf]
+
+                  assert len(series) >= 60, f'Poucos candles: {symbol} {tf}'
+
+                  previous = None
+
+                  for row in series:
+                      assert len(row) == 7, f'Formato de candle: {symbol} {tf}'
+
+                      t = int(row[0])
+                      o, h, l, c, v, q = map(float, row[1:])
+
+                      assert t % duration == 0, f'Candle desalinhado: {symbol} {tf}'
+                      assert all(
+                          math.isfinite(x)
+                          for x in (o, h, l, c, v, q)
+                      ), 'Valor nao finito'
+                      assert 0 < l <= min(o, c) <= max(o, c) <= h, 'OHLC invalido'
+                      assert v >= 0 and q >= 0, 'Volume invalido'
+                      assert t + duration <= collected_ms, 'Candle aberto'
+
+                      if previous is not None:
+                          assert t - previous == duration, f'Lacuna: {symbol} {tf}'
+
+                      previous = t
+
+                  assert (
+                      collected_ms - (previous + duration) <= duration
+                  ), 'Ultimo candle antigo'
+
+          manifest = {
+              'status': 'OK',
+              'collected_utc': data['collected_utc'],
+              'validated_utc': datetime.now(timezone.utc).isoformat(),
+              'exchange': 'OKX',
+              'market_type': 'USDT_PERPETUAL',
+              'assets_count': len(assets),
+              'timeframes': list(periods),
+              'signals_enabled': False
+          }
+
+          Path('output/manifest.json').write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2),
+              encoding='utf-8'
+          )
+
+          print(f"OK: {len(assets)} contratos perpetuos validados")
+          PYVALIDATE
+
+      - name: Guardar copia no Actions
         uses: actions/upload-artifact@v6
         with:
-          name: market-data-${{ github.run_id }}
+          name: okx-snapshot-${{ github.run_id }}
           path: |
             output/market_data.json
             output/manifest.json
+          if-no-files-found: error
           retention-days: 3
 
-      - name: Publicar JSON no GitHub
-        run: bash scripts/publish-data.sh
+      - name: Publicar somente JSON na branch market-data
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$RUNNER_TEMP/okx-release"
+
+          cp output/market_data.json "$RUNNER_TEMP/okx-release/market_data.json"
+          cp output/manifest.json "$RUNNER_TEMP/okx-release/manifest.json"
+
+          git switch --orphan market-data-build
+
+          cp "$RUNNER_TEMP/okx-release/market_data.json" ./market_data.json
+          cp "$RUNNER_TEMP/okx-release/manifest.json" ./manifest.json
+
+          git add -f -- market_data.json manifest.json
+
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m "data: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          git push --force origin HEAD:refs/heads/market-data
+
+          echo "URL: https://raw.githubusercontent.com/$GITHUB_REPOSITORY/market-data/market_data.json"
