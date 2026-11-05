@@ -1,0 +1,12 @@
+{
+  "status": "OK",
+  "collected_utc": "2026-11-05T12:47:16.364000+00:00",
+  "asset_count": 50,
+  "market": "OKX USDT perpetual",
+  "timeframes": [
+    "2h",
+    "1h",
+    "15m"
+  ],
+  "file": "market_data.json"
+}
