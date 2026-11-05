@@ -102,27 +102,27 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
+          # Mantem os arquivos enquanto trocamos de branch.
           cp output/market_data.json "$RUNNER_TEMP/market_data.json"
           cp output/manifest.json "$RUNNER_TEMP/manifest.json"
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          if git ls-remote --exit-code --heads origin market-data >/dev/null; then
-            echo 'Branch market-data ja existe; atualizando sem force push.'
-            git fetch origin market-data
-            git switch -C market-data FETCH_HEAD
-          else
-            echo 'Criando a branch market-data pela primeira vez.'
-            git switch --orphan market-data
-            git rm -rf --ignore-unmatch . >/dev/null 2>&1 || true
-          fi
+          # Esta branch ja existe, conforme o log enviado.
+          git fetch origin market-data
+          git switch -C market-data FETCH_HEAD
 
           cp "$RUNNER_TEMP/market_data.json" ./market_data.json
           cp "$RUNNER_TEMP/manifest.json" ./manifest.json
           git add -f -- market_data.json manifest.json
 
-          if git diff --cached --quiet; then
-            echo 'Nenhuma alteracao nos dados; sem novo commit.'
-          else
-            git commit -m "data: coleta OKX $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          # Se nao houver mudanca, encerra com sucesso.
+          git diff --cached --quiet && { echo 'Sem dados novos para publicar'; exit 0; }
+
+          git commit -m "data: coleta OKX $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push origin HEAD:refs/heads/market-data
+
+          echo "PUBLICADO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/market_data.json"
+          echo "MANIFESTO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/manifest.json"
