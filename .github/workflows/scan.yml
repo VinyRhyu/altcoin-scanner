@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'collector.py'
+      - 'publish_views.py'
       - '.github/workflows/scan.yml'
   schedule:
     # Quatro vezes por hora (UTC); agendamentos podem atrasar.
@@ -88,6 +89,9 @@ jobs:
           print(f'VALIDADO: {len(symbols)} ativos; coleta de {age:.0f}s atras')
           PY
 
+      - name: Gerar resumo e arquivos individuais por moeda
+        run: python publish_views.py
+
       - name: Salvar ZIP opcional para auditoria
         uses: actions/upload-artifact@v6
         with:
@@ -95,6 +99,7 @@ jobs:
           path: |
             output/market_data.json
             output/manifest.json
+            output/scan_summary.json
           retention-days: 3
           if-no-files-found: error
 
@@ -103,26 +108,35 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Mantem os arquivos enquanto trocamos de branch.
+          # Guarda os artefatos gerados antes de trocar de branch.
           cp output/market_data.json "$RUNNER_TEMP/market_data.json"
           cp output/manifest.json "$RUNNER_TEMP/manifest.json"
+          cp output/scan_summary.json "$RUNNER_TEMP/scan_summary.json"
+          mkdir -p "$RUNNER_TEMP/okx-coins"
+          cp output/coins/*.json "$RUNNER_TEMP/okx-coins/"
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          # Esta branch ja existe, conforme o log enviado.
           git fetch origin market-data
           git switch -C market-data FETCH_HEAD
 
           cp "$RUNNER_TEMP/market_data.json" ./market_data.json
           cp "$RUNNER_TEMP/manifest.json" ./manifest.json
-          git add -f -- market_data.json manifest.json
+          cp "$RUNNER_TEMP/scan_summary.json" ./scan_summary.json
 
-          # Se nao houver mudanca, encerra com sucesso.
+          # Apaga apenas a pasta dedicada; evita arquivos antigos de moedas
+          # que deixaram de fazer parte do universo de 50 ativos.
+          rm -rf ./coins
+          mkdir -p ./coins
+          cp "$RUNNER_TEMP"/okx-coins/*.json ./coins/
+
+          git add -A -- market_data.json manifest.json scan_summary.json coins
           git diff --cached --quiet && { echo 'Sem dados novos para publicar'; exit 0; }
 
           git commit -m "data: coleta OKX $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push origin HEAD:refs/heads/market-data
 
-          echo "PUBLICADO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/market_data.json"
+          echo "RESUMO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/scan_summary.json"
           echo "MANIFESTO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/manifest.json"
+          echo "EXEMPLO SOL: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/coins/SOL-USDT-SWAP.json"
