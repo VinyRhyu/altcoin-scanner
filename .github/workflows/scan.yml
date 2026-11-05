@@ -3,14 +3,14 @@ name: OKX - Coleta e publicacao de dados
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - 'collector.py'
       - 'publish_views.py'
       - '.github/workflows/scan.yml'
   schedule:
     # Quatro vezes por hora (UTC); agendamentos podem atrasar.
-    - cron: '7,22,37,52 * * * *'
+    - cron: '11,26,41,56 * * * *'
 
 permissions:
   contents: write
