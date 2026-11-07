@@ -92,6 +92,23 @@ jobs:
       - name: Gerar resumo e arquivos individuais por moeda
         run: python publish_views.py
 
+      - name: Verificar alertas antecipados de risco em 5m (opcional)
+        shell: bash
+        run: |
+          # A falha nesta etapa auxiliar nao impede a publicacao dos candles principais.
+          python early_warning.py || echo 'Aviso: a verificacao auxiliar 5m falhou; dados principais preservados.'
+          if [ ! -f output/early_warning.json ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('output/market_data.json').read_text(encoding='utf-8'))
+          Path('output/early_warning.json').write_text(json.dumps({
+              'status': 'UNAVAILABLE', 'source_collected_utc': data['collected_utc'],
+              'scanned': 0, 'warnings': [], 'trade_signals_allowed': False,
+          }, indent=2), encoding='utf-8')
+          PY
+          fi
+
       - name: Salvar ZIP opcional para auditoria
         uses: actions/upload-artifact@v6
         with:
@@ -100,6 +117,7 @@ jobs:
             output/market_data.json
             output/manifest.json
             output/scan_summary.json
+            output/early_warning.json
           retention-days: 3
           if-no-files-found: error
 
@@ -112,6 +130,7 @@ jobs:
           cp output/market_data.json "$RUNNER_TEMP/market_data.json"
           cp output/manifest.json "$RUNNER_TEMP/manifest.json"
           cp output/scan_summary.json "$RUNNER_TEMP/scan_summary.json"
+          cp output/early_warning.json "$RUNNER_TEMP/early_warning.json"
           mkdir -p "$RUNNER_TEMP/okx-coins"
           cp output/coins/*.json "$RUNNER_TEMP/okx-coins/"
 
@@ -124,6 +143,7 @@ jobs:
           cp "$RUNNER_TEMP/market_data.json" ./market_data.json
           cp "$RUNNER_TEMP/manifest.json" ./manifest.json
           cp "$RUNNER_TEMP/scan_summary.json" ./scan_summary.json
+          cp "$RUNNER_TEMP/early_warning.json" ./early_warning.json
 
           # Apaga apenas a pasta dedicada; evita arquivos antigos de moedas
           # que deixaram de fazer parte do universo de 50 ativos.
@@ -131,7 +151,7 @@ jobs:
           mkdir -p ./coins
           cp "$RUNNER_TEMP"/okx-coins/*.json ./coins/
 
-          git add -A -- market_data.json manifest.json scan_summary.json coins
+          git add -A -- market_data.json manifest.json scan_summary.json early_warning.json coins
           git diff --cached --quiet && { echo 'Sem dados novos para publicar'; exit 0; }
 
           git commit -m "data: coleta OKX $(date -u +%Y-%m-%dT%H:%M:%SZ)"
