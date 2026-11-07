@@ -1,7 +1,7 @@
 {
   "status": "OK",
-  "collected_utc": "2026-11-07T11:57:23.652000+00:00",
-  "asset_count": 33,
+  "collected_utc": "2026-11-07T12:18:12.602000+00:00",
+  "asset_count": 34,
   "market": "OKX USDT perpetual",
   "timeframes": [
     "2h",
@@ -11,6 +11,6 @@
   "file": "market_data.json",
   "summary_file": "scan_summary.json",
   "coin_directory": "coins/",
-  "coin_count": 33,
+  "coin_count": 34,
   "summary_schema_version": 1
 }
