@@ -23,6 +23,7 @@ INTERVALS = {
     "2h": 7200,
     "1h": 3600,
     "15m": 900,
+    "5m": 300,
 }
 
 MIN_VOLUME_USDT = float(
@@ -349,6 +350,7 @@ def candles(symbol, tf, now_ms):
         "2h": "2H",
         "1h": "1H",
         "15m": "15m",
+        "5m": "5m",
     }[tf]
 
     rows = okx(
