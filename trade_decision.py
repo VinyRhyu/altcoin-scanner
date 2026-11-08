@@ -278,6 +278,11 @@ def evaluate(symbol, history, ticker, side, info, stale, now_utc):
         decision = "ENTRADA_CONDICIONAL"
         why = ["Gatilho condicional por " + "/".join(m["method"] for m in valid_methods),
                "Revalidar cotacao e livro de ofertas antes de agir"]
+    elif decision == "ENTRADA_CONDICIONAL":
+        # A etapa antiga reconhece reacoes sem ter preco exato negociavel.
+        # Nunca promover uma reacao isolada a entrada operacional.
+        decision = "AGUARDAR"
+        why.append("reacao validada, mas gatilho operacional independente ausente")
     watch = watch_fields(side, stage, level, close, info["atr_15m"],
                          decision, stale, trade)
     confirmed = [m for m in methods if m["status"] == "CONFIRMADO"]
@@ -379,8 +384,12 @@ def analyze(market, now_utc=None):
          "PREPARANDO": 2, "PRE_REACAO": 2, "PRE_REJEICAO": 2,
          "ROMPIMENTO_FRACO": 3, "MONITORANDO": 4}[s["stage"]],
         -s["relative_volume_15m"]))
+    valid_until = datetime.fromtimestamp(
+        (int(now.timestamp() // 900) + 1) * 900, timezone.utc).isoformat()
     return {
         "schema": 2,
+        "analysis_valid_until_utc": valid_until,
+        "must_recheck_source_at_next_15m_close": True,
         "status": "EXPERIMENTAL" if not stale else "FONTE_DESATUALIZADA",
         "source_sync": sync,
         "source_sync_status": sync["source_sync_status"],
@@ -458,6 +467,8 @@ def main():
             "source_sync": out["source_sync"],
             "source_sync_status": out["source_sync_status"],
             "current_for_new_entries": out["current_for_new_entries"],
+            "analysis_valid_until_utc": out["analysis_valid_until_utc"],
+            "must_recheck_source_at_next_15m_close": True,
             "source_asset_count": out["source_asset_count"],
             "retained_asset_count": out["retained_asset_count"],
             "analyzed_asset_count": out["analyzed_asset_count"],
