@@ -25,13 +25,14 @@ class TradeDecisionTests(unittest.TestCase):
     def test_bearish_candle_above_resistance_not_bullish_confirmation(self):
         self.assertFalse(candle_quality([1, 1.15, 1.17, 1.08, 1.10, 0, 200], "LONG"))
 
-    def test_breakout_waits_for_retest_and_does_not_enter(self):
+    def test_breakout_is_reported_independently_of_retest(self):
         data = source()
         c = data["candles"]["AAA-USDT-SWAP"]["15m"]
         c[-1][1:7] = [1.038, 1.060, 1.037, 1.056, 100, 800]
         out = analyze(data, now_utc=datetime(2026,11,8,tzinfo=timezone.utc))
         p = next(x for x in out["ranked_setups"] if x["side"] == "LONG")
-        self.assertEqual(p["stage"], "AGUARDAR_RETESTE")
+        self.assertEqual(p["stage"], "ROMPIMENTO_CONFIRMADO")
+        self.assertEqual(p["legacy_stage"], "AGUARDAR_RETESTE")
         self.assertNotEqual(p["decision"], "ENTRADA_CONDICIONAL")
 
     def test_retest_detected_with_closed_candles(self):
