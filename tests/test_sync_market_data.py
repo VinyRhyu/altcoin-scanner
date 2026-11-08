@@ -93,6 +93,31 @@ class SyncAndLifecycleTests(unittest.TestCase):
         self.assertEqual(p["entry_state"], "INVALIDADO")
         self.assertFalse(p["entry_eligible_at_snapshot"])
 
+    def test_one_current_snapshot_has_explicit_expiration(self):
+        d = source()
+        now = datetime(2026, 11, 8, 2, 46, tzinfo=timezone.utc)
+        result = analyze(d, now_utc=now)
+        self.assertEqual(result["analysis_valid_until_utc"],
+                         "2026-11-08T03:00:00+00:00")
+        self.assertTrue(result["must_recheck_source_at_next_15m_close"])
+
+    def test_confirmed_event_is_visible_even_when_rejected(self):
+        d = source()
+        h, price = prepare_breakout()
+        d["candles"]["AAA-USDT-SWAP"] = h
+        d["universe"][0].update(ticker(price))
+        now = fresh_after_close(h)
+        result = analyze(d, now_utc=now)
+        long_events = [x for x in result["entry_events"] if x["side"] == "LONG"]
+        self.assertTrue(long_events)
+        self.assertEqual(long_events[0]["method"], "BREAKOUT")
+        self.assertIsNotNone(long_events[0]["entry_trigger_price"])
+        self.assertFalse(long_events[0]["order_allowed"])
+        for p in result["ranked_setups"]:
+            if p["decision"] == "ENTRADA_CONDICIONAL":
+                self.assertIsNotNone(p["entry_trigger_price"])
+                self.assertEqual(p["entry_state"], "GATILHO_DISPONIVEL")
+
     def test_no_promise_of_order_fill_when_quote_crossed(self):
         h, _ = prepare_breakout("SHORT")
         p = analyze_method(h, features(h), ticker(1.028),
