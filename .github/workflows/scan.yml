@@ -17,8 +17,11 @@ on:
       - 'tests/test_trade_decision.py'
       - '.github/workflows/scan.yml'
   schedule:
-    # Quatro vezes por hora (UTC); agendamentos podem atrasar.
-    - cron: '11,26,41,56 * * * *'
+    # Um minuto APOS cada fechamento de 15m (UTC).
+    # Nao iniciar antes do fechamento, pois o processo pode publicar
+    # candle anterior e perder o gatilho valido na janela seguinte.
+    # O GitHub Actions pode atrasar a execucao.
+    - cron: '1,16,31,46 * * * *'
 
 permissions:
   contents: write
