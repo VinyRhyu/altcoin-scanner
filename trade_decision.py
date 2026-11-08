@@ -170,8 +170,18 @@ def evaluate(symbol, history, ticker, side, info, stale):
         why.append("proximidade da regiao nao e confirmacao")
     elif stage == "ROMPIMENTO_FRACO":
         why.append("preco passou do nivel, mas candle/volume nao confirmaram")
+        decision = "NAO_ENTRAR"
     else:
         why.append("sem gatilho operacional")
+    # "Nao entrar" e apenas uma decisao para este snapshot, nao exclui o ativo.
+    blocked = ("stop muito distante", "R:R estimado liquido", "obstaculo estrutural",
+               "spread elevado")
+    if stage != "MONITORANDO" and any(
+            reason.startswith(blocked) for reason in why):
+        decision = "NAO_ENTRAR"
+    if stale and stage != "MONITORANDO":
+        decision = "NAO_ENTRAR"
+        why.append("snapshot desatualizado ou com horario inconsistente")
     return {
         "symbol": symbol, "side": side, "stage": stage, "decision": decision,
         "reference_level": pretty(level),
