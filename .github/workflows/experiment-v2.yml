@@ -46,7 +46,7 @@ jobs:
           PY
       - name: Avaliar entradas LONG/SHORT sem executar ordens
         run: |
-          python trade_decision.py --market-data market_data.json --output experimental_decisions.json
+          python trade_decision.py --market-data market_data.json --output experimental_decisions.json --watch-output experimental_entry_watch.json
           python - <<'PY'
           import json
           d = json.load(open('experimental_decisions.json'))
@@ -54,6 +54,10 @@ jobs:
           assert d['analyzed_asset_count'] == d['source_asset_count'], 'Alguns ativos nao foram analisados'
           assert len(d['ranked_setups']) == d['source_asset_count'] * 2
           assert not d['order_allowed']
+          watch = json.load(open('experimental_entry_watch.json'))
+          assert watch['retained_asset_count'] == d['retained_asset_count']
+          assert watch['proximity_alert_count'] == len(watch['proximity_alerts'])
+          assert not watch['order_allowed']
           print('TESTE DE DECISAO:', d['source_asset_count'], 'ativos e', len(d['ranked_setups']), 'direcoes')
           PY
       - uses: actions/upload-artifact@v4
@@ -62,6 +66,7 @@ jobs:
           path: |
             experimental_rank.json
             experimental_decisions.json
+            experimental_entry_watch.json
           retention-days: 7
 
       - name: Publicar resultado apenas na branch experimental
@@ -70,7 +75,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- experimental_rank.json experimental_decisions.json
+          git add -- experimental_rank.json experimental_decisions.json experimental_entry_watch.json
           if git diff --cached --quiet; then
             echo 'Resultado experimental inalterado'
             exit 0
