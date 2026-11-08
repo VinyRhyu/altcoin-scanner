@@ -1,0 +1,3615 @@
+{
+  "schema": 1,
+  "status": "EXPERIMENTAL",
+  "order_allowed": false,
+  "source_collected_utc": "2026-11-08T00:33:11.231000+00:00",
+  "evaluated_at_utc": "2026-11-08T00:46:06.380449+00:00",
+  "snapshot_age_min": 12.9191574833,
+  "snapshot_stale": false,
+  "source_asset_count": 43,
+  "retained_asset_count": 43,
+  "analyzed_asset_count": 43,
+  "ranked_setups": [
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "PREPARANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 4.8002e-06,
+      "close_15m": 4.8189e-06,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.90417433758,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": {
+        "entry_zone": [
+          4.79098142857e-06,
+          4.79917571429e-06
+        ],
+        "rr_worst_entry": 4.79098142857e-06,
+        "stop": 4.87047285714e-06,
+        "tp1_2_2R_projection": 4.61610028571e-06,
+        "tp2_3_0R_projection": 4.55250714286e-06,
+        "risk_ATR": 3.88033472803,
+        "estimated_net_RR_tp1": 1.85254183521,
+        "estimated_cost_pct_roundtrip": 0.2021,
+        "obstacle_before_tp1": null,
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "stop muito distante: risco > 3 ATR",
+        "proximidade da regiao nao e confirmacao"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "side": "LONG",
+      "stage": "PREPARANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.15136,
+      "close_15m": 0.15107,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.50345837632,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": {
+        "entry_zone": [
+          0.15138075,
+          0.15154675
+        ],
+        "rr_worst_entry": 0.15154675,
+        "stop": 0.15071775,
+        "tp1_2_2R_projection": 0.15337055,
+        "tp2_3_0R_projection": 0.15403375,
+        "risk_ATR": 1.99759036145,
+        "estimated_net_RR_tp1": 1.32274779246,
+        "estimated_cost_pct_roundtrip": 0.2066,
+        "obstacle_before_tp1": {
+          "price": 0.15192,
+          "tf": "1h"
+        },
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "R:R estimado liquido < 1,6 na pior entrada",
+        "obstaculo estrutural antes de TP1 projetado",
+        "proximidade da regiao nao e confirmacao"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "LTC-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 52.27,
+      "close_15m": 52.08,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 3.8903680592,
+      "trend_2h": "baixa",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "LTC-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 51.57,
+      "close_15m": 52.08,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 3.8903680592,
+      "trend_2h": "baixa",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.3643,
+      "close_15m": 0.3628,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 3.55776038824,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.3586,
+      "close_15m": 0.3628,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 3.55776038824,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.06733,
+      "close_15m": 0.06683,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 3.28894515868,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.06653,
+      "close_15m": 0.06683,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 3.28894515868,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 47.08,
+      "close_15m": 47.14,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 2.86622253699,
+      "trend_2h": "alta",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 45.66,
+      "close_15m": 47.14,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 2.86622253699,
+      "trend_2h": "alta",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.10247,
+      "close_15m": 0.10163,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 2.13961509626,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.10035,
+      "close_15m": 0.10163,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 2.13961509626,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.4434,
+      "close_15m": 0.4378,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.97859621157,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.4323,
+      "close_15m": 0.4378,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.97859621157,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 4.875e-06,
+      "close_15m": 4.8189e-06,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.90417433758,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 7.24,
+      "close_15m": 7.151,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.76405113729,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 7.039,
+      "close_15m": 7.151,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.76405113729,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 1268.14,
+      "close_15m": 1252.37,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.34512829459,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 1235.32,
+      "close_15m": 1252.37,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.34512829459,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 8.233,
+      "close_15m": 8.195,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.26199240161,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 8.127,
+      "close_15m": 8.195,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.26199240161,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.2682,
+      "close_15m": 0.2661,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.22131361457,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.2634,
+      "close_15m": 0.2661,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.22131361457,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "STX-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.3467,
+      "close_15m": 0.3402,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.21976707643,
+      "trend_2h": "alta",
+      "trend_1h": "baixa",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "STX-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.3375,
+      "close_15m": 0.3402,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.21976707643,
+      "trend_2h": "alta",
+      "trend_1h": "baixa",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 3.741,
+      "close_15m": 3.698,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.21043138449,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 3.616,
+      "close_15m": 3.698,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.21043138449,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 131.79,
+      "close_15m": 130.99,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.20033644819,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 129.1,
+      "close_15m": 130.99,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.20033644819,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.8604,
+      "close_15m": 0.8523,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.19579859407,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.8463,
+      "close_15m": 0.8523,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.19579859407,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 89.8,
+      "close_15m": 89.48,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.14505970507,
+      "trend_2h": "baixa",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 88.62,
+      "close_15m": 89.48,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.14505970507,
+      "trend_2h": "baixa",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ENA-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.1591,
+      "close_15m": 0.15767,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.13276699567,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ENA-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.15579,
+      "close_15m": 0.15767,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.13276699567,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.04264,
+      "close_15m": 0.0424,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.00639581712,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.04191,
+      "close_15m": 0.0424,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.00639581712,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 77.856,
+      "close_15m": 77.616,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.997516616563,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 76.811,
+      "close_15m": 77.616,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.997516616563,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.32028,
+      "close_15m": 0.32001,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.930822540221,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.31952,
+      "close_15m": 0.32001,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.930822540221,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "STRK-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.04042,
+      "close_15m": 0.04004,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.921654464094,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "STRK-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.03968,
+      "close_15m": 0.04004,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.921654464094,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ADA-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.1818,
+      "close_15m": 0.1811,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.921073339278,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ADA-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.1791,
+      "close_15m": 0.1811,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.921073339278,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "INJ-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 8.286,
+      "close_15m": 8.219,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.917118157036,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "INJ-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 8.115,
+      "close_15m": 8.219,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.917118157036,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ARB-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.16923,
+      "close_15m": 0.16784,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.891293566225,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ARB-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.166,
+      "close_15m": 0.16784,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.891293566225,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ETHFI-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.6034,
+      "close_15m": 0.5955,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.88034424979,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ETHFI-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.5868,
+      "close_15m": 0.5955,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.88034424979,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 1.6494,
+      "close_15m": 1.634,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.812219594786,
+      "trend_2h": "alta",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 1.6108,
+      "close_15m": 1.634,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.812219594786,
+      "trend_2h": "alta",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 257.37,
+      "close_15m": 248.79,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.805024650272,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 243.46,
+      "close_15m": 248.79,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.805024650272,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.6345,
+      "close_15m": 0.6218,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.804241046699,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.6071,
+      "close_15m": 0.6218,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.804241046699,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 224.25,
+      "close_15m": 222.25,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.790706718965,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 220.86,
+      "close_15m": 222.25,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.790706718965,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.3353,
+      "close_15m": 0.3326,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.784365851222,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.327,
+      "close_15m": 0.3326,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.784365851222,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 697.2,
+      "close_15m": 696.01,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.776585673404,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 693.42,
+      "close_15m": 696.01,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.776585673404,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.9004,
+      "close_15m": 0.8955,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.714780044153,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.8784,
+      "close_15m": 0.8955,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.714780044153,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.7919,
+      "close_15m": 0.7831,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.705046068458,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.7727,
+      "close_15m": 0.7831,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.705046068458,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.006413,
+      "close_15m": 0.006375,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.702356816574,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.006294,
+      "close_15m": 0.006375,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.702356816574,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DOGE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.07183,
+      "close_15m": 0.07145,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.672527133306,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DOGE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.0708,
+      "close_15m": 0.07145,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.672527133306,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "LINK-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 10.869,
+      "close_15m": 10.796,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.592504584583,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "LINK-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 10.709,
+      "close_15m": 10.796,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.592504584583,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "PYTH-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.0648,
+      "close_15m": 0.06399,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.537361268106,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "PYTH-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.06314,
+      "close_15m": 0.06399,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.537361268106,
+      "trend_2h": "mista",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.14979,
+      "close_15m": 0.15107,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.50345837632,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "XRP-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 1.165,
+      "close_15m": 1.1608,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.496320929831,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "XRP-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 1.1486,
+      "close_15m": 1.1608,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.496320929831,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SHIB-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 4.496e-06,
+      "close_15m": 4.482e-06,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.440391874552,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "SHIB-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 4.439e-06,
+      "close_15m": 4.482e-06,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.440391874552,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ICP-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 2.439,
+      "close_15m": 2.425,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.404858612187,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ICP-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 2.4,
+      "close_15m": 2.425,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.404858612187,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "baixa",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ETC-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 6.949,
+      "close_15m": 6.894,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.293405679726,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ETC-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 6.854,
+      "close_15m": 6.894,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.293405679726,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "LONG",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.6038,
+      "close_15m": 0.5978,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.278825370265,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "MONITORANDO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.5898,
+      "close_15m": 0.5978,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.278825370265,
+      "trend_2h": "mista",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": null,
+      "reasons": [
+        "sem gatilho operacional"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    }
+  ],
+  "assets": [
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "UNI-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 7.24,
+          "close_15m": 7.151,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.76405113729,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "UNI-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 7.039,
+          "close_15m": 7.151,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.76405113729,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ETHFI-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ETHFI-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.6034,
+          "close_15m": 0.5955,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.88034424979,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ETHFI-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.5868,
+          "close_15m": 0.5955,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.88034424979,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ARB-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ARB-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.16923,
+          "close_15m": 0.16784,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.891293566225,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ARB-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.166,
+          "close_15m": 0.16784,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.891293566225,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "CRV-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.2682,
+          "close_15m": 0.2661,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.22131361457,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "CRV-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.2634,
+          "close_15m": 0.2661,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.22131361457,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "AERO-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.6345,
+          "close_15m": 0.6218,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.804241046699,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "AERO-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.6071,
+          "close_15m": 0.6218,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.804241046699,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "TRX-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.32028,
+          "close_15m": 0.32001,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.930822540221,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "TRX-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.31952,
+          "close_15m": 0.32001,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.930822540221,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ZEC-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 1268.14,
+          "close_15m": 1252.37,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.34512829459,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ZEC-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 1235.32,
+          "close_15m": 1252.37,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.34512829459,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "BCH-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 257.37,
+          "close_15m": 248.79,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.805024650272,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "BCH-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 243.46,
+          "close_15m": 248.79,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.805024650272,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "FIL-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.7919,
+          "close_15m": 0.7831,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.705046068458,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "FIL-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.7727,
+          "close_15m": 0.7831,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.705046068458,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "OP-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.10247,
+          "close_15m": 0.10163,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 2.13961509626,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "OP-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.10035,
+          "close_15m": 0.10163,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 2.13961509626,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ENA-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ENA-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.1591,
+          "close_15m": 0.15767,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.13276699567,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ENA-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.15579,
+          "close_15m": 0.15767,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.13276699567,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "PEPE-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 4.875e-06,
+          "close_15m": 4.8189e-06,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.90417433758,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "PEPE-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "PREPARANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 4.8002e-06,
+          "close_15m": 4.8189e-06,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.90417433758,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": {
+            "entry_zone": [
+              4.79098142857e-06,
+              4.79917571429e-06
+            ],
+            "rr_worst_entry": 4.79098142857e-06,
+            "stop": 4.87047285714e-06,
+            "tp1_2_2R_projection": 4.61610028571e-06,
+            "tp2_3_0R_projection": 4.55250714286e-06,
+            "risk_ATR": 3.88033472803,
+            "estimated_net_RR_tp1": 1.85254183521,
+            "estimated_cost_pct_roundtrip": 0.2021,
+            "obstacle_before_tp1": null,
+            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+          },
+          "reasons": [
+            "stop muito distante: risco > 3 ATR",
+            "proximidade da regiao nao e confirmacao"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "PYTH-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "PYTH-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.0648,
+          "close_15m": 0.06399,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.537361268106,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "PYTH-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.06314,
+          "close_15m": 0.06399,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.537361268106,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "WLD-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.3353,
+          "close_15m": 0.3326,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.784365851222,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "WLD-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.327,
+          "close_15m": 0.3326,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.784365851222,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "LTC-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "LTC-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 52.27,
+          "close_15m": 52.08,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 3.8903680592,
+          "trend_2h": "baixa",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "LTC-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 51.57,
+          "close_15m": 52.08,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 3.8903680592,
+          "trend_2h": "baixa",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ONDO-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.3643,
+          "close_15m": 0.3628,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 3.55776038824,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ONDO-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.3586,
+          "close_15m": 0.3628,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 3.55776038824,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "HBAR-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.06733,
+          "close_15m": 0.06683,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 3.28894515868,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "HBAR-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.06653,
+          "close_15m": 0.06683,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 3.28894515868,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "DASH-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 47.08,
+          "close_15m": 47.14,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 2.86622253699,
+          "trend_2h": "alta",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "DASH-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 45.66,
+          "close_15m": 47.14,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 2.86622253699,
+          "trend_2h": "alta",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "TIA-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.4434,
+          "close_15m": 0.4378,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.97859621157,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "TIA-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.4323,
+          "close_15m": 0.4378,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.97859621157,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "SOL-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 89.8,
+          "close_15m": 89.48,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.14505970507,
+          "trend_2h": "baixa",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "SOL-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 88.62,
+          "close_15m": 89.48,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.14505970507,
+          "trend_2h": "baixa",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "XRP-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "XRP-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 1.165,
+          "close_15m": 1.1608,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.496320929831,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "XRP-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 1.1486,
+          "close_15m": 1.1608,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.496320929831,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "HYPE-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 77.856,
+          "close_15m": 77.616,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.997516616563,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "HYPE-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 76.811,
+          "close_15m": 77.616,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.997516616563,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "DOGE-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "DOGE-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.07183,
+          "close_15m": 0.07145,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.672527133306,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "DOGE-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.0708,
+          "close_15m": 0.07145,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.672527133306,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "NEAR-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 3.741,
+          "close_15m": 3.698,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.21043138449,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "NEAR-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 3.616,
+          "close_15m": 3.698,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.21043138449,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "SUI-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.8604,
+          "close_15m": 0.8523,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.19579859407,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "SUI-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.8463,
+          "close_15m": 0.8523,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.19579859407,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "AAVE-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 131.79,
+          "close_15m": 130.99,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.20033644819,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "AAVE-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 129.1,
+          "close_15m": 130.99,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.20033644819,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "LINK-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "LINK-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 10.869,
+          "close_15m": 10.796,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.592504584583,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "LINK-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 10.709,
+          "close_15m": 10.796,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.592504584583,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "INJ-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "INJ-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 8.286,
+          "close_15m": 8.219,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.917118157036,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "INJ-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 8.115,
+          "close_15m": 8.219,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.917118157036,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "STRK-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "STRK-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.04042,
+          "close_15m": 0.04004,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.921654464094,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "STRK-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.03968,
+          "close_15m": 0.04004,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.921654464094,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ADA-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ADA-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.1818,
+          "close_15m": 0.1811,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.921073339278,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ADA-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.1791,
+          "close_15m": 0.1811,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.921073339278,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "BNB-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 697.2,
+          "close_15m": 696.01,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.776585673404,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "BNB-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 693.42,
+          "close_15m": 696.01,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.776585673404,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "AVAX-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 8.233,
+          "close_15m": 8.195,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.26199240161,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "AVAX-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 8.127,
+          "close_15m": 8.195,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.26199240161,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "TAO-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 224.25,
+          "close_15m": 222.25,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.790706718965,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "TAO-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 220.86,
+          "close_15m": 222.25,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.790706718965,
+          "trend_2h": "mista",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "PENGU-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.006413,
+          "close_15m": 0.006375,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.702356816574,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "PENGU-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.006294,
+          "close_15m": 0.006375,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.702356816574,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "STX-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "STX-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.3467,
+          "close_15m": 0.3402,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.21976707643,
+          "trend_2h": "alta",
+          "trend_1h": "baixa",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "STX-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.3375,
+          "close_15m": 0.3402,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.21976707643,
+          "trend_2h": "alta",
+          "trend_1h": "baixa",
+          "structure_1h": "alta",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "XLM-USDT-SWAP",
+          "side": "LONG",
+          "stage": "PREPARANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.15136,
+          "close_15m": 0.15107,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.50345837632,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "mista",
+          "trade_plan": {
+            "entry_zone": [
+              0.15138075,
+              0.15154675
+            ],
+            "rr_worst_entry": 0.15154675,
+            "stop": 0.15071775,
+            "tp1_2_2R_projection": 0.15337055,
+            "tp2_3_0R_projection": 0.15403375,
+            "risk_ATR": 1.99759036145,
+            "estimated_net_RR_tp1": 1.32274779246,
+            "estimated_cost_pct_roundtrip": 0.2066,
+            "obstacle_before_tp1": {
+              "price": 0.15192,
+              "tf": "1h"
+            },
+            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+          },
+          "reasons": [
+            "R:R estimado liquido < 1,6 na pior entrada",
+            "obstaculo estrutural antes de TP1 projetado",
+            "proximidade da regiao nao e confirmacao"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "XLM-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.14979,
+          "close_15m": 0.15107,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.50345837632,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "DOT-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.9004,
+          "close_15m": 0.8955,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.714780044153,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "DOT-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.8784,
+          "close_15m": 0.8955,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.714780044153,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ZRO-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 1.6494,
+          "close_15m": 1.634,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.812219594786,
+          "trend_2h": "alta",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ZRO-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 1.6108,
+          "close_15m": 1.634,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.812219594786,
+          "trend_2h": "alta",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "SHIB-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "SHIB-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 4.496e-06,
+          "close_15m": 4.482e-06,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.440391874552,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "SHIB-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 4.439e-06,
+          "close_15m": 4.482e-06,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.440391874552,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "APT-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.6038,
+          "close_15m": 0.5978,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.278825370265,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "APT-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.5898,
+          "close_15m": 0.5978,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.278825370265,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "SAND-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.04264,
+          "close_15m": 0.0424,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.00639581712,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "SAND-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.04191,
+          "close_15m": 0.0424,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 1.00639581712,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ETC-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ETC-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 6.949,
+          "close_15m": 6.894,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.293405679726,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ETC-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 6.854,
+          "close_15m": 6.894,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.293405679726,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ICP-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "ICP-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 2.439,
+          "close_15m": 2.425,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.404858612187,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "ICP-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 2.4,
+          "close_15m": 2.425,
+          "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+          "relative_volume_15m": 0.404858612187,
+          "trend_2h": "mista",
+          "trend_1h": "mista",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    }
+  ],
+  "assumptions": {
+    "min_net_rr": 1.6,
+    "fee_bps_each_side": 5.0,
+    "slippage_bps_each_side": 5.0
+  }
+}
