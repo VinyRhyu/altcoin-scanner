@@ -3,8 +3,8 @@
   "status": "EXPERIMENTAL",
   "order_allowed": false,
   "source_collected_utc": "2026-11-08T00:33:11.231000+00:00",
-  "evaluated_at_utc": "2026-11-08T00:48:13.126226+00:00",
-  "snapshot_age_min": 15.0315871,
+  "evaluated_at_utc": "2026-11-08T01:01:18.631234+00:00",
+  "snapshot_age_min": 28.1233372333,
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
@@ -26,6 +26,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 52.27,
+        "confirmation_close_price": 52.2854285714,
+        "confirmation_rule": "Fechamento de 15m acima de 52.2854285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.47777777778,
+        "distance_to_trigger_atr": 1.59777777778,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 52.2185714286,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -45,6 +64,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 51.57,
+        "confirmation_close_price": 51.5545714286,
+        "confirmation_rule": "Fechamento de 15m abaixo de 51.5545714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.96666666667,
+        "distance_to_trigger_atr": 4.08666666667,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 51.6214285714,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -64,6 +102,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.3643,
+        "confirmation_close_price": 0.364428571429,
+        "confirmation_rule": "Fechamento de 15m acima de 0.364428571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.4,
+        "distance_to_trigger_atr": 1.52,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.363871428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -83,6 +140,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.3586,
+        "confirmation_close_price": 0.358471428571,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.358471428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.92,
+        "distance_to_trigger_atr": 4.04,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.359028571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -102,6 +178,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.06733,
+        "confirmation_close_price": 0.0673506571429,
+        "confirmation_rule": "Fechamento de 15m acima de 0.0673506571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.90456431535,
+        "distance_to_trigger_atr": 3.02456431535,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0672611428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -121,6 +216,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.06653,
+        "confirmation_close_price": 0.0665093428571,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.0665093428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.74273858921,
+        "distance_to_trigger_atr": 1.86273858921,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0665988571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -140,6 +254,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 45.66,
+        "confirmation_close_price": 45.6363428571,
+        "confirmation_rule": "Fechamento de 15m abaixo de 45.6363428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 7.50724637681,
+        "distance_to_trigger_atr": 7.62724637681,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 45.7388571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -159,6 +292,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.10247,
+        "confirmation_close_price": 0.102515257143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.102515257143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.22727272727,
+        "distance_to_trigger_atr": 2.34727272727,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.102319142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -178,6 +330,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.10035,
+        "confirmation_close_price": 0.100304742857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.100304742857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.39393939394,
+        "distance_to_trigger_atr": 3.51393939394,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.100500857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -197,6 +368,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.4434,
+        "confirmation_close_price": 0.443674285714,
+        "confirmation_rule": "Fechamento de 15m acima de 0.443674285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.45,
+        "distance_to_trigger_atr": 2.57,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.442485714286,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -216,6 +406,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.4323,
+        "confirmation_close_price": 0.432025714286,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.432025714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.40625,
+        "distance_to_trigger_atr": 2.52625,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.433214285714,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -235,6 +444,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 7.24,
+        "confirmation_close_price": 7.24432,
+        "confirmation_rule": "Fechamento de 15m acima de 7.24432 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.47222222222,
+        "distance_to_trigger_atr": 2.59222222222,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 7.2256,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -254,6 +482,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 7.039,
+        "confirmation_close_price": 7.03468,
+        "confirmation_rule": "Fechamento de 15m abaixo de 7.03468 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.11111111111,
+        "distance_to_trigger_atr": 3.23111111111,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 7.0534,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -273,6 +520,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 1268.14,
+        "confirmation_close_price": 1268.95154286,
+        "confirmation_rule": "Fechamento de 15m acima de 1268.95154286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.33185466836,
+        "distance_to_trigger_atr": 2.45185466836,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1265.43485714,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -292,6 +558,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 1235.32,
+        "confirmation_close_price": 1234.50845714,
+        "confirmation_rule": "Fechamento de 15m abaixo de 1234.50845714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.52112378538,
+        "distance_to_trigger_atr": 2.64112378538,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1238.02514286,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -311,6 +596,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 8.233,
+        "confirmation_close_price": 8.23571714286,
+        "confirmation_rule": "Fechamento de 15m acima de 8.23571714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.67823343849,
+        "distance_to_trigger_atr": 1.79823343849,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 8.22394285714,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -330,6 +634,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 8.127,
+        "confirmation_close_price": 8.12428285714,
+        "confirmation_rule": "Fechamento de 15m abaixo de 8.12428285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.00315457413,
+        "distance_to_trigger_atr": 3.12315457413,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 8.13605714286,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -349,6 +672,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.2682,
+        "confirmation_close_price": 0.268331142857,
+        "confirmation_rule": "Fechamento de 15m acima de 0.268331142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.92156862745,
+        "distance_to_trigger_atr": 2.04156862745,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.267762857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -368,6 +710,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.2634,
+        "confirmation_close_price": 0.263268857143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.263268857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.47058823529,
+        "distance_to_trigger_atr": 2.59058823529,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.263837142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -387,6 +748,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.3467,
+        "confirmation_close_price": 0.346994857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.346994857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.64534883721,
+        "distance_to_trigger_atr": 2.76534883721,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.345717142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -406,6 +786,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.3375,
+        "confirmation_close_price": 0.337205142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.337205142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.0988372093,
+        "distance_to_trigger_atr": 1.2188372093,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.338482857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -425,6 +824,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 3.741,
+        "confirmation_close_price": 3.74346,
+        "confirmation_rule": "Fechamento de 15m acima de 3.74346 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.09756097561,
+        "distance_to_trigger_atr": 2.21756097561,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 3.7328,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -444,6 +862,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 3.616,
+        "confirmation_close_price": 3.61354,
+        "confirmation_rule": "Fechamento de 15m abaixo de 3.61354 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 4.0,
+        "distance_to_trigger_atr": 4.12,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 3.6242,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -463,6 +900,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 131.79,
+        "confirmation_close_price": 131.849657143,
+        "confirmation_rule": "Fechamento de 15m acima de 131.849657143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.6091954023,
+        "distance_to_trigger_atr": 1.7291954023,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 131.591142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -482,6 +938,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 129.1,
+        "confirmation_close_price": 129.040342857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 129.040342857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.80172413793,
+        "distance_to_trigger_atr": 3.92172413793,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 129.298857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -501,6 +976,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.8604,
+        "confirmation_close_price": 0.860694,
+        "confirmation_rule": "Fechamento de 15m acima de 0.860694 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.30612244898,
+        "distance_to_trigger_atr": 3.42612244898,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.85942,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -520,6 +1014,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.8463,
+        "confirmation_close_price": 0.846006,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.846006 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.44897959184,
+        "distance_to_trigger_atr": 2.56897959184,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.84728,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -539,6 +1052,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 89.8,
+        "confirmation_close_price": 89.8269142857,
+        "confirmation_rule": "Fechamento de 15m acima de 89.8269142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.42675159236,
+        "distance_to_trigger_atr": 1.54675159236,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 89.7102857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -558,6 +1090,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 88.62,
+        "confirmation_close_price": 88.5930857143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 88.5930857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.83439490446,
+        "distance_to_trigger_atr": 3.95439490446,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 88.7097142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -577,6 +1128,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.1591,
+        "confirmation_close_price": 0.159183828571,
+        "confirmation_rule": "Fechamento de 15m acima de 0.159183828571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.04703476483,
+        "distance_to_trigger_atr": 2.16703476483,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.158820571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -596,6 +1166,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.15579,
+        "confirmation_close_price": 0.155706171429,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.155706171429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.69120654397,
+        "distance_to_trigger_atr": 2.81120654397,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.156069428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -615,6 +1204,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.04264,
+        "confirmation_close_price": 0.0426567142857,
+        "confirmation_rule": "Fechamento de 15m acima de 0.0426567142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.72307692308,
+        "distance_to_trigger_atr": 1.84307692308,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0425842857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -634,6 +1242,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.04191,
+        "confirmation_close_price": 0.0418932857143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.0418932857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.51794871795,
+        "distance_to_trigger_atr": 3.63794871795,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0419657142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -653,6 +1280,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 77.856,
+        "confirmation_close_price": 77.8802057143,
+        "confirmation_rule": "Fechamento de 15m acima de 77.8802057143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.18980169972,
+        "distance_to_trigger_atr": 1.30980169972,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 77.7753142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -672,6 +1318,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 76.811,
+        "confirmation_close_price": 76.7867942857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 76.7867942857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.99079320113,
+        "distance_to_trigger_atr": 4.11079320113,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 76.8916857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -691,6 +1356,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.32028,
+        "confirmation_close_price": 0.3203064,
+        "confirmation_rule": "Fechamento de 15m acima de 0.3203064 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.22727272727,
+        "distance_to_trigger_atr": 1.34727272727,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.320192,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -710,6 +1394,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.31952,
+        "confirmation_close_price": 0.3194936,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.3194936 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.22727272727,
+        "distance_to_trigger_atr": 2.34727272727,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.319608,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -729,6 +1432,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.04042,
+        "confirmation_close_price": 0.0404411714286,
+        "confirmation_rule": "Fechamento de 15m acima de 0.0404411714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.15384615385,
+        "distance_to_trigger_atr": 2.27384615385,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0403494285714,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -748,6 +1470,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.03968,
+        "confirmation_close_price": 0.0396588285714,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.0396588285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.04048582996,
+        "distance_to_trigger_atr": 2.16048582996,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0397505714286,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -767,6 +1508,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.1818,
+        "confirmation_close_price": 0.181860857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.181860857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.38028169014,
+        "distance_to_trigger_atr": 1.50028169014,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.181597142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -786,6 +1546,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.1791,
+        "confirmation_close_price": 0.179039142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.179039142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.94366197183,
+        "distance_to_trigger_atr": 4.06366197183,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.179302857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -805,6 +1584,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 8.286,
+        "confirmation_close_price": 8.29076571429,
+        "confirmation_rule": "Fechamento de 15m acima de 8.29076571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.68705035971,
+        "distance_to_trigger_atr": 1.80705035971,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 8.27011428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -824,6 +1622,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 8.115,
+        "confirmation_close_price": 8.11023428571,
+        "confirmation_rule": "Fechamento de 15m abaixo de 8.11023428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.61870503597,
+        "distance_to_trigger_atr": 2.73870503597,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 8.13088571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -843,6 +1660,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.16923,
+        "confirmation_close_price": 0.169309542857,
+        "confirmation_rule": "Fechamento de 15m acima de 0.169309542857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.09698275862,
+        "distance_to_trigger_atr": 2.21698275862,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.168964857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -862,6 +1698,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.166,
+        "confirmation_close_price": 0.165920457143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.165920457143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.77586206897,
+        "distance_to_trigger_atr": 2.89586206897,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.166265142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -881,6 +1736,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.6034,
+        "confirmation_close_price": 0.603814857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.603814857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.28512396694,
+        "distance_to_trigger_atr": 2.40512396694,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.602017142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -900,6 +1774,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.5868,
+        "confirmation_close_price": 0.586385142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.586385142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.51652892562,
+        "distance_to_trigger_atr": 2.63652892562,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.588182857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -919,6 +1812,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 1.6494,
+        "confirmation_close_price": 1.65043457143,
+        "confirmation_rule": "Fechamento de 15m acima de 1.65043457143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.78624689312,
+        "distance_to_trigger_atr": 1.90624689312,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1.64595142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -938,6 +1850,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 1.6108,
+        "confirmation_close_price": 1.60976542857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 1.60976542857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.69096934548,
+        "distance_to_trigger_atr": 2.81096934548,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1.61424857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -957,6 +1888,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 257.37,
+        "confirmation_close_price": 257.493342857,
+        "confirmation_rule": "Fechamento de 15m acima de 257.493342857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 8.34746351633,
+        "distance_to_trigger_atr": 8.46746351633,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 256.958857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -976,6 +1926,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 243.46,
+        "confirmation_close_price": 243.336657143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 243.336657143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 5.18554551772,
+        "distance_to_trigger_atr": 5.30554551772,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 243.871142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -995,6 +1964,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.6345,
+        "confirmation_close_price": 0.635141142857,
+        "confirmation_rule": "Fechamento de 15m acima de 0.635141142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.37700534759,
+        "distance_to_trigger_atr": 2.49700534759,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.632362857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1014,6 +2002,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.6071,
+        "confirmation_close_price": 0.606458857143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.606458857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.7513368984,
+        "distance_to_trigger_atr": 2.8713368984,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.609237142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1033,6 +2040,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 224.25,
+        "confirmation_close_price": 224.326628571,
+        "confirmation_rule": "Fechamento de 15m acima de 224.326628571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.13199105145,
+        "distance_to_trigger_atr": 3.25199105145,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 223.994571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1052,6 +2078,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 220.86,
+        "confirmation_close_price": 220.783371429,
+        "confirmation_rule": "Fechamento de 15m abaixo de 220.783371429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.17673378076,
+        "distance_to_trigger_atr": 2.29673378076,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 221.115428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1071,6 +2116,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.3353,
+        "confirmation_close_price": 0.335462857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.335462857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.98947368421,
+        "distance_to_trigger_atr": 2.10947368421,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.334757142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1090,6 +2154,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.327,
+        "confirmation_close_price": 0.326837142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.326837142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 4.12631578947,
+        "distance_to_trigger_atr": 4.24631578947,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.327542857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1109,6 +2192,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 697.2,
+        "confirmation_close_price": 697.289657143,
+        "confirmation_rule": "Fechamento de 15m acima de 697.289657143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.59273422562,
+        "distance_to_trigger_atr": 1.71273422562,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 696.901142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1128,6 +2230,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 693.42,
+        "confirmation_close_price": 693.330342857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 693.330342857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.46653919694,
+        "distance_to_trigger_atr": 3.58653919694,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 693.718857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1147,6 +2268,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.9004,
+        "confirmation_close_price": 0.900802857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.900802857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.45957446809,
+        "distance_to_trigger_atr": 1.57957446809,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.899057142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1166,6 +2306,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.8784,
+        "confirmation_close_price": 0.877997142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.877997142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 5.09361702128,
+        "distance_to_trigger_atr": 5.21361702128,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.879742857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1185,6 +2344,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.7919,
+        "confirmation_close_price": 0.792269428571,
+        "confirmation_rule": "Fechamento de 15m acima de 0.792269428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.85846867749,
+        "distance_to_trigger_atr": 2.97846867749,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.790668571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1204,6 +2382,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.7727,
+        "confirmation_close_price": 0.772330571429,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.772330571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.37819025522,
+        "distance_to_trigger_atr": 3.49819025522,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.773931428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1223,6 +2420,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.006413,
+        "confirmation_close_price": 0.00641572571429,
+        "confirmation_rule": "Fechamento de 15m acima de 0.00641572571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.67295597484,
+        "distance_to_trigger_atr": 1.79295597484,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.00640391428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1242,6 +2458,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.006294,
+        "confirmation_close_price": 0.00629127428571,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.00629127428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.56603773585,
+        "distance_to_trigger_atr": 3.68603773585,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.00630308571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1261,6 +2496,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.07183,
+        "confirmation_close_price": 0.0718521142857,
+        "confirmation_rule": "Fechamento de 15m acima de 0.0718521142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.06201550388,
+        "distance_to_trigger_atr": 2.18201550388,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0717562857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1280,6 +2534,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.0708,
+        "confirmation_close_price": 0.0707778857143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.0707778857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.52713178295,
+        "distance_to_trigger_atr": 3.64713178295,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0708737142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1299,6 +2572,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 10.869,
+        "confirmation_close_price": 10.8725571429,
+        "confirmation_rule": "Fechamento de 15m acima de 10.8725571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.46265060241,
+        "distance_to_trigger_atr": 2.58265060241,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 10.8571428571,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1318,6 +2610,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 10.709,
+        "confirmation_close_price": 10.7054428571,
+        "confirmation_rule": "Fechamento de 15m abaixo de 10.7054428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.93493975904,
+        "distance_to_trigger_atr": 3.05493975904,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 10.7208571429,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1337,6 +2648,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.0648,
+        "confirmation_close_price": 0.0648342857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.0648342857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.835,
+        "distance_to_trigger_atr": 2.955,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0646857142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1356,6 +2686,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.06314,
+        "confirmation_close_price": 0.0631057142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.0631057142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.975,
+        "distance_to_trigger_atr": 3.095,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.0632542857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1375,6 +2724,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 1.165,
+        "confirmation_close_price": 1.16540457143,
+        "confirmation_rule": "Fechamento de 15m acima de 1.16540457143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.24576271186,
+        "distance_to_trigger_atr": 1.36576271186,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1.16365142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1394,6 +2762,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 1.1486,
+        "confirmation_close_price": 1.14819542857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 1.14819542857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.6186440678,
+        "distance_to_trigger_atr": 3.7386440678,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1.14994857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1413,6 +2800,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 4.496e-06,
+        "confirmation_close_price": 4.49715714286e-06,
+        "confirmation_rule": "Fechamento de 15m acima de 4.49715714286e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.45185185185,
+        "distance_to_trigger_atr": 1.57185185185,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 4.49214285714e-06,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1432,6 +2838,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 4.439e-06,
+        "confirmation_close_price": 4.43784285714e-06,
+        "confirmation_rule": "Fechamento de 15m abaixo de 4.43784285714e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 4.45925925926,
+        "distance_to_trigger_atr": 4.57925925926,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 4.44285714286e-06,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1451,6 +2876,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 2.439,
+        "confirmation_close_price": 2.43989142857,
+        "confirmation_rule": "Fechamento de 15m acima de 2.43989142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 1.88461538462,
+        "distance_to_trigger_atr": 2.00461538462,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 2.43602857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1470,6 +2914,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 2.4,
+        "confirmation_close_price": 2.39910857143,
+        "confirmation_rule": "Fechamento de 15m abaixo de 2.39910857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.36538461538,
+        "distance_to_trigger_atr": 3.48538461538,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 2.40297142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1489,6 +2952,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 6.949,
+        "confirmation_close_price": 6.95086,
+        "confirmation_rule": "Fechamento de 15m acima de 6.95086 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.54838709677,
+        "distance_to_trigger_atr": 3.66838709677,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 6.9428,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1508,6 +2990,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 6.854,
+        "confirmation_close_price": 6.85214,
+        "confirmation_rule": "Fechamento de 15m abaixo de 6.85214 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.58064516129,
+        "distance_to_trigger_atr": 2.70064516129,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 6.8602,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1527,6 +3028,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.6038,
+        "confirmation_close_price": 0.604082857143,
+        "confirmation_rule": "Fechamento de 15m acima de 0.604082857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 2.54545454545,
+        "distance_to_trigger_atr": 2.66545454545,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.602857142857,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1546,6 +3066,25 @@
       "reasons": [
         "sem gatilho operacional"
       ],
+      "watch": {
+        "monitor_price": 0.5898,
+        "confirmation_close_price": 0.589517142857,
+        "confirmation_rule": "Fechamento de 15m abaixo de 0.589517142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 3.39393939394,
+        "distance_to_trigger_atr": 3.51393939394,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.590742857143,
+        "entry_zone_if_confirmed": null,
+        "stop_if_confirmed": null,
+        "tp1_if_confirmed": null,
+        "tp2_if_confirmed": null,
+        "estimated_net_rr": null,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1584,6 +3123,28 @@
         "obstaculo estrutural antes de TP1 projetado",
         "proximidade da regiao nao e confirmacao"
       ],
+      "watch": {
+        "monitor_price": 4.8002e-06,
+        "confirmation_close_price": 4.80142914286e-06,
+        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
+        "distance_to_watch_level_atr": 0.912831241283,
+        "distance_to_trigger_atr": 0.912831241283,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 4.79200571429e-06,
+        "entry_zone_if_confirmed": [
+          4.80122428571e-06,
+          4.80941857143e-06
+        ],
+        "stop_if_confirmed": 4.79200571429e-06,
+        "tp1_if_confirmed": 4.84772685714e-06,
+        "tp2_if_confirmed": 4.86165714286e-06,
+        "estimated_net_rr": 1.05365330877,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1618,6 +3179,28 @@
         "stop muito distante: risco > 3 ATR",
         "proximidade da regiao nao e confirmacao"
       ],
+      "watch": {
+        "monitor_price": 4.8002e-06,
+        "confirmation_close_price": 4.79774171429e-06,
+        "confirmation_rule": "Fechamento de 15m abaixo de 4.79774171429e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 0.912831241283,
+        "distance_to_trigger_atr": 1.03283124128,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 4.87047285714e-06,
+        "entry_zone_if_confirmed": [
+          4.79098142857e-06,
+          4.79917571429e-06
+        ],
+        "stop_if_confirmed": 4.87047285714e-06,
+        "tp1_if_confirmed": 4.61610028571e-06,
+        "tp2_if_confirmed": 4.55250714286e-06,
+        "estimated_net_rr": 1.85254183521,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1656,6 +3239,28 @@
         "obstaculo estrutural antes de TP1 projetado",
         "proximidade da regiao nao e confirmacao"
       ],
+      "watch": {
+        "monitor_price": 0.15136,
+        "confirmation_close_price": 0.1514098,
+        "confirmation_rule": "Fechamento de 15m acima de 0.1514098 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 0.698795180723,
+        "distance_to_trigger_atr": 0.818795180723,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.15071775,
+        "entry_zone_if_confirmed": [
+          0.15138075,
+          0.15154675
+        ],
+        "stop_if_confirmed": 0.15071775,
+        "tp1_if_confirmed": 0.15337055,
+        "tp2_if_confirmed": 0.15403375,
+        "estimated_net_rr": 1.32274779246,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1694,6 +3299,28 @@
         "obstaculo estrutural antes de TP1 projetado",
         "proximidade da regiao nao e confirmacao"
       ],
+      "watch": {
+        "monitor_price": 0.15136,
+        "confirmation_close_price": 0.1513351,
+        "confirmation_rule": "15m tocar resistencia e fechar abaixo dela com candle vendedor, volume relativo >= 1.2 e tendencia de 1h alinhada",
+        "distance_to_watch_level_atr": 0.698795180723,
+        "distance_to_trigger_atr": 0.698795180723,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.151526,
+        "entry_zone_if_confirmed": [
+          0.15117325,
+          0.15133925
+        ],
+        "stop_if_confirmed": 0.151526,
+        "tp1_if_confirmed": 0.1503972,
+        "tp2_if_confirmed": 0.150115,
+        "estimated_net_rr": 0.697254908732,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     },
@@ -1732,6 +3359,28 @@
         "obstaculo estrutural antes de TP1 projetado",
         "preco passou do nivel, mas candle/volume nao confirmaram"
       ],
+      "watch": {
+        "monitor_price": 47.08,
+        "confirmation_close_price": 47.1036571429,
+        "confirmation_rule": "Fechamento de 15m acima de 47.1036571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 0.304347826087,
+        "distance_to_trigger_atr": 0.184347826087,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 46.7604285714,
+        "entry_zone_if_confirmed": [
+          47.0898571429,
+          47.1687142857
+        ],
+        "stop_if_confirmed": 46.7604285714,
+        "tp1_if_confirmed": 48.0669428571,
+        "tp2_if_confirmed": 48.3935714286,
+        "estimated_net_rr": 1.54868492902,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     }
@@ -1757,6 +3406,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 7.24,
+            "confirmation_close_price": 7.24432,
+            "confirmation_rule": "Fechamento de 15m acima de 7.24432 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.47222222222,
+            "distance_to_trigger_atr": 2.59222222222,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 7.2256,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -1776,6 +3444,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 7.039,
+            "confirmation_close_price": 7.03468,
+            "confirmation_rule": "Fechamento de 15m abaixo de 7.03468 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.11111111111,
+            "distance_to_trigger_atr": 3.23111111111,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 7.0534,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -1801,6 +3488,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.6034,
+            "confirmation_close_price": 0.603814857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.603814857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.28512396694,
+            "distance_to_trigger_atr": 2.40512396694,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.602017142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -1820,6 +3526,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.5868,
+            "confirmation_close_price": 0.586385142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.586385142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.51652892562,
+            "distance_to_trigger_atr": 2.63652892562,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.588182857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -1845,6 +3570,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.16923,
+            "confirmation_close_price": 0.169309542857,
+            "confirmation_rule": "Fechamento de 15m acima de 0.169309542857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.09698275862,
+            "distance_to_trigger_atr": 2.21698275862,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.168964857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -1864,6 +3608,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.166,
+            "confirmation_close_price": 0.165920457143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.165920457143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.77586206897,
+            "distance_to_trigger_atr": 2.89586206897,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.166265142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -1889,6 +3652,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.2682,
+            "confirmation_close_price": 0.268331142857,
+            "confirmation_rule": "Fechamento de 15m acima de 0.268331142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.92156862745,
+            "distance_to_trigger_atr": 2.04156862745,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.267762857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -1908,6 +3690,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.2634,
+            "confirmation_close_price": 0.263268857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.263268857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.47058823529,
+            "distance_to_trigger_atr": 2.59058823529,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.263837142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -1933,6 +3734,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.6345,
+            "confirmation_close_price": 0.635141142857,
+            "confirmation_rule": "Fechamento de 15m acima de 0.635141142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.37700534759,
+            "distance_to_trigger_atr": 2.49700534759,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.632362857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -1952,6 +3772,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.6071,
+            "confirmation_close_price": 0.606458857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.606458857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.7513368984,
+            "distance_to_trigger_atr": 2.8713368984,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.609237142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -1977,6 +3816,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.32028,
+            "confirmation_close_price": 0.3203064,
+            "confirmation_rule": "Fechamento de 15m acima de 0.3203064 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.22727272727,
+            "distance_to_trigger_atr": 1.34727272727,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.320192,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -1996,6 +3854,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.31952,
+            "confirmation_close_price": 0.3194936,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.3194936 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.22727272727,
+            "distance_to_trigger_atr": 2.34727272727,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.319608,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2021,6 +3898,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 1268.14,
+            "confirmation_close_price": 1268.95154286,
+            "confirmation_rule": "Fechamento de 15m acima de 1268.95154286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.33185466836,
+            "distance_to_trigger_atr": 2.45185466836,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 1265.43485714,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2040,6 +3936,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 1235.32,
+            "confirmation_close_price": 1234.50845714,
+            "confirmation_rule": "Fechamento de 15m abaixo de 1234.50845714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.52112378538,
+            "distance_to_trigger_atr": 2.64112378538,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 1238.02514286,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2065,6 +3980,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 257.37,
+            "confirmation_close_price": 257.493342857,
+            "confirmation_rule": "Fechamento de 15m acima de 257.493342857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 8.34746351633,
+            "distance_to_trigger_atr": 8.46746351633,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 256.958857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2084,6 +4018,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 243.46,
+            "confirmation_close_price": 243.336657143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 243.336657143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 5.18554551772,
+            "distance_to_trigger_atr": 5.30554551772,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 243.871142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2109,6 +4062,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.7919,
+            "confirmation_close_price": 0.792269428571,
+            "confirmation_rule": "Fechamento de 15m acima de 0.792269428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.85846867749,
+            "distance_to_trigger_atr": 2.97846867749,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.790668571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2128,6 +4100,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.7727,
+            "confirmation_close_price": 0.772330571429,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.772330571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.37819025522,
+            "distance_to_trigger_atr": 3.49819025522,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.773931428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2153,6 +4144,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.10247,
+            "confirmation_close_price": 0.102515257143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.102515257143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.22727272727,
+            "distance_to_trigger_atr": 2.34727272727,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.102319142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2172,6 +4182,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.10035,
+            "confirmation_close_price": 0.100304742857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.100304742857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.39393939394,
+            "distance_to_trigger_atr": 3.51393939394,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.100500857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2197,6 +4226,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.1591,
+            "confirmation_close_price": 0.159183828571,
+            "confirmation_rule": "Fechamento de 15m acima de 0.159183828571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.04703476483,
+            "distance_to_trigger_atr": 2.16703476483,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.158820571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2216,6 +4264,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.15579,
+            "confirmation_close_price": 0.155706171429,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.155706171429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.69120654397,
+            "distance_to_trigger_atr": 2.81120654397,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.156069428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2260,6 +4327,28 @@
             "obstaculo estrutural antes de TP1 projetado",
             "proximidade da regiao nao e confirmacao"
           ],
+          "watch": {
+            "monitor_price": 4.8002e-06,
+            "confirmation_close_price": 4.80142914286e-06,
+            "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
+            "distance_to_watch_level_atr": 0.912831241283,
+            "distance_to_trigger_atr": 0.912831241283,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 4.79200571429e-06,
+            "entry_zone_if_confirmed": [
+              4.80122428571e-06,
+              4.80941857143e-06
+            ],
+            "stop_if_confirmed": 4.79200571429e-06,
+            "tp1_if_confirmed": 4.84772685714e-06,
+            "tp2_if_confirmed": 4.86165714286e-06,
+            "estimated_net_rr": 1.05365330877,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2294,6 +4383,28 @@
             "stop muito distante: risco > 3 ATR",
             "proximidade da regiao nao e confirmacao"
           ],
+          "watch": {
+            "monitor_price": 4.8002e-06,
+            "confirmation_close_price": 4.79774171429e-06,
+            "confirmation_rule": "Fechamento de 15m abaixo de 4.79774171429e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 0.912831241283,
+            "distance_to_trigger_atr": 1.03283124128,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 4.87047285714e-06,
+            "entry_zone_if_confirmed": [
+              4.79098142857e-06,
+              4.79917571429e-06
+            ],
+            "stop_if_confirmed": 4.87047285714e-06,
+            "tp1_if_confirmed": 4.61610028571e-06,
+            "tp2_if_confirmed": 4.55250714286e-06,
+            "estimated_net_rr": 1.85254183521,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2319,6 +4430,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.0648,
+            "confirmation_close_price": 0.0648342857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.0648342857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.835,
+            "distance_to_trigger_atr": 2.955,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0646857142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2338,6 +4468,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.06314,
+            "confirmation_close_price": 0.0631057142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.0631057142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.975,
+            "distance_to_trigger_atr": 3.095,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0632542857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2363,6 +4512,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.3353,
+            "confirmation_close_price": 0.335462857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.335462857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.98947368421,
+            "distance_to_trigger_atr": 2.10947368421,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.334757142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2382,6 +4550,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.327,
+            "confirmation_close_price": 0.326837142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.326837142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 4.12631578947,
+            "distance_to_trigger_atr": 4.24631578947,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.327542857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2407,6 +4594,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 52.27,
+            "confirmation_close_price": 52.2854285714,
+            "confirmation_rule": "Fechamento de 15m acima de 52.2854285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.47777777778,
+            "distance_to_trigger_atr": 1.59777777778,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 52.2185714286,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2426,6 +4632,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 51.57,
+            "confirmation_close_price": 51.5545714286,
+            "confirmation_rule": "Fechamento de 15m abaixo de 51.5545714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.96666666667,
+            "distance_to_trigger_atr": 4.08666666667,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 51.6214285714,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2451,6 +4676,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.3643,
+            "confirmation_close_price": 0.364428571429,
+            "confirmation_rule": "Fechamento de 15m acima de 0.364428571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.4,
+            "distance_to_trigger_atr": 1.52,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.363871428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2470,6 +4714,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.3586,
+            "confirmation_close_price": 0.358471428571,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.358471428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.92,
+            "distance_to_trigger_atr": 4.04,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.359028571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2495,6 +4758,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.06733,
+            "confirmation_close_price": 0.0673506571429,
+            "confirmation_rule": "Fechamento de 15m acima de 0.0673506571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.90456431535,
+            "distance_to_trigger_atr": 3.02456431535,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0672611428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2514,6 +4796,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.06653,
+            "confirmation_close_price": 0.0665093428571,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.0665093428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.74273858921,
+            "distance_to_trigger_atr": 1.86273858921,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0665988571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2558,6 +4859,28 @@
             "obstaculo estrutural antes de TP1 projetado",
             "preco passou do nivel, mas candle/volume nao confirmaram"
           ],
+          "watch": {
+            "monitor_price": 47.08,
+            "confirmation_close_price": 47.1036571429,
+            "confirmation_rule": "Fechamento de 15m acima de 47.1036571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 0.304347826087,
+            "distance_to_trigger_atr": 0.184347826087,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 46.7604285714,
+            "entry_zone_if_confirmed": [
+              47.0898571429,
+              47.1687142857
+            ],
+            "stop_if_confirmed": 46.7604285714,
+            "tp1_if_confirmed": 48.0669428571,
+            "tp2_if_confirmed": 48.3935714286,
+            "estimated_net_rr": 1.54868492902,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2577,6 +4900,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 45.66,
+            "confirmation_close_price": 45.6363428571,
+            "confirmation_rule": "Fechamento de 15m abaixo de 45.6363428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 7.50724637681,
+            "distance_to_trigger_atr": 7.62724637681,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 45.7388571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2602,6 +4944,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.4434,
+            "confirmation_close_price": 0.443674285714,
+            "confirmation_rule": "Fechamento de 15m acima de 0.443674285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.45,
+            "distance_to_trigger_atr": 2.57,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.442485714286,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2621,6 +4982,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.4323,
+            "confirmation_close_price": 0.432025714286,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.432025714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.40625,
+            "distance_to_trigger_atr": 2.52625,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.433214285714,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2646,6 +5026,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 89.8,
+            "confirmation_close_price": 89.8269142857,
+            "confirmation_rule": "Fechamento de 15m acima de 89.8269142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.42675159236,
+            "distance_to_trigger_atr": 1.54675159236,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 89.7102857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2665,6 +5064,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 88.62,
+            "confirmation_close_price": 88.5930857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 88.5930857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.83439490446,
+            "distance_to_trigger_atr": 3.95439490446,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 88.7097142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2690,6 +5108,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 1.165,
+            "confirmation_close_price": 1.16540457143,
+            "confirmation_rule": "Fechamento de 15m acima de 1.16540457143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.24576271186,
+            "distance_to_trigger_atr": 1.36576271186,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 1.16365142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2709,6 +5146,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 1.1486,
+            "confirmation_close_price": 1.14819542857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 1.14819542857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.6186440678,
+            "distance_to_trigger_atr": 3.7386440678,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 1.14994857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2734,6 +5190,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 77.856,
+            "confirmation_close_price": 77.8802057143,
+            "confirmation_rule": "Fechamento de 15m acima de 77.8802057143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.18980169972,
+            "distance_to_trigger_atr": 1.30980169972,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 77.7753142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2753,6 +5228,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 76.811,
+            "confirmation_close_price": 76.7867942857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 76.7867942857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.99079320113,
+            "distance_to_trigger_atr": 4.11079320113,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 76.8916857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2778,6 +5272,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.07183,
+            "confirmation_close_price": 0.0718521142857,
+            "confirmation_rule": "Fechamento de 15m acima de 0.0718521142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.06201550388,
+            "distance_to_trigger_atr": 2.18201550388,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0717562857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2797,6 +5310,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.0708,
+            "confirmation_close_price": 0.0707778857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.0707778857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.52713178295,
+            "distance_to_trigger_atr": 3.64713178295,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0708737142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2822,6 +5354,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 3.741,
+            "confirmation_close_price": 3.74346,
+            "confirmation_rule": "Fechamento de 15m acima de 3.74346 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.09756097561,
+            "distance_to_trigger_atr": 2.21756097561,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 3.7328,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2841,6 +5392,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 3.616,
+            "confirmation_close_price": 3.61354,
+            "confirmation_rule": "Fechamento de 15m abaixo de 3.61354 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 4.0,
+            "distance_to_trigger_atr": 4.12,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 3.6242,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2866,6 +5436,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.8604,
+            "confirmation_close_price": 0.860694,
+            "confirmation_rule": "Fechamento de 15m acima de 0.860694 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.30612244898,
+            "distance_to_trigger_atr": 3.42612244898,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.85942,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2885,6 +5474,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.8463,
+            "confirmation_close_price": 0.846006,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.846006 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.44897959184,
+            "distance_to_trigger_atr": 2.56897959184,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.84728,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2910,6 +5518,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 131.79,
+            "confirmation_close_price": 131.849657143,
+            "confirmation_rule": "Fechamento de 15m acima de 131.849657143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.6091954023,
+            "distance_to_trigger_atr": 1.7291954023,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 131.591142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2929,6 +5556,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 129.1,
+            "confirmation_close_price": 129.040342857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 129.040342857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.80172413793,
+            "distance_to_trigger_atr": 3.92172413793,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 129.298857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2954,6 +5600,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 10.869,
+            "confirmation_close_price": 10.8725571429,
+            "confirmation_rule": "Fechamento de 15m acima de 10.8725571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.46265060241,
+            "distance_to_trigger_atr": 2.58265060241,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 10.8571428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -2973,6 +5638,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 10.709,
+            "confirmation_close_price": 10.7054428571,
+            "confirmation_rule": "Fechamento de 15m abaixo de 10.7054428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.93493975904,
+            "distance_to_trigger_atr": 3.05493975904,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 10.7208571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -2998,6 +5682,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 8.286,
+            "confirmation_close_price": 8.29076571429,
+            "confirmation_rule": "Fechamento de 15m acima de 8.29076571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.68705035971,
+            "distance_to_trigger_atr": 1.80705035971,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 8.27011428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3017,6 +5720,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 8.115,
+            "confirmation_close_price": 8.11023428571,
+            "confirmation_rule": "Fechamento de 15m abaixo de 8.11023428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.61870503597,
+            "distance_to_trigger_atr": 2.73870503597,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 8.13088571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3042,6 +5764,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.04042,
+            "confirmation_close_price": 0.0404411714286,
+            "confirmation_rule": "Fechamento de 15m acima de 0.0404411714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.15384615385,
+            "distance_to_trigger_atr": 2.27384615385,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0403494285714,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3061,6 +5802,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.03968,
+            "confirmation_close_price": 0.0396588285714,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.0396588285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.04048582996,
+            "distance_to_trigger_atr": 2.16048582996,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0397505714286,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3086,6 +5846,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.1818,
+            "confirmation_close_price": 0.181860857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.181860857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.38028169014,
+            "distance_to_trigger_atr": 1.50028169014,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.181597142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3105,6 +5884,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.1791,
+            "confirmation_close_price": 0.179039142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.179039142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.94366197183,
+            "distance_to_trigger_atr": 4.06366197183,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.179302857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3130,6 +5928,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 697.2,
+            "confirmation_close_price": 697.289657143,
+            "confirmation_rule": "Fechamento de 15m acima de 697.289657143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.59273422562,
+            "distance_to_trigger_atr": 1.71273422562,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 696.901142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3149,6 +5966,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 693.42,
+            "confirmation_close_price": 693.330342857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 693.330342857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.46653919694,
+            "distance_to_trigger_atr": 3.58653919694,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 693.718857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3174,6 +6010,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 8.233,
+            "confirmation_close_price": 8.23571714286,
+            "confirmation_rule": "Fechamento de 15m acima de 8.23571714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.67823343849,
+            "distance_to_trigger_atr": 1.79823343849,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 8.22394285714,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3193,6 +6048,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 8.127,
+            "confirmation_close_price": 8.12428285714,
+            "confirmation_rule": "Fechamento de 15m abaixo de 8.12428285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.00315457413,
+            "distance_to_trigger_atr": 3.12315457413,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 8.13605714286,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3218,6 +6092,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 224.25,
+            "confirmation_close_price": 224.326628571,
+            "confirmation_rule": "Fechamento de 15m acima de 224.326628571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.13199105145,
+            "distance_to_trigger_atr": 3.25199105145,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 223.994571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3237,6 +6130,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 220.86,
+            "confirmation_close_price": 220.783371429,
+            "confirmation_rule": "Fechamento de 15m abaixo de 220.783371429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.17673378076,
+            "distance_to_trigger_atr": 2.29673378076,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 221.115428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3262,6 +6174,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.006413,
+            "confirmation_close_price": 0.00641572571429,
+            "confirmation_rule": "Fechamento de 15m acima de 0.00641572571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.67295597484,
+            "distance_to_trigger_atr": 1.79295597484,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.00640391428571,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3281,6 +6212,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.006294,
+            "confirmation_close_price": 0.00629127428571,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.00629127428571 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.56603773585,
+            "distance_to_trigger_atr": 3.68603773585,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.00630308571429,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3306,6 +6256,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.3467,
+            "confirmation_close_price": 0.346994857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.346994857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.64534883721,
+            "distance_to_trigger_atr": 2.76534883721,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.345717142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3325,6 +6294,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.3375,
+            "confirmation_close_price": 0.337205142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.337205142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.0988372093,
+            "distance_to_trigger_atr": 1.2188372093,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.338482857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3369,6 +6357,28 @@
             "obstaculo estrutural antes de TP1 projetado",
             "proximidade da regiao nao e confirmacao"
           ],
+          "watch": {
+            "monitor_price": 0.15136,
+            "confirmation_close_price": 0.1514098,
+            "confirmation_rule": "Fechamento de 15m acima de 0.1514098 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 0.698795180723,
+            "distance_to_trigger_atr": 0.818795180723,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.15071775,
+            "entry_zone_if_confirmed": [
+              0.15138075,
+              0.15154675
+            ],
+            "stop_if_confirmed": 0.15071775,
+            "tp1_if_confirmed": 0.15337055,
+            "tp2_if_confirmed": 0.15403375,
+            "estimated_net_rr": 1.32274779246,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3407,6 +6417,28 @@
             "obstaculo estrutural antes de TP1 projetado",
             "proximidade da regiao nao e confirmacao"
           ],
+          "watch": {
+            "monitor_price": 0.15136,
+            "confirmation_close_price": 0.1513351,
+            "confirmation_rule": "15m tocar resistencia e fechar abaixo dela com candle vendedor, volume relativo >= 1.2 e tendencia de 1h alinhada",
+            "distance_to_watch_level_atr": 0.698795180723,
+            "distance_to_trigger_atr": 0.698795180723,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.151526,
+            "entry_zone_if_confirmed": [
+              0.15117325,
+              0.15133925
+            ],
+            "stop_if_confirmed": 0.151526,
+            "tp1_if_confirmed": 0.1503972,
+            "tp2_if_confirmed": 0.150115,
+            "estimated_net_rr": 0.697254908732,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3432,6 +6464,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.9004,
+            "confirmation_close_price": 0.900802857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.900802857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.45957446809,
+            "distance_to_trigger_atr": 1.57957446809,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.899057142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3451,6 +6502,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.8784,
+            "confirmation_close_price": 0.877997142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.877997142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 5.09361702128,
+            "distance_to_trigger_atr": 5.21361702128,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.879742857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3476,6 +6546,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 1.6494,
+            "confirmation_close_price": 1.65043457143,
+            "confirmation_rule": "Fechamento de 15m acima de 1.65043457143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.78624689312,
+            "distance_to_trigger_atr": 1.90624689312,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 1.64595142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3495,6 +6584,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 1.6108,
+            "confirmation_close_price": 1.60976542857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 1.60976542857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.69096934548,
+            "distance_to_trigger_atr": 2.81096934548,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 1.61424857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3520,6 +6628,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 4.496e-06,
+            "confirmation_close_price": 4.49715714286e-06,
+            "confirmation_rule": "Fechamento de 15m acima de 4.49715714286e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.45185185185,
+            "distance_to_trigger_atr": 1.57185185185,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 4.49214285714e-06,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3539,6 +6666,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 4.439e-06,
+            "confirmation_close_price": 4.43784285714e-06,
+            "confirmation_rule": "Fechamento de 15m abaixo de 4.43784285714e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 4.45925925926,
+            "distance_to_trigger_atr": 4.57925925926,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 4.44285714286e-06,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3564,6 +6710,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.6038,
+            "confirmation_close_price": 0.604082857143,
+            "confirmation_rule": "Fechamento de 15m acima de 0.604082857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.54545454545,
+            "distance_to_trigger_atr": 2.66545454545,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.602857142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3583,6 +6748,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.5898,
+            "confirmation_close_price": 0.589517142857,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.589517142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.39393939394,
+            "distance_to_trigger_atr": 3.51393939394,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.590742857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3608,6 +6792,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.04264,
+            "confirmation_close_price": 0.0426567142857,
+            "confirmation_rule": "Fechamento de 15m acima de 0.0426567142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.72307692308,
+            "distance_to_trigger_atr": 1.84307692308,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0425842857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3627,6 +6830,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 0.04191,
+            "confirmation_close_price": 0.0418932857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.0418932857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.51794871795,
+            "distance_to_trigger_atr": 3.63794871795,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.0419657142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3652,6 +6874,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 6.949,
+            "confirmation_close_price": 6.95086,
+            "confirmation_rule": "Fechamento de 15m acima de 6.95086 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.54838709677,
+            "distance_to_trigger_atr": 3.66838709677,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 6.9428,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3671,6 +6912,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 6.854,
+            "confirmation_close_price": 6.85214,
+            "confirmation_rule": "Fechamento de 15m abaixo de 6.85214 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.58064516129,
+            "distance_to_trigger_atr": 2.70064516129,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 6.8602,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
@@ -3696,6 +6956,25 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 2.439,
+            "confirmation_close_price": 2.43989142857,
+            "confirmation_rule": "Fechamento de 15m acima de 2.43989142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.88461538462,
+            "distance_to_trigger_atr": 2.00461538462,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 2.43602857143,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         },
@@ -3715,12 +6994,33 @@
           "reasons": [
             "sem gatilho operacional"
           ],
+          "watch": {
+            "monitor_price": 2.4,
+            "confirmation_close_price": 2.39910857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 2.39910857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 3.36538461538,
+            "distance_to_trigger_atr": 3.48538461538,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 2.40297142857,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
           "live_price_reconfirmation_required": true,
           "order_allowed": false
         }
       ]
     }
   ],
+  "proximity_alerts": [],
+  "proximity_alert_count": 0,
   "assumptions": {
     "min_net_rr": 1.6,
     "fee_bps_each_side": 5.0,
