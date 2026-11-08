@@ -28,6 +28,40 @@ def aligned_history(history, close_ms, index):
     return result
 
 
+
+def forward_outcome(future, side, entry, stop, tp1, max_bars=16):
+    """Rotula candles FUTUROS apenas apos gerar sinal sem look-ahead.
+
+    Ordem stop hipotetica valida apenas no candle seguinte (15 minutos).
+    Nao inferir ordem intrabar; gaps e stop/TP no mesmo candle sao ambiguos.
+    """
+    if not future:
+        return {"outcome": "INSUFFICIENT_FUTURE_DATA", "bars_checked": 0}
+    nextbar = future[0]
+    opening, high, low = map(float, nextbar[1:4])
+    triggered = high >= entry if side == "LONG" else low <= entry
+    if not triggered:
+        return {"outcome": "NOT_TRIGGERED_NEXT_15M", "bars_checked": 1}
+    crossed_on_open = (opening > entry if side == "LONG" else opening < entry)
+    if crossed_on_open:
+        return {"outcome": "GAP_BEYOND_EXACT_ENTRY", "bars_checked": 1}
+    for i, r in enumerate(future[:max_bars]):
+        hi, lo = float(r[2]), float(r[3])
+        stop_hit = lo <= stop if side == "LONG" else hi >= stop
+        tp_hit = hi >= tp1 if side == "LONG" else lo <= tp1
+        if i == 0 and (stop_hit or tp_hit):
+            return {"outcome": "INTRABAR_AMBIGUOUS", "bars_checked": 1}
+        if stop_hit and tp_hit:
+            return {"outcome": "INTRABAR_AMBIGUOUS", "bars_checked": i+1}
+        if stop_hit:
+            return {"outcome": "STOP_TOUCHED", "bars_checked": i+1}
+        if tp_hit:
+            return {"outcome": "TP1_TOUCHED", "bars_checked": i+1}
+    return {"outcome": "UNRESOLVED_IN_AVAILABLE_WINDOW",
+            "bars_checked": min(len(future), max_bars)}
+
+
+
 def replay(market):
     report = {
         "status": "EXPERIMENTAL_REPLAY", "source_collected_utc": market["collected_utc"],
@@ -38,6 +72,9 @@ def replay(market):
         "samples_checked": 0, "confirmed": 0, "conditional": 0, "blocked": 0,
         "unconfirmed": 0, "missing_tick_sz": 0, "reason_counts": {},
         "confirmed_examples": [], "per_asset": [],
+        "forward_outcomes": [], "outcome_counts": {},
+        "forward_window": "Entry valid for next closed 15m; inspect up to 16 future 15m bars",
+        "candle_outcomes_are_not_executed_trades": True,
     }
     reason_counts = Counter()
     for ticker in market["universe"]:
@@ -69,6 +106,20 @@ def replay(market):
                     local[side + " " + method["method"]] += 1
                     if method["decision"] == "GATILHO_CONDICIONAL":
                         report["conditional"] += 1
+                        full_future = tf15[i+1:i+1+16]
+                        outcome = forward_outcome(
+                            full_future, side,
+                            method["entry_trigger_price"],
+                            method["stop_loss"], method["tp1_projected"])
+                        report["forward_outcomes"].append({
+                            "symbol": symbol, "side": side,
+                            "method": method["method"],
+                            "candle_close_utc": method["candle_close_utc"],
+                            "entry": method["entry_trigger_price"],
+                            "stop": method["stop_loss"],
+                            "tp1": method["tp1_projected"],
+                            **outcome,
+                        })
                     else:
                         report["blocked"] += 1
                     for reason in method["reasons"]:
@@ -86,6 +137,8 @@ def replay(market):
                         "reasons": method["reasons"],
                     })
         report["per_asset"].append({"symbol": symbol, "confirmed": dict(local)})
+    report["outcome_counts"] = dict(Counter(
+        outcome["outcome"] for outcome in report["forward_outcomes"]).most_common())
     report["reason_counts"] = dict(reason_counts.most_common())
     report["confirmed_examples"].sort(key=lambda x: x["candle_close_utc"])
     return report
