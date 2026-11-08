@@ -1,425 +1,40 @@
 {
-  "status": "EXPERIMENTAL",
-  "source_collected_utc": "2026-11-08T02:58:30.927000+00:00",
-  "evaluated_at_utc": "2026-11-08T02:59:16.915000+00:00",
-  "snapshot_stale": false,
+  "status": "FONTE_DESATUALIZADA",
+  "source_collected_utc": "2026-11-08T02:59:27.473000+00:00",
+  "evaluated_at_utc": "2026-11-08T03:00:17.669142+00:00",
+  "snapshot_stale": true,
+  "source_sync": {
+    "source_sync_status": "AGUARDANDO_NOVO_CANDLE_PUBLICADO",
+    "source_collected_utc": "2026-11-08T02:59:27.473000+00:00",
+    "source_collected_age_minutes": 0.837,
+    "expected_last_closed_15m_utc": "2026-11-08T03:00:00+00:00",
+    "source_last_closed_15m_utc": "2026-11-08T02:45:00+00:00",
+    "candle_lag_minutes": 15.0,
+    "ticker_max_age_minutes": 0.845,
+    "missing_ticker_timestamp_count": 0,
+    "ticker_quotes_current": true,
+    "current_for_new_entries": false
+  },
+  "source_sync_status": "AGUARDANDO_NOVO_CANDLE_PUBLICADO",
+  "current_for_new_entries": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
   "analyzed_asset_count": 43,
   "opportunities_monitored": 25,
-  "proximity_alert_count": 11,
-  "proximity_alerts": [
-    {
-      "symbol": "PYTH-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "AGUARDAR_RETESTE",
-      "decision": "AGUARDAR",
-      "watch": {
-        "monitor_price": 0.06314,
-        "confirmation_close_price": 0.06314,
-        "confirmation_rule": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
-        "distance_to_watch_level_atr": 0.12389380531,
-        "distance_to_trigger_atr": 0.12389380531,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_RETESTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.0636263214286,
-        "entry_zone_if_confirmed": [
-          0.06305,
-          0.06305
-        ],
-        "stop_if_confirmed": 0.06363,
-        "tp1_if_confirmed": 0.06178,
-        "tp2_if_confirmed": 0.06131,
-        "estimated_net_rr": 1.58357552608,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": 0.06305,
-        "entry_trigger_method": "BREAKOUT",
-        "entry_trigger_decision": "NAO_ENTRAR",
-        "trigger_expires_utc": "2026-11-08T03:00:00+00:00"
-      },
-      "close_15m": 0.06311,
-      "reasons": [
-        "rompimento sem reteste fechado"
-      ]
-    },
-    {
-      "symbol": "ZEC-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "AGUARDAR",
-      "watch": {
-        "monitor_price": 1238.08,
-        "confirmation_close_price": 1237.33471429,
-        "confirmation_rule": "Fechamento de 15m abaixo de 1237.33471429 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.196434732605,
-        "distance_to_trigger_atr": 0.316434732605,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 1250.06160714,
-        "entry_zone_if_confirmed": [
-          1235.28517857,
-          1237.76946429
-        ],
-        "stop_if_confirmed": 1250.06160714,
-        "tp1_if_confirmed": 1202.77703571,
-        "tp2_if_confirmed": 1190.95589286,
-        "estimated_net_rr": 1.74004154361,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 1239.3,
-      "reasons": [
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "AGUARDAR",
-      "watch": {
-        "monitor_price": 4.8002e-06,
-        "confirmation_close_price": 4.798142e-06,
-        "confirmation_rule": "Fechamento de 15m abaixo de 4.798142e-06 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.279883381924,
-        "distance_to_trigger_atr": 0.399883381924,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 4.8348725e-06,
-        "entry_zone_if_confirmed": [
-          4.7924825e-06,
-          4.7993425e-06
-        ],
-        "stop_if_confirmed": 4.8348725e-06,
-        "tp1_if_confirmed": 4.6992245e-06,
-        "tp2_if_confirmed": 4.6653125e-06,
-        "estimated_net_rr": 1.60482800815,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 4.805e-06,
-      "reasons": [
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "STRK-USDT-SWAP",
-      "side": "LONG",
-      "stage": "PRE_REACAO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 0.03951,
-        "confirmation_close_price": 0.0395189142857,
-        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.0673076923077,
-        "distance_to_trigger_atr": 0.0673076923077,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.0394477142857,
-        "entry_zone_if_confirmed": [
-          0.0395174285714,
-          0.0395768571429
-        ],
-        "stop_if_confirmed": 0.0394477142857,
-        "tp1_if_confirmed": 0.0398609714286,
-        "tp2_if_confirmed": 0.0399642857143,
-        "estimated_net_rr": 0.893330542626,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 0.03952,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "STRK-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 0.03951,
-        "confirmation_close_price": 0.0394921714286,
-        "confirmation_rule": "Fechamento de 15m abaixo de 0.0394921714286 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.0673076923077,
-        "distance_to_trigger_atr": 0.187307692308,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.0398022857143,
-        "entry_zone_if_confirmed": [
-          0.0394431428571,
-          0.0395025714286
-        ],
-        "stop_if_confirmed": 0.0398022857143,
-        "tp1_if_confirmed": 0.0386530285714,
-        "tp2_if_confirmed": 0.0383657142857,
-        "estimated_net_rr": 1.56548470505,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 0.03952,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "ZEC-USDT-SWAP",
-      "side": "LONG",
-      "stage": "PRE_REACAO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 1238.08,
-        "confirmation_close_price": 1238.45264286,
-        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.196434732605,
-        "distance_to_trigger_atr": 0.196434732605,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 1235.59571429,
-        "entry_zone_if_confirmed": [
-          1238.39053571,
-          1240.87482143
-        ],
-        "stop_if_confirmed": 1235.59571429,
-        "tp1_if_confirmed": 1252.48885714,
-        "tp2_if_confirmed": 1256.71214286,
-        "estimated_net_rr": 1.17393036868,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 1239.3,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "TAO-USDT-SWAP",
-      "side": "LONG",
-      "stage": "PRE_REACAO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 220.47,
-        "confirmation_close_price": 220.503085714,
-        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.199481865285,
-        "distance_to_trigger_atr": 0.199481865285,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 220.249428571,
-        "entry_zone_if_confirmed": [
-          220.497571429,
-          220.718142857
-        ],
-        "stop_if_confirmed": 220.249428571,
-        "tp1_if_confirmed": 221.749314286,
-        "tp2_if_confirmed": 222.124285714,
-        "estimated_net_rr": 0.612371311538,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 220.58,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "TAO-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 220.47,
-        "confirmation_close_price": 220.403828571,
-        "confirmation_rule": "Fechamento de 15m abaixo de 220.403828571 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.199481865285,
-        "distance_to_trigger_atr": 0.319481865285,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 221.482714286,
-        "entry_zone_if_confirmed": [
-          220.221857143,
-          220.442428571
-        ],
-        "stop_if_confirmed": 221.482714286,
-        "tp1_if_confirmed": 217.447971429,
-        "tp2_if_confirmed": 216.439285714,
-        "estimated_net_rr": 1.34395320218,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 220.58,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "LONG",
-      "stage": "PRE_REACAO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 4.8002e-06,
-        "confirmation_close_price": 4.801229e-06,
-        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.279883381924,
-        "distance_to_trigger_atr": 0.279883381924,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 4.79334e-06,
-        "entry_zone_if_confirmed": [
-          4.8010575e-06,
-          4.8079175e-06
-        ],
-        "stop_if_confirmed": 4.79334e-06,
-        "tp1_if_confirmed": 4.839988e-06,
-        "tp2_if_confirmed": 4.85165e-06,
-        "estimated_net_rr": 0.920121080511,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 4.805e-06,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "STX-USDT-SWAP",
-      "side": "LONG",
-      "stage": "PRE_REACAO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 0.3378,
-        "confirmation_close_price": 0.337884,
-        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.0,
-        "distance_to_trigger_atr": 0.0,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.33724,
-        "entry_zone_if_confirmed": [
-          0.33787,
-          0.33843
-        ],
-        "stop_if_confirmed": 0.33724,
-        "tp1_if_confirmed": 0.341048,
-        "tp2_if_confirmed": 0.342,
-        "estimated_net_rr": 0.843001024777,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 0.3378,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    },
-    {
-      "symbol": "STX-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "NAO_ENTRAR",
-      "watch": {
-        "monitor_price": 0.3378,
-        "confirmation_close_price": 0.337632,
-        "confirmation_rule": "Fechamento de 15m abaixo de 0.337632 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.0,
-        "distance_to_trigger_atr": 0.12,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.34001,
-        "entry_zone_if_confirmed": [
-          0.33717,
-          0.33773
-        ],
-        "stop_if_confirmed": 0.34001,
-        "tp1_if_confirmed": 0.330922,
-        "tp2_if_confirmed": 0.32865,
-        "estimated_net_rr": 1.44766056425,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "close_15m": 0.3378,
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
-      ]
-    }
-  ],
+  "proximity_alert_count": 0,
+  "proximity_alerts": [],
   "watchlist": [
     {
       "symbol": "ENA-USDT-SWAP",
       "side": "SHORT",
       "stage": "AGUARDAR_RETESTE",
-      "decision": "ENTRADA_CONDICIONAL",
+      "decision": "NAO_ENTRAR",
       "entry_methods": [
         {
           "method": "BREAKOUT",
           "side": "SHORT",
           "status": "CONFIRMADO",
-          "decision": "GATILHO_CONDICIONAL",
+          "decision": "NAO_ENTRAR",
           "watch_price": 0.15504,
           "confirmation_close_price": 0.154942457143,
           "candle_close_utc": "2026-11-08T02:45:00+00:00",
@@ -427,10 +42,10 @@
           "tick_size": "0.00001",
           "entry_trigger_price": 0.15385,
           "stop_loss": 0.15618,
-          "entry_state": "GATILHO_DISPONIVEL",
-          "ticker_price_at_snapshot": 0.15476,
+          "entry_state": "EXPIRADO",
+          "ticker_price_at_snapshot": 0.15465,
           "trigger_crossed_in_snapshot": false,
-          "entry_eligible_at_snapshot": true,
+          "entry_eligible_at_snapshot": false,
           "tp1_projected": 0.14873,
           "tp2_projected": 0.14686,
           "estimated_net_rr_tp1": 1.81376262286,
@@ -438,7 +53,7 @@
           "order_allowed": false,
           "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
           "reasons": [
-            "Aguardar preco cruzar gatilho e validar spread/volume novamente"
+            "snapshot/candle expirado: recalcular com coleta atual"
           ],
           "risk_price": 0.00233,
           "roundtrip_cost_estimate_pct": 0.2065,
@@ -460,7 +75,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.15476,
+          "ticker_price_at_snapshot": 0.15465,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -474,8 +89,10 @@
           ]
         }
       ],
-      "entry_trigger_price": 0.15385,
-      "entry_method": "BREAKOUT",
+      "entry_trigger_price": null,
+      "entry_method": null,
+      "entry_state": "EXPIRADO",
+      "public_stage": "ROMPIMENTO_CONFIRMADO",
       "reference_level": 0.15504,
       "close_15m": 0.15428,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -499,12 +116,12 @@
         "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
       },
       "reasons": [
-        "Gatilho condicional por BREAKOUT",
-        "Revalidar cotacao e livro de ofertas antes de agir"
+        "rompimento estendido > 0,9 ATR: nao perseguir",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.15504,
-        "confirmation_close_price": 0.15504,
+        "confirmation_close_price": 0.154942457143,
         "confirmation_rule": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
         "distance_to_watch_level_atr": 0.934973637961,
         "distance_to_trigger_atr": 0.934973637961,
@@ -521,11 +138,15 @@
         "tp1_if_confirmed": 0.14873,
         "tp2_if_confirmed": 0.14686,
         "estimated_net_rr": 1.81376262286,
-        "signal_is_actionable_now": true,
+        "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": 0.15385,
         "entry_trigger_method": "BREAKOUT",
-        "entry_trigger_decision": "GATILHO_CONDICIONAL",
+        "entry_trigger_decision": "NAO_ENTRAR",
+        "entry_state": "EXPIRADO",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false,
         "trigger_expires_utc": "2026-11-08T03:00:00+00:00"
       },
       "live_price_reconfirmation_required": true,
@@ -535,7 +156,7 @@
       "symbol": "PYTH-USDT-SWAP",
       "side": "SHORT",
       "stage": "AGUARDAR_RETESTE",
-      "decision": "AGUARDAR",
+      "decision": "NAO_ENTRAR",
       "entry_methods": [
         {
           "method": "BREAKOUT",
@@ -549,8 +170,8 @@
           "tick_size": "0.00001",
           "entry_trigger_price": 0.06305,
           "stop_loss": 0.06363,
-          "entry_state": "REPROVADO_RISCO",
-          "ticker_price_at_snapshot": 0.06339,
+          "entry_state": "EXPIRADO",
+          "ticker_price_at_snapshot": 0.06333,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": 0.06178,
@@ -560,6 +181,7 @@
           "order_allowed": false,
           "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
           "reasons": [
+            "snapshot/candle expirado: recalcular com coleta atual",
             "R:R liquido inferior a 1.6 na entrada exata"
           ],
           "risk_price": 0.00058,
@@ -582,7 +204,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.06339,
+          "ticker_price_at_snapshot": 0.06333,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -598,6 +220,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "EXPIRADO",
+      "public_stage": "ROMPIMENTO_CONFIRMADO",
       "reference_level": 0.06314,
       "close_15m": 0.06311,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -621,17 +245,18 @@
         "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
       },
       "reasons": [
-        "rompimento sem reteste fechado"
+        "rompimento sem reteste fechado",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.06314,
-        "confirmation_close_price": 0.06314,
+        "confirmation_close_price": 0.0631109428571,
         "confirmation_rule": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
         "distance_to_watch_level_atr": 0.12389380531,
         "distance_to_trigger_atr": 0.12389380531,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_RETESTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 0.0636263214286,
         "entry_zone_if_confirmed": [
@@ -647,235 +272,11 @@
         "entry_trigger_price": 0.06305,
         "entry_trigger_method": "BREAKOUT",
         "entry_trigger_decision": "NAO_ENTRAR",
+        "entry_state": "EXPIRADO",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false,
         "trigger_expires_utc": "2026-11-08T03:00:00+00:00"
-      },
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
-      "symbol": "ZEC-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "AGUARDAR",
-      "entry_methods": [
-        {
-          "method": "BREAKOUT",
-          "side": "SHORT",
-          "status": "AGUARDANDO_CONFIRMACAO",
-          "decision": "AGUARDAR",
-          "watch_price": 1238.08,
-          "confirmation_close_price": 1237.33471429,
-          "candle_close_utc": "2026-11-08T02:45:00+00:00",
-          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
-          "tick_size": "0.01",
-          "entry_trigger_price": null,
-          "stop_loss": null,
-          "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1247.7,
-          "trigger_crossed_in_snapshot": false,
-          "entry_eligible_at_snapshot": false,
-          "tp1_projected": null,
-          "tp2_projected": null,
-          "estimated_net_rr_tp1": null,
-          "requires_live_price_check": true,
-          "order_allowed": false,
-          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
-          "reasons": [
-            "candle de confirmacao ainda nao ocorreu"
-          ]
-        },
-        {
-          "method": "RETEST",
-          "side": "SHORT",
-          "status": "AGUARDANDO_CONFIRMACAO",
-          "decision": "AGUARDAR",
-          "watch_price": 1237.66,
-          "confirmation_close_price": 1236.91471429,
-          "candle_close_utc": "2026-11-08T02:45:00+00:00",
-          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
-          "tick_size": "0.01",
-          "entry_trigger_price": null,
-          "stop_loss": null,
-          "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1247.7,
-          "trigger_crossed_in_snapshot": false,
-          "entry_eligible_at_snapshot": false,
-          "tp1_projected": null,
-          "tp2_projected": null,
-          "estimated_net_rr_tp1": null,
-          "requires_live_price_check": true,
-          "order_allowed": false,
-          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
-          "reasons": [
-            "candle de confirmacao ainda nao ocorreu"
-          ]
-        }
-      ],
-      "entry_trigger_price": null,
-      "entry_method": null,
-      "reference_level": 1238.08,
-      "close_15m": 1239.3,
-      "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
-      "relative_volume_15m": 1.36396845526,
-      "trend_2h": "baixa",
-      "trend_1h": "baixa",
-      "structure_1h": "baixa",
-      "trade_plan": {
-        "entry_zone": [
-          1235.28517857,
-          1237.76946429
-        ],
-        "rr_worst_entry": 1235.28517857,
-        "stop": 1250.06160714,
-        "tp1_2_2R_projection": 1202.77703571,
-        "tp2_3_0R_projection": 1190.95589286,
-        "risk_ATR": 2.37918343876,
-        "estimated_net_RR_tp1": 1.74004154361,
-        "estimated_cost_pct_roundtrip": 0.2008,
-        "obstacle_before_tp1": null,
-        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
-      },
-      "reasons": [
-        "proximidade da regiao nao e confirmacao"
-      ],
-      "watch": {
-        "monitor_price": 1238.08,
-        "confirmation_close_price": 1237.33471429,
-        "confirmation_rule": "Fechamento de 15m abaixo de 1237.33471429 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.196434732605,
-        "distance_to_trigger_atr": 0.316434732605,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 1250.06160714,
-        "entry_zone_if_confirmed": [
-          1235.28517857,
-          1237.76946429
-        ],
-        "stop_if_confirmed": 1250.06160714,
-        "tp1_if_confirmed": 1202.77703571,
-        "tp2_if_confirmed": 1190.95589286,
-        "estimated_net_rr": 1.74004154361,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
-      },
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "AGUARDAR",
-      "entry_methods": [
-        {
-          "method": "BREAKOUT",
-          "side": "SHORT",
-          "status": "AGUARDANDO_CONFIRMACAO",
-          "decision": "AGUARDAR",
-          "watch_price": 4.8002e-06,
-          "confirmation_close_price": 4.798142e-06,
-          "candle_close_utc": "2026-11-08T02:45:00+00:00",
-          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
-          "tick_size": "1E-10",
-          "entry_trigger_price": null,
-          "stop_loss": null,
-          "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 4.8088e-06,
-          "trigger_crossed_in_snapshot": false,
-          "entry_eligible_at_snapshot": false,
-          "tp1_projected": null,
-          "tp2_projected": null,
-          "estimated_net_rr_tp1": null,
-          "requires_live_price_check": true,
-          "order_allowed": false,
-          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
-          "reasons": [
-            "candle de confirmacao ainda nao ocorreu"
-          ]
-        },
-        {
-          "method": "RETEST",
-          "side": "SHORT",
-          "status": "AGUARDANDO_CONFIRMACAO",
-          "decision": "AGUARDAR",
-          "watch_price": 4.8002e-06,
-          "confirmation_close_price": 4.798142e-06,
-          "candle_close_utc": "2026-11-08T02:45:00+00:00",
-          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
-          "tick_size": "1E-10",
-          "entry_trigger_price": null,
-          "stop_loss": null,
-          "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 4.8088e-06,
-          "trigger_crossed_in_snapshot": false,
-          "entry_eligible_at_snapshot": false,
-          "tp1_projected": null,
-          "tp2_projected": null,
-          "estimated_net_rr_tp1": null,
-          "requires_live_price_check": true,
-          "order_allowed": false,
-          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
-          "reasons": [
-            "candle de confirmacao ainda nao ocorreu"
-          ]
-        }
-      ],
-      "entry_trigger_price": null,
-      "entry_method": null,
-      "reference_level": 4.8002e-06,
-      "close_15m": 4.805e-06,
-      "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
-      "relative_volume_15m": 0.981233437208,
-      "trend_2h": "baixa",
-      "trend_1h": "baixa",
-      "structure_1h": "baixa",
-      "trade_plan": {
-        "entry_zone": [
-          4.7924825e-06,
-          4.7993425e-06
-        ],
-        "rr_worst_entry": 4.7924825e-06,
-        "stop": 4.8348725e-06,
-        "tp1_2_2R_projection": 4.6992245e-06,
-        "tp2_3_0R_projection": 4.6653125e-06,
-        "risk_ATR": 2.47172011662,
-        "estimated_net_RR_tp1": 1.60482800815,
-        "estimated_cost_pct_roundtrip": 0.2021,
-        "obstacle_before_tp1": null,
-        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
-      },
-      "reasons": [
-        "proximidade da regiao nao e confirmacao"
-      ],
-      "watch": {
-        "monitor_price": 4.8002e-06,
-        "confirmation_close_price": 4.798142e-06,
-        "confirmation_rule": "Fechamento de 15m abaixo de 4.798142e-06 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
-        "distance_to_watch_level_atr": 0.279883381924,
-        "distance_to_trigger_atr": 0.399883381924,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 4.8348725e-06,
-        "entry_zone_if_confirmed": [
-          4.7924825e-06,
-          4.7993425e-06
-        ],
-        "stop_if_confirmed": 4.8348725e-06,
-        "tp1_if_confirmed": 4.6992245e-06,
-        "tp2_if_confirmed": 4.6653125e-06,
-        "estimated_net_rr": 1.60482800815,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados.",
-        "entry_trigger_price": null,
-        "entry_trigger_method": null,
-        "entry_trigger_decision": null
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -899,7 +300,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3601,
+          "ticker_price_at_snapshot": 0.36,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -925,7 +326,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3601,
+          "ticker_price_at_snapshot": 0.36,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -941,6 +342,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 0.359,
       "close_15m": 0.3596,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -965,7 +368,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.359,
@@ -990,7 +394,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1014,7 +422,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3601,
+          "ticker_price_at_snapshot": 0.36,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1040,7 +448,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3601,
+          "ticker_price_at_snapshot": 0.36,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1056,6 +464,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 0.359,
       "close_15m": 0.3596,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1080,7 +490,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.359,
@@ -1105,7 +516,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1129,7 +544,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.03966,
+          "ticker_price_at_snapshot": 0.03962,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1155,7 +570,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.03966,
+          "ticker_price_at_snapshot": 0.03962,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1171,6 +586,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 0.03951,
       "close_15m": 0.03952,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1195,7 +612,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.03951,
@@ -1203,9 +621,9 @@
         "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
         "distance_to_watch_level_atr": 0.0673076923077,
         "distance_to_trigger_atr": 0.0673076923077,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 0.0394477142857,
         "entry_zone_if_confirmed": [
@@ -1220,7 +638,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1244,7 +666,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.03966,
+          "ticker_price_at_snapshot": 0.03962,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1270,7 +692,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.03966,
+          "ticker_price_at_snapshot": 0.03962,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1286,6 +708,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 0.03951,
       "close_15m": 0.03952,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1310,7 +734,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.03951,
@@ -1318,9 +743,9 @@
         "confirmation_rule": "Fechamento de 15m abaixo de 0.0394921714286 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
         "distance_to_watch_level_atr": 0.0673076923077,
         "distance_to_trigger_atr": 0.187307692308,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 0.0398022857143,
         "entry_zone_if_confirmed": [
@@ -1335,7 +760,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1359,7 +788,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1247.7,
+          "ticker_price_at_snapshot": 1247.11,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1385,7 +814,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1247.7,
+          "ticker_price_at_snapshot": 1247.11,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1401,6 +830,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 1238.08,
       "close_15m": 1239.3,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1429,7 +860,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 1238.08,
@@ -1437,9 +869,9 @@
         "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
         "distance_to_watch_level_atr": 0.196434732605,
         "distance_to_trigger_atr": 0.196434732605,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 1235.59571429,
         "entry_zone_if_confirmed": [
@@ -1454,7 +886,132 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
+      },
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "PREPARANDO",
+      "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 1238.08,
+          "confirmation_close_price": 1237.33471429,
+          "candle_close_utc": "2026-11-08T02:45:00+00:00",
+          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
+          "tick_size": "0.01",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "entry_state": "AGUARDANDO_CONFIRMACAO",
+          "ticker_price_at_snapshot": 1247.11,
+          "trigger_crossed_in_snapshot": false,
+          "entry_eligible_at_snapshot": false,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 1237.66,
+          "confirmation_close_price": 1236.91471429,
+          "candle_close_utc": "2026-11-08T02:45:00+00:00",
+          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
+          "tick_size": "0.01",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "entry_state": "AGUARDANDO_CONFIRMACAO",
+          "ticker_price_at_snapshot": 1247.11,
+          "trigger_crossed_in_snapshot": false,
+          "entry_eligible_at_snapshot": false,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
+      "reference_level": 1238.08,
+      "close_15m": 1239.3,
+      "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
+      "relative_volume_15m": 1.36396845526,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": {
+        "entry_zone": [
+          1235.28517857,
+          1237.76946429
+        ],
+        "rr_worst_entry": 1235.28517857,
+        "stop": 1250.06160714,
+        "tp1_2_2R_projection": 1202.77703571,
+        "tp2_3_0R_projection": 1190.95589286,
+        "risk_ATR": 2.37918343876,
+        "estimated_net_RR_tp1": 1.74004154361,
+        "estimated_cost_pct_roundtrip": 0.2008,
+        "obstacle_before_tp1": null,
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
+      ],
+      "watch": {
+        "monitor_price": 1238.08,
+        "confirmation_close_price": 1237.33471429,
+        "confirmation_rule": "Fechamento de 15m abaixo de 1237.33471429 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
+        "distance_to_watch_level_atr": 0.196434732605,
+        "distance_to_trigger_atr": 0.316434732605,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 1250.06160714,
+        "entry_zone_if_confirmed": [
+          1235.28517857,
+          1237.76946429
+        ],
+        "stop_if_confirmed": 1250.06160714,
+        "tp1_if_confirmed": 1202.77703571,
+        "tp2_if_confirmed": 1190.95589286,
+        "estimated_net_rr": 1.74004154361,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados.",
+        "entry_trigger_price": null,
+        "entry_trigger_method": null,
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1478,7 +1035,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 220.74,
+          "ticker_price_at_snapshot": 220.67,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1504,7 +1061,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 220.74,
+          "ticker_price_at_snapshot": 220.67,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1520,6 +1077,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 220.47,
       "close_15m": 220.58,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1537,14 +1096,15 @@
         "tp1_2_2R_projection": 221.749314286,
         "tp2_3_0R_projection": 222.124285714,
         "risk_ATR": 0.85,
-        "estimated_net_RR_tp1": 0.612371311538,
-        "estimated_cost_pct_roundtrip": 0.2091,
+        "estimated_net_RR_tp1": 0.630163688599,
+        "estimated_cost_pct_roundtrip": 0.2045,
         "obstacle_before_tp1": null,
         "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 220.47,
@@ -1552,9 +1112,9 @@
         "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
         "distance_to_watch_level_atr": 0.199481865285,
         "distance_to_trigger_atr": 0.199481865285,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 220.249428571,
         "entry_zone_if_confirmed": [
@@ -1564,12 +1124,16 @@
         "stop_if_confirmed": 220.249428571,
         "tp1_if_confirmed": 221.749314286,
         "tp2_if_confirmed": 222.124285714,
-        "estimated_net_rr": 0.612371311538,
+        "estimated_net_rr": 0.630163688599,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1593,7 +1157,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 220.74,
+          "ticker_price_at_snapshot": 220.67,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1619,7 +1183,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 220.74,
+          "ticker_price_at_snapshot": 220.67,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1635,6 +1199,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 220.47,
       "close_15m": 220.58,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1652,8 +1218,8 @@
         "tp1_2_2R_projection": 217.447971429,
         "tp2_3_0R_projection": 216.439285714,
         "risk_ATR": 2.28652849741,
-        "estimated_net_RR_tp1": 1.34395320218,
-        "estimated_cost_pct_roundtrip": 0.2091,
+        "estimated_net_RR_tp1": 1.35782918221,
+        "estimated_cost_pct_roundtrip": 0.2045,
         "obstacle_before_tp1": {
           "price": 219.71,
           "tf": "2h"
@@ -1663,7 +1229,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 220.47,
@@ -1671,9 +1238,9 @@
         "confirmation_rule": "Fechamento de 15m abaixo de 220.403828571 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
         "distance_to_watch_level_atr": 0.199481865285,
         "distance_to_trigger_atr": 0.319481865285,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 221.482714286,
         "entry_zone_if_confirmed": [
@@ -1683,12 +1250,16 @@
         "stop_if_confirmed": 221.482714286,
         "tp1_if_confirmed": 217.447971429,
         "tp2_if_confirmed": 216.439285714,
-        "estimated_net_rr": 1.34395320218,
+        "estimated_net_rr": 1.35782918221,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1712,7 +1283,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1.6189,
+          "ticker_price_at_snapshot": 1.617,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1738,7 +1309,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1.6189,
+          "ticker_price_at_snapshot": 1.617,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1754,6 +1325,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 1.6108,
       "close_15m": 1.6149,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1771,8 +1344,8 @@
         "tp1_2_2R_projection": 1.62859771429,
         "tp2_3_0R_projection": 1.63381428571,
         "risk_ATR": 0.85,
-        "estimated_net_RR_tp1": 1.09724359431,
-        "estimated_cost_pct_roundtrip": 0.2124,
+        "estimated_net_RR_tp1": 1.03612801862,
+        "estimated_cost_pct_roundtrip": 0.2309,
         "obstacle_before_tp1": {
           "price": 1.624,
           "tf": "2h"
@@ -1782,7 +1355,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 1.6108,
@@ -1802,12 +1376,16 @@
         "stop_if_confirmed": 1.60773142857,
         "tp1_if_confirmed": 1.62859771429,
         "tp2_if_confirmed": 1.63381428571,
-        "estimated_net_rr": 1.09724359431,
+        "estimated_net_rr": 1.03612801862,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1831,7 +1409,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1.6189,
+          "ticker_price_at_snapshot": 1.617,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1857,7 +1435,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 1.6189,
+          "ticker_price_at_snapshot": 1.617,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1873,6 +1451,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 1.6108,
       "close_15m": 1.6149,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -1890,8 +1470,8 @@
         "tp1_2_2R_projection": 1.56686157143,
         "tp2_3_0R_projection": 1.55213928571,
         "risk_ATR": 2.39888268156,
-        "estimated_net_RR_tp1": 1.69924874997,
-        "estimated_cost_pct_roundtrip": 0.2124,
+        "estimated_net_RR_tp1": 1.66295324681,
+        "estimated_cost_pct_roundtrip": 0.2309,
         "obstacle_before_tp1": {
           "price": 1.5943,
           "tf": "2h"
@@ -1900,7 +1480,8 @@
       },
       "reasons": [
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 1.6108,
@@ -1920,12 +1501,16 @@
         "stop_if_confirmed": 1.62575071429,
         "tp1_if_confirmed": 1.56686157143,
         "tp2_if_confirmed": 1.55213928571,
-        "estimated_net_rr": 1.69924874997,
+        "estimated_net_rr": 1.66295324681,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -1949,7 +1534,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 8.181,
+          "ticker_price_at_snapshot": 8.175,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1975,7 +1560,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 8.181,
+          "ticker_price_at_snapshot": 8.175,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -1991,6 +1576,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 8.119,
       "close_15m": 8.153,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2019,7 +1606,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 8.119,
@@ -2044,7 +1632,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2068,7 +1660,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 8.181,
+          "ticker_price_at_snapshot": 8.175,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2094,7 +1686,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 8.181,
+          "ticker_price_at_snapshot": 8.175,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2110,6 +1702,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 8.119,
       "close_15m": 8.153,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2137,7 +1731,8 @@
       },
       "reasons": [
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 8.119,
@@ -2162,7 +1757,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2186,7 +1785,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 6.87,
+          "ticker_price_at_snapshot": 6.868,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2212,7 +1811,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 6.87,
+          "ticker_price_at_snapshot": 6.868,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2228,6 +1827,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 6.844,
       "close_15m": 6.855,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2252,7 +1853,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 6.844,
@@ -2277,7 +1879,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2301,7 +1907,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 6.87,
+          "ticker_price_at_snapshot": 6.868,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2327,7 +1933,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 6.87,
+          "ticker_price_at_snapshot": 6.868,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2343,6 +1949,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 6.844,
       "close_15m": 6.855,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2367,7 +1975,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 6.844,
@@ -2392,7 +2001,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2416,7 +2029,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 4.8088e-06,
+          "ticker_price_at_snapshot": 4.8075e-06,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2442,7 +2055,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 4.8088e-06,
+          "ticker_price_at_snapshot": 4.8075e-06,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2458,6 +2071,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 4.8002e-06,
       "close_15m": 4.805e-06,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2482,7 +2097,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 4.8002e-06,
@@ -2490,9 +2106,9 @@
         "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
         "distance_to_watch_level_atr": 0.279883381924,
         "distance_to_trigger_atr": 0.279883381924,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 4.79334e-06,
         "entry_zone_if_confirmed": [
@@ -2507,7 +2123,132 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
+      },
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "PREPARANDO",
+      "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 4.8002e-06,
+          "confirmation_close_price": 4.798142e-06,
+          "candle_close_utc": "2026-11-08T02:45:00+00:00",
+          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
+          "tick_size": "1E-10",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "entry_state": "AGUARDANDO_CONFIRMACAO",
+          "ticker_price_at_snapshot": 4.8075e-06,
+          "trigger_crossed_in_snapshot": false,
+          "entry_eligible_at_snapshot": false,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 4.8002e-06,
+          "confirmation_close_price": 4.798142e-06,
+          "candle_close_utc": "2026-11-08T02:45:00+00:00",
+          "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
+          "tick_size": "1E-10",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "entry_state": "AGUARDANDO_CONFIRMACAO",
+          "ticker_price_at_snapshot": 4.8075e-06,
+          "trigger_crossed_in_snapshot": false,
+          "entry_eligible_at_snapshot": false,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
+      "reference_level": 4.8002e-06,
+      "close_15m": 4.805e-06,
+      "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
+      "relative_volume_15m": 0.981233437208,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": {
+        "entry_zone": [
+          4.7924825e-06,
+          4.7993425e-06
+        ],
+        "rr_worst_entry": 4.7924825e-06,
+        "stop": 4.8348725e-06,
+        "tp1_2_2R_projection": 4.6992245e-06,
+        "tp2_3_0R_projection": 4.6653125e-06,
+        "risk_ATR": 2.47172011662,
+        "estimated_net_RR_tp1": 1.60482800815,
+        "estimated_cost_pct_roundtrip": 0.2021,
+        "obstacle_before_tp1": null,
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
+      ],
+      "watch": {
+        "monitor_price": 4.8002e-06,
+        "confirmation_close_price": 4.798142e-06,
+        "confirmation_rule": "Fechamento de 15m abaixo de 4.798142e-06 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
+        "distance_to_watch_level_atr": 0.279883381924,
+        "distance_to_trigger_atr": 0.399883381924,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 4.8348725e-06,
+        "entry_zone_if_confirmed": [
+          4.7924825e-06,
+          4.7993425e-06
+        ],
+        "stop_if_confirmed": 4.8348725e-06,
+        "tp1_if_confirmed": 4.6992245e-06,
+        "tp2_if_confirmed": 4.6653125e-06,
+        "estimated_net_rr": 1.60482800815,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados.",
+        "entry_trigger_price": null,
+        "entry_trigger_method": null,
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2573,6 +2314,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 0.1791,
       "close_15m": 0.1795,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2597,7 +2340,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.1791,
@@ -2622,7 +2366,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2688,6 +2436,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 0.1791,
       "close_15m": 0.1795,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2712,7 +2462,8 @@
       },
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.1791,
@@ -2737,7 +2488,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2761,7 +2516,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 247.89,
+          "ticker_price_at_snapshot": 247.83,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2787,7 +2542,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 247.89,
+          "ticker_price_at_snapshot": 247.83,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2803,6 +2558,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 246.64,
       "close_15m": 247.49,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2831,7 +2588,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 246.64,
@@ -2856,7 +2614,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2880,7 +2642,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 247.89,
+          "ticker_price_at_snapshot": 247.83,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2906,7 +2668,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 247.89,
+          "ticker_price_at_snapshot": 247.83,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -2922,6 +2684,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 246.64,
       "close_15m": 247.49,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -2949,7 +2713,8 @@
       },
       "reasons": [
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 246.64,
@@ -2974,7 +2739,11 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -2998,7 +2767,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3394,
+          "ticker_price_at_snapshot": 0.3389,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -3024,7 +2793,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3394,
+          "ticker_price_at_snapshot": 0.3389,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -3040,6 +2809,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PRE_REACAO",
       "reference_level": 0.3378,
       "close_15m": 0.3378,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -3057,8 +2828,8 @@
         "tp1_2_2R_projection": 0.341048,
         "tp2_3_0R_projection": 0.342,
         "risk_ATR": 0.85,
-        "estimated_net_RR_tp1": 0.843001024777,
-        "estimated_cost_pct_roundtrip": 0.2589,
+        "estimated_net_RR_tp1": 0.936241470057,
+        "estimated_cost_pct_roundtrip": 0.2295,
         "obstacle_before_tp1": {
           "price": 0.3388,
           "tf": "2h"
@@ -3068,7 +2839,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.3378,
@@ -3076,9 +2848,9 @@
         "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
         "distance_to_watch_level_atr": 0.0,
         "distance_to_trigger_atr": 0.0,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_SUPORTE",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 0.33724,
         "entry_zone_if_confirmed": [
@@ -3088,12 +2860,16 @@
         "stop_if_confirmed": 0.33724,
         "tp1_if_confirmed": 0.341048,
         "tp2_if_confirmed": 0.342,
-        "estimated_net_rr": 0.843001024777,
+        "estimated_net_rr": 0.936241470057,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -3117,7 +2893,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3394,
+          "ticker_price_at_snapshot": 0.3389,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -3143,7 +2919,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.3394,
+          "ticker_price_at_snapshot": 0.3389,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -3159,6 +2935,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "PREPARANDO",
       "reference_level": 0.3378,
       "close_15m": 0.3378,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -3176,8 +2954,8 @@
         "tp1_2_2R_projection": 0.330922,
         "tp2_3_0R_projection": 0.32865,
         "risk_ATR": 2.02857142857,
-        "estimated_net_RR_tp1": 1.44766056425,
-        "estimated_cost_pct_roundtrip": 0.2589,
+        "estimated_net_RR_tp1": 1.51480077724,
+        "estimated_cost_pct_roundtrip": 0.2295,
         "obstacle_before_tp1": {
           "price": 0.3354,
           "tf": "2h"
@@ -3187,7 +2965,8 @@
       "reasons": [
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
+        "proximidade da regiao nao e confirmacao",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.3378,
@@ -3195,9 +2974,9 @@
         "confirmation_rule": "Fechamento de 15m abaixo de 0.337632 com corpo >= 40%, volume relativo >= 1.4 e risco adequado; rompimento e reteste sao estrategias distintas",
         "distance_to_watch_level_atr": 0.0,
         "distance_to_trigger_atr": 0.12,
-        "near_trigger_0_5_atr": true,
-        "alert_type": "PROXIMO_ROMPIMENTO",
-        "alert_message": "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao ou com plano de risco reprovado",
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
         "last_snapshot_required": true,
         "invalid_if_15m_closes_beyond": 0.34001,
         "entry_zone_if_confirmed": [
@@ -3207,12 +2986,16 @@
         "stop_if_confirmed": 0.34001,
         "tp1_if_confirmed": 0.330922,
         "tp2_if_confirmed": 0.32865,
-        "estimated_net_rr": 1.44766056425,
+        "estimated_net_rr": 1.51480077724,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -3236,7 +3019,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.6136,
+          "ticker_price_at_snapshot": 0.6135,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -3262,7 +3045,7 @@
           "entry_trigger_price": null,
           "stop_loss": null,
           "entry_state": "AGUARDANDO_CONFIRMACAO",
-          "ticker_price_at_snapshot": 0.6136,
+          "ticker_price_at_snapshot": 0.6135,
           "trigger_crossed_in_snapshot": false,
           "entry_eligible_at_snapshot": false,
           "tp1_projected": null,
@@ -3278,6 +3061,8 @@
       ],
       "entry_trigger_price": null,
       "entry_method": null,
+      "entry_state": "DADOS_DESATUALIZADOS",
+      "public_stage": "ROMPIMENTO_FRACO",
       "reference_level": 0.612,
       "close_15m": 0.6117,
       "last_15m_close_utc": "2026-11-08T02:45:00+00:00",
@@ -3305,7 +3090,8 @@
       },
       "reasons": [
         "obstaculo estrutural antes de TP1 projetado",
-        "preco passou do nivel, mas candle/volume nao confirmaram"
+        "preco passou do nivel, mas candle/volume nao confirmaram",
+        "snapshot desatualizado ou com horario inconsistente"
       ],
       "watch": {
         "monitor_price": 0.612,
@@ -3330,48 +3116,28 @@
         "note": "Preco de observacao nao e ordem; somente candles fechados.",
         "entry_trigger_price": null,
         "entry_trigger_method": null,
-        "entry_trigger_decision": null
+        "entry_trigger_decision": null,
+        "entry_state": "DADOS_DESATUALIZADOS",
+        "trigger_crossed_in_snapshot": false,
+        "entry_eligible_at_snapshot": false,
+        "source_is_current": false
       },
       "live_price_reconfirmation_required": true,
       "order_allowed": false
     }
   ],
   "order_allowed": false,
-  "confirmed_entry_triggers": [
-    {
-      "symbol": "ENA-USDT-SWAP",
-      "side": "SHORT",
-      "method": "BREAKOUT",
-      "status": "CONFIRMADO",
-      "decision": "GATILHO_CONDICIONAL",
-      "watch_price": 0.15504,
-      "confirmation_close_price": 0.154942457143,
-      "candle_close_utc": "2026-11-08T02:45:00+00:00",
-      "trigger_expires_utc": "2026-11-08T03:00:00+00:00",
-      "tick_size": "0.00001",
-      "entry_trigger_price": 0.15385,
-      "stop_loss": 0.15618,
-      "entry_state": "GATILHO_DISPONIVEL",
-      "ticker_price_at_snapshot": 0.15476,
-      "trigger_crossed_in_snapshot": false,
-      "entry_eligible_at_snapshot": true,
-      "tp1_projected": 0.14873,
-      "tp2_projected": 0.14686,
-      "estimated_net_rr_tp1": 1.81376262286,
-      "requires_live_price_check": true,
-      "order_allowed": false,
-      "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
-      "reasons": [
-        "Aguardar preco cruzar gatilho e validar spread/volume novamente"
-      ],
-      "risk_price": 0.00233,
-      "roundtrip_cost_estimate_pct": 0.2065,
-      "pivot_obstacle_before_tp1": null,
-      "targets_are_projections": true,
-      "risk_atr": 2.86643233743,
-      "distance_to_entry_atr": 0.528998242531
-    }
-  ],
+  "confirmed_entry_triggers": [],
   "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
+  "entry_state_counts": {
+    "AGUARDANDO_CONFIRMACAO": 170,
+    "GATILHO_DISPONIVEL": 0,
+    "PRECO_JA_ULTRAPASSOU_GATILHO": 0,
+    "REPROVADO_RISCO": 0,
+    "INVALIDADO": 0,
+    "EXPIRADO": 2,
+    "DADOS_DESATUALIZADOS": 0,
+    "REPROVADO_DADOS": 0
+  },
   "delivery": "Arquivo publicado em cada coleta; nao envia push por si so"
 }
