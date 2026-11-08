@@ -1,0 +1,49 @@
+name: Scanner V2 experimental (sem filtros adicionais)
+
+on:
+  push:
+    branches:
+      - experiment/non-exclusion-v2
+    paths:
+      - 'experimental_scan.py'
+      - 'tests/test_experimental_scan.py'
+      - '.github/workflows/experiment-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-experimental-scanner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testes de nao-exclusao e de classificacao
+        run: python -m unittest discover -s tests -p 'test_experimental_scan.py' -v
+      - name: Obter snapshot publicado sem modificar a coleta
+        shell: bash
+        run: |
+          git fetch origin market-data
+          git show FETCH_HEAD:market_data.json > market_data.json
+          git show FETCH_HEAD:early_warning.json > early_warning.json
+      - name: Testar com snapshot real e salvar ranking
+        shell: bash
+        run: |
+          python experimental_scan.py --market-data market_data.json --early-warning early_warning.json --output experimental_rank.json
+          python - <<'PY'
+          import json
+          data = json.load(open('experimental_rank.json'))
+          assert data['source_asset_count'] == data['retained_asset_count']
+          assert data['analyzed_asset_count'] + data['unavailable_asset_count'] == data['source_asset_count']
+          assert not data['trade_signals_allowed']
+          print('VALIDADO: nenhuma exclusao pos-coleta')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scanner-v2-experimental
+          path: experimental_rank.json
+          retention-days: 7
