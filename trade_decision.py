@@ -340,11 +340,30 @@ def main():
     cli = argparse.ArgumentParser()
     cli.add_argument("--market-data", default="market_data.json")
     cli.add_argument("--output", default="experimental_decisions.json")
+    cli.add_argument("--watch-output", default=None,
+                     help="Resumo compacto de niveis e alertas para consumidores externos")
     args = cli.parse_args()
     data = json.loads(Path(args.market_data).read_text(encoding="utf-8"))
     out = analyze(data)
     Path(args.output).write_text(json.dumps(out, ensure_ascii=False,
                                            indent=2), encoding="utf-8")
+    if args.watch_output:
+        active = [p for p in out["ranked_setups"] if p["stage"] != "MONITORANDO"]
+        watch_summary = {
+            "status": out["status"], "source_collected_utc": out["source_collected_utc"],
+            "evaluated_at_utc": out["evaluated_at_utc"],
+            "snapshot_stale": out["snapshot_stale"],
+            "source_asset_count": out["source_asset_count"],
+            "retained_asset_count": out["retained_asset_count"],
+            "analyzed_asset_count": out["analyzed_asset_count"],
+            "opportunities_monitored": len(active),
+            "proximity_alert_count": out["proximity_alert_count"],
+            "proximity_alerts": out["proximity_alerts"],
+            "watchlist": active, "order_allowed": False,
+            "delivery": "Arquivo publicado em cada coleta; nao envia push por si so",
+        }
+        Path(args.watch_output).write_text(json.dumps(
+            watch_summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print("DECISION V2:", out["source_collected_utc"],
           "retained", out["retained_asset_count"],
           "analyzed", out["analyzed_asset_count"],
