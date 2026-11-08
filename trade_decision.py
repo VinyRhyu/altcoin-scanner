@@ -129,6 +129,93 @@ def levels(history, info, side, level, spread_pct):
     }
 
 
+def watch_fields(side, stage, level, close, atr, decision, stale, plan):
+    """Valores para radar. Nunca implicam entrada pelo simples toque do preco.
+
+    rompimento: precisa candle 15m fechado alem de 0.12 ATR, corpo e volume;
+    reacao/rejeicao: requer toque, fechamento de retorno, corpo, volume e
+    tendencia validos; reteste exige novo candle fechado confirmando suporte.
+    """
+    positive = side == "LONG"
+    breakout_trigger = level + (.12*atr if positive else -.12*atr)
+    is_reaction = stage in (
+        "PRE_REACAO", "PRE_REJEICAO", "REACAO_CONFIRMADA", "REJEICAO_CONFIRMADA"
+    )
+    is_retest = stage in ("AGUARDAR_RETESTE", "RETESTE_CONFIRMADO")
+    is_weak = stage == "ROMPIMENTO_FRACO"
+    if is_reaction:
+        trigger = level + (.06*atr if positive else -.06*atr)
+        condition = (
+            "15m tocar suporte e fechar acima dele com candle comprador, "
+            "volume relativo >= 1.2 e tendencia de 1h alinhada"
+            if positive else
+            "15m tocar resistencia e fechar abaixo dela com candle vendedor, "
+            "volume relativo >= 1.2 e tendencia de 1h alinhada"
+        )
+        dist_atr = abs(close - level) / atr
+        alert_type = "PROXIMO_SUPORTE" if positive else "PROXIMO_RESISTENCIA"
+        within = dist_atr <= .5
+    elif is_retest:
+        trigger = level
+        condition = (
+            "Aguardar novo fechamento 15m apos reteste com nivel sustentado, "
+            "volume e risco-retorno adequados; recalcular SL/TP"
+        )
+        dist_atr = abs(close - level) / atr
+        alert_type = "PROXIMO_RETESTE"
+        within = dist_atr <= .5
+    else:
+        trigger = breakout_trigger
+        condition = (
+            f"Fechamento de 15m {'acima' if positive else 'abaixo'} de "
+            f"{pretty(trigger)} com corpo >= 40%, volume relativo >= 1.4 "
+            "e posterior reteste fechado; rompimento isolado nao e entrada"
+        )
+        directional_distance = ((trigger-close)/atr if positive else
+                                (close-trigger)/atr)
+        dist_atr = abs(directional_distance)
+        alert_type = "PROXIMO_ROMPIMENTO"
+        within = 0 <= directional_distance <= .5
+    if stage == "MONITORANDO":
+        # Monitorar todos os ativos, mas alertar apenas quando uma regiao
+        # com formacao de setup estiver explicitamente classificada.
+        within = False
+    if is_weak:
+        within = False
+        alert_type = "ROMPIMENTO_SEM_CONFIRMACAO"
+    if stale:
+        within = False
+        alert_type = "DADOS_DESATUALIZADOS"
+    invalidation = (plan["stop"] if plan else
+                    level - .4*atr if positive else level + .4*atr)
+    alert = bool(within)
+    return {
+        "monitor_price": pretty(level),
+        "confirmation_close_price": pretty(trigger),
+        "confirmation_rule": condition,
+        "distance_to_watch_level_atr": pretty(abs(close-level)/atr),
+        "distance_to_trigger_atr": pretty(dist_atr),
+        "near_trigger_0_5_atr": alert,
+        "alert_type": alert_type if alert else None,
+        "alert_message": (
+            "Proximo ao gatilho, mas NAO entrar: aguardando confirmacao "
+            "ou com plano de risco reprovado" if alert and decision !=
+            "ENTRADA_CONDICIONAL" else
+            "Setup confirmado por candle; revalidar preco de mercado antes "
+            "de entrar" if alert else None
+        ),
+        "last_snapshot_required": True,
+        "invalid_if_15m_closes_beyond": pretty(invalidation),
+        "entry_zone_if_confirmed": plan["entry_zone"] if plan else None,
+        "stop_if_confirmed": plan["stop"] if plan else None,
+        "tp1_if_confirmed": plan["tp1_2_2R_projection"] if plan else None,
+        "tp2_if_confirmed": plan["tp2_3_0R_projection"] if plan else None,
+        "estimated_net_rr": plan["estimated_net_RR_tp1"] if plan else None,
+        "signal_is_actionable_now": bool(decision == "ENTRADA_CONDICIONAL" and not stale),
+        "note": "Preco de observacao nao e ordem; somente candles fechados.",
+    }
+
+
 def evaluate(symbol, history, ticker, side, info, stale):
     stage, level, volume = setup(history, info, side)
     spread = float(ticker.get("spread_pct", 0))
@@ -193,6 +280,8 @@ def evaluate(symbol, history, ticker, side, info, stale):
         "trend_1h": info["trend_1h"],
         "structure_1h": info["structure_1h"],
         "trade_plan": trade, "reasons": why,
+        "watch": watch_fields(side, stage, level, close, info["atr_15m"],
+                              decision, stale, trade),
         "live_price_reconfirmation_required": True,
         "order_allowed": False,
     }
@@ -233,6 +322,14 @@ def analyze(market, now_utc=None):
         "retained_asset_count": len(assets),
         "analyzed_asset_count": sum(a["status"] == "ANALISADO" for a in assets),
         "ranked_setups": ranked, "assets": assets,
+        "proximity_alerts": [
+            { "symbol": p["symbol"], "side": p["side"], "stage": p["stage"],
+              "decision": p["decision"], "watch": p["watch"],
+              "close_15m": p["close_15m"], "reasons": p["reasons"] }
+            for p in ranked if p["watch"]["near_trigger_0_5_atr"]
+        ],
+        "proximity_alert_count": sum(
+            p["watch"]["near_trigger_0_5_atr"] for p in ranked),
         "assumptions": {"min_net_rr": MIN_NET_RR,
                         "fee_bps_each_side": FEE_BPS_EACH_SIDE,
                         "slippage_bps_each_side": SLIPPAGE_BPS_EACH_SIDE},
