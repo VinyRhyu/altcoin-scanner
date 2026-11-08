@@ -3,8 +3,8 @@
   "status": "EXPERIMENTAL",
   "order_allowed": false,
   "source_collected_utc": "2026-11-08T02:33:11.161000+00:00",
-  "evaluated_at_utc": "2026-11-08T02:42:18.416641+00:00",
-  "snapshot_age_min": 9.12092735,
+  "evaluated_at_utc": "2026-11-08T02:46:33.180114+00:00",
+  "snapshot_age_min": 13.3669852333,
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
@@ -6003,6 +6003,7 @@
           "order_allowed": false,
           "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
           "reasons": [
+            "snapshot/candle expirado: recalcular com coleta atual",
             "stop distante > 3 ATR",
             "gatilho distante > 0.9 ATR",
             "pivot estrutural entre entrada e TP1"
@@ -7818,6 +7819,7 @@
               "order_allowed": false,
               "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
               "reasons": [
+                "snapshot/candle expirado: recalcular com coleta atual",
                 "stop distante > 3 ATR",
                 "gatilho distante > 0.9 ATR",
                 "pivot estrutural entre entrada e TP1"
