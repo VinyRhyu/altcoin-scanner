@@ -191,6 +191,15 @@ def eligible_bases():
         )
 
 
+def safe_tick_size(instrument):
+    # Metadado opcional; jamais eliminar ticker por tickSz ausente/invalido.
+    raw = instrument.get("tickSz")
+    try:
+        return str(raw) if raw is not None and finite_positive(raw) else None
+    except (ValueError, TypeError, OverflowError):
+        return None
+
+
 def tickers(allowed, now_ms):
     instruments = okx(
         "public/instruments", instType="SWAP"
@@ -274,13 +283,7 @@ def tickers(allowed, now_ms):
                 ),
                 "spread_pct": round(spread, 4),
                 # tickSz e string na API; preservar casas decimais.
-                "tick_size": (
-                    str(live[symbol].get("tickSz"))
-                    if live[symbol].get("tickSz")
-                    and math.isfinite(float(live[symbol]["tickSz"]))
-                    and float(live[symbol]["tickSz"]) > 0
-                    else None
-                ),
+                "tick_size": safe_tick_size(live[symbol]),
                 "ticker_time_utc": utc(timestamp),
             })
 
