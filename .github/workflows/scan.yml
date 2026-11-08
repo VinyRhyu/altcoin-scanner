@@ -11,6 +11,8 @@ on:
       - 'trade_decision.py'
       - 'entry_trigger.py'
       - 'tests/test_entry_trigger.py'
+      - 'sync_market_data.py'
+      - 'tests/test_sync_market_data.py'
       - 'tests/test_experimental_scan.py'
       - 'tests/test_trade_decision.py'
       - '.github/workflows/scan.yml'
@@ -167,6 +169,9 @@ jobs:
           manifest['entry_watch_file']='entry_watch.json'
           manifest['entry_watch_status']=watch['status']
           manifest['entry_trigger_engine']='breakout_or_retest_independent_next_15m_tick_size'
+          manifest['entry_watch_source_sync_status']=watch.get('source_sync_status','UNAVAILABLE')
+          manifest['entry_watch_source_candle_utc']=watch.get('source_sync',{}).get('source_last_closed_15m_utc')
+          manifest['entry_watch_can_offer_current_entries']=watch.get('current_for_new_entries',False)
           manifest['entry_watch_proximity_alert_count']=watch['proximity_alert_count']
           if Path('output/trade_decisions.json').is_file():
               manifest['trade_decisions_file']='trade_decisions.json'
