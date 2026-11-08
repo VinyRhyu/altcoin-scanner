@@ -6,10 +6,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: v2-experimental-publish
+  cancel-in-progress: false
+
 jobs:
   test-experimental-scanner:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 30
     steps:
       - name: Baixar codigo da branch experimental
         uses: actions/checkout@v4
@@ -21,12 +25,38 @@ jobs:
           python-version: '3.12'
       - name: Testes de nao-exclusao e de classificacao
         run: python -m unittest discover -s tests -p 'test_*.py' -v
-      - name: Obter snapshot publicado sem modificar a coleta
+      - name: Sincronizar candle 15m e cotacao antes da V2
         shell: bash
+        env:
+          MARKET_PROVIDER: okx_swap
+          UNIVERSE_SIZE: '50'
+          MIN_VALIDATED: '15'
+          MAX_PRESCREEN: '90'
+          MIN_VOLUME_USDT: '2000000'
+          PRIORITY_VOLUME_USDT: '5000000'
         run: |
-          git fetch origin market-data
-          git show FETCH_HEAD:market_data.json > market_data.json
-          git show FETCH_HEAD:early_warning.json > early_warning.json
+          set -euo pipefail
+          git fetch origin master:refs/remotes/origin/master market-data:refs/remotes/origin/market-data
+          git show origin/market-data:market_data.json > market_data.json
+          git show origin/market-data:early_warning.json > early_warning.json
+          if python sync_market_data.py --market-data market_data.json --require-current; then
+            echo "OK: candle fechado e ticker atualizados na branch market-data."
+          else
+            echo "::notice::Snapshot publicado atrasado. V2 fara coleta independente na OKX."
+            git show origin/master:collector.py > collector.py
+            git show origin/master:early_warning.py > early_warning.py
+            python collector.py
+            cp output/market_data.json market_data.json
+            if ! python early_warning.py; then
+              echo "::warning::Alerta auxiliar 5m indisponivel; dados 15m/1h/2h preservados."
+            fi
+            if [ -f output/early_warning.json ]; then
+              cp output/early_warning.json early_warning.json
+            else
+              printf '%s\n' '{"status":"UNAVAILABLE","warnings":[]}' > early_warning.json
+            fi
+            python sync_market_data.py --market-data market_data.json --require-current
+          fi
       - name: Testar com snapshot real e salvar ranking
         shell: bash
         run: |
@@ -49,6 +79,7 @@ jobs:
           assert d['analyzed_asset_count'] == d['source_asset_count'], 'Alguns ativos nao foram analisados'
           assert len(d['ranked_setups']) == d['source_asset_count'] * 2
           assert not d['order_allowed']
+          assert d['current_for_new_entries'], d['source_sync']
           assert len(d['ranked_setups']) == 2 * d['source_asset_count']
           assert all(len(plan['entry_methods']) == 2 for plan in d['ranked_setups'])
           assert not any(plan['order_allowed'] for side in d['ranked_setups']
@@ -88,6 +119,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Impede que um novo fechamento torne este relatorio obsoleto
+          # durante testes/replay.
+          python sync_market_data.py --market-data market_data.json --require-current
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- experimental_rank.json experimental_decisions.json experimental_entry_watch.json experimental_replay.json
