@@ -1,7 +1,7 @@
 {
   "status": "EXPERIMENTAL",
-  "source_collected_utc": "2026-11-08T01:13:59.310000+00:00",
-  "evaluated_at_utc": "2026-11-08T01:14:44.082970+00:00",
+  "source_collected_utc": "2026-11-08T01:14:57.423000+00:00",
+  "evaluated_at_utc": "2026-11-08T01:15:34.434239+00:00",
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
@@ -15,6 +15,54 @@
       "side": "LONG",
       "stage": "PREPARANDO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.15136,
+          "confirmation_close_price": 0.151405942857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.15136,
+          "confirmation_close_price": 0.151405942857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 0.15136,
       "close_15m": 0.15116,
       "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
@@ -75,6 +123,54 @@
       "side": "SHORT",
       "stage": "PRE_REJEICAO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.14979,
+          "confirmation_close_price": 0.149744057143,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.14979,
+          "confirmation_close_price": 0.149744057143,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 0.15136,
       "close_15m": 0.15116,
       "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
@@ -135,6 +231,54 @@
       "side": "LONG",
       "stage": "PREPARANDO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.32028,
+          "confirmation_close_price": 0.3203028,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.32028,
+          "confirmation_close_price": 0.3203028,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 0.32028,
       "close_15m": 0.32011,
       "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
@@ -191,6 +335,54 @@
       "side": "SHORT",
       "stage": "PRE_REJEICAO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.31963,
+          "confirmation_close_price": 0.3196072,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.31963,
+          "confirmation_close_price": 0.3196072,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.00001",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 0.32028,
       "close_15m": 0.32011,
       "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
@@ -251,6 +443,54 @@
       "side": "LONG",
       "stage": "ROMPIMENTO_FRACO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 47.29,
+          "confirmation_close_price": 47.3151142857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.01",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 47.29,
+          "confirmation_close_price": 47.3151142857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": "0.01",
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 47.29,
       "close_15m": 47.33,
       "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
@@ -308,5 +548,7 @@
     }
   ],
   "order_allowed": false,
+  "confirmed_entry_triggers": [],
+  "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
   "delivery": "Arquivo publicado em cada coleta; nao envia push por si so"
 }

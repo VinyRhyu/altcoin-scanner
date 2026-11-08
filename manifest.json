@@ -1,6 +1,6 @@
 {
   "status": "OK",
-  "collected_utc": "2026-11-08T01:13:59.310000+00:00",
+  "collected_utc": "2026-11-08T01:14:57.423000+00:00",
   "asset_count": 43,
   "market": "OKX USDT perpetual",
   "timeframes": [
@@ -17,6 +17,7 @@
   "auxiliary_5m_coverage": 43,
   "entry_watch_file": "entry_watch.json",
   "entry_watch_status": "EXPERIMENTAL",
+  "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
   "entry_watch_proximity_alert_count": 0,
   "trade_decisions_file": "trade_decisions.json"
 }
