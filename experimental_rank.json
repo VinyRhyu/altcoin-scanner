@@ -1,7 +1,7 @@
 {
   "status": "EXPERIMENTAL",
   "trade_signals_allowed": false,
-  "source_collected_utc": "2026-11-08T02:33:11.161000+00:00",
+  "source_collected_utc": "2026-11-08T02:58:30.927000+00:00",
   "source_asset_count": 43,
   "retained_asset_count": 43,
   "analyzed_asset_count": 43,
@@ -10,19 +10,7 @@
   "early_warning_integrated": true,
   "ranked_setups": [
     {
-      "symbol": "ARB-USDT-SWAP",
-      "side": "LONG",
-      "stage": "rompimento_em_observacao",
-      "score_experimental": 69.0,
-      "contexto_1h": "alta",
-      "contexto_2h": "alta",
-      "contra_tendencia": false,
-      "motivo": "15m acima de resistencia; corpo e volume favoraveis",
-      "trade_signal": false,
-      "close_15m": 0.16988
-    },
-    {
-      "symbol": "STRK-USDT-SWAP",
+      "symbol": "ENA-USDT-SWAP",
       "side": "SHORT",
       "stage": "rompimento_em_observacao",
       "score_experimental": 69.0,
@@ -31,25 +19,13 @@
       "contra_tendencia": false,
       "motivo": "15m abaixo do suporte; corpo e volume favoraveis",
       "trade_signal": false,
-      "close_15m": 0.03958
-    },
-    {
-      "symbol": "ENA-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "pre_rompimento",
-      "score_experimental": 47.56,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 0.1554
+      "close_15m": 0.15428
     },
     {
       "symbol": "ONDO-USDT-SWAP",
       "side": "SHORT",
       "stage": "pre_rompimento",
-      "score_experimental": 47.18,
+      "score_experimental": 48.04,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": false,
@@ -58,142 +34,166 @@
       "close_15m": 0.3596
     },
     {
-      "symbol": "TRX-USDT-SWAP",
-      "side": "LONG",
-      "stage": "pre_rompimento",
-      "score_experimental": 45.8,
-      "contexto_1h": "alta",
-      "contexto_2h": "alta",
-      "contra_tendencia": false,
-      "motivo": "15m proximo da resistencia",
-      "trade_signal": false,
-      "close_15m": 0.32057
-    },
-    {
-      "symbol": "HBAR-USDT-SWAP",
+      "symbol": "STRK-USDT-SWAP",
       "side": "SHORT",
       "stage": "pre_rompimento",
-      "score_experimental": 45.59,
+      "score_experimental": 47.28,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": false,
       "motivo": "15m proximo do suporte",
       "trade_signal": false,
-      "close_15m": 0.06666
+      "close_15m": 0.03952
     },
     {
-      "symbol": "TAO-USDT-SWAP",
+      "symbol": "ZEC-USDT-SWAP",
       "side": "SHORT",
       "stage": "pre_rompimento",
-      "score_experimental": 41.82,
-      "contexto_1h": "baixa",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 220.91
-    },
-    {
-      "symbol": "PYTH-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "pre_rompimento",
-      "score_experimental": 41.05,
-      "contexto_1h": "baixa",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 0.06333
-    },
-    {
-      "symbol": "AAVE-USDT-SWAP",
-      "side": "LONG",
-      "stage": "pre_rompimento",
-      "score_experimental": 39.66,
-      "contexto_1h": "mista",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "15m proximo da resistencia",
-      "trade_signal": false,
-      "close_15m": 131.56
-    },
-    {
-      "symbol": "AERO-USDT-SWAP",
-      "side": "LONG",
-      "stage": "pre_reacao",
-      "score_experimental": 38.05,
-      "contexto_1h": "alta",
-      "contexto_2h": "alta",
-      "contra_tendencia": false,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 0.6132
-    },
-    {
-      "symbol": "AAVE-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "pre_rejeicao",
-      "score_experimental": 33.66,
-      "contexto_1h": "mista",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "15m proximo da resistencia",
-      "trade_signal": false,
-      "close_15m": 131.56
-    },
-    {
-      "symbol": "AERO-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "pre_rompimento",
-      "score_experimental": 22.05,
-      "contexto_1h": "alta",
-      "contexto_2h": "alta",
-      "contra_tendencia": true,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 0.6132
-    },
-    {
-      "symbol": "TAO-USDT-SWAP",
-      "side": "LONG",
-      "stage": "pre_reacao",
-      "score_experimental": 21.82,
-      "contexto_1h": "baixa",
-      "contexto_2h": "mista",
-      "contra_tendencia": true,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 220.91
-    },
-    {
-      "symbol": "PYTH-USDT-SWAP",
-      "side": "LONG",
-      "stage": "pre_reacao",
-      "score_experimental": 21.05,
-      "contexto_1h": "baixa",
-      "contexto_2h": "mista",
-      "contra_tendencia": true,
-      "motivo": "15m proximo do suporte",
-      "trade_signal": false,
-      "close_15m": 0.06333
-    },
-    {
-      "symbol": "ENA-USDT-SWAP",
-      "side": "LONG",
-      "stage": "pre_reacao",
-      "score_experimental": 19.56,
+      "score_experimental": 45.73,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 1239.3
+    },
+    {
+      "symbol": "INJ-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 45.28,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 8.153
+    },
+    {
+      "symbol": "ETC-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 45.04,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 6.855
+    },
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 44.96,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 4.8e-06
+    },
+    {
+      "symbol": "ADA-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 44.9,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 0.1795
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 44.69,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 247.49
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 41.7,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 220.58
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 41.35,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 1.6149
+    },
+    {
+      "symbol": "STX-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "pre_rompimento",
+      "score_experimental": 40.41,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 0.3378
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 21.7,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
       "contra_tendencia": true,
       "motivo": "15m proximo do suporte",
       "trade_signal": false,
-      "close_15m": 0.1554
+      "close_15m": 220.58
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 21.35,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 1.6149
+    },
+    {
+      "symbol": "STX-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 20.41,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 0.3378
     },
     {
       "symbol": "ONDO-USDT-SWAP",
       "side": "LONG",
       "stage": "pre_reacao",
-      "score_experimental": 19.18,
+      "score_experimental": 20.04,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": true,
@@ -202,496 +202,508 @@
       "close_15m": 0.3596
     },
     {
-      "symbol": "UNI-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": 19.0,
-      "contexto_1h": "alta",
-      "contexto_2h": "alta",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 7.143
-    },
-    {
-      "symbol": "SHIB-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 19.0,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 4.48e-06
-    },
-    {
-      "symbol": "TRX-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "pre_rejeicao",
-      "score_experimental": 17.8,
-      "contexto_1h": "alta",
-      "contexto_2h": "alta",
-      "contra_tendencia": true,
-      "motivo": "15m proximo da resistencia",
-      "trade_signal": false,
-      "close_15m": 0.32057
-    },
-    {
-      "symbol": "HBAR-USDT-SWAP",
+      "symbol": "STRK-USDT-SWAP",
       "side": "LONG",
       "stage": "pre_reacao",
-      "score_experimental": 17.59,
+      "score_experimental": 19.28,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": true,
       "motivo": "15m proximo do suporte",
       "trade_signal": false,
-      "close_15m": 0.06666
+      "close_15m": 0.03952
     },
     {
-      "symbol": "XRP-USDT-SWAP",
-      "side": "SHORT",
+      "symbol": "ARB-USDT-SWAP",
+      "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": 16.55,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
+      "score_experimental": 19.0,
+      "contexto_1h": "alta",
+      "contexto_2h": "alta",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 1.1565
+      "close_15m": 0.16911
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 17.73,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 1239.3
+    },
+    {
+      "symbol": "INJ-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 17.28,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 8.153
+    },
+    {
+      "symbol": "ETC-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 17.04,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 6.855
+    },
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 16.96,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 4.8e-06
+    },
+    {
+      "symbol": "ADA-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 16.9,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 0.1795
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "LONG",
+      "stage": "pre_reacao",
+      "score_experimental": 16.69,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "15m proximo do suporte",
+      "trade_signal": false,
+      "close_15m": 247.49
     },
     {
       "symbol": "DOGE-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": 16.23,
+      "score_experimental": 16.46,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.07119
+      "close_15m": 0.07102
     },
     {
-      "symbol": "INJ-USDT-SWAP",
+      "symbol": "XRP-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": 16.02,
+      "score_experimental": 15.41,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 8.196
-    },
-    {
-      "symbol": "ZEC-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 14.62,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 1244.05
-    },
-    {
-      "symbol": "SOL-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 14.61,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 89.01
-    },
-    {
-      "symbol": "ICP-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 14.23,
-      "contexto_1h": "baixa",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 2.411
-    },
-    {
-      "symbol": "ADA-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 14.23,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.18
-    },
-    {
-      "symbol": "XLM-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 14.1,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.15048
-    },
-    {
-      "symbol": "WLD-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 14.03,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.3306
-    },
-    {
-      "symbol": "SUI-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.84,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.8507
-    },
-    {
-      "symbol": "LTC-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.73,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 51.95
-    },
-    {
-      "symbol": "ETC-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.71,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 6.851
-    },
-    {
-      "symbol": "SAND-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.67,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.04235
-    },
-    {
-      "symbol": "DOT-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.61,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.8916
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.45,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 4.82e-06
-    },
-    {
-      "symbol": "AVAX-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.44,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 8.178
-    },
-    {
-      "symbol": "PENGU-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.35,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.006349
-    },
-    {
-      "symbol": "APT-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 13.07,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.5978
-    },
-    {
-      "symbol": "FIL-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 12.9,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.7819
-    },
-    {
-      "symbol": "OP-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 12.84,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.10145
-    },
-    {
-      "symbol": "HYPE-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 12.79,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 77.511
-    },
-    {
-      "symbol": "BCH-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 12.67,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 248.05
-    },
-    {
-      "symbol": "LINK-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 12.43,
-      "contexto_1h": "baixa",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 10.773
+      "close_15m": 1.1548
     },
     {
       "symbol": "ETHFI-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": 12.12,
+      "score_experimental": 15.35,
       "contexto_1h": "alta",
       "contexto_2h": "alta",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.5934
+      "close_15m": 0.5906
     },
     {
-      "symbol": "NEAR-USDT-SWAP",
+      "symbol": "DOT-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": 11.97,
+      "score_experimental": 15.22,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 3.699
+      "close_15m": 0.8894
     },
     {
-      "symbol": "ZRO-USDT-SWAP",
+      "symbol": "AVAX-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": 9.37,
+      "score_experimental": 15.05,
       "contexto_1h": "baixa",
-      "contexto_2h": "mista",
+      "contexto_2h": "baixa",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 1.6216
+      "close_15m": 8.159
     },
     {
-      "symbol": "STX-USDT-SWAP",
+      "symbol": "SHIB-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": 8.94,
+      "score_experimental": 14.74,
       "contexto_1h": "baixa",
-      "contexto_2h": "mista",
+      "contexto_2h": "baixa",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.3391
+      "close_15m": 4.47e-06
     },
     {
-      "symbol": "CRV-USDT-SWAP",
+      "symbol": "WLD-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 14.4,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.3296
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": 6.3,
-      "contexto_1h": "mista",
+      "score_experimental": 14.3,
+      "contexto_1h": "alta",
       "contexto_2h": "alta",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.2652
+      "close_15m": 7.112
     },
     {
-      "symbol": "DASH-USDT-SWAP",
+      "symbol": "SOL-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 13.72,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 88.83
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 13.21,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.06665
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 13.19,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.15032
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 13.08,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.04225
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.99,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 3.686
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.91,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.8487
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.62,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 77.348
+    },
+    {
+      "symbol": "LTC-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.53,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 51.87
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.5,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.10109
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.5,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.5967
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.23,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.78
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 12.19,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.006329
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": 6.06,
-      "contexto_1h": "mista",
+      "score_experimental": 11.98,
+      "contexto_1h": "alta",
       "contexto_2h": "alta",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 46.97
+      "close_15m": 0.32043
     },
     {
-      "symbol": "BNB-USDT-SWAP",
+      "symbol": "AERO-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": 3.85,
-      "contexto_1h": "mista",
-      "contexto_2h": "mista",
+      "score_experimental": 11.83,
+      "contexto_1h": "alta",
+      "contexto_2h": "alta",
       "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 694.8
+      "close_15m": 0.6117
     },
     {
-      "symbol": "BNB-USDT-SWAP",
+      "symbol": "PYTH-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": 3.85,
-      "contexto_1h": "mista",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 694.8
-    },
-    {
-      "symbol": "TIA-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": 1.88,
-      "contexto_1h": "mista",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.437
-    },
-    {
-      "symbol": "TIA-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": 1.88,
-      "contexto_1h": "mista",
-      "contexto_2h": "mista",
-      "contra_tendencia": false,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.437
-    },
-    {
-      "symbol": "ICP-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": 0.23,
+      "score_experimental": 9.89,
       "contexto_1h": "baixa",
       "contexto_2h": "mista",
-      "contra_tendencia": true,
+      "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 2.411
+      "close_15m": 0.06311
     },
     {
       "symbol": "LINK-USDT-SWAP",
-      "side": "LONG",
+      "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": -1.57,
+      "score_experimental": 9.88,
       "contexto_1h": "baixa",
       "contexto_2h": "mista",
-      "contra_tendencia": true,
+      "contra_tendencia": false,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 10.773
+      "close_15m": 10.748
+    },
+    {
+      "symbol": "ICP-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 8.55,
+      "contexto_1h": "baixa",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 2.407
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": 5.17,
+      "contexto_1h": "mista",
+      "contexto_2h": "alta",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.2648
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": 4.81,
+      "contexto_1h": "mista",
+      "contexto_2h": "alta",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 46.88
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": 2.67,
+      "contexto_1h": "mista",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 131.25
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 2.67,
+      "contexto_1h": "mista",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 131.25
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": 2.22,
+      "contexto_1h": "mista",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 694.16
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 2.22,
+      "contexto_1h": "mista",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 694.16
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": 1.47,
+      "contexto_1h": "mista",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.4355
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": 1.47,
+      "contexto_1h": "mista",
+      "contexto_2h": "mista",
+      "contra_tendencia": false,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.4355
     },
     {
       "symbol": "CRV-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": -1.7,
+      "score_experimental": -2.83,
       "contexto_1h": "mista",
       "contexto_2h": "alta",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.2652
-    },
-    {
-      "symbol": "DASH-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "monitorando",
-      "score_experimental": -1.94,
-      "contexto_1h": "mista",
-      "contexto_2h": "alta",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 46.97
+      "close_15m": 0.2648
     },
     {
       "symbol": "ARB-USDT-SWAP",
@@ -703,343 +715,331 @@
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.16988
+      "close_15m": 0.16911
     },
     {
-      "symbol": "UNI-USDT-SWAP",
-      "side": "SHORT",
+      "symbol": "ENA-USDT-SWAP",
+      "side": "LONG",
       "stage": "monitorando",
       "score_experimental": -3.0,
-      "contexto_1h": "alta",
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.15428
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": -3.19,
+      "contexto_1h": "mista",
       "contexto_2h": "alta",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 7.143
+      "close_15m": 46.88
     },
     {
-      "symbol": "STRK-USDT-SWAP",
+      "symbol": "PYTH-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": -3.0,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.03958
-    },
-    {
-      "symbol": "SHIB-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -3.0,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 4.48e-06
-    },
-    {
-      "symbol": "ZRO-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -4.63,
+      "score_experimental": -4.11,
       "contexto_1h": "baixa",
       "contexto_2h": "mista",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 1.6216
+      "close_15m": 0.06311
     },
     {
-      "symbol": "STX-USDT-SWAP",
+      "symbol": "LINK-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": -5.06,
+      "score_experimental": -4.12,
       "contexto_1h": "baixa",
       "contexto_2h": "mista",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.3391
+      "close_15m": 10.748
     },
     {
-      "symbol": "XRP-USDT-SWAP",
+      "symbol": "ICP-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
       "score_experimental": -5.45,
       "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
+      "contexto_2h": "mista",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 1.1565
+      "close_15m": 2.407
     },
     {
       "symbol": "DOGE-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": -5.77,
+      "score_experimental": -5.54,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.07119
+      "close_15m": 0.07102
     },
     {
-      "symbol": "INJ-USDT-SWAP",
+      "symbol": "XRP-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": -5.98,
+      "score_experimental": -6.59,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 8.196
-    },
-    {
-      "symbol": "ZEC-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -7.38,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 1244.05
-    },
-    {
-      "symbol": "SOL-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -7.39,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 89.01
-    },
-    {
-      "symbol": "ADA-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -7.77,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.18
-    },
-    {
-      "symbol": "XLM-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -7.9,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.15048
-    },
-    {
-      "symbol": "WLD-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -7.97,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.3306
-    },
-    {
-      "symbol": "SUI-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.16,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.8507
-    },
-    {
-      "symbol": "LTC-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.27,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 51.95
-    },
-    {
-      "symbol": "ETC-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.29,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 6.851
-    },
-    {
-      "symbol": "SAND-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.33,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.04235
-    },
-    {
-      "symbol": "DOT-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.39,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.8916
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.55,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 4.82e-06
-    },
-    {
-      "symbol": "AVAX-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.56,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 8.178
-    },
-    {
-      "symbol": "PENGU-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.65,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.006349
-    },
-    {
-      "symbol": "APT-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -8.93,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.5978
-    },
-    {
-      "symbol": "FIL-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -9.1,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.7819
-    },
-    {
-      "symbol": "OP-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -9.16,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 0.10145
-    },
-    {
-      "symbol": "HYPE-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -9.21,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 77.511
-    },
-    {
-      "symbol": "BCH-USDT-SWAP",
-      "side": "LONG",
-      "stage": "monitorando",
-      "score_experimental": -9.33,
-      "contexto_1h": "baixa",
-      "contexto_2h": "baixa",
-      "contra_tendencia": true,
-      "motivo": "sem gatilho de proximidade",
-      "trade_signal": false,
-      "close_15m": 248.05
+      "close_15m": 1.1548
     },
     {
       "symbol": "ETHFI-USDT-SWAP",
       "side": "SHORT",
       "stage": "monitorando",
-      "score_experimental": -9.88,
+      "score_experimental": -6.65,
       "contexto_1h": "alta",
       "contexto_2h": "alta",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 0.5934
+      "close_15m": 0.5906
     },
     {
-      "symbol": "NEAR-USDT-SWAP",
+      "symbol": "DOT-USDT-SWAP",
       "side": "LONG",
       "stage": "monitorando",
-      "score_experimental": -10.03,
+      "score_experimental": -6.78,
       "contexto_1h": "baixa",
       "contexto_2h": "baixa",
       "contra_tendencia": true,
       "motivo": "sem gatilho de proximidade",
       "trade_signal": false,
-      "close_15m": 3.699
+      "close_15m": 0.8894
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -6.95,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 8.159
+    },
+    {
+      "symbol": "SHIB-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -7.26,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 4.47e-06
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -7.6,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.3296
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": -7.7,
+      "contexto_1h": "alta",
+      "contexto_2h": "alta",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 7.112
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -8.28,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 88.83
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -8.79,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.06665
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -8.81,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.15032
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -8.92,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.04225
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.01,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 3.686
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.09,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.8487
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.38,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 77.348
+    },
+    {
+      "symbol": "LTC-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.47,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 51.87
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.5,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.10109
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.5,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.5967
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.77,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.78
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "LONG",
+      "stage": "monitorando",
+      "score_experimental": -9.81,
+      "contexto_1h": "baixa",
+      "contexto_2h": "baixa",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.006329
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": -10.02,
+      "contexto_1h": "alta",
+      "contexto_2h": "alta",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.32043
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "monitorando",
+      "score_experimental": -10.17,
+      "contexto_1h": "alta",
+      "contexto_2h": "alta",
+      "contra_tendencia": true,
+      "motivo": "sem gatilho de proximidade",
+      "trade_signal": false,
+      "close_15m": 0.6117
     }
   ],
   "assets": [
@@ -1047,71 +1047,17 @@
       "symbol": "ARB-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.16988,
-        "open": 0.16782,
-        "atr_15m": 0.00083214,
+        "close": 0.16911,
+        "open": 0.16988,
+        "atr_15m": 0.00087357,
         "support_15m": 0.166,
-        "resistance_15m": 0.16923,
-        "dist_to_res_atr": -0.78111588,
-        "dist_to_sup_atr": 4.66266094,
-        "relative_volume_15m": 12.41574155,
+        "resistance_15m": 0.171,
+        "dist_to_res_atr": 2.1635323,
+        "dist_to_sup_atr": 3.56009812,
+        "relative_volume_15m": 4.3648588,
         "trend_2h": "alta",
         "trend_1h": "alta",
         "structure_1h": "mista"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "rompimento_em_observacao",
-          "score_experimental": 69.0,
-          "contexto_1h": "alta",
-          "contexto_2h": "alta",
-          "contra_tendencia": false,
-          "motivo": "15m acima de resistencia; corpo e volume favoraveis",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": -3.0,
-          "contexto_1h": "alta",
-          "contexto_2h": "alta",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": {
-        "symbol": "ARB-USDT-SWAP",
-        "risk_direction": "upside_risk",
-        "severity": "high",
-        "reason": "5m fechado acima da resistencia recente com volume elevado",
-        "reference_level": 0.16923,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 0.16988,
-        "change_last_5m_pct": -0.041,
-        "relative_quote_volume_5m": 11.557,
-        "support_tests_15m": 9,
-        "resistance_tests_15m": 4,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": true
-      }
-    },
-    {
-      "symbol": "UNI-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 7.143,
-        "open": 7.098,
-        "atr_15m": 0.03764286,
-        "support_15m": 7.039,
-        "resistance_15m": 7.24,
-        "dist_to_res_atr": 2.57685009,
-        "dist_to_sup_atr": 2.76280835,
-        "relative_volume_15m": 4.04365885,
-        "trend_2h": "alta",
-        "trend_1h": "alta",
-        "structure_1h": "alta"
       },
       "setups": [
         {
@@ -1138,17 +1084,17 @@
       "alerta_5m_original": null
     },
     {
-      "symbol": "ETHFI-USDT-SWAP",
+      "symbol": "UNI-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.5934,
-        "open": 0.5936,
-        "atr_15m": 0.00327143,
-        "support_15m": 0.5868,
-        "resistance_15m": 0.6034,
-        "dist_to_res_atr": 3.05676856,
-        "dist_to_sup_atr": 2.01746725,
-        "relative_volume_15m": 0.56115566,
+        "close": 7.112,
+        "open": 7.143,
+        "atr_15m": 0.0385,
+        "support_15m": 7.039,
+        "resistance_15m": 7.24,
+        "dist_to_res_atr": 3.32467532,
+        "dist_to_sup_atr": 1.8961039,
+        "relative_volume_15m": 1.65161503,
         "trend_2h": "alta",
         "trend_1h": "alta",
         "structure_1h": "alta"
@@ -1157,7 +1103,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": 12.12,
+          "score_experimental": 14.3,
           "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": false,
@@ -1167,10 +1113,104 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": -9.88,
+          "score_experimental": -7.7,
           "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "ETHFI-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 0.5906,
+        "open": 0.5934,
+        "atr_15m": 0.00349286,
+        "support_15m": 0.5868,
+        "resistance_15m": 0.6034,
+        "dist_to_res_atr": 3.66462168,
+        "dist_to_sup_atr": 1.08793456,
+        "relative_volume_15m": 2.17631091,
+        "trend_2h": "alta",
+        "trend_1h": "alta",
+        "structure_1h": "alta"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": 15.35,
+          "contexto_1h": "alta",
+          "contexto_2h": "alta",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": -6.65,
+          "contexto_1h": "alta",
+          "contexto_2h": "alta",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": {
+        "symbol": "ETHFI-USDT-SWAP",
+        "risk_direction": "downside_risk",
+        "severity": "watch",
+        "reason": "suporte testado repetidamente com enfraquecimento",
+        "reference_level": 0.5896,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 0.5913,
+        "change_last_5m_pct": 0.102,
+        "relative_quote_volume_5m": 1.63,
+        "support_tests_15m": 3,
+        "resistance_tests_15m": 3,
+        "trade_signal": false,
+        "suggest_manual_reanalysis": false
+      }
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 131.25,
+        "open": 131.56,
+        "atr_15m": 0.59,
+        "support_15m": 129.16,
+        "resistance_15m": 131.86,
+        "dist_to_res_atr": 1.03389831,
+        "dist_to_sup_atr": 3.54237288,
+        "relative_volume_15m": 1.33311732,
+        "trend_2h": "mista",
+        "trend_1h": "mista",
+        "structure_1h": "mista"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": 2.67,
+          "contexto_1h": "mista",
+          "contexto_2h": "mista",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 2.67,
+          "contexto_1h": "mista",
+          "contexto_2h": "mista",
+          "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         }
@@ -1181,14 +1221,14 @@
       "symbol": "TRX-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.32057,
-        "open": 0.32046,
-        "atr_15m": 0.00018429,
+        "close": 0.32043,
+        "open": 0.32057,
+        "atr_15m": 0.00017643,
         "support_15m": 0.31963,
         "resistance_15m": 0.32061,
-        "dist_to_res_atr": 0.21705426,
-        "dist_to_sup_atr": 5.10077519,
-        "relative_volume_15m": 1.40075283,
+        "dist_to_res_atr": 1.02024291,
+        "dist_to_sup_atr": 4.53441296,
+        "relative_volume_15m": 0.48917743,
         "trend_2h": "alta",
         "trend_1h": "alta",
         "structure_1h": "alta"
@@ -1196,130 +1236,62 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "pre_rompimento",
-          "score_experimental": 45.8,
+          "stage": "monitorando",
+          "score_experimental": 11.98,
           "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": false,
-          "motivo": "15m proximo da resistencia",
+          "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "pre_rejeicao",
-          "score_experimental": 17.8,
+          "stage": "monitorando",
+          "score_experimental": -10.02,
           "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": true,
-          "motivo": "15m proximo da resistencia",
+          "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": {
-        "symbol": "TRX-USDT-SWAP",
-        "risk_direction": "upside_risk",
-        "severity": "watch",
-        "reason": "resistencia testada repetidamente com pressao compradora",
-        "reference_level": 0.32061,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 0.32057,
-        "change_last_5m_pct": 0.056,
-        "relative_quote_volume_5m": 2.433,
-        "support_tests_15m": 12,
-        "resistance_tests_15m": 12,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
+      "alerta_5m_original": null
     },
     {
-      "symbol": "AAVE-USDT-SWAP",
+      "symbol": "CRV-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 131.56,
-        "open": 130.39,
-        "atr_15m": 0.59071429,
-        "support_15m": 129.1,
-        "resistance_15m": 131.79,
-        "dist_to_res_atr": 0.38935913,
-        "dist_to_sup_atr": 4.16444982,
-        "relative_volume_15m": 3.830689,
-        "trend_2h": "mista",
+        "close": 0.2648,
+        "open": 0.2652,
+        "atr_15m": 0.00087857,
+        "support_15m": 0.2634,
+        "resistance_15m": 0.2682,
+        "dist_to_res_atr": 3.8699187,
+        "dist_to_sup_atr": 1.59349593,
+        "relative_volume_15m": 0.58401321,
+        "trend_2h": "alta",
         "trend_1h": "mista",
         "structure_1h": "mista"
       },
       "setups": [
         {
           "side": "LONG",
-          "stage": "pre_rompimento",
-          "score_experimental": 39.66,
+          "stage": "monitorando",
+          "score_experimental": 5.17,
           "contexto_1h": "mista",
-          "contexto_2h": "mista",
-          "contra_tendencia": false,
-          "motivo": "15m proximo da resistencia",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "pre_rejeicao",
-          "score_experimental": 33.66,
-          "contexto_1h": "mista",
-          "contexto_2h": "mista",
-          "contra_tendencia": false,
-          "motivo": "15m proximo da resistencia",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": {
-        "symbol": "AAVE-USDT-SWAP",
-        "risk_direction": "upside_risk",
-        "severity": "watch",
-        "reason": "resistencia testada repetidamente com pressao compradora",
-        "reference_level": 131.79,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 131.56,
-        "change_last_5m_pct": 0.137,
-        "relative_quote_volume_5m": 5.878,
-        "support_tests_15m": 6,
-        "resistance_tests_15m": 7,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
-    },
-    {
-      "symbol": "AERO-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.6132,
-        "open": 0.6145,
-        "atr_15m": 0.00309286,
-        "support_15m": 0.612,
-        "resistance_15m": 0.6345,
-        "dist_to_res_atr": 6.88683603,
-        "dist_to_sup_atr": 0.38799076,
-        "relative_volume_15m": 0.52428092,
-        "trend_2h": "alta",
-        "trend_1h": "alta",
-        "structure_1h": "mista"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "pre_reacao",
-          "score_experimental": 38.05,
-          "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": false,
-          "motivo": "15m proximo do suporte",
+          "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "pre_rompimento",
-          "score_experimental": 22.05,
-          "contexto_1h": "alta",
+          "stage": "monitorando",
+          "score_experimental": -2.83,
+          "contexto_1h": "mista",
           "contexto_2h": "alta",
           "contra_tendencia": true,
-          "motivo": "15m proximo do suporte",
+          "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         }
       ],
@@ -1329,14 +1301,14 @@
       "symbol": "ZEC-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 1244.05,
-        "open": 1241.79,
-        "atr_15m": 6.19214286,
-        "support_15m": 1237.66,
+        "close": 1239.3,
+        "open": 1244.05,
+        "atr_15m": 6.21071429,
+        "support_15m": 1238.08,
         "resistance_15m": 1263.54,
-        "dist_to_res_atr": 3.1475372,
-        "dist_to_sup_atr": 1.03195294,
-        "relative_volume_15m": 1.80814228,
+        "dist_to_res_atr": 3.90293272,
+        "dist_to_sup_atr": 0.19643473,
+        "relative_volume_15m": 1.36396846,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -1344,48 +1316,8 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -7.38,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 14.62,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "ENA-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.1554,
-        "open": 0.15551,
-        "atr_15m": 0.000755,
-        "support_15m": 0.15505,
-        "resistance_15m": 0.1591,
-        "dist_to_res_atr": 4.90066225,
-        "dist_to_sup_atr": 0.46357616,
-        "relative_volume_15m": 2.28179963,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "mista"
-      },
-      "setups": [
-        {
-          "side": "LONG",
           "stage": "pre_reacao",
-          "score_experimental": 19.56,
+          "score_experimental": 17.73,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -1395,7 +1327,7 @@
         {
           "side": "SHORT",
           "stage": "pre_rompimento",
-          "score_experimental": 47.56,
+          "score_experimental": 45.73,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -1403,77 +1335,23 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": {
-        "symbol": "ENA-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "watch",
-        "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 0.15505,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 0.1554,
-        "change_last_5m_pct": -0.238,
-        "relative_quote_volume_5m": 2.076,
-        "support_tests_15m": 2,
-        "resistance_tests_15m": 3,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
-    },
-    {
-      "symbol": "BCH-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 248.05,
-        "open": 247.82,
-        "atr_15m": 0.92857143,
-        "support_15m": 246.64,
-        "resistance_15m": 249.8,
-        "dist_to_res_atr": 1.88461538,
-        "dist_to_sup_atr": 1.51846154,
-        "relative_volume_15m": 0.83403259,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -9.33,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 12.67,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
       "alerta_5m_original": null
     },
     {
-      "symbol": "STRK-USDT-SWAP",
+      "symbol": "ENA-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.03958,
-        "open": 0.03965,
-        "atr_15m": 0.00015929,
-        "support_15m": 0.0396,
-        "resistance_15m": 0.04032,
-        "dist_to_res_atr": 4.64573991,
-        "dist_to_sup_atr": -0.12556054,
-        "relative_volume_15m": 5.59401509,
+        "close": 0.15428,
+        "open": 0.1554,
+        "atr_15m": 0.00081286,
+        "support_15m": 0.15504,
+        "resistance_15m": 0.1591,
+        "dist_to_res_atr": 5.92970123,
+        "dist_to_sup_atr": -0.93497364,
+        "relative_volume_15m": 5.16697787,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
-        "structure_1h": "baixa"
+        "structure_1h": "mista"
       },
       "setups": [
         {
@@ -1497,34 +1375,20 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": {
-        "symbol": "STRK-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "high",
-        "reason": "5m fechado abaixo do suporte recente com volume elevado",
-        "reference_level": 0.0396,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 0.03958,
-        "change_last_5m_pct": -0.101,
-        "relative_quote_volume_5m": 2.944,
-        "support_tests_15m": 2,
-        "resistance_tests_15m": 4,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": true
-      }
+      "alerta_5m_original": null
     },
     {
-      "symbol": "FIL-USDT-SWAP",
+      "symbol": "BCH-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.7819,
-        "open": 0.781,
-        "atr_15m": 0.00252857,
-        "support_15m": 0.7727,
-        "resistance_15m": 0.7887,
-        "dist_to_res_atr": 2.68926554,
-        "dist_to_sup_atr": 3.63841808,
-        "relative_volume_15m": 0.95243854,
+        "close": 247.49,
+        "open": 248.05,
+        "atr_15m": 0.92785714,
+        "support_15m": 246.64,
+        "resistance_15m": 249.8,
+        "dist_to_res_atr": 2.48960739,
+        "dist_to_sup_atr": 0.9160893,
+        "relative_volume_15m": 0.84470507,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -1532,39 +1396,39 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -9.1,
+          "stage": "pre_reacao",
+          "score_experimental": 16.69,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 12.9,
+          "stage": "pre_rompimento",
+          "score_experimental": 44.69,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         }
       ],
       "alerta_5m_original": null
     },
     {
-      "symbol": "WLD-USDT-SWAP",
+      "symbol": "STRK-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.3306,
-        "open": 0.3303,
-        "atr_15m": 0.00125,
-        "support_15m": 0.3282,
-        "resistance_15m": 0.3353,
-        "dist_to_res_atr": 3.76,
-        "dist_to_sup_atr": 1.92,
-        "relative_volume_15m": 1.51449694,
+        "close": 0.03952,
+        "open": 0.03958,
+        "atr_15m": 0.00014857,
+        "support_15m": 0.03951,
+        "resistance_15m": 0.04032,
+        "dist_to_res_atr": 5.38461538,
+        "dist_to_sup_atr": 0.06730769,
+        "relative_volume_15m": 2.139989,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -1572,22 +1436,22 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -7.97,
+          "stage": "pre_reacao",
+          "score_experimental": 19.28,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 14.03,
+          "stage": "pre_rompimento",
+          "score_experimental": 47.28,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         }
       ],
@@ -1597,55 +1461,15 @@
       "symbol": "PEPE-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 4.82e-06,
+        "close": 4.8e-06,
         "open": 4.82e-06,
         "atr_15m": 2e-08,
         "support_15m": 4.8e-06,
         "resistance_15m": 4.87e-06,
-        "dist_to_res_atr": 2.70460922,
-        "dist_to_sup_atr": 1.06613226,
-        "relative_volume_15m": 1.2274338,
+        "dist_to_res_atr": 3.63848397,
+        "dist_to_sup_atr": 0.27988338,
+        "relative_volume_15m": 0.98123344,
         "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -8.55,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 13.45,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "PYTH-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.06333,
-        "open": 0.06339,
-        "atr_15m": 0.00024143,
-        "support_15m": 0.06314,
-        "resistance_15m": 0.0643,
-        "dist_to_res_atr": 4.01775148,
-        "dist_to_sup_atr": 0.78698225,
-        "relative_volume_15m": 1.02717191,
-        "trend_2h": "mista",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
       },
@@ -1653,9 +1477,9 @@
         {
           "side": "LONG",
           "stage": "pre_reacao",
-          "score_experimental": 21.05,
+          "score_experimental": 16.96,
           "contexto_1h": "baixa",
-          "contexto_2h": "mista",
+          "contexto_2h": "baixa",
           "contra_tendencia": true,
           "motivo": "15m proximo do suporte",
           "trade_signal": false
@@ -1663,136 +1487,42 @@
         {
           "side": "SHORT",
           "stage": "pre_rompimento",
-          "score_experimental": 41.05,
+          "score_experimental": 44.96,
           "contexto_1h": "baixa",
-          "contexto_2h": "mista",
+          "contexto_2h": "baixa",
           "contra_tendencia": false,
           "motivo": "15m proximo do suporte",
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "SHIB-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 4.48e-06,
-        "open": 4.47e-06,
-        "atr_15m": 1e-08,
-        "support_15m": 4.44e-06,
-        "resistance_15m": 4.5e-06,
-        "dist_to_res_atr": 2.03636364,
-        "dist_to_sup_atr": 5.09090909,
-        "relative_volume_15m": 4.74984489,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -3.0,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 19.0,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
       "alerta_5m_original": {
-        "symbol": "SHIB-USDT-SWAP",
+        "symbol": "PEPE-USDT-SWAP",
         "risk_direction": "downside_risk",
         "severity": "watch",
         "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 4.465e-06,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 4.479e-06,
-        "change_last_5m_pct": -0.134,
-        "relative_quote_volume_5m": 9.037,
-        "support_tests_15m": 11,
-        "resistance_tests_15m": 9,
+        "reference_level": 4.8102e-06,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 4.7927e-06,
+        "change_last_5m_pct": 0.094,
+        "relative_quote_volume_5m": 1.238,
+        "support_tests_15m": 9,
+        "resistance_tests_15m": 3,
         "trade_signal": false,
         "suggest_manual_reanalysis": false
       }
     },
     {
-      "symbol": "ICP-USDT-SWAP",
+      "symbol": "FIL-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 2.411,
-        "open": 2.409,
-        "atr_15m": 0.00671429,
-        "support_15m": 2.4,
-        "resistance_15m": 2.431,
-        "dist_to_res_atr": 2.9787234,
-        "dist_to_sup_atr": 1.63829787,
-        "relative_volume_15m": 3.6152833,
-        "trend_2h": "mista",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": 0.23,
-          "contexto_1h": "baixa",
-          "contexto_2h": "mista",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 14.23,
-          "contexto_1h": "baixa",
-          "contexto_2h": "mista",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": {
-        "symbol": "ICP-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "watch",
-        "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 2.408,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 2.411,
-        "change_last_5m_pct": -0.207,
-        "relative_quote_volume_5m": 4.151,
-        "support_tests_15m": 5,
-        "resistance_tests_15m": 9,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
-    },
-    {
-      "symbol": "XRP-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 1.1565,
-        "open": 1.1567,
+        "close": 0.78,
+        "open": 0.782,
         "atr_15m": 0.00243571,
-        "support_15m": 1.1486,
-        "resistance_15m": 1.165,
-        "dist_to_res_atr": 3.48973607,
-        "dist_to_sup_atr": 3.24340176,
-        "relative_volume_15m": 2.77688966,
+        "support_15m": 0.7727,
+        "resistance_15m": 0.7887,
+        "dist_to_res_atr": 3.57184751,
+        "dist_to_sup_atr": 2.99706745,
+        "relative_volume_15m": 0.61524365,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -1801,7 +1531,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -5.45,
+          "score_experimental": -9.77,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -1811,7 +1541,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 16.55,
+          "score_experimental": 12.23,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -1820,73 +1550,33 @@
         }
       ],
       "alerta_5m_original": {
-        "symbol": "XRP-USDT-SWAP",
+        "symbol": "FIL-USDT-SWAP",
         "risk_direction": "downside_risk",
         "severity": "watch",
         "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 1.1565,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 1.1565,
-        "change_last_5m_pct": -0.147,
-        "relative_quote_volume_5m": 2.425,
-        "support_tests_15m": 10,
-        "resistance_tests_15m": 10,
+        "reference_level": 0.7796,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 0.7796,
+        "change_last_5m_pct": 0.167,
+        "relative_quote_volume_5m": 1.223,
+        "support_tests_15m": 6,
+        "resistance_tests_15m": 4,
         "trade_signal": false,
         "suggest_manual_reanalysis": false
       }
     },
     {
-      "symbol": "LINK-USDT-SWAP",
+      "symbol": "WLD-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 10.773,
-        "open": 10.759,
-        "atr_15m": 0.02585714,
-        "support_15m": 10.709,
-        "resistance_15m": 10.838,
-        "dist_to_res_atr": 2.51381215,
-        "dist_to_sup_atr": 2.47513812,
-        "relative_volume_15m": 2.71583659,
-        "trend_2h": "mista",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -1.57,
-          "contexto_1h": "baixa",
-          "contexto_2h": "mista",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 12.43,
-          "contexto_1h": "baixa",
-          "contexto_2h": "mista",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "DOGE-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.07119,
-        "open": 0.07121,
-        "atr_15m": 0.00014214,
-        "support_15m": 0.0708,
-        "resistance_15m": 0.07162,
-        "dist_to_res_atr": 3.02512563,
-        "dist_to_sup_atr": 2.74371859,
-        "relative_volume_15m": 2.61417734,
+        "close": 0.3296,
+        "open": 0.3306,
+        "atr_15m": 0.00124286,
+        "support_15m": 0.3282,
+        "resistance_15m": 0.3353,
+        "dist_to_res_atr": 4.5862069,
+        "dist_to_sup_atr": 1.12643678,
+        "relative_volume_15m": 1.70000345,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -1895,7 +1585,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -5.77,
+          "score_experimental": -7.6,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -1905,7 +1595,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 16.23,
+          "score_experimental": 14.4,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -1919,14 +1609,14 @@
       "symbol": "INJ-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 8.196,
-        "open": 8.151,
-        "atr_15m": 0.039,
+        "close": 8.153,
+        "open": 8.197,
+        "atr_15m": 0.03914286,
         "support_15m": 8.119,
         "resistance_15m": 8.286,
-        "dist_to_res_atr": 2.30769231,
-        "dist_to_sup_atr": 1.97435897,
-        "relative_volume_15m": 2.50843786,
+        "dist_to_res_atr": 3.39781022,
+        "dist_to_sup_atr": 0.86861314,
+        "relative_volume_15m": 1.13778901,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "mista"
@@ -1934,39 +1624,39 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -5.98,
+          "stage": "pre_reacao",
+          "score_experimental": 17.28,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 16.02,
+          "stage": "pre_rompimento",
+          "score_experimental": 45.28,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         }
       ],
       "alerta_5m_original": null
     },
     {
-      "symbol": "SOL-USDT-SWAP",
+      "symbol": "DOGE-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 89.01,
-        "open": 88.96,
-        "atr_15m": 0.18714286,
-        "support_15m": 88.62,
-        "resistance_15m": 89.8,
-        "dist_to_res_atr": 4.22137405,
-        "dist_to_sup_atr": 2.08396947,
-        "relative_volume_15m": 1.80604357,
+        "close": 0.07102,
+        "open": 0.0712,
+        "atr_15m": 0.00014429,
+        "support_15m": 0.0708,
+        "resistance_15m": 0.07162,
+        "dist_to_res_atr": 4.15841584,
+        "dist_to_sup_atr": 1.52475248,
+        "relative_volume_15m": 2.73190786,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -1975,7 +1665,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -7.39,
+          "score_experimental": -5.54,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -1985,7 +1675,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 14.61,
+          "score_experimental": 16.46,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -1993,20 +1683,74 @@
           "trade_signal": false
         }
       ],
+      "alerta_5m_original": {
+        "symbol": "DOGE-USDT-SWAP",
+        "risk_direction": "downside_risk",
+        "severity": "watch",
+        "reason": "suporte testado repetidamente com enfraquecimento",
+        "reference_level": 0.07099,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 0.07096,
+        "change_last_5m_pct": 0.085,
+        "relative_quote_volume_5m": 1.902,
+        "support_tests_15m": 4,
+        "resistance_tests_15m": 9,
+        "trade_signal": false,
+        "suggest_manual_reanalysis": false
+      }
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 0.3596,
+        "open": 0.3596,
+        "atr_15m": 0.00107143,
+        "support_15m": 0.359,
+        "resistance_15m": 0.3643,
+        "dist_to_res_atr": 4.38666667,
+        "dist_to_sup_atr": 0.56,
+        "relative_volume_15m": 2.52064976,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "pre_reacao",
+          "score_experimental": 20.04,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "15m proximo do suporte",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "pre_rompimento",
+          "score_experimental": 48.04,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "15m proximo do suporte",
+          "trade_signal": false
+        }
+      ],
       "alerta_5m_original": null
     },
     {
-      "symbol": "HYPE-USDT-SWAP",
+      "symbol": "XRP-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 77.511,
-        "open": 77.441,
-        "atr_15m": 0.18871429,
-        "support_15m": 76.811,
-        "resistance_15m": 77.856,
-        "dist_to_res_atr": 1.82816048,
-        "dist_to_sup_atr": 3.70931113,
-        "relative_volume_15m": 0.89396919,
+        "close": 1.1548,
+        "open": 1.1565,
+        "atr_15m": 0.0024,
+        "support_15m": 1.1486,
+        "resistance_15m": 1.165,
+        "dist_to_res_atr": 4.25,
+        "dist_to_sup_atr": 2.58333333,
+        "relative_volume_15m": 2.20309914,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2015,7 +1759,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -9.21,
+          "score_experimental": -6.59,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2025,7 +1769,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 12.79,
+          "score_experimental": 15.41,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2036,57 +1780,17 @@
       "alerta_5m_original": null
     },
     {
-      "symbol": "NEAR-USDT-SWAP",
+      "symbol": "DOT-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 3.699,
-        "open": 3.69,
-        "atr_15m": 0.0205,
-        "support_15m": 3.616,
-        "resistance_15m": 3.741,
-        "dist_to_res_atr": 2.04878049,
-        "dist_to_sup_atr": 4.04878049,
-        "relative_volume_15m": 0.48695933,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "mista"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -10.03,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 11.97,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "SUI-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.8507,
-        "open": 0.85,
-        "atr_15m": 0.00202857,
-        "support_15m": 0.8463,
-        "resistance_15m": 0.8571,
-        "dist_to_res_atr": 3.15492958,
-        "dist_to_sup_atr": 2.16901408,
-        "relative_volume_15m": 1.41995415,
+        "close": 0.8894,
+        "open": 0.8916,
+        "atr_15m": 0.00236429,
+        "support_15m": 0.8784,
+        "resistance_15m": 0.8981,
+        "dist_to_res_atr": 3.67975831,
+        "dist_to_sup_atr": 4.65256798,
+        "relative_volume_15m": 2.10782048,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2095,7 +1799,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -8.16,
+          "score_experimental": -6.78,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2105,7 +1809,47 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 13.84,
+          "score_experimental": 15.22,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 8.159,
+        "open": 8.178,
+        "atr_15m": 0.0185,
+        "support_15m": 8.133,
+        "resistance_15m": 8.233,
+        "dist_to_res_atr": 4.0,
+        "dist_to_sup_atr": 1.40540541,
+        "relative_volume_15m": 2.02472397,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -6.95,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 15.05,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2119,14 +1863,54 @@
       "symbol": "ADA-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.18,
-        "open": 0.1797,
-        "atr_15m": 0.00046429,
+        "close": 0.1795,
+        "open": 0.18,
+        "atr_15m": 0.00048571,
         "support_15m": 0.1791,
         "resistance_15m": 0.1818,
-        "dist_to_res_atr": 3.87692308,
-        "dist_to_sup_atr": 1.93846154,
-        "relative_volume_15m": 1.61299371,
+        "dist_to_res_atr": 4.73529412,
+        "dist_to_sup_atr": 0.82352941,
+        "relative_volume_15m": 0.9499362,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "pre_reacao",
+          "score_experimental": 16.9,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "15m proximo do suporte",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "pre_rompimento",
+          "score_experimental": 44.9,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "15m proximo do suporte",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 88.83,
+        "open": 89.01,
+        "atr_15m": 0.18785714,
+        "support_15m": 88.62,
+        "resistance_15m": 89.8,
+        "dist_to_res_atr": 5.1634981,
+        "dist_to_sup_atr": 1.11787072,
+        "relative_volume_15m": 1.36195549,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2135,7 +1919,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -7.77,
+          "score_experimental": -8.28,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2145,9 +1929,169 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 14.23,
+          "score_experimental": 13.72,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 77.348,
+        "open": 77.512,
+        "atr_15m": 0.19,
+        "support_15m": 76.811,
+        "resistance_15m": 77.856,
+        "dist_to_res_atr": 2.67368421,
+        "dist_to_sup_atr": 2.82631579,
+        "relative_volume_15m": 0.8116591,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -9.38,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 12.62,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 3.686,
+        "open": 3.7,
+        "atr_15m": 0.01978571,
+        "support_15m": 3.616,
+        "resistance_15m": 3.741,
+        "dist_to_res_atr": 2.77978339,
+        "dist_to_sup_atr": 3.53790614,
+        "relative_volume_15m": 0.99721099,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "mista"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -9.01,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 12.99,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 0.8487,
+        "open": 0.8507,
+        "atr_15m": 0.00202143,
+        "support_15m": 0.8463,
+        "resistance_15m": 0.8571,
+        "dist_to_res_atr": 4.15547703,
+        "dist_to_sup_atr": 1.18727915,
+        "relative_volume_15m": 0.95276801,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -9.09,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 12.91,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "LINK-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 10.748,
+        "open": 10.773,
+        "atr_15m": 0.0245,
+        "support_15m": 10.709,
+        "resistance_15m": 10.838,
+        "dist_to_res_atr": 3.67346939,
+        "dist_to_sup_atr": 1.59183673,
+        "relative_volume_15m": 1.43824559,
+        "trend_2h": "mista",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -4.12,
+          "contexto_1h": "baixa",
+          "contexto_2h": "mista",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 9.88,
+          "contexto_1h": "baixa",
+          "contexto_2h": "mista",
           "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
@@ -2159,14 +2103,14 @@
       "symbol": "BNB-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 694.8,
-        "open": 694.37,
-        "atr_15m": 0.61357143,
+        "close": 694.16,
+        "open": 694.79,
+        "atr_15m": 0.62071429,
         "support_15m": 693.42,
         "resistance_15m": 696.46,
-        "dist_to_res_atr": 2.70547148,
-        "dist_to_sup_atr": 2.24912689,
-        "relative_volume_15m": 1.92352811,
+        "dist_to_res_atr": 3.70540852,
+        "dist_to_sup_atr": 1.19217491,
+        "relative_volume_15m": 1.10814363,
         "trend_2h": "mista",
         "trend_1h": "mista",
         "structure_1h": "alta"
@@ -2175,7 +2119,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": 3.85,
+          "score_experimental": 2.22,
           "contexto_1h": "mista",
           "contexto_2h": "mista",
           "contra_tendencia": false,
@@ -2185,7 +2129,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 3.85,
+          "score_experimental": 2.22,
           "contexto_1h": "mista",
           "contexto_2h": "mista",
           "contra_tendencia": false,
@@ -2199,14 +2143,14 @@
       "symbol": "LTC-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 51.95,
-        "open": 51.94,
-        "atr_15m": 0.11285714,
+        "close": 51.87,
+        "open": 51.96,
+        "atr_15m": 0.11,
         "support_15m": 51.57,
         "resistance_15m": 52.22,
-        "dist_to_res_atr": 2.39240506,
-        "dist_to_sup_atr": 3.36708861,
-        "relative_volume_15m": 1.36579652,
+        "dist_to_res_atr": 3.18181818,
+        "dist_to_sup_atr": 2.72727273,
+        "relative_volume_15m": 0.76565798,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2215,7 +2159,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -8.27,
+          "score_experimental": -9.47,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2225,7 +2169,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 13.73,
+          "score_experimental": 12.53,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2234,113 +2178,19 @@
         }
       ],
       "alerta_5m_original": null
-    },
-    {
-      "symbol": "ONDO-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.3596,
-        "open": 0.3599,
-        "atr_15m": 0.00105,
-        "support_15m": 0.3593,
-        "resistance_15m": 0.3643,
-        "dist_to_res_atr": 4.47619048,
-        "dist_to_sup_atr": 0.28571429,
-        "relative_volume_15m": 2.08918671,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "pre_reacao",
-          "score_experimental": 19.18,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "15m proximo do suporte",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "pre_rompimento",
-          "score_experimental": 47.18,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "15m proximo do suporte",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "AVAX-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 8.178,
-        "open": 8.178,
-        "atr_15m": 0.01807143,
-        "support_15m": 8.127,
-        "resistance_15m": 8.233,
-        "dist_to_res_atr": 3.04347826,
-        "dist_to_sup_atr": 2.82213439,
-        "relative_volume_15m": 1.22029943,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -8.56,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 13.44,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": {
-        "symbol": "AVAX-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "watch",
-        "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 8.174,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 8.178,
-        "change_last_5m_pct": -0.086,
-        "relative_quote_volume_5m": 2.409,
-        "support_tests_15m": 9,
-        "resistance_tests_15m": 10,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
     },
     {
       "symbol": "TAO-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 220.91,
-        "open": 221.0,
-        "atr_15m": 0.56928571,
-        "support_15m": 220.86,
+        "close": 220.58,
+        "open": 220.92,
+        "atr_15m": 0.55142857,
+        "support_15m": 220.47,
         "resistance_15m": 223.49,
-        "dist_to_res_atr": 4.53199498,
-        "dist_to_sup_atr": 0.08782936,
-        "relative_volume_15m": 1.41180187,
+        "dist_to_res_atr": 5.27720207,
+        "dist_to_sup_atr": 0.19948187,
+        "relative_volume_15m": 1.35070033,
         "trend_2h": "mista",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2349,7 +2199,7 @@
         {
           "side": "LONG",
           "stage": "pre_reacao",
-          "score_experimental": 21.82,
+          "score_experimental": 21.7,
           "contexto_1h": "baixa",
           "contexto_2h": "mista",
           "contra_tendencia": true,
@@ -2359,7 +2209,7 @@
         {
           "side": "SHORT",
           "stage": "pre_rompimento",
-          "score_experimental": 41.82,
+          "score_experimental": 41.7,
           "contexto_1h": "baixa",
           "contexto_2h": "mista",
           "contra_tendencia": false,
@@ -2367,34 +2217,20 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": {
-        "symbol": "TAO-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "watch",
-        "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 220.89,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 220.91,
-        "change_last_5m_pct": -0.009,
-        "relative_quote_volume_5m": 2.094,
-        "support_tests_15m": 4,
-        "resistance_tests_15m": 5,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
+      "alerta_5m_original": null
     },
     {
       "symbol": "PENGU-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.006349,
-        "open": 0.006352,
-        "atr_15m": 1.764e-05,
+        "close": 0.006329,
+        "open": 0.006349,
+        "atr_15m": 1.75e-05,
         "support_15m": 0.006294,
         "resistance_15m": 0.006413,
-        "dist_to_res_atr": 3.62753036,
-        "dist_to_sup_atr": 3.11740891,
-        "relative_volume_15m": 1.17374405,
+        "dist_to_res_atr": 4.8,
+        "dist_to_sup_atr": 2.0,
+        "relative_volume_15m": 0.59440413,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2403,7 +2239,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -8.65,
+          "score_experimental": -9.81,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2413,7 +2249,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 13.35,
+          "score_experimental": 12.19,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2421,34 +2257,20 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": {
-        "symbol": "PENGU-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "watch",
-        "reason": "suporte testado repetidamente com enfraquecimento",
-        "reference_level": 0.006338,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 0.006349,
-        "change_last_5m_pct": -0.126,
-        "relative_quote_volume_5m": 3.415,
-        "support_tests_15m": 5,
-        "resistance_tests_15m": 5,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": false
-      }
+      "alerta_5m_original": null
     },
     {
       "symbol": "STX-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.3391,
-        "open": 0.3388,
-        "atr_15m": 0.00135,
-        "support_15m": 0.3375,
+        "close": 0.3378,
+        "open": 0.3392,
+        "atr_15m": 0.0014,
+        "support_15m": 0.3378,
         "resistance_15m": 0.3464,
-        "dist_to_res_atr": 5.40740741,
-        "dist_to_sup_atr": 1.18518519,
-        "relative_volume_15m": 0.97142309,
+        "dist_to_res_atr": 6.14285714,
+        "dist_to_sup_atr": 0.0,
+        "relative_volume_15m": 0.70440311,
         "trend_2h": "mista",
         "trend_1h": "baixa",
         "structure_1h": "mista"
@@ -2456,22 +2278,22 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -5.06,
+          "stage": "pre_reacao",
+          "score_experimental": 20.41,
           "contexto_1h": "baixa",
           "contexto_2h": "mista",
           "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 8.94,
+          "stage": "pre_rompimento",
+          "score_experimental": 40.41,
           "contexto_1h": "baixa",
           "contexto_2h": "mista",
           "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         }
       ],
@@ -2481,14 +2303,14 @@
       "symbol": "TIA-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.437,
-        "open": 0.4365,
-        "atr_15m": 0.0019,
+        "close": 0.4355,
+        "open": 0.437,
+        "atr_15m": 0.0018,
         "support_15m": 0.4323,
         "resistance_15m": 0.4434,
-        "dist_to_res_atr": 3.36842105,
-        "dist_to_sup_atr": 2.47368421,
-        "relative_volume_15m": 0.94115988,
+        "dist_to_res_atr": 4.38888889,
+        "dist_to_sup_atr": 1.77777778,
+        "relative_volume_15m": 0.73416023,
         "trend_2h": "mista",
         "trend_1h": "mista",
         "structure_1h": "baixa"
@@ -2497,7 +2319,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": 1.88,
+          "score_experimental": 1.47,
           "contexto_1h": "mista",
           "contexto_2h": "mista",
           "contra_tendencia": false,
@@ -2507,7 +2329,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 1.88,
+          "score_experimental": 1.47,
           "contexto_1h": "mista",
           "contexto_2h": "mista",
           "contra_tendencia": false,
@@ -2515,20 +2337,34 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": null
+      "alerta_5m_original": {
+        "symbol": "TIA-USDT-SWAP",
+        "risk_direction": "downside_risk",
+        "severity": "watch",
+        "reason": "suporte testado repetidamente com enfraquecimento",
+        "reference_level": 0.4353,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 0.4354,
+        "change_last_5m_pct": 0.046,
+        "relative_quote_volume_5m": 1.357,
+        "support_tests_15m": 6,
+        "resistance_tests_15m": 3,
+        "trade_signal": false,
+        "suggest_manual_reanalysis": false
+      }
     },
     {
       "symbol": "DASH-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 46.97,
-        "open": 46.88,
-        "atr_15m": 0.24071429,
+        "close": 46.88,
+        "open": 46.99,
+        "atr_15m": 0.23714286,
         "support_15m": 45.66,
         "resistance_15m": 47.53,
-        "dist_to_res_atr": 2.3264095,
-        "dist_to_sup_atr": 5.4421365,
-        "relative_volume_15m": 1.03225455,
+        "dist_to_res_atr": 2.74096386,
+        "dist_to_sup_atr": 5.14457831,
+        "relative_volume_15m": 0.405138,
         "trend_2h": "alta",
         "trend_1h": "mista",
         "structure_1h": "mista"
@@ -2537,7 +2373,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": 6.06,
+          "score_experimental": 4.81,
           "contexto_1h": "mista",
           "contexto_2h": "alta",
           "contra_tendencia": false,
@@ -2547,50 +2383,10 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": -1.94,
+          "score_experimental": -3.19,
           "contexto_1h": "mista",
           "contexto_2h": "alta",
           "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "DOT-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.8916,
-        "open": 0.8916,
-        "atr_15m": 0.00240714,
-        "support_15m": 0.8784,
-        "resistance_15m": 0.8981,
-        "dist_to_res_atr": 2.70029674,
-        "dist_to_sup_atr": 5.48367953,
-        "relative_volume_15m": 1.30444783,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -8.39,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 13.61,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         }
@@ -2601,14 +2397,14 @@
       "symbol": "XLM-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.15048,
-        "open": 0.15061,
-        "atr_15m": 0.00034071,
+        "close": 0.15032,
+        "open": 0.15049,
+        "atr_15m": 0.00033643,
         "support_15m": 0.14979,
         "resistance_15m": 0.15136,
-        "dist_to_res_atr": 2.58280922,
-        "dist_to_sup_atr": 2.02515723,
-        "relative_volume_15m": 1.54812163,
+        "dist_to_res_atr": 3.09129512,
+        "dist_to_sup_atr": 1.57537155,
+        "relative_volume_15m": 1.0925821,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "mista"
@@ -2617,7 +2413,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -7.9,
+          "score_experimental": -8.81,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2627,7 +2423,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 14.1,
+          "score_experimental": 13.19,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2635,34 +2431,20 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": {
-        "symbol": "XLM-USDT-SWAP",
-        "risk_direction": "downside_risk",
-        "severity": "high",
-        "reason": "5m fechado abaixo do suporte recente com volume elevado",
-        "reference_level": 0.15057,
-        "last_closed_5m_open_ms": 1794104700000,
-        "last_closed_5m_close": 0.15048,
-        "change_last_5m_pct": -0.133,
-        "relative_quote_volume_5m": 1.84,
-        "support_tests_15m": 12,
-        "resistance_tests_15m": 12,
-        "trade_signal": false,
-        "suggest_manual_reanalysis": true
-      }
+      "alerta_5m_original": null
     },
     {
       "symbol": "OP-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.10145,
-        "open": 0.10119,
-        "atr_15m": 0.00032429,
+        "close": 0.10109,
+        "open": 0.10145,
+        "atr_15m": 0.000335,
         "support_15m": 0.10035,
         "resistance_15m": 0.10234,
-        "dist_to_res_atr": 2.74449339,
-        "dist_to_sup_atr": 3.39207048,
-        "relative_volume_15m": 0.91906607,
+        "dist_to_res_atr": 3.73134328,
+        "dist_to_sup_atr": 2.20895522,
+        "relative_volume_15m": 0.7487996,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2671,7 +2453,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -9.16,
+          "score_experimental": -9.5,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2681,7 +2463,7 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 12.84,
+          "score_experimental": 12.5,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2689,20 +2471,34 @@
           "trade_signal": false
         }
       ],
-      "alerta_5m_original": null
+      "alerta_5m_original": {
+        "symbol": "OP-USDT-SWAP",
+        "risk_direction": "downside_risk",
+        "severity": "watch",
+        "reason": "suporte testado repetidamente com enfraquecimento",
+        "reference_level": 0.10101,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 0.10106,
+        "change_last_5m_pct": 0.03,
+        "relative_quote_volume_5m": 2.267,
+        "support_tests_15m": 5,
+        "resistance_tests_15m": 4,
+        "trade_signal": false,
+        "suggest_manual_reanalysis": false
+      }
     },
     {
       "symbol": "ZRO-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 1.6216,
-        "open": 1.6206,
-        "atr_15m": 0.00764286,
+        "close": 1.6149,
+        "open": 1.6216,
+        "atr_15m": 0.00767143,
         "support_15m": 1.6108,
         "resistance_15m": 1.6494,
-        "dist_to_res_atr": 3.63738318,
-        "dist_to_sup_atr": 1.41308411,
-        "relative_volume_15m": 1.18736583,
+        "dist_to_res_atr": 4.4972067,
+        "dist_to_sup_atr": 0.53445065,
+        "relative_volume_15m": 1.17472828,
         "trend_2h": "mista",
         "trend_1h": "baixa",
         "structure_1h": "mista"
@@ -2710,49 +2506,49 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -4.63,
+          "stage": "pre_reacao",
+          "score_experimental": 21.35,
           "contexto_1h": "baixa",
           "contexto_2h": "mista",
           "contra_tendencia": true,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         },
         {
           "side": "SHORT",
-          "stage": "monitorando",
-          "score_experimental": 9.37,
+          "stage": "pre_rompimento",
+          "score_experimental": 41.35,
           "contexto_1h": "baixa",
           "contexto_2h": "mista",
           "contra_tendencia": false,
-          "motivo": "sem gatilho de proximidade",
+          "motivo": "15m proximo do suporte",
           "trade_signal": false
         }
       ],
       "alerta_5m_original": null
     },
     {
-      "symbol": "CRV-USDT-SWAP",
+      "symbol": "AERO-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.2652,
-        "open": 0.2651,
-        "atr_15m": 0.0009,
-        "support_15m": 0.2634,
-        "resistance_15m": 0.2682,
-        "dist_to_res_atr": 3.33333333,
-        "dist_to_sup_atr": 2.0,
-        "relative_volume_15m": 1.14852171,
+        "close": 0.6117,
+        "open": 0.6132,
+        "atr_15m": 0.00281429,
+        "support_15m": 0.612,
+        "resistance_15m": 0.6345,
+        "dist_to_res_atr": 8.10152284,
+        "dist_to_sup_atr": -0.10659898,
+        "relative_volume_15m": 0.41257762,
         "trend_2h": "alta",
-        "trend_1h": "mista",
+        "trend_1h": "alta",
         "structure_1h": "mista"
       },
       "setups": [
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": 6.3,
-          "contexto_1h": "mista",
+          "score_experimental": 11.83,
+          "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
@@ -2761,10 +2557,64 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": -1.7,
-          "contexto_1h": "mista",
+          "score_experimental": -10.17,
+          "contexto_1h": "alta",
           "contexto_2h": "alta",
           "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": {
+        "symbol": "AERO-USDT-SWAP",
+        "risk_direction": "downside_risk",
+        "severity": "watch",
+        "reason": "suporte testado repetidamente com enfraquecimento",
+        "reference_level": 0.6125,
+        "last_closed_5m_open_ms": 1794106200000,
+        "last_closed_5m_close": 0.6123,
+        "change_last_5m_pct": 0.049,
+        "relative_quote_volume_5m": 1.388,
+        "support_tests_15m": 2,
+        "resistance_tests_15m": 3,
+        "trade_signal": false,
+        "suggest_manual_reanalysis": false
+      }
+    },
+    {
+      "symbol": "SHIB-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 4.47e-06,
+        "open": 4.48e-06,
+        "atr_15m": 1e-08,
+        "support_15m": 4.44e-06,
+        "resistance_15m": 4.5e-06,
+        "dist_to_res_atr": 2.95412844,
+        "dist_to_sup_atr": 4.23853211,
+        "relative_volume_15m": 1.86997312,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -7.26,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 14.74,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
         }
@@ -2775,14 +2625,14 @@
       "symbol": "APT-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.5978,
-        "open": 0.5964,
-        "atr_15m": 0.00206429,
+        "close": 0.5967,
+        "open": 0.5977,
+        "atr_15m": 0.00190714,
         "support_15m": 0.5899,
         "resistance_15m": 0.6028,
-        "dist_to_res_atr": 2.42214533,
-        "dist_to_sup_atr": 3.82698962,
-        "relative_volume_15m": 1.03306039,
+        "dist_to_res_atr": 3.19850187,
+        "dist_to_sup_atr": 3.56554307,
+        "relative_volume_15m": 0.75039854,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2791,7 +2641,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -8.93,
+          "score_experimental": -9.5,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2801,9 +2651,49 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 13.07,
+          "score_experimental": 12.5,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "PYTH-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 0.06311,
+        "open": 0.06333,
+        "atr_15m": 0.00024214,
+        "support_15m": 0.06314,
+        "resistance_15m": 0.0643,
+        "dist_to_res_atr": 4.91445428,
+        "dist_to_sup_atr": -0.12389381,
+        "relative_volume_15m": 1.44362708,
+        "trend_2h": "mista",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -4.11,
+          "contexto_1h": "baixa",
+          "contexto_2h": "mista",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 9.89,
+          "contexto_1h": "baixa",
+          "contexto_2h": "mista",
           "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
@@ -2815,54 +2705,14 @@
       "symbol": "HBAR-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 0.06666,
-        "open": 0.06666,
-        "atr_15m": 0.00013429,
-        "support_15m": 0.06653,
+        "close": 0.06665,
+        "open": 0.06667,
+        "atr_15m": 0.000135,
+        "support_15m": 0.06649,
         "resistance_15m": 0.06716,
-        "dist_to_res_atr": 3.72340426,
-        "dist_to_sup_atr": 0.96808511,
-        "relative_volume_15m": 1.29613514,
-        "trend_2h": "baixa",
-        "trend_1h": "baixa",
-        "structure_1h": "baixa"
-      },
-      "setups": [
-        {
-          "side": "LONG",
-          "stage": "pre_reacao",
-          "score_experimental": 17.59,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": true,
-          "motivo": "15m proximo do suporte",
-          "trade_signal": false
-        },
-        {
-          "side": "SHORT",
-          "stage": "pre_rompimento",
-          "score_experimental": 45.59,
-          "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
-          "contra_tendencia": false,
-          "motivo": "15m proximo do suporte",
-          "trade_signal": false
-        }
-      ],
-      "alerta_5m_original": null
-    },
-    {
-      "symbol": "SAND-USDT-SWAP",
-      "status": "analisado",
-      "features": {
-        "close": 0.04235,
-        "open": 0.04235,
-        "atr_15m": 0.00013286,
-        "support_15m": 0.04191,
-        "resistance_15m": 0.04264,
-        "dist_to_res_atr": 2.1827957,
-        "dist_to_sup_atr": 3.31182796,
-        "relative_volume_15m": 1.33291291,
+        "dist_to_res_atr": 3.77777778,
+        "dist_to_sup_atr": 1.18518519,
+        "relative_volume_15m": 1.10260338,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2871,7 +2721,7 @@
         {
           "side": "LONG",
           "stage": "monitorando",
-          "score_experimental": -8.33,
+          "score_experimental": -8.79,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": true,
@@ -2881,7 +2731,47 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 13.67,
+          "score_experimental": 13.21,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 0.04225,
+        "open": 0.04235,
+        "atr_15m": 0.00013071,
+        "support_15m": 0.04191,
+        "resistance_15m": 0.04264,
+        "dist_to_res_atr": 2.98360656,
+        "dist_to_sup_atr": 2.6010929,
+        "relative_volume_15m": 1.04078393,
+        "trend_2h": "baixa",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -8.92,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "sem gatilho de proximidade",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "monitorando",
+          "score_experimental": 13.08,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
           "contra_tendencia": false,
@@ -2895,14 +2785,14 @@
       "symbol": "ETC-USDT-SWAP",
       "status": "analisado",
       "features": {
-        "close": 6.851,
-        "open": 6.854,
-        "atr_15m": 0.0125,
-        "support_15m": 6.853,
+        "close": 6.855,
+        "open": 6.851,
+        "atr_15m": 0.01228571,
+        "support_15m": 6.844,
         "resistance_15m": 6.911,
-        "dist_to_res_atr": 4.8,
-        "dist_to_sup_atr": -0.16,
-        "relative_volume_15m": 1.35387433,
+        "dist_to_res_atr": 4.55813953,
+        "dist_to_sup_atr": 0.89534884,
+        "relative_volume_15m": 1.02053366,
         "trend_2h": "baixa",
         "trend_1h": "baixa",
         "structure_1h": "baixa"
@@ -2910,10 +2800,50 @@
       "setups": [
         {
           "side": "LONG",
-          "stage": "monitorando",
-          "score_experimental": -8.29,
+          "stage": "pre_reacao",
+          "score_experimental": 17.04,
           "contexto_1h": "baixa",
           "contexto_2h": "baixa",
+          "contra_tendencia": true,
+          "motivo": "15m proximo do suporte",
+          "trade_signal": false
+        },
+        {
+          "side": "SHORT",
+          "stage": "pre_rompimento",
+          "score_experimental": 45.04,
+          "contexto_1h": "baixa",
+          "contexto_2h": "baixa",
+          "contra_tendencia": false,
+          "motivo": "15m proximo do suporte",
+          "trade_signal": false
+        }
+      ],
+      "alerta_5m_original": null
+    },
+    {
+      "symbol": "ICP-USDT-SWAP",
+      "status": "analisado",
+      "features": {
+        "close": 2.407,
+        "open": 2.411,
+        "atr_15m": 0.00628571,
+        "support_15m": 2.4,
+        "resistance_15m": 2.431,
+        "dist_to_res_atr": 3.81818182,
+        "dist_to_sup_atr": 1.11363636,
+        "relative_volume_15m": 0.77255068,
+        "trend_2h": "mista",
+        "trend_1h": "baixa",
+        "structure_1h": "baixa"
+      },
+      "setups": [
+        {
+          "side": "LONG",
+          "stage": "monitorando",
+          "score_experimental": -5.45,
+          "contexto_1h": "baixa",
+          "contexto_2h": "mista",
           "contra_tendencia": true,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
@@ -2921,9 +2851,9 @@
         {
           "side": "SHORT",
           "stage": "monitorando",
-          "score_experimental": 13.71,
+          "score_experimental": 8.55,
           "contexto_1h": "baixa",
-          "contexto_2h": "baixa",
+          "contexto_2h": "mista",
           "contra_tendencia": false,
           "motivo": "sem gatilho de proximidade",
           "trade_signal": false
