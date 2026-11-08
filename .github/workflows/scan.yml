@@ -9,6 +9,8 @@ on:
       - 'publish_views.py'
       - 'experimental_scan.py'
       - 'trade_decision.py'
+      - 'entry_trigger.py'
+      - 'tests/test_entry_trigger.py'
       - 'tests/test_experimental_scan.py'
       - 'tests/test_trade_decision.py'
       - '.github/workflows/scan.yml'
@@ -164,6 +166,7 @@ jobs:
           watch=json.loads(Path('output/entry_watch.json').read_text(encoding='utf-8'))
           manifest['entry_watch_file']='entry_watch.json'
           manifest['entry_watch_status']=watch['status']
+          manifest['entry_trigger_engine']='breakout_or_retest_independent_next_15m_tick_size'
           manifest['entry_watch_proximity_alert_count']=watch['proximity_alert_count']
           if Path('output/trade_decisions.json').is_file():
               manifest['trade_decisions_file']='trade_decisions.json'
