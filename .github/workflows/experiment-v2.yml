@@ -8,6 +8,7 @@ on:
       - 'experimental_scan.py'
       - 'trade_decision.py'
       - 'entry_trigger.py'
+      - 'replay_entry_triggers.py'
       - 'tests/test_entry_trigger.py'
       - 'tests/test_trade_decision.py'
       - 'tests/test_experimental_scan.py'
@@ -68,6 +69,19 @@ jobs:
           assert not watch['order_allowed']
           print('TESTE DE DECISAO:', d['source_asset_count'], 'ativos e', len(d['ranked_setups']), 'direcoes')
           PY
+      - name: Replay sem lookahead com historico 15m/1h/2h
+        run: |
+          python replay_entry_triggers.py --market-data market_data.json --output experimental_replay.json
+          python - <<'PY'
+          import json
+          d=json.load(open('experimental_replay.json'))
+          assert d['not_a_profitability_backtest']
+          assert d['no_lookahead']
+          assert d['asset_count'] >= 15
+          assert d['samples_checked'] > 0
+          assert d['confirmed'] == d['conditional'] + d['blocked']
+          print('REPLAY OK:', d['samples_checked'], d['confirmed'])
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: scanner-v2-experimental
@@ -75,6 +89,7 @@ jobs:
             experimental_rank.json
             experimental_decisions.json
             experimental_entry_watch.json
+            experimental_replay.json
           retention-days: 7
 
       - name: Publicar resultado apenas na branch experimental
@@ -83,7 +98,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- experimental_rank.json experimental_decisions.json experimental_entry_watch.json
+          git add -- experimental_rank.json experimental_decisions.json experimental_entry_watch.json experimental_replay.json
           if git diff --cached --quiet; then
             echo 'Resultado experimental inalterado'
             exit 0
