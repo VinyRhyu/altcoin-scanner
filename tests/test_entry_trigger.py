@@ -123,6 +123,25 @@ class EntryTriggersTests(unittest.TestCase):
             self.assertIsNone(plan["entry_trigger_price"])
             self.assertNotEqual(plan["decision"], "GATILHO_CONDICIONAL")
 
+    def test_watchlist_shows_exact_trigger_even_if_risk_blocks_entry(self):
+        from trade_decision import analyze
+        d = source()
+        h, price = prepare_breakout()
+        d["candles"]["AAA-USDT-SWAP"] = h
+        d["universe"][0].update(ticker(price))
+        now = fresh_after_close(h)
+        d["collected_utc"] = now.isoformat()
+        out = analyze(d, now_utc=now)
+        row = next(p for p in out["ranked_setups"] if p["side"] == "LONG")
+        confirmed = next(p for p in row["entry_methods"]
+                         if p["method"] == "BREAKOUT")
+        self.assertEqual(confirmed["status"], "CONFIRMADO")
+        self.assertEqual(row["watch"]["entry_trigger_price"], 1.0521)
+        self.assertEqual(row["watch"]["entry_trigger_method"], "BREAKOUT")
+        self.assertEqual(row["watch"]["entry_zone_if_confirmed"],
+                         [1.0521, 1.0521])
+        self.assertFalse(out["order_allowed"])
+
     def test_sample_source_outputs_both_directions_and_methods(self):
         from trade_decision import analyze
         d = source()
