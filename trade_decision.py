@@ -68,8 +68,26 @@ def setup(history, info, side):
     if confirmed_break:
         return "AGUARDAR_RETESTE", level, ratio
     dist = (level-close)/atr if positive else (close-level)/atr
+    # Estrategia distinta: reacao no suporte / rejeicao na resistencia.
+    opposite_level = (min(float(c[3]) for c in base) if positive
+                      else max(float(c[2]) for c in base))
+    dist_opposite = (close-opposite_level)/atr if positive else (
+        opposite_level-close)/atr
+    touched = (float(current[3]) <= opposite_level+.25*atr if positive else
+               float(current[2]) >= opposite_level-.25*atr)
+    recovered = (close >= opposite_level+.06*atr if positive else
+                 close <= opposite_level-.06*atr)
+    reaction = (touched and recovered and candle_quality(current, side)
+                and ratio >= 1.2 and -.10 <= dist_opposite <= .65)
+    if reaction:
+        return ("REACAO_CONFIRMADA" if positive else "REJEICAO_CONFIRMADA"), opposite_level, ratio
     if -.10 <= dist <= 1:
         return "PREPARANDO", level, ratio
+    if -.10 <= dist_opposite <= 1:
+        return ("PRE_REACAO" if positive else "PRE_REJEICAO"), opposite_level, ratio
+    # Nao confundir preco alem do nivel com rompimento validado.
+    if (close > level if positive else close < level):
+        return "ROMPIMENTO_FRACO", level, ratio
     return "MONITORANDO", level, ratio
 
 
@@ -129,9 +147,12 @@ def evaluate(symbol, history, ticker, side, info, stale):
             why.append("obstaculo estrutural antes de TP1 projetado")
     if spread > MAX_SPREAD_PCT:
         why.append("spread elevado")
-    if stage == "RETESTE_CONFIRMADO":
+    if stage in ("RETESTE_CONFIRMADO", "REACAO_CONFIRMADA", "REJEICAO_CONFIRMADA"):
+        aligned = "alta" if side == "LONG" else "baixa"
         if info["trend_1h"] == opposite:
             why.append("contra tendencia 1h; estrutura de reversao insuficiente")
+        if stage != "RETESTE_CONFIRMADO" and info["trend_1h"] != aligned:
+            why.append("reacao sem tendencia de 1h alinhada")
         if info["trend_2h"] == opposite:
             why.append("contra tendencia 2h; exige confirmacao adicional")
         if trade and not trade["entry_zone"][0] <= close <= trade["entry_zone"][1]:
@@ -145,8 +166,10 @@ def evaluate(symbol, history, ticker, side, info, stale):
             decision = "NAO_ENTRAR"
         else:
             why.append("rompimento sem reteste fechado")
-    elif stage == "PREPARANDO":
+    elif stage in ("PREPARANDO", "PRE_REACAO", "PRE_REJEICAO"):
         why.append("proximidade da regiao nao e confirmacao")
+    elif stage == "ROMPIMENTO_FRACO":
+        why.append("preco passou do nivel, mas candle/volume nao confirmaram")
     else:
         why.append("sem gatilho operacional")
     return {
@@ -187,8 +210,10 @@ def analyze(market, now_utc=None):
                            "error": str(exc), "plans": []})
     ranked.sort(key=lambda s: (
         {"ENTRADA_CONDICIONAL": 0, "AGUARDAR": 1, "NAO_ENTRAR": 2}[s["decision"]],
-        {"RETESTE_CONFIRMADO": 0, "AGUARDAR_RETESTE": 1,
-         "PREPARANDO": 2, "MONITORANDO": 3}[s["stage"]],
+        {"RETESTE_CONFIRMADO": 0, "REACAO_CONFIRMADA": 0,
+         "REJEICAO_CONFIRMADA": 0, "AGUARDAR_RETESTE": 1,
+         "PREPARANDO": 2, "PRE_REACAO": 2, "PRE_REJEICAO": 2,
+         "ROMPIMENTO_FRACO": 3, "MONITORANDO": 4}[s["stage"]],
         -s["relative_volume_15m"]))
     return {
         "schema": 1, "status": "EXPERIMENTAL", "order_allowed": False,
