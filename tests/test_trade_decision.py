@@ -1,0 +1,73 @@
+import unittest
+from datetime import datetime, timezone, timedelta
+from trade_decision import analyze, candle_quality, levels, setup
+from tests.test_experimental_scan import source
+
+
+class TradeDecisionTests(unittest.TestCase):
+    def test_both_sides_retained_even_when_no_setup(self):
+        data = source(("AAA-USDT-SWAP", "BBB-USDT-SWAP"))
+        out = analyze(data, now_utc=datetime(2026,11,8,tzinfo=timezone.utc))
+        self.assertEqual(out["source_asset_count"], 2)
+        self.assertEqual(out["retained_asset_count"], 2)
+        self.assertEqual(len(out["ranked_setups"]), 4)
+        self.assertEqual({p["side"] for p in out["ranked_setups"]}, {"LONG", "SHORT"})
+        self.assertFalse(out["order_allowed"])
+
+    def test_missing_history_keeps_asset_without_false_entry(self):
+        data = source(("AAA-USDT-SWAP", "BBB-USDT-SWAP"))
+        del data["candles"]["BBB-USDT-SWAP"]
+        out = analyze(data, now_utc=datetime(2026,11,8,tzinfo=timezone.utc))
+        self.assertEqual(out["retained_asset_count"], 2)
+        self.assertEqual(out["analyzed_asset_count"], 1)
+        self.assertEqual(out["assets"][1]["status"], "DADOS_INSUFICIENTES")
+
+    def test_bearish_candle_above_resistance_not_bullish_confirmation(self):
+        self.assertFalse(candle_quality([1, 1.15, 1.17, 1.08, 1.10, 0, 200], "LONG"))
+
+    def test_breakout_waits_for_retest_and_does_not_enter(self):
+        data = source()
+        c = data["candles"]["AAA-USDT-SWAP"]["15m"]
+        c[-1][1:7] = [1.038, 1.060, 1.037, 1.056, 100, 800]
+        out = analyze(data, now_utc=datetime(2026,11,8,tzinfo=timezone.utc))
+        p = next(x for x in out["ranked_setups"] if x["side"] == "LONG")
+        self.assertEqual(p["stage"], "AGUARDAR_RETESTE")
+        self.assertNotEqual(p["decision"], "ENTRADA_CONDICIONAL")
+
+    def test_retest_detected_with_closed_candles(self):
+        data = source()
+        c = data["candles"]["AAA-USDT-SWAP"]["15m"]
+        c[-2][1:7] = [1.038, 1.052, 1.037, 1.050, 100, 800]
+        c[-1][1:7] = [1.043, 1.052, 1.038, 1.044, 100, 120]
+        from experimental_scan import features
+        info = features(data["candles"]["AAA-USDT-SWAP"])
+        stage, level, volume = setup(data["candles"]["AAA-USDT-SWAP"], info, "LONG")
+        self.assertEqual(stage, "RETESTE_CONFIRMADO")
+        self.assertGreater(level, 0)
+        self.assertGreater(volume, .65)
+
+    def test_stale_data_blocks_confirmed_entry(self):
+        data = source()
+        now = datetime(2026,11,8,tzinfo=timezone.utc) + timedelta(days=2)
+        out = analyze(data, now_utc=now)
+        self.assertTrue(out["snapshot_stale"])
+        self.assertTrue(all(p["decision"] != "ENTRADA_CONDICIONAL"
+                            for p in out["ranked_setups"]))
+
+    def test_micro_prices_preserve_significant_digits(self):
+        data = source()
+        from experimental_scan import features
+        hist = data["candles"]["AAA-USDT-SWAP"]
+        for tf in hist:
+            for r in hist[tf]:
+                for j in (1,2,3,4):
+                    r[j] *= .0000048
+        f = features(hist)
+        p = levels(hist, f, "LONG", f["resistance_15m"], .02)
+        self.assertGreater(p["rr_worst_entry"], 0)
+        self.assertGreater(p["stop"], 0)
+        self.assertGreater(p["tp1_2_2R_projection"], 0)
+        self.assertGreater(p["tp1_2_2R_projection"], p["rr_worst_entry"])
+
+if __name__ == "__main__":
+    unittest.main()
