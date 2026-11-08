@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   test-experimental-scanner:
@@ -47,3 +47,17 @@ jobs:
           name: scanner-v2-experimental
           path: experimental_rank.json
           retention-days: 7
+
+      - name: Publicar resultado apenas na branch experimental
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- experimental_rank.json
+          if git diff --cached --quiet; then
+            echo 'Resultado experimental inalterado'
+            exit 0
+          fi
+          git commit -m "test: salvar diagnostico experimental da coleta"
+          git push origin HEAD:refs/heads/experiment/non-exclusion-v2
