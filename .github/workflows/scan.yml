@@ -175,6 +175,8 @@ jobs:
           manifest['entry_watch_source_sync_status']=watch.get('source_sync_status','UNAVAILABLE')
           manifest['entry_watch_source_candle_utc']=watch.get('source_sync',{}).get('source_last_closed_15m_utc')
           manifest['entry_watch_can_offer_current_entries']=watch.get('current_for_new_entries',False)
+          manifest['entry_watch_valid_until_utc']=watch.get('analysis_valid_until_utc')
+          manifest['entry_watch_entry_event_count']=watch.get('entry_event_count',0)
           manifest['entry_watch_proximity_alert_count']=watch['proximity_alert_count']
           if Path('output/trade_decisions.json').is_file():
               manifest['trade_decisions_file']='trade_decisions.json'
