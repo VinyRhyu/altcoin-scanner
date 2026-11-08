@@ -79,6 +79,13 @@ jobs:
           assert d['analyzed_asset_count'] == d['source_asset_count'], 'Alguns ativos nao foram analisados'
           assert len(d['ranked_setups']) == d['source_asset_count'] * 2
           assert not d['order_allowed']
+          assert d['source_sync_status'] == 'CANDLE_ATUAL'
+          assert d['current_for_new_entries']
+          assert all(p['decision'] != 'ENTRADA_CONDICIONAL'
+                     or (p['entry_trigger_price'] is not None
+                         and p['entry_state'] == 'GATILHO_DISPONIVEL')
+                     for p in d['ranked_setups'])
+          assert all(not e['order_allowed'] for e in d['entry_events'])
           assert d['current_for_new_entries'], d['source_sync']
           assert len(d['ranked_setups']) == 2 * d['source_asset_count']
           assert all(len(plan['entry_methods']) == 2 for plan in d['ranked_setups'])
@@ -89,6 +96,8 @@ jobs:
           watch = json.load(open('experimental_entry_watch.json'))
           assert watch['retained_asset_count'] == d['retained_asset_count']
           assert watch['proximity_alert_count'] == len(watch['proximity_alerts'])
+          assert len(watch['entry_events']) == watch['entry_event_count']
+          assert watch['analysis_valid_until_utc'] == d['analysis_valid_until_utc']
           assert not watch['order_allowed']
           print('TESTE DE DECISAO:', d['source_asset_count'], 'ativos e', len(d['ranked_setups']), 'direcoes')
           PY
