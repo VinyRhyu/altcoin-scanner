@@ -173,6 +173,10 @@ def analyze_method(history, info, ticker, side, method, now_utc, stale):
         "trigger_expires_utc": expiry_time,
         "tick_size": str(tick) if tick is not None else None,
         "entry_trigger_price": None, "stop_loss": None,
+        "entry_state": "AGUARDANDO_CONFIRMACAO",
+        "ticker_price_at_snapshot": numeric(price_now),
+        "trigger_crossed_in_snapshot": False,
+        "entry_eligible_at_snapshot": False,
         "tp1_projected": None, "tp2_projected": None,
         "estimated_net_rr_tp1": None,
         "requires_live_price_check": True,
@@ -193,6 +197,7 @@ def analyze_method(history, info, ticker, side, method, now_utc, stale):
         return result
     if tick is None:
         result["decision"] = "NAO_ENTRAR"
+        result["entry_state"] = "REPROVADO_DADOS"
         result["reasons"].append("tickSz oficial OKX ausente ou invalido")
         return result
     try:
@@ -216,6 +221,8 @@ def analyze_method(history, info, ticker, side, method, now_utc, stale):
         result["distance_to_entry_atr"] = numeric(
             (entry-close)/atr if long else (close-entry)/atr)
         reasons = result["reasons"]
+        crossed = price_now >= entry if long else price_now <= entry
+        result["trigger_crossed_in_snapshot"] = crossed
         if stale or expired:
             reasons.append("snapshot/candle expirado: recalcular com coleta atual")
         if spread > MAX_SPREAD_PCT:
@@ -230,21 +237,39 @@ def analyze_method(history, info, ticker, side, method, now_utc, stale):
             reasons.append("R:R liquido inferior a 1.6 na entrada exata")
         if result["pivot_obstacle_before_tp1"] is not None:
             reasons.append("pivot estrutural entre entrada e TP1")
-        if (price_now >= entry if long else price_now <= entry):
+        if crossed:
             reasons.append("cotacao da coleta ja atravessou o preco de gatilho")
+        invalidated = price_now <= stop if long else price_now >= stop
+        if invalidated:
+            reasons.append("cotacao da coleta cruzou nivel de invalidacao/stop")
         opposite = "baixa" if long else "alta"
         if info["trend_1h"] == opposite and info["structure_1h"] != (
                 "alta" if long else "baixa"):
             reasons.append("1h em tendencia contraria sem virada estrutural")
         if info["trend_2h"] == opposite:
             reasons.append("2h contraria: setup exige analise adicional")
+        if expired:
+            result["entry_state"] = "EXPIRADO"
+        elif stale:
+            result["entry_state"] = "DADOS_DESATUALIZADOS"
+        elif invalidated:
+            result["entry_state"] = "INVALIDADO"
+        elif crossed:
+            # O ticker ja passou pelo gatilho. Nao significa fill de ordem.
+            result["entry_state"] = "PRECO_JA_ULTRAPASSOU_GATILHO"
+        elif reasons:
+            result["entry_state"] = "REPROVADO_RISCO"
+        else:
+            result["entry_state"] = "GATILHO_DISPONIVEL"
         if reasons:
             result["decision"] = "NAO_ENTRAR"
         else:
             result["decision"] = "GATILHO_CONDICIONAL"
+            result["entry_eligible_at_snapshot"] = True
             result["reasons"] = ["Aguardar preco cruzar gatilho e validar spread/volume novamente"]
     except (ValueError, TypeError, ArithmeticError, ZeroDivisionError) as exc:
         result["decision"] = "NAO_ENTRAR"
+        result["entry_state"] = "REPROVADO_DADOS"
         result["reasons"].append(f"plano nao calculavel: {exc}")
     return result
 
