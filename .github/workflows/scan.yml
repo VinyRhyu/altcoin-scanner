@@ -144,6 +144,18 @@ jobs:
               json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
           PY
           fi
+          if [ ! -f output/trade_decisions.json ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('output/market_data.json').read_text(encoding='utf-8'))
+          Path('output/trade_decisions.json').write_text(
+              json.dumps({'status':'UNAVAILABLE',
+                          'source_collected_utc':data['collected_utc'],
+                          'ranked_setups':[], 'order_allowed':False},
+                         ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+          fi
           python - <<'PY'
           import json
           from pathlib import Path
