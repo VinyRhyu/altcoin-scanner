@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from experimental_scan import features
 from entry_trigger import analyze_both
+from sync_market_data import check_market_freshness
 
 MIN_NET_RR = 1.6
 MAX_SPREAD_PCT = .15
@@ -170,7 +171,7 @@ def watch_fields(side, stage, level, close, atr, decision, stale, plan):
         condition = (
             f"Fechamento de 15m {'acima' if positive else 'abaixo'} de "
             f"{pretty(trigger)} com corpo >= 40%, volume relativo >= 1.4 "
-            "e posterior reteste fechado; rompimento isolado nao e entrada"
+            "e risco adequado; rompimento e reteste sao estrategias distintas"
         )
         directional_distance = ((trigger-close)/atr if positive else
                                 (close-trigger)/atr)
@@ -277,11 +278,53 @@ def evaluate(symbol, history, ticker, side, info, stale, now_utc):
         decision = "ENTRADA_CONDICIONAL"
         why = ["Gatilho condicional por " + "/".join(m["method"] for m in valid_methods),
                "Revalidar cotacao e livro de ofertas antes de agir"]
+    watch = watch_fields(side, stage, level, close, info["atr_15m"],
+                         decision, stale, trade)
+    confirmed = [m for m in methods if m["status"] == "CONFIRMADO"]
+    chosen = valid_methods[0] if valid_methods else (
+        confirmed[0] if confirmed else None)
+    watch["entry_trigger_price"] = (
+        chosen["entry_trigger_price"] if chosen else None)
+    watch["entry_trigger_method"] = chosen["method"] if chosen else None
+    watch["entry_trigger_decision"] = chosen["decision"] if chosen else None
+    watch["entry_state"] = (chosen["entry_state"] if chosen else
+                            ("AGUARDANDO_CONFIRMACAO" if not stale else "DADOS_DESATUALIZADOS"))
+    watch["trigger_crossed_in_snapshot"] = (
+        chosen["trigger_crossed_in_snapshot"] if chosen else False)
+    watch["entry_eligible_at_snapshot"] = (
+        chosen["entry_eligible_at_snapshot"] if chosen else False)
+    watch["source_is_current"] = not stale
+    if chosen:
+        # Exibir limite realmente usado pelo motor; nao reaproveitar a
+        # confirmacao genérica da fase exploratoria como gatilho final.
+        watch["confirmation_close_price"] = chosen["confirmation_close_price"]
+    if chosen and chosen["entry_trigger_price"] is not None:
+        exact = chosen["entry_trigger_price"]
+        watch.update({
+            "entry_zone_if_confirmed": [exact, exact],
+            "stop_if_confirmed": chosen["stop_loss"],
+            "tp1_if_confirmed": chosen["tp1_projected"],
+            "tp2_if_confirmed": chosen["tp2_projected"],
+            "estimated_net_rr": chosen["estimated_net_rr_tp1"],
+            "signal_is_actionable_now": bool(
+                valid_methods and not stale and
+                chosen["entry_state"] == "GATILHO_DISPONIVEL"),
+            "confirmation_rule": chosen["confirmation_conditions"],
+            "trigger_expires_utc": chosen["trigger_expires_utc"],
+        })
     return {
         "symbol": symbol, "side": side, "stage": stage, "decision": decision,
         "entry_methods": methods,
         "entry_trigger_price": valid_methods[0]["entry_trigger_price"] if valid_methods else None,
         "entry_method": valid_methods[0]["method"] if valid_methods else None,
+        "entry_state": watch["entry_state"],
+        "public_stage": ("ROMPIMENTO_CONFIRMADO" if
+                         any(m["method"] == "BREAKOUT" and m["status"] == "CONFIRMADO"
+                             for m in methods)
+                         else "RETESTE_CONFIRMADO" if
+                         any(m["method"] == "RETEST" and m["status"] == "CONFIRMADO"
+                             for m in methods)
+                         else stage),
         "reference_level": pretty(level),
         "close_15m": pretty(close),
         "last_15m_close_utc": datetime.fromtimestamp(
@@ -291,8 +334,7 @@ def evaluate(symbol, history, ticker, side, info, stale, now_utc):
         "trend_1h": info["trend_1h"],
         "structure_1h": info["structure_1h"],
         "trade_plan": trade, "reasons": why,
-        "watch": watch_fields(side, stage, level, close, info["atr_15m"],
-                              decision, stale, trade),
+        "watch": watch,
         "live_price_reconfirmation_required": True,
         "order_allowed": False,
     }
@@ -304,7 +346,8 @@ def analyze(market, now_utc=None):
     now = now_utc or datetime.now(timezone.utc)
     stamp = datetime.fromisoformat(market["collected_utc"].replace("Z", "+00:00"))
     age = (now-stamp).total_seconds()/60
-    stale = not (-2 <= age <= 30)
+    sync = check_market_freshness(market, now)
+    stale = not (-2 <= age <= 30) or not sync["current_for_new_entries"]
     assets, ranked = [], []
     for ticker in market["universe"]:
         symbol = ticker["symbol"]
@@ -326,7 +369,12 @@ def analyze(market, now_utc=None):
          "ROMPIMENTO_FRACO": 3, "MONITORANDO": 4}[s["stage"]],
         -s["relative_volume_15m"]))
     return {
-        "schema": 1, "status": "EXPERIMENTAL", "order_allowed": False,
+        "schema": 2,
+        "status": "EXPERIMENTAL" if not stale else "FONTE_DESATUALIZADA",
+        "source_sync": sync,
+        "source_sync_status": sync["source_sync_status"],
+        "current_for_new_entries": not stale,
+        "order_allowed": False,
         "source_collected_utc": market["collected_utc"],
         "evaluated_at_utc": now.isoformat(), "snapshot_age_min": pretty(age),
         "snapshot_stale": stale, "source_asset_count": len(market["universe"]),
@@ -339,6 +387,14 @@ def analyze(market, now_utc=None):
             if method["decision"] == "GATILHO_CONDICIONAL"
         ],
         "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
+        "entry_state_counts": {
+            state: sum(m["entry_state"] == state
+                       for p in ranked for m in p["entry_methods"])
+            for state in ("AGUARDANDO_CONFIRMACAO", "GATILHO_DISPONIVEL",
+                          "PRECO_JA_ULTRAPASSOU_GATILHO", "REPROVADO_RISCO",
+                          "INVALIDADO", "EXPIRADO", "DADOS_DESATUALIZADOS",
+                          "REPROVADO_DADOS")
+        },
         "proximity_alerts": [
             { "symbol": p["symbol"], "side": p["side"], "stage": p["stage"],
               "decision": p["decision"], "watch": p["watch"],
@@ -365,11 +421,16 @@ def main():
     Path(args.output).write_text(json.dumps(out, ensure_ascii=False,
                                            indent=2), encoding="utf-8")
     if args.watch_output:
-        active = [p for p in out["ranked_setups"] if p["stage"] != "MONITORANDO"]
+        active = [p for p in out["ranked_setups"]
+                  if p["stage"] != "MONITORANDO"
+                  or any(m["status"] == "CONFIRMADO" for m in p["entry_methods"])]
         watch_summary = {
             "status": out["status"], "source_collected_utc": out["source_collected_utc"],
             "evaluated_at_utc": out["evaluated_at_utc"],
             "snapshot_stale": out["snapshot_stale"],
+            "source_sync": out["source_sync"],
+            "source_sync_status": out["source_sync_status"],
+            "current_for_new_entries": out["current_for_new_entries"],
             "source_asset_count": out["source_asset_count"],
             "retained_asset_count": out["retained_asset_count"],
             "analyzed_asset_count": out["analyzed_asset_count"],
@@ -379,6 +440,7 @@ def main():
             "watchlist": active, "order_allowed": False,
             "confirmed_entry_triggers": out["confirmed_entry_triggers"],
             "entry_trigger_engine": out["entry_trigger_engine"],
+            "entry_state_counts": out["entry_state_counts"],
             "delivery": "Arquivo publicado em cada coleta; nao envia push por si so",
         }
         Path(args.watch_output).write_text(json.dumps(
