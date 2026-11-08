@@ -1,7 +1,7 @@
 {
   "status": "EXPERIMENTAL",
-  "source_collected_utc": "2026-11-08T00:33:11.231000+00:00",
-  "evaluated_at_utc": "2026-11-08T01:02:52.380606+00:00",
+  "source_collected_utc": "2026-11-08T01:04:23.677000+00:00",
+  "evaluated_at_utc": "2026-11-08T01:12:06.716571+00:00",
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
@@ -11,144 +11,76 @@
   "proximity_alerts": [],
   "watchlist": [
     {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "LONG",
-      "stage": "PRE_REACAO",
-      "decision": "NAO_ENTRAR",
-      "reference_level": 4.8002e-06,
-      "close_15m": 4.8189e-06,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 1.90417433758,
-      "trend_2h": "baixa",
-      "trend_1h": "baixa",
-      "structure_1h": "baixa",
-      "trade_plan": {
-        "entry_zone": [
-          4.80122428571e-06,
-          4.80941857143e-06
-        ],
-        "rr_worst_entry": 4.80941857143e-06,
-        "stop": 4.79200571429e-06,
-        "tp1_2_2R_projection": 4.84772685714e-06,
-        "tp2_3_0R_projection": 4.86165714286e-06,
-        "risk_ATR": 0.85,
-        "estimated_net_RR_tp1": 1.05365330877,
-        "estimated_cost_pct_roundtrip": 0.2021,
-        "obstacle_before_tp1": {
-          "price": 4.8411e-06,
-          "tf": "1h"
-        },
-        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
-      },
-      "reasons": [
-        "R:R estimado liquido < 1,6 na pior entrada",
-        "obstaculo estrutural antes de TP1 projetado",
-        "proximidade da regiao nao e confirmacao"
-      ],
-      "watch": {
-        "monitor_price": 4.8002e-06,
-        "confirmation_close_price": 4.80142914286e-06,
-        "confirmation_rule": "15m tocar suporte e fechar acima dele com candle comprador, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.912831241283,
-        "distance_to_trigger_atr": 0.912831241283,
-        "near_trigger_0_5_atr": false,
-        "alert_type": null,
-        "alert_message": null,
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 4.79200571429e-06,
-        "entry_zone_if_confirmed": [
-          4.80122428571e-06,
-          4.80941857143e-06
-        ],
-        "stop_if_confirmed": 4.79200571429e-06,
-        "tp1_if_confirmed": 4.84772685714e-06,
-        "tp2_if_confirmed": 4.86165714286e-06,
-        "estimated_net_rr": 1.05365330877,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados."
-      },
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "PREPARANDO",
-      "decision": "NAO_ENTRAR",
-      "reference_level": 4.8002e-06,
-      "close_15m": 4.8189e-06,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 1.90417433758,
-      "trend_2h": "baixa",
-      "trend_1h": "baixa",
-      "structure_1h": "baixa",
-      "trade_plan": {
-        "entry_zone": [
-          4.79098142857e-06,
-          4.79917571429e-06
-        ],
-        "rr_worst_entry": 4.79098142857e-06,
-        "stop": 4.87047285714e-06,
-        "tp1_2_2R_projection": 4.61610028571e-06,
-        "tp2_3_0R_projection": 4.55250714286e-06,
-        "risk_ATR": 3.88033472803,
-        "estimated_net_RR_tp1": 1.85254183521,
-        "estimated_cost_pct_roundtrip": 0.2021,
-        "obstacle_before_tp1": null,
-        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
-      },
-      "reasons": [
-        "stop muito distante: risco > 3 ATR",
-        "proximidade da regiao nao e confirmacao"
-      ],
-      "watch": {
-        "monitor_price": 4.8002e-06,
-        "confirmation_close_price": 4.79774171429e-06,
-        "confirmation_rule": "Fechamento de 15m abaixo de 4.79774171429e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-        "distance_to_watch_level_atr": 0.912831241283,
-        "distance_to_trigger_atr": 1.03283124128,
-        "near_trigger_0_5_atr": false,
-        "alert_type": null,
-        "alert_message": null,
-        "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 4.87047285714e-06,
-        "entry_zone_if_confirmed": [
-          4.79098142857e-06,
-          4.79917571429e-06
-        ],
-        "stop_if_confirmed": 4.87047285714e-06,
-        "tp1_if_confirmed": 4.61610028571e-06,
-        "tp2_if_confirmed": 4.55250714286e-06,
-        "estimated_net_rr": 1.85254183521,
-        "signal_is_actionable_now": false,
-        "note": "Preco de observacao nao e ordem; somente candles fechados."
-      },
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
       "symbol": "XLM-USDT-SWAP",
       "side": "LONG",
       "stage": "PREPARANDO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.15136,
+          "confirmation_close_price": 0.151405942857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.15136,
+          "confirmation_close_price": 0.151405942857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 0.15136,
-      "close_15m": 0.15107,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 0.50345837632,
+      "close_15m": 0.15116,
+      "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+      "relative_volume_15m": 0.422072373956,
       "trend_2h": "baixa",
       "trend_1h": "baixa",
       "structure_1h": "mista",
       "trade_plan": {
         "entry_zone": [
-          0.15138075,
-          0.15154675
+          0.151379142857,
+          0.151532285714
         ],
-        "rr_worst_entry": 0.15154675,
-        "stop": 0.15071775,
-        "tp1_2_2R_projection": 0.15337055,
-        "tp2_3_0R_projection": 0.15403375,
-        "risk_ATR": 1.99759036145,
-        "estimated_net_RR_tp1": 1.32274779246,
+        "rr_worst_entry": 0.151532285714,
+        "stop": 0.150832571429,
+        "tp1_2_2R_projection": 0.153071657143,
+        "tp2_3_0R_projection": 0.153631428571,
+        "risk_ATR": 1.8276119403,
+        "estimated_net_RR_tp1": 1.21083131659,
         "estimated_cost_pct_roundtrip": 0.2066,
         "obstacle_before_tp1": {
           "price": 0.15192,
@@ -163,23 +95,23 @@
       ],
       "watch": {
         "monitor_price": 0.15136,
-        "confirmation_close_price": 0.1514098,
-        "confirmation_rule": "Fechamento de 15m acima de 0.1514098 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-        "distance_to_watch_level_atr": 0.698795180723,
-        "distance_to_trigger_atr": 0.818795180723,
+        "confirmation_close_price": 0.151405942857,
+        "confirmation_rule": "Fechamento de 15m acima de 0.151405942857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 0.522388059702,
+        "distance_to_trigger_atr": 0.642388059701,
         "near_trigger_0_5_atr": false,
         "alert_type": null,
         "alert_message": null,
         "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.15071775,
+        "invalid_if_15m_closes_beyond": 0.150832571429,
         "entry_zone_if_confirmed": [
-          0.15138075,
-          0.15154675
+          0.151379142857,
+          0.151532285714
         ],
-        "stop_if_confirmed": 0.15071775,
-        "tp1_if_confirmed": 0.15337055,
-        "tp2_if_confirmed": 0.15403375,
-        "estimated_net_rr": 1.32274779246,
+        "stop_if_confirmed": 0.150832571429,
+        "tp1_if_confirmed": 0.153071657143,
+        "tp2_if_confirmed": 0.153631428571,
+        "estimated_net_rr": 1.21083131659,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados."
       },
@@ -191,24 +123,72 @@
       "side": "SHORT",
       "stage": "PRE_REJEICAO",
       "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.14979,
+          "confirmation_close_price": 0.149744057143,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.14979,
+          "confirmation_close_price": 0.149744057143,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
       "reference_level": 0.15136,
-      "close_15m": 0.15107,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 0.50345837632,
+      "close_15m": 0.15116,
+      "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+      "relative_volume_15m": 0.422072373956,
       "trend_2h": "baixa",
       "trend_1h": "baixa",
       "structure_1h": "mista",
       "trade_plan": {
         "entry_zone": [
-          0.15117325,
-          0.15133925
+          0.151187714286,
+          0.151340857143
         ],
-        "rr_worst_entry": 0.15117325,
-        "stop": 0.151526,
-        "tp1_2_2R_projection": 0.1503972,
-        "tp2_3_0R_projection": 0.150115,
+        "rr_worst_entry": 0.151187714286,
+        "stop": 0.151513142857,
+        "tp1_2_2R_projection": 0.150471771429,
+        "tp2_3_0R_projection": 0.150211428571,
         "risk_ATR": 0.85,
-        "estimated_net_RR_tp1": 0.697254908732,
+        "estimated_net_RR_tp1": 0.632800538709,
         "estimated_cost_pct_roundtrip": 0.2066,
         "obstacle_before_tp1": {
           "price": 0.15114,
@@ -223,23 +203,235 @@
       ],
       "watch": {
         "monitor_price": 0.15136,
-        "confirmation_close_price": 0.1513351,
+        "confirmation_close_price": 0.151337028571,
         "confirmation_rule": "15m tocar resistencia e fechar abaixo dela com candle vendedor, volume relativo >= 1.2 e tendencia de 1h alinhada",
-        "distance_to_watch_level_atr": 0.698795180723,
-        "distance_to_trigger_atr": 0.698795180723,
+        "distance_to_watch_level_atr": 0.522388059702,
+        "distance_to_trigger_atr": 0.522388059702,
         "near_trigger_0_5_atr": false,
         "alert_type": null,
         "alert_message": null,
         "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 0.151526,
+        "invalid_if_15m_closes_beyond": 0.151513142857,
         "entry_zone_if_confirmed": [
-          0.15117325,
-          0.15133925
+          0.151187714286,
+          0.151340857143
         ],
-        "stop_if_confirmed": 0.151526,
-        "tp1_if_confirmed": 0.1503972,
-        "tp2_if_confirmed": 0.150115,
-        "estimated_net_rr": 0.697254908732,
+        "stop_if_confirmed": 0.151513142857,
+        "tp1_if_confirmed": 0.150471771429,
+        "tp2_if_confirmed": 0.150211428571,
+        "estimated_net_rr": 0.632800538709,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "side": "LONG",
+      "stage": "PREPARANDO",
+      "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.32028,
+          "confirmation_close_price": 0.3203028,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.32028,
+          "confirmation_close_price": 0.3203028,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
+      "reference_level": 0.32028,
+      "close_15m": 0.32011,
+      "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+      "relative_volume_15m": 0.147867712956,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": {
+        "entry_zone": [
+          0.3202895,
+          0.3203655
+        ],
+        "rr_worst_entry": 0.3203655,
+        "stop": 0.3199215,
+        "tp1_2_2R_projection": 0.3213423,
+        "tp2_3_0R_projection": 0.3216975,
+        "risk_ATR": 2.33684210526,
+        "estimated_net_RR_tp1": 0.297934495792,
+        "estimated_cost_pct_roundtrip": 0.2031,
+        "obstacle_before_tp1": null,
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "R:R estimado liquido < 1,6 na pior entrada",
+        "proximidade da regiao nao e confirmacao"
+      ],
+      "watch": {
+        "monitor_price": 0.32028,
+        "confirmation_close_price": 0.3203028,
+        "confirmation_rule": "Fechamento de 15m acima de 0.3203028 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 0.894736842105,
+        "distance_to_trigger_atr": 1.01473684211,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.3199215,
+        "entry_zone_if_confirmed": [
+          0.3202895,
+          0.3203655
+        ],
+        "stop_if_confirmed": 0.3199215,
+        "tp1_if_confirmed": 0.3213423,
+        "tp2_if_confirmed": 0.3216975,
+        "estimated_net_rr": 0.297934495792,
+        "signal_is_actionable_now": false,
+        "note": "Preco de observacao nao e ordem; somente candles fechados."
+      },
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "PRE_REJEICAO",
+      "decision": "NAO_ENTRAR",
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.31963,
+          "confirmation_close_price": 0.3196072,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "SHORT",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 0.31963,
+          "confirmation_close_price": 0.3196072,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
+      "reference_level": 0.32028,
+      "close_15m": 0.32011,
+      "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+      "relative_volume_15m": 0.147867712956,
+      "trend_2h": "alta",
+      "trend_1h": "alta",
+      "structure_1h": "alta",
+      "trade_plan": {
+        "entry_zone": [
+          0.3201945,
+          0.3202705
+        ],
+        "rr_worst_entry": 0.3201945,
+        "stop": 0.320356,
+        "tp1_2_2R_projection": 0.3198392,
+        "tp2_3_0R_projection": 0.31971,
+        "risk_ATR": 0.85,
+        "estimated_net_RR_tp1": -0.363401783386,
+        "estimated_cost_pct_roundtrip": 0.2031,
+        "obstacle_before_tp1": {
+          "price": 0.31989,
+          "tf": "1h"
+        },
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "R:R estimado liquido < 1,6 na pior entrada",
+        "obstaculo estrutural antes de TP1 projetado",
+        "proximidade da regiao nao e confirmacao"
+      ],
+      "watch": {
+        "monitor_price": 0.32028,
+        "confirmation_close_price": 0.3202686,
+        "confirmation_rule": "15m tocar resistencia e fechar abaixo dela com candle vendedor, volume relativo >= 1.2 e tendencia de 1h alinhada",
+        "distance_to_watch_level_atr": 0.894736842105,
+        "distance_to_trigger_atr": 0.894736842105,
+        "near_trigger_0_5_atr": false,
+        "alert_type": null,
+        "alert_message": null,
+        "last_snapshot_required": true,
+        "invalid_if_15m_closes_beyond": 0.320356,
+        "entry_zone_if_confirmed": [
+          0.3201945,
+          0.3202705
+        ],
+        "stop_if_confirmed": 0.320356,
+        "tp1_if_confirmed": 0.3198392,
+        "tp2_if_confirmed": 0.31971,
+        "estimated_net_rr": -0.363401783386,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados."
       },
@@ -251,28 +443,76 @@
       "side": "LONG",
       "stage": "ROMPIMENTO_FRACO",
       "decision": "NAO_ENTRAR",
-      "reference_level": 47.08,
-      "close_15m": 47.14,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 2.86622253699,
+      "entry_methods": [
+        {
+          "method": "BREAKOUT",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 47.29,
+          "confirmation_close_price": 47.3151142857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Fechamento 15m alem do nivel (+/-0.12 ATR), corpo >=40%, volume relativo >=1.4; high/low do candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        },
+        {
+          "method": "RETEST",
+          "side": "LONG",
+          "status": "AGUARDANDO_CONFIRMACAO",
+          "decision": "AGUARDAR",
+          "watch_price": 47.29,
+          "confirmation_close_price": 47.3151142857,
+          "candle_close_utc": "2026-11-08T01:00:00+00:00",
+          "trigger_expires_utc": "2026-11-08T01:15:00+00:00",
+          "tick_size": null,
+          "entry_trigger_price": null,
+          "stop_loss": null,
+          "tp1_projected": null,
+          "tp2_projected": null,
+          "estimated_net_rr_tp1": null,
+          "requires_live_price_check": true,
+          "order_allowed": false,
+          "confirmation_conditions": "Rompimento previo com volume; reteste tocado e recuperado por candle 15m fechado; high/low desse candle + 1 tick",
+          "reasons": [
+            "candle de confirmacao ainda nao ocorreu"
+          ]
+        }
+      ],
+      "entry_trigger_price": null,
+      "entry_method": null,
+      "reference_level": 47.29,
+      "close_15m": 47.33,
+      "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+      "relative_volume_15m": 4.549708772,
       "trend_2h": "alta",
       "trend_1h": "mista",
       "structure_1h": "mista",
       "trade_plan": {
         "entry_zone": [
-          47.0898571429,
-          47.1687142857
+          47.3004642857,
+          47.3841785714
         ],
-        "rr_worst_entry": 47.1687142857,
-        "stop": 46.7604285714,
-        "tp1_2_2R_projection": 48.0669428571,
-        "tp2_3_0R_projection": 48.3935714286,
-        "risk_ATR": 2.07101449275,
-        "estimated_net_RR_tp1": 1.54868492902,
-        "estimated_cost_pct_roundtrip": 0.2212,
+        "rr_worst_entry": 47.3841785714,
+        "stop": 47.0186071429,
+        "tp1_2_2R_projection": 48.1884357143,
+        "tp2_3_0R_projection": 48.4808928571,
+        "risk_ATR": 1.74675767918,
+        "estimated_net_RR_tp1": 1.4872090943,
+        "estimated_cost_pct_roundtrip": 0.2211,
         "obstacle_before_tp1": {
-          "price": 47.28,
-          "tf": "2h"
+          "price": 47.45,
+          "tf": "1h"
         },
         "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
       },
@@ -282,24 +522,24 @@
         "preco passou do nivel, mas candle/volume nao confirmaram"
       ],
       "watch": {
-        "monitor_price": 47.08,
-        "confirmation_close_price": 47.1036571429,
-        "confirmation_rule": "Fechamento de 15m acima de 47.1036571429 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-        "distance_to_watch_level_atr": 0.304347826087,
-        "distance_to_trigger_atr": 0.184347826087,
+        "monitor_price": 47.29,
+        "confirmation_close_price": 47.3151142857,
+        "confirmation_rule": "Fechamento de 15m acima de 47.3151142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+        "distance_to_watch_level_atr": 0.191126279863,
+        "distance_to_trigger_atr": 0.0711262798635,
         "near_trigger_0_5_atr": false,
         "alert_type": null,
         "alert_message": null,
         "last_snapshot_required": true,
-        "invalid_if_15m_closes_beyond": 46.7604285714,
+        "invalid_if_15m_closes_beyond": 47.0186071429,
         "entry_zone_if_confirmed": [
-          47.0898571429,
-          47.1687142857
+          47.3004642857,
+          47.3841785714
         ],
-        "stop_if_confirmed": 46.7604285714,
-        "tp1_if_confirmed": 48.0669428571,
-        "tp2_if_confirmed": 48.3935714286,
-        "estimated_net_rr": 1.54868492902,
+        "stop_if_confirmed": 47.0186071429,
+        "tp1_if_confirmed": 48.1884357143,
+        "tp2_if_confirmed": 48.4808928571,
+        "estimated_net_rr": 1.4872090943,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados."
       },
@@ -308,5 +548,7 @@
     }
   ],
   "order_allowed": false,
+  "confirmed_entry_triggers": [],
+  "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
   "delivery": "Arquivo publicado em cada coleta; nao envia push por si so"
 }
