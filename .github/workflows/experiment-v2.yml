@@ -9,6 +9,7 @@ on:
       - 'trade_decision.py'
       - 'entry_trigger.py'
       - 'sync_market_data.py'
+      - 'tests/test_sync_market_data.py'
       - 'replay_entry_triggers.py'
       - 'tests/test_entry_trigger.py'
       - 'tests/test_trade_decision.py'
