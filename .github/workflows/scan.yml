@@ -7,6 +7,10 @@ on:
     paths:
       - 'collector.py'
       - 'publish_views.py'
+      - 'experimental_scan.py'
+      - 'trade_decision.py'
+      - 'tests/test_experimental_scan.py'
+      - 'tests/test_trade_decision.py'
       - '.github/workflows/scan.yml'
   schedule:
     # Quatro vezes por hora (UTC); agendamentos podem atrasar.
@@ -109,6 +113,51 @@ jobs:
           PY
           fi
 
+      - name: Gerar niveis de entrada e radar de 0.5 ATR (opcional)
+        shell: bash
+        run: |
+          # Extra informativo: nenhuma falha pode bloquear candles e resumo.
+          if python -m unittest discover -s tests -p 'test_*.py' -v \
+            && python trade_decision.py \
+                  --market-data output/market_data.json \
+                  --output output/trade_decisions.json \
+                  --watch-output output/entry_watch.json
+          then
+            echo 'Radar de entrada V2 atualizado'
+          else
+            echo 'Aviso: radar experimental indisponivel. Coleta preservada.'
+          fi
+          if [ ! -f output/entry_watch.json ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('output/market_data.json').read_text(encoding='utf-8'))
+          result={
+              'status':'UNAVAILABLE', 'source_collected_utc':data['collected_utc'],
+              'source_asset_count':len(data['universe']),
+              'retained_asset_count':len(data['universe']),
+              'proximity_alert_count':0, 'proximity_alerts':[], 'watchlist':[],
+              'order_allowed':False,
+              'reason':'testes ou geracao experimental falharam; sem sinais',
+          }
+          Path('output/entry_watch.json').write_text(
+              json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('output/manifest.json')
+          manifest=json.loads(p.read_text(encoding='utf-8'))
+          watch=json.loads(Path('output/entry_watch.json').read_text(encoding='utf-8'))
+          manifest['entry_watch_file']='entry_watch.json'
+          manifest['entry_watch_status']=watch['status']
+          manifest['entry_watch_proximity_alert_count']=watch['proximity_alert_count']
+          if Path('output/trade_decisions.json').is_file():
+              manifest['trade_decisions_file']='trade_decisions.json'
+          p.write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
       - name: Salvar ZIP opcional para auditoria
         uses: actions/upload-artifact@v6
         with:
@@ -118,6 +167,8 @@ jobs:
             output/manifest.json
             output/scan_summary.json
             output/early_warning.json
+            output/entry_watch.json
+            output/trade_decisions.json
           retention-days: 3
           if-no-files-found: error
 
@@ -131,6 +182,10 @@ jobs:
           cp output/manifest.json "$RUNNER_TEMP/manifest.json"
           cp output/scan_summary.json "$RUNNER_TEMP/scan_summary.json"
           cp output/early_warning.json "$RUNNER_TEMP/early_warning.json"
+          cp output/entry_watch.json "$RUNNER_TEMP/entry_watch.json"
+          if [ -f output/trade_decisions.json ]; then
+            cp output/trade_decisions.json "$RUNNER_TEMP/trade_decisions.json"
+          fi
           mkdir -p "$RUNNER_TEMP/okx-coins"
           cp output/coins/*.json "$RUNNER_TEMP/okx-coins/"
 
@@ -144,6 +199,12 @@ jobs:
           cp "$RUNNER_TEMP/manifest.json" ./manifest.json
           cp "$RUNNER_TEMP/scan_summary.json" ./scan_summary.json
           cp "$RUNNER_TEMP/early_warning.json" ./early_warning.json
+          cp "$RUNNER_TEMP/entry_watch.json" ./entry_watch.json
+          if [ -f "$RUNNER_TEMP/trade_decisions.json" ]; then
+            cp "$RUNNER_TEMP/trade_decisions.json" ./trade_decisions.json
+          else
+            rm -f ./trade_decisions.json
+          fi
 
           # Apaga apenas a pasta dedicada; evita arquivos antigos de moedas
           # que deixaram de fazer parte do universo de 50 ativos.
@@ -151,12 +212,13 @@ jobs:
           mkdir -p ./coins
           cp "$RUNNER_TEMP"/okx-coins/*.json ./coins/
 
-          git add -A -- market_data.json manifest.json scan_summary.json early_warning.json coins
+          git add -A -- market_data.json manifest.json scan_summary.json early_warning.json entry_watch.json trade_decisions.json coins
           git diff --cached --quiet && { echo 'Sem dados novos para publicar'; exit 0; }
 
           git commit -m "data: coleta OKX $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push origin HEAD:refs/heads/market-data
 
           echo "RESUMO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/scan_summary.json"
+          echo "RADAR: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/entry_watch.json"
           echo "MANIFESTO: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/manifest.json"
           echo "EXEMPLO SOL: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/market-data/coins/SOL-USDT-SWAP.json"
