@@ -82,5 +82,48 @@ class TradeDecisionTests(unittest.TestCase):
         self.assertGreater(p["tp1_2_2R_projection"], 0)
         self.assertGreater(p["tp1_2_2R_projection"], p["rr_worst_entry"])
 
+    def test_half_atr_watch_pre_breakout(self):
+        from trade_decision import watch_fields
+        w = watch_fields("LONG", "PREPARANDO", 10.0, 9.95, .2,
+                         "AGUARDAR", False, None)
+        self.assertAlmostEqual(w["confirmation_close_price"], 10.024)
+        self.assertTrue(w["near_trigger_0_5_atr"])
+        self.assertEqual(w["alert_type"], "PROXIMO_ROMPIMENTO")
+        self.assertFalse(w["signal_is_actionable_now"])
+
+    def test_watch_does_not_fire_when_trigger_already_passed_or_stale(self):
+        from trade_decision import watch_fields
+        already = watch_fields("LONG", "PREPARANDO", 10., 10.30, .2,
+                               "AGUARDAR", False, None)
+        stale = watch_fields("SHORT", "PREPARANDO", 10., 10.04, .2,
+                             "AGUARDAR", True, None)
+        weak = watch_fields("LONG", "ROMPIMENTO_FRACO", 10., 10.01, .2,
+                            "NAO_ENTRAR", False, None)
+        self.assertFalse(already["near_trigger_0_5_atr"])
+        self.assertFalse(stale["near_trigger_0_5_atr"])
+        self.assertFalse(weak["near_trigger_0_5_atr"])
+
+    def test_near_retest_is_not_an_entry(self):
+        from trade_decision import watch_fields
+        w = watch_fields("LONG", "AGUARDAR_RETESTE", 10.0, 10.08, .2,
+                         "AGUARDAR", False, None)
+        self.assertTrue(w["near_trigger_0_5_atr"])
+        self.assertEqual(w["alert_type"], "PROXIMO_RETESTE")
+        self.assertFalse(w["signal_is_actionable_now"])
+        self.assertIn("NAO entrar", w["alert_message"])
+
+    def test_all_directions_have_radar_fields(self):
+        data = source(("AAA-USDT-SWAP", "BBB-USDT-SWAP"))
+        out = analyze(data, now_utc=datetime(2026,11,8,tzinfo=timezone.utc))
+        self.assertEqual(len(out["ranked_setups"]), 4)
+        for p in out["ranked_setups"]:
+            self.assertIn("monitor_price", p["watch"])
+            self.assertIn("confirmation_close_price", p["watch"])
+            self.assertIn("invalid_if_15m_closes_beyond", p["watch"])
+        self.assertEqual(out["retained_asset_count"], 2)
+        self.assertEqual(out["proximity_alert_count"],
+                         len(out["proximity_alerts"]))
+
+
 if __name__ == "__main__":
     unittest.main()
