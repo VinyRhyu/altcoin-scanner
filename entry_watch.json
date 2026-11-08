@@ -1,7 +1,7 @@
 {
   "status": "EXPERIMENTAL",
-  "source_collected_utc": "2026-11-08T01:04:23.677000+00:00",
-  "evaluated_at_utc": "2026-11-08T01:05:11.274017+00:00",
+  "source_collected_utc": "2026-11-08T01:13:59.310000+00:00",
+  "evaluated_at_utc": "2026-11-08T01:14:44.082970+00:00",
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
@@ -268,8 +268,8 @@
         "tp1_2_2R_projection": 48.1884357143,
         "tp2_3_0R_projection": 48.4808928571,
         "risk_ATR": 1.74675767918,
-        "estimated_net_RR_tp1": 1.4872090943,
-        "estimated_cost_pct_roundtrip": 0.2211,
+        "estimated_net_RR_tp1": 1.4869585457,
+        "estimated_cost_pct_roundtrip": 0.2212,
         "obstacle_before_tp1": {
           "price": 47.45,
           "tf": "1h"
@@ -299,7 +299,7 @@
         "stop_if_confirmed": 47.0186071429,
         "tp1_if_confirmed": 48.1884357143,
         "tp2_if_confirmed": 48.4808928571,
-        "estimated_net_rr": 1.4872090943,
+        "estimated_net_rr": 1.4869585457,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados."
       },

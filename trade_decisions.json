@@ -2,9 +2,9 @@
   "schema": 1,
   "status": "EXPERIMENTAL",
   "order_allowed": false,
-  "source_collected_utc": "2026-11-08T01:04:23.677000+00:00",
-  "evaluated_at_utc": "2026-11-08T01:05:11.274017+00:00",
-  "snapshot_age_min": 0.793283616667,
+  "source_collected_utc": "2026-11-08T01:13:59.310000+00:00",
+  "evaluated_at_utc": "2026-11-08T01:14:44.082970+00:00",
+  "snapshot_age_min": 0.746216166667,
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
@@ -3346,8 +3346,8 @@
         "tp1_2_2R_projection": 48.1884357143,
         "tp2_3_0R_projection": 48.4808928571,
         "risk_ATR": 1.74675767918,
-        "estimated_net_RR_tp1": 1.4872090943,
-        "estimated_cost_pct_roundtrip": 0.2211,
+        "estimated_net_RR_tp1": 1.4869585457,
+        "estimated_cost_pct_roundtrip": 0.2212,
         "obstacle_before_tp1": {
           "price": 47.45,
           "tf": "1h"
@@ -3377,7 +3377,7 @@
         "stop_if_confirmed": 47.0186071429,
         "tp1_if_confirmed": 48.1884357143,
         "tp2_if_confirmed": 48.4808928571,
-        "estimated_net_rr": 1.4872090943,
+        "estimated_net_rr": 1.4869585457,
         "signal_is_actionable_now": false,
         "note": "Preco de observacao nao e ordem; somente candles fechados."
       },
@@ -3715,110 +3715,6 @@
       ]
     },
     {
-      "symbol": "DASH-USDT-SWAP",
-      "status": "ANALISADO",
-      "plans": [
-        {
-          "symbol": "DASH-USDT-SWAP",
-          "side": "LONG",
-          "stage": "ROMPIMENTO_FRACO",
-          "decision": "NAO_ENTRAR",
-          "reference_level": 47.29,
-          "close_15m": 47.33,
-          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
-          "relative_volume_15m": 4.549708772,
-          "trend_2h": "alta",
-          "trend_1h": "mista",
-          "structure_1h": "mista",
-          "trade_plan": {
-            "entry_zone": [
-              47.3004642857,
-              47.3841785714
-            ],
-            "rr_worst_entry": 47.3841785714,
-            "stop": 47.0186071429,
-            "tp1_2_2R_projection": 48.1884357143,
-            "tp2_3_0R_projection": 48.4808928571,
-            "risk_ATR": 1.74675767918,
-            "estimated_net_RR_tp1": 1.4872090943,
-            "estimated_cost_pct_roundtrip": 0.2211,
-            "obstacle_before_tp1": {
-              "price": 47.45,
-              "tf": "1h"
-            },
-            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
-          },
-          "reasons": [
-            "R:R estimado liquido < 1,6 na pior entrada",
-            "obstaculo estrutural antes de TP1 projetado",
-            "preco passou do nivel, mas candle/volume nao confirmaram"
-          ],
-          "watch": {
-            "monitor_price": 47.29,
-            "confirmation_close_price": 47.3151142857,
-            "confirmation_rule": "Fechamento de 15m acima de 47.3151142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-            "distance_to_watch_level_atr": 0.191126279863,
-            "distance_to_trigger_atr": 0.0711262798635,
-            "near_trigger_0_5_atr": false,
-            "alert_type": null,
-            "alert_message": null,
-            "last_snapshot_required": true,
-            "invalid_if_15m_closes_beyond": 47.0186071429,
-            "entry_zone_if_confirmed": [
-              47.3004642857,
-              47.3841785714
-            ],
-            "stop_if_confirmed": 47.0186071429,
-            "tp1_if_confirmed": 48.1884357143,
-            "tp2_if_confirmed": 48.4808928571,
-            "estimated_net_rr": 1.4872090943,
-            "signal_is_actionable_now": false,
-            "note": "Preco de observacao nao e ordem; somente candles fechados."
-          },
-          "live_price_reconfirmation_required": true,
-          "order_allowed": false
-        },
-        {
-          "symbol": "DASH-USDT-SWAP",
-          "side": "SHORT",
-          "stage": "MONITORANDO",
-          "decision": "AGUARDAR",
-          "reference_level": 45.66,
-          "close_15m": 47.33,
-          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
-          "relative_volume_15m": 4.549708772,
-          "trend_2h": "alta",
-          "trend_1h": "mista",
-          "structure_1h": "mista",
-          "trade_plan": null,
-          "reasons": [
-            "sem gatilho operacional"
-          ],
-          "watch": {
-            "monitor_price": 45.66,
-            "confirmation_close_price": 45.6348857143,
-            "confirmation_rule": "Fechamento de 15m abaixo de 45.6348857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-            "distance_to_watch_level_atr": 7.9795221843,
-            "distance_to_trigger_atr": 8.0995221843,
-            "near_trigger_0_5_atr": false,
-            "alert_type": null,
-            "alert_message": null,
-            "last_snapshot_required": true,
-            "invalid_if_15m_closes_beyond": 45.7437142857,
-            "entry_zone_if_confirmed": null,
-            "stop_if_confirmed": null,
-            "tp1_if_confirmed": null,
-            "tp2_if_confirmed": null,
-            "estimated_net_rr": null,
-            "signal_is_actionable_now": false,
-            "note": "Preco de observacao nao e ordem; somente candles fechados."
-          },
-          "live_price_reconfirmation_required": true,
-          "order_allowed": false
-        }
-      ]
-    },
-    {
       "symbol": "TRX-USDT-SWAP",
       "status": "ANALISADO",
       "plans": [
@@ -3932,6 +3828,88 @@
             "tp1_if_confirmed": 0.3198392,
             "tp2_if_confirmed": 0.31971,
             "estimated_net_rr": -0.363401783386,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "CRV-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.2682,
+          "close_15m": 0.2656,
+          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+          "relative_volume_15m": 1.13409280539,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "watch": {
+            "monitor_price": 0.2682,
+            "confirmation_close_price": 0.268324285714,
+            "confirmation_rule": "Fechamento de 15m acima de 0.268324285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.51034482759,
+            "distance_to_trigger_atr": 2.63034482759,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.267785714286,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "CRV-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 0.2634,
+          "close_15m": 0.2656,
+          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+          "relative_volume_15m": 1.13409280539,
+          "trend_2h": "alta",
+          "trend_1h": "alta",
+          "structure_1h": "mista",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "watch": {
+            "monitor_price": 0.2634,
+            "confirmation_close_price": 0.263275714286,
+            "confirmation_rule": "Fechamento de 15m abaixo de 0.263275714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.12413793103,
+            "distance_to_trigger_atr": 2.24413793103,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 0.263814285714,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
             "signal_is_actionable_now": false,
             "note": "Preco de observacao nao e ordem; somente candles fechados."
           },
@@ -4351,6 +4329,88 @@
       ]
     },
     {
+      "symbol": "PEPE-USDT-SWAP",
+      "status": "ANALISADO",
+      "plans": [
+        {
+          "symbol": "PEPE-USDT-SWAP",
+          "side": "LONG",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 4.8711e-06,
+          "close_15m": 4.8285e-06,
+          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+          "relative_volume_15m": 1.07061704757,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "watch": {
+            "monitor_price": 4.8711e-06,
+            "confirmation_close_price": 4.87334142857e-06,
+            "confirmation_rule": "Fechamento de 15m acima de 4.87334142857e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 2.28068833652,
+            "distance_to_trigger_atr": 2.40068833652,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 4.86362857143e-06,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        },
+        {
+          "symbol": "PEPE-USDT-SWAP",
+          "side": "SHORT",
+          "stage": "MONITORANDO",
+          "decision": "AGUARDAR",
+          "reference_level": 4.8002e-06,
+          "close_15m": 4.8285e-06,
+          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
+          "relative_volume_15m": 1.07061704757,
+          "trend_2h": "baixa",
+          "trend_1h": "baixa",
+          "structure_1h": "baixa",
+          "trade_plan": null,
+          "reasons": [
+            "sem gatilho operacional"
+          ],
+          "watch": {
+            "monitor_price": 4.8002e-06,
+            "confirmation_close_price": 4.79795857143e-06,
+            "confirmation_rule": "Fechamento de 15m abaixo de 4.79795857143e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 1.51510516252,
+            "distance_to_trigger_atr": 1.63510516252,
+            "near_trigger_0_5_atr": false,
+            "alert_type": null,
+            "alert_message": null,
+            "last_snapshot_required": true,
+            "invalid_if_15m_closes_beyond": 4.80767142857e-06,
+            "entry_zone_if_confirmed": null,
+            "stop_if_confirmed": null,
+            "tp1_if_confirmed": null,
+            "tp2_if_confirmed": null,
+            "estimated_net_rr": null,
+            "signal_is_actionable_now": false,
+            "note": "Preco de observacao nao e ordem; somente candles fechados."
+          },
+          "live_price_reconfirmation_required": true,
+          "order_allowed": false
+        }
+      ]
+    },
+    {
       "symbol": "PYTH-USDT-SWAP",
       "status": "ANALISADO",
       "plans": [
@@ -4515,41 +4575,63 @@
       ]
     },
     {
-      "symbol": "PEPE-USDT-SWAP",
+      "symbol": "DASH-USDT-SWAP",
       "status": "ANALISADO",
       "plans": [
         {
-          "symbol": "PEPE-USDT-SWAP",
+          "symbol": "DASH-USDT-SWAP",
           "side": "LONG",
-          "stage": "MONITORANDO",
-          "decision": "AGUARDAR",
-          "reference_level": 4.8711e-06,
-          "close_15m": 4.8285e-06,
+          "stage": "ROMPIMENTO_FRACO",
+          "decision": "NAO_ENTRAR",
+          "reference_level": 47.29,
+          "close_15m": 47.33,
           "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
-          "relative_volume_15m": 1.07061704757,
-          "trend_2h": "baixa",
-          "trend_1h": "baixa",
-          "structure_1h": "baixa",
-          "trade_plan": null,
+          "relative_volume_15m": 4.549708772,
+          "trend_2h": "alta",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
+          "trade_plan": {
+            "entry_zone": [
+              47.3004642857,
+              47.3841785714
+            ],
+            "rr_worst_entry": 47.3841785714,
+            "stop": 47.0186071429,
+            "tp1_2_2R_projection": 48.1884357143,
+            "tp2_3_0R_projection": 48.4808928571,
+            "risk_ATR": 1.74675767918,
+            "estimated_net_RR_tp1": 1.4869585457,
+            "estimated_cost_pct_roundtrip": 0.2212,
+            "obstacle_before_tp1": {
+              "price": 47.45,
+              "tf": "1h"
+            },
+            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+          },
           "reasons": [
-            "sem gatilho operacional"
+            "R:R estimado liquido < 1,6 na pior entrada",
+            "obstaculo estrutural antes de TP1 projetado",
+            "preco passou do nivel, mas candle/volume nao confirmaram"
           ],
           "watch": {
-            "monitor_price": 4.8711e-06,
-            "confirmation_close_price": 4.87334142857e-06,
-            "confirmation_rule": "Fechamento de 15m acima de 4.87334142857e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-            "distance_to_watch_level_atr": 2.28068833652,
-            "distance_to_trigger_atr": 2.40068833652,
+            "monitor_price": 47.29,
+            "confirmation_close_price": 47.3151142857,
+            "confirmation_rule": "Fechamento de 15m acima de 47.3151142857 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 0.191126279863,
+            "distance_to_trigger_atr": 0.0711262798635,
             "near_trigger_0_5_atr": false,
             "alert_type": null,
             "alert_message": null,
             "last_snapshot_required": true,
-            "invalid_if_15m_closes_beyond": 4.86362857143e-06,
-            "entry_zone_if_confirmed": null,
-            "stop_if_confirmed": null,
-            "tp1_if_confirmed": null,
-            "tp2_if_confirmed": null,
-            "estimated_net_rr": null,
+            "invalid_if_15m_closes_beyond": 47.0186071429,
+            "entry_zone_if_confirmed": [
+              47.3004642857,
+              47.3841785714
+            ],
+            "stop_if_confirmed": 47.0186071429,
+            "tp1_if_confirmed": 48.1884357143,
+            "tp2_if_confirmed": 48.4808928571,
+            "estimated_net_rr": 1.4869585457,
             "signal_is_actionable_now": false,
             "note": "Preco de observacao nao e ordem; somente candles fechados."
           },
@@ -4557,32 +4639,32 @@
           "order_allowed": false
         },
         {
-          "symbol": "PEPE-USDT-SWAP",
+          "symbol": "DASH-USDT-SWAP",
           "side": "SHORT",
           "stage": "MONITORANDO",
           "decision": "AGUARDAR",
-          "reference_level": 4.8002e-06,
-          "close_15m": 4.8285e-06,
+          "reference_level": 45.66,
+          "close_15m": 47.33,
           "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
-          "relative_volume_15m": 1.07061704757,
-          "trend_2h": "baixa",
-          "trend_1h": "baixa",
-          "structure_1h": "baixa",
+          "relative_volume_15m": 4.549708772,
+          "trend_2h": "alta",
+          "trend_1h": "mista",
+          "structure_1h": "mista",
           "trade_plan": null,
           "reasons": [
             "sem gatilho operacional"
           ],
           "watch": {
-            "monitor_price": 4.8002e-06,
-            "confirmation_close_price": 4.79795857143e-06,
-            "confirmation_rule": "Fechamento de 15m abaixo de 4.79795857143e-06 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-            "distance_to_watch_level_atr": 1.51510516252,
-            "distance_to_trigger_atr": 1.63510516252,
+            "monitor_price": 45.66,
+            "confirmation_close_price": 45.6348857143,
+            "confirmation_rule": "Fechamento de 15m abaixo de 45.6348857143 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
+            "distance_to_watch_level_atr": 7.9795221843,
+            "distance_to_trigger_atr": 8.0995221843,
             "near_trigger_0_5_atr": false,
             "alert_type": null,
             "alert_message": null,
             "last_snapshot_required": true,
-            "invalid_if_15m_closes_beyond": 4.80767142857e-06,
+            "invalid_if_15m_closes_beyond": 45.7437142857,
             "entry_zone_if_confirmed": null,
             "stop_if_confirmed": null,
             "tp1_if_confirmed": null,
@@ -6595,88 +6677,6 @@
             "alert_message": null,
             "last_snapshot_required": true,
             "invalid_if_15m_closes_beyond": 4.4426e-06,
-            "entry_zone_if_confirmed": null,
-            "stop_if_confirmed": null,
-            "tp1_if_confirmed": null,
-            "tp2_if_confirmed": null,
-            "estimated_net_rr": null,
-            "signal_is_actionable_now": false,
-            "note": "Preco de observacao nao e ordem; somente candles fechados."
-          },
-          "live_price_reconfirmation_required": true,
-          "order_allowed": false
-        }
-      ]
-    },
-    {
-      "symbol": "CRV-USDT-SWAP",
-      "status": "ANALISADO",
-      "plans": [
-        {
-          "symbol": "CRV-USDT-SWAP",
-          "side": "LONG",
-          "stage": "MONITORANDO",
-          "decision": "AGUARDAR",
-          "reference_level": 0.2682,
-          "close_15m": 0.2656,
-          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
-          "relative_volume_15m": 1.13409280539,
-          "trend_2h": "alta",
-          "trend_1h": "alta",
-          "structure_1h": "mista",
-          "trade_plan": null,
-          "reasons": [
-            "sem gatilho operacional"
-          ],
-          "watch": {
-            "monitor_price": 0.2682,
-            "confirmation_close_price": 0.268324285714,
-            "confirmation_rule": "Fechamento de 15m acima de 0.268324285714 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-            "distance_to_watch_level_atr": 2.51034482759,
-            "distance_to_trigger_atr": 2.63034482759,
-            "near_trigger_0_5_atr": false,
-            "alert_type": null,
-            "alert_message": null,
-            "last_snapshot_required": true,
-            "invalid_if_15m_closes_beyond": 0.267785714286,
-            "entry_zone_if_confirmed": null,
-            "stop_if_confirmed": null,
-            "tp1_if_confirmed": null,
-            "tp2_if_confirmed": null,
-            "estimated_net_rr": null,
-            "signal_is_actionable_now": false,
-            "note": "Preco de observacao nao e ordem; somente candles fechados."
-          },
-          "live_price_reconfirmation_required": true,
-          "order_allowed": false
-        },
-        {
-          "symbol": "CRV-USDT-SWAP",
-          "side": "SHORT",
-          "stage": "MONITORANDO",
-          "decision": "AGUARDAR",
-          "reference_level": 0.2634,
-          "close_15m": 0.2656,
-          "last_15m_close_utc": "2026-11-08T01:00:00+00:00",
-          "relative_volume_15m": 1.13409280539,
-          "trend_2h": "alta",
-          "trend_1h": "alta",
-          "structure_1h": "mista",
-          "trade_plan": null,
-          "reasons": [
-            "sem gatilho operacional"
-          ],
-          "watch": {
-            "monitor_price": 0.2634,
-            "confirmation_close_price": 0.263275714286,
-            "confirmation_rule": "Fechamento de 15m abaixo de 0.263275714286 com corpo >= 40%, volume relativo >= 1.4 e posterior reteste fechado; rompimento isolado nao e entrada",
-            "distance_to_watch_level_atr": 2.12413793103,
-            "distance_to_trigger_atr": 2.24413793103,
-            "near_trigger_0_5_atr": false,
-            "alert_type": null,
-            "alert_message": null,
-            "last_snapshot_required": true,
-            "invalid_if_15m_closes_beyond": 0.263814285714,
             "entry_zone_if_confirmed": null,
             "stop_if_confirmed": null,
             "tp1_if_confirmed": null,
