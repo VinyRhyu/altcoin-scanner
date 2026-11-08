@@ -3,13 +3,51 @@
   "status": "EXPERIMENTAL",
   "order_allowed": false,
   "source_collected_utc": "2026-11-08T00:33:11.231000+00:00",
-  "evaluated_at_utc": "2026-11-08T00:46:06.380449+00:00",
-  "snapshot_age_min": 12.9191574833,
+  "evaluated_at_utc": "2026-11-08T00:47:23.796348+00:00",
+  "snapshot_age_min": 14.2094224667,
   "snapshot_stale": false,
   "source_asset_count": 43,
   "retained_asset_count": 43,
   "analyzed_asset_count": 43,
   "ranked_setups": [
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "side": "LONG",
+      "stage": "PRE_REACAO",
+      "decision": "AGUARDAR",
+      "reference_level": 4.8002e-06,
+      "close_15m": 4.8189e-06,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 1.90417433758,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "baixa",
+      "trade_plan": {
+        "entry_zone": [
+          4.80122428571e-06,
+          4.80941857143e-06
+        ],
+        "rr_worst_entry": 4.80941857143e-06,
+        "stop": 4.79200571429e-06,
+        "tp1_2_2R_projection": 4.84772685714e-06,
+        "tp2_3_0R_projection": 4.86165714286e-06,
+        "risk_ATR": 0.85,
+        "estimated_net_RR_tp1": 1.05365330877,
+        "estimated_cost_pct_roundtrip": 0.2021,
+        "obstacle_before_tp1": {
+          "price": 4.8411e-06,
+          "tf": "1h"
+        },
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "R:R estimado liquido < 1,6 na pior entrada",
+        "obstaculo estrutural antes de TP1 projetado",
+        "proximidade da regiao nao e confirmacao"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
     {
       "symbol": "PEPE-USDT-SWAP",
       "side": "SHORT",
@@ -78,6 +116,82 @@
         "R:R estimado liquido < 1,6 na pior entrada",
         "obstaculo estrutural antes de TP1 projetado",
         "proximidade da regiao nao e confirmacao"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "side": "SHORT",
+      "stage": "PRE_REJEICAO",
+      "decision": "AGUARDAR",
+      "reference_level": 0.15136,
+      "close_15m": 0.15107,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 0.50345837632,
+      "trend_2h": "baixa",
+      "trend_1h": "baixa",
+      "structure_1h": "mista",
+      "trade_plan": {
+        "entry_zone": [
+          0.15117325,
+          0.15133925
+        ],
+        "rr_worst_entry": 0.15117325,
+        "stop": 0.151526,
+        "tp1_2_2R_projection": 0.1503972,
+        "tp2_3_0R_projection": 0.150115,
+        "risk_ATR": 0.85,
+        "estimated_net_RR_tp1": 0.697254908732,
+        "estimated_cost_pct_roundtrip": 0.2066,
+        "obstacle_before_tp1": {
+          "price": 0.15114,
+          "tf": "1h"
+        },
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "R:R estimado liquido < 1,6 na pior entrada",
+        "obstaculo estrutural antes de TP1 projetado",
+        "proximidade da regiao nao e confirmacao"
+      ],
+      "live_price_reconfirmation_required": true,
+      "order_allowed": false
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "stage": "ROMPIMENTO_FRACO",
+      "decision": "AGUARDAR",
+      "reference_level": 47.08,
+      "close_15m": 47.14,
+      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
+      "relative_volume_15m": 2.86622253699,
+      "trend_2h": "alta",
+      "trend_1h": "mista",
+      "structure_1h": "mista",
+      "trade_plan": {
+        "entry_zone": [
+          47.0898571429,
+          47.1687142857
+        ],
+        "rr_worst_entry": 47.1687142857,
+        "stop": 46.7604285714,
+        "tp1_2_2R_projection": 48.0669428571,
+        "tp2_3_0R_projection": 48.3935714286,
+        "risk_ATR": 2.07101449275,
+        "estimated_net_RR_tp1": 1.54868492902,
+        "estimated_cost_pct_roundtrip": 0.2212,
+        "obstacle_before_tp1": {
+          "price": 47.28,
+          "tf": "2h"
+        },
+        "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+      },
+      "reasons": [
+        "R:R estimado liquido < 1,6 na pior entrada",
+        "obstaculo estrutural antes de TP1 projetado",
+        "preco passou do nivel, mas candle/volume nao confirmaram"
       ],
       "live_price_reconfirmation_required": true,
       "order_allowed": false
@@ -198,25 +312,6 @@
     },
     {
       "symbol": "DASH-USDT-SWAP",
-      "side": "LONG",
-      "stage": "MONITORANDO",
-      "decision": "AGUARDAR",
-      "reference_level": 47.08,
-      "close_15m": 47.14,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 2.86622253699,
-      "trend_2h": "alta",
-      "trend_1h": "mista",
-      "structure_1h": "mista",
-      "trade_plan": null,
-      "reasons": [
-        "sem gatilho operacional"
-      ],
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
-      "symbol": "DASH-USDT-SWAP",
       "side": "SHORT",
       "stage": "MONITORANDO",
       "decision": "AGUARDAR",
@@ -303,25 +398,6 @@
       "trend_2h": "alta",
       "trend_1h": "alta",
       "structure_1h": "mista",
-      "trade_plan": null,
-      "reasons": [
-        "sem gatilho operacional"
-      ],
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
-      "symbol": "PEPE-USDT-SWAP",
-      "side": "LONG",
-      "stage": "MONITORANDO",
-      "decision": "AGUARDAR",
-      "reference_level": 4.875e-06,
-      "close_15m": 4.8189e-06,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 1.90417433758,
-      "trend_2h": "baixa",
-      "trend_1h": "baixa",
-      "structure_1h": "baixa",
       "trade_plan": null,
       "reasons": [
         "sem gatilho operacional"
@@ -1470,25 +1546,6 @@
       "order_allowed": false
     },
     {
-      "symbol": "XLM-USDT-SWAP",
-      "side": "SHORT",
-      "stage": "MONITORANDO",
-      "decision": "AGUARDAR",
-      "reference_level": 0.14979,
-      "close_15m": 0.15107,
-      "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
-      "relative_volume_15m": 0.50345837632,
-      "trend_2h": "baixa",
-      "trend_1h": "baixa",
-      "structure_1h": "mista",
-      "trade_plan": null,
-      "reasons": [
-        "sem gatilho operacional"
-      ],
-      "live_price_reconfirmation_required": true,
-      "order_allowed": false
-    },
-    {
       "symbol": "XRP-USDT-SWAP",
       "side": "LONG",
       "stage": "MONITORANDO",
@@ -2171,18 +2228,37 @@
         {
           "symbol": "PEPE-USDT-SWAP",
           "side": "LONG",
-          "stage": "MONITORANDO",
+          "stage": "PRE_REACAO",
           "decision": "AGUARDAR",
-          "reference_level": 4.875e-06,
+          "reference_level": 4.8002e-06,
           "close_15m": 4.8189e-06,
           "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
           "relative_volume_15m": 1.90417433758,
           "trend_2h": "baixa",
           "trend_1h": "baixa",
           "structure_1h": "baixa",
-          "trade_plan": null,
+          "trade_plan": {
+            "entry_zone": [
+              4.80122428571e-06,
+              4.80941857143e-06
+            ],
+            "rr_worst_entry": 4.80941857143e-06,
+            "stop": 4.79200571429e-06,
+            "tp1_2_2R_projection": 4.84772685714e-06,
+            "tp2_3_0R_projection": 4.86165714286e-06,
+            "risk_ATR": 0.85,
+            "estimated_net_RR_tp1": 1.05365330877,
+            "estimated_cost_pct_roundtrip": 0.2021,
+            "obstacle_before_tp1": {
+              "price": 4.8411e-06,
+              "tf": "1h"
+            },
+            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+          },
           "reasons": [
-            "sem gatilho operacional"
+            "R:R estimado liquido < 1,6 na pior entrada",
+            "obstaculo estrutural antes de TP1 projetado",
+            "proximidade da regiao nao e confirmacao"
           ],
           "live_price_reconfirmation_required": true,
           "order_allowed": false
@@ -2450,7 +2526,7 @@
         {
           "symbol": "DASH-USDT-SWAP",
           "side": "LONG",
-          "stage": "MONITORANDO",
+          "stage": "ROMPIMENTO_FRACO",
           "decision": "AGUARDAR",
           "reference_level": 47.08,
           "close_15m": 47.14,
@@ -2459,9 +2535,28 @@
           "trend_2h": "alta",
           "trend_1h": "mista",
           "structure_1h": "mista",
-          "trade_plan": null,
+          "trade_plan": {
+            "entry_zone": [
+              47.0898571429,
+              47.1687142857
+            ],
+            "rr_worst_entry": 47.1687142857,
+            "stop": 46.7604285714,
+            "tp1_2_2R_projection": 48.0669428571,
+            "tp2_3_0R_projection": 48.3935714286,
+            "risk_ATR": 2.07101449275,
+            "estimated_net_RR_tp1": 1.54868492902,
+            "estimated_cost_pct_roundtrip": 0.2212,
+            "obstacle_before_tp1": {
+              "price": 47.28,
+              "tf": "2h"
+            },
+            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+          },
           "reasons": [
-            "sem gatilho operacional"
+            "R:R estimado liquido < 1,6 na pior entrada",
+            "obstaculo estrutural antes de TP1 projetado",
+            "preco passou do nivel, mas candle/volume nao confirmaram"
           ],
           "live_price_reconfirmation_required": true,
           "order_allowed": false
@@ -3280,18 +3375,37 @@
         {
           "symbol": "XLM-USDT-SWAP",
           "side": "SHORT",
-          "stage": "MONITORANDO",
+          "stage": "PRE_REJEICAO",
           "decision": "AGUARDAR",
-          "reference_level": 0.14979,
+          "reference_level": 0.15136,
           "close_15m": 0.15107,
           "last_15m_close_utc": "2026-11-08T00:30:00+00:00",
           "relative_volume_15m": 0.50345837632,
           "trend_2h": "baixa",
           "trend_1h": "baixa",
           "structure_1h": "mista",
-          "trade_plan": null,
+          "trade_plan": {
+            "entry_zone": [
+              0.15117325,
+              0.15133925
+            ],
+            "rr_worst_entry": 0.15117325,
+            "stop": 0.151526,
+            "tp1_2_2R_projection": 0.1503972,
+            "tp2_3_0R_projection": 0.150115,
+            "risk_ATR": 0.85,
+            "estimated_net_RR_tp1": 0.697254908732,
+            "estimated_cost_pct_roundtrip": 0.2066,
+            "obstacle_before_tp1": {
+              "price": 0.15114,
+              "tf": "1h"
+            },
+            "note": "Alvos projetados, nao suportes garantidos; ajuste tick-size antes de usar."
+          },
           "reasons": [
-            "sem gatilho operacional"
+            "R:R estimado liquido < 1,6 na pior entrada",
+            "obstaculo estrutural antes de TP1 projetado",
+            "proximidade da regiao nao e confirmacao"
           ],
           "live_price_reconfirmation_required": true,
           "order_allowed": false
