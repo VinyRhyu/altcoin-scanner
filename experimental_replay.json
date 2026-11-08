@@ -2262,5 +2262,68 @@
         "LONG BREAKOUT": 1
       }
     }
-  ]
+  ],
+  "forward_outcomes": [
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T18:15:00+00:00",
+      "entry": 7.151,
+      "stop": 7.074,
+      "tp1": 7.32,
+      "outcome": "STOP_TOUCHED",
+      "bars_checked": 11
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T19:00:00+00:00",
+      "entry": 7.216,
+      "stop": 7.118,
+      "tp1": 7.431,
+      "outcome": "NOT_TRIGGERED_NEXT_15M",
+      "bars_checked": 1
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T11:00:00+00:00",
+      "entry": 255.68,
+      "stop": 258.14,
+      "tp1": 250.27,
+      "outcome": "NOT_TRIGGERED_NEXT_15M",
+      "bars_checked": 1
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "entry": 45.85,
+      "stop": 46.36,
+      "tp1": 44.73,
+      "outcome": "STOP_TOUCHED",
+      "bars_checked": 4
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "entry": 0.006323,
+      "stop": 0.00639,
+      "tp1": 0.006176,
+      "outcome": "STOP_TOUCHED",
+      "bars_checked": 7
+    }
+  ],
+  "outcome_counts": {
+    "STOP_TOUCHED": 3,
+    "NOT_TRIGGERED_NEXT_15M": 2
+  },
+  "forward_window": "Entry valid for next closed 15m; inspect up to 16 future 15m bars",
+  "candle_outcomes_are_not_executed_trades": true
 }
