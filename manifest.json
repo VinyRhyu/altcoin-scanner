@@ -1,6 +1,6 @@
 {
   "status": "OK",
-  "collected_utc": "2026-11-08T21:33:12.529000+00:00",
+  "collected_utc": "2026-11-08T21:48:12.747000+00:00",
   "asset_count": 41,
   "market": "OKX USDT perpetual",
   "timeframes": [
@@ -19,10 +19,10 @@
   "entry_watch_status": "EXPERIMENTAL",
   "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
   "entry_watch_source_sync_status": "CANDLE_ATUAL",
-  "entry_watch_source_candle_utc": "2026-11-08T21:30:00+00:00",
+  "entry_watch_source_candle_utc": "2026-11-08T21:45:00+00:00",
   "entry_watch_can_offer_current_entries": true,
-  "entry_watch_valid_until_utc": "2026-11-08T21:45:00+00:00",
-  "entry_watch_entry_event_count": 4,
-  "entry_watch_proximity_alert_count": 11,
+  "entry_watch_valid_until_utc": "2026-11-08T22:00:00+00:00",
+  "entry_watch_entry_event_count": 11,
+  "entry_watch_proximity_alert_count": 13,
   "trade_decisions_file": "trade_decisions.json"
 }
