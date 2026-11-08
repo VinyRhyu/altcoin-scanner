@@ -12,6 +12,7 @@ import statistics
 from datetime import datetime, timezone
 from pathlib import Path
 from experimental_scan import features
+from entry_trigger import analyze_both
 
 MIN_NET_RR = 1.6
 MAX_SPREAD_PCT = .15
@@ -216,7 +217,7 @@ def watch_fields(side, stage, level, close, atr, decision, stale, plan):
     }
 
 
-def evaluate(symbol, history, ticker, side, info, stale):
+def evaluate(symbol, history, ticker, side, info, stale, now_utc):
     stage, level, volume = setup(history, info, side)
     spread = float(ticker.get("spread_pct", 0))
     opposite = "baixa" if side == "LONG" else "alta"
@@ -269,8 +270,18 @@ def evaluate(symbol, history, ticker, side, info, stale):
     if stale and stage != "MONITORANDO":
         decision = "NAO_ENTRAR"
         why.append("snapshot desatualizado ou com horario inconsistente")
+    methods = analyze_both(history, info, ticker, side, now_utc, stale)
+    valid_methods = [m for m in methods if m["decision"] == "GATILHO_CONDICIONAL"]
+    # Duas estrategias independentes; nunca confundir o nivel com a ordem.
+    if valid_methods:
+        decision = "ENTRADA_CONDICIONAL"
+        why = ["Gatilho condicional por " + "/".join(m["method"] for m in valid_methods),
+               "Revalidar cotacao e livro de ofertas antes de agir"]
     return {
         "symbol": symbol, "side": side, "stage": stage, "decision": decision,
+        "entry_methods": methods,
+        "entry_trigger_price": valid_methods[0]["entry_trigger_price"] if valid_methods else None,
+        "entry_method": valid_methods[0]["method"] if valid_methods else None,
         "reference_level": pretty(level),
         "close_15m": pretty(close),
         "last_15m_close_utc": datetime.fromtimestamp(
@@ -300,7 +311,7 @@ def analyze(market, now_utc=None):
         try:
             history = market["candles"][symbol]
             info = features(history)
-            plans = [evaluate(symbol, history, ticker, side, info, stale)
+            plans = [evaluate(symbol, history, ticker, side, info, stale, now)
                      for side in ("LONG", "SHORT")]
             assets.append({"symbol": symbol, "status": "ANALISADO", "plans": plans})
             ranked.extend(plans)
@@ -322,6 +333,12 @@ def analyze(market, now_utc=None):
         "retained_asset_count": len(assets),
         "analyzed_asset_count": sum(a["status"] == "ANALISADO" for a in assets),
         "ranked_setups": ranked, "assets": assets,
+        "confirmed_entry_triggers": [
+            {"symbol": p["symbol"], "side": p["side"], **method}
+            for p in ranked for method in p["entry_methods"]
+            if method["decision"] == "GATILHO_CONDICIONAL"
+        ],
+        "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
         "proximity_alerts": [
             { "symbol": p["symbol"], "side": p["side"], "stage": p["stage"],
               "decision": p["decision"], "watch": p["watch"],
@@ -360,6 +377,8 @@ def main():
             "proximity_alert_count": out["proximity_alert_count"],
             "proximity_alerts": out["proximity_alerts"],
             "watchlist": active, "order_allowed": False,
+            "confirmed_entry_triggers": out["confirmed_entry_triggers"],
+            "entry_trigger_engine": out["entry_trigger_engine"],
             "delivery": "Arquivo publicado em cada coleta; nao envia push por si so",
         }
         Path(args.watch_output).write_text(json.dumps(
