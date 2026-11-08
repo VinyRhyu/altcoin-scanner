@@ -1,6 +1,6 @@
 {
   "status": "EXPERIMENTAL_REPLAY",
-  "source_collected_utc": "2026-11-08T03:03:02.912000+00:00",
+  "source_collected_utc": "2026-11-08T03:09:55.959000+00:00",
   "timeframe": "15m_closed_only",
   "no_lookahead": true,
   "historical_tick_size_assumed_from_current_metadata": true,
@@ -61,7 +61,7 @@
       "entry": 0.3353,
       "stop": 0.3456,
       "tp1": 0.3127,
-      "rr": 1.94589271684,
+      "rr": 1.97221703414,
       "reasons": [
         "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1"
@@ -76,24 +76,10 @@
       "entry": 0.333,
       "stop": 0.3457,
       "tp1": 0.3051,
-      "rr": 1.99362851149,
+      "rr": 2.0154705523,
       "reasons": [
         "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1"
-      ]
-    },
-    {
-      "symbol": "AERO-USDT-SWAP",
-      "side": "SHORT",
-      "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-07T12:45:00+00:00",
-      "decision": "NAO_ENTRAR",
-      "entry": 0.5964,
-      "stop": 0.6017,
-      "tp1": 0.5848,
-      "rr": 1.56448651727,
-      "reasons": [
-        "R:R liquido inferior a 1.6 na entrada exata"
       ]
     },
     {
@@ -149,7 +135,7 @@
       "entry": 0.1819,
       "stop": 0.1835,
       "tp1": 0.1784,
-      "rr": 1.47002730833,
+      "rr": 1.47024493108,
       "reasons": [
         "stop distante > 3 ATR",
         "R:R liquido inferior a 1.6 na entrada exata",
@@ -214,6 +200,20 @@
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T12:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.5964,
+      "stop": 0.6017,
+      "tp1": 0.5848,
+      "rr": 1.56448651727,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata"
       ]
     },
     {
@@ -298,7 +298,7 @@
       "entry": 0.326,
       "stop": 0.3351,
       "tp1": 0.306,
-      "rr": 1.92638365151,
+      "rr": 1.95496151239,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -312,7 +312,7 @@
       "entry": 46.4,
       "stop": 46.94,
       "tp1": 45.22,
-      "rr": 1.67647293152,
+      "rr": 1.67666619358,
       "reasons": [
         "2h contraria: setup exige analise adicional"
       ]
@@ -329,6 +329,20 @@
       "rr": 1.84599858555,
       "reasons": [
         "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T13:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.2673,
+      "stop": 0.2638,
+      "tp1": 0.2749,
+      "rr": 1.68433341762,
+      "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
     },
@@ -359,20 +373,6 @@
       "stop": 0.4405,
       "tp1": 0.4638,
       "rr": 1.80785604862,
-      "reasons": [
-        "pivot estrutural entre entrada e TP1"
-      ]
-    },
-    {
-      "symbol": "CRV-USDT-SWAP",
-      "side": "LONG",
-      "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-07T13:45:00+00:00",
-      "decision": "NAO_ENTRAR",
-      "entry": 0.2673,
-      "stop": 0.2638,
-      "tp1": 0.2749,
-      "rr": 1.68433341762,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -445,7 +445,7 @@
       "entry": 1.6543,
       "stop": 1.6323,
       "tp1": 1.7027,
-      "rr": 1.77043557693,
+      "rr": 1.72659192079,
       "reasons": [
         "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1",
@@ -511,20 +511,6 @@
       ]
     },
     {
-      "symbol": "ZEC-USDT-SWAP",
-      "side": "SHORT",
-      "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-07T15:30:00+00:00",
-      "decision": "NAO_ENTRAR",
-      "entry": 1255.1,
-      "stop": 1281.27,
-      "tp1": 1197.53,
-      "rr": 1.91876253614,
-      "reasons": [
-        "pivot estrutural entre entrada e TP1"
-      ]
-    },
-    {
       "symbol": "CRV-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
@@ -534,6 +520,20 @@
       "stop": 0.2654,
       "tp1": 0.2756,
       "rr": 1.65750013235,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T15:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 1255.1,
+      "stop": 1281.27,
+      "tp1": 1197.53,
+      "rr": 1.91876253614,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -606,7 +606,7 @@
       "entry": 0.1815,
       "stop": 0.1828,
       "tp1": 0.1787,
-      "rr": 1.32461555253,
+      "rr": 1.32485479581,
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
@@ -636,7 +636,7 @@
       "entry": 45.99,
       "stop": 46.62,
       "tp1": 44.61,
-      "rr": 1.74691529612,
+      "rr": 1.74708795352,
       "reasons": [
         "stop distante > 3 ATR",
         "2h contraria: setup exige analise adicional"
@@ -743,24 +743,9 @@
       "entry": 0.595,
       "stop": 0.588,
       "tp1": 0.6103,
-      "rr": 1.68980785967,
+      "rr": 1.69000091677,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
-      ]
-    },
-    {
-      "symbol": "AERO-USDT-SWAP",
-      "side": "LONG",
-      "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-07T18:15:00+00:00",
-      "decision": "NAO_ENTRAR",
-      "entry": 0.609,
-      "stop": 0.6007,
-      "tp1": 0.6272,
-      "rr": 1.755460569,
-      "reasons": [
-        "pivot estrutural entre entrada e TP1",
-        "1h em tendencia contraria sem virada estrutural"
       ]
     },
     {
@@ -777,6 +762,21 @@
         "stop distante > 3 ATR",
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T18:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.609,
+      "stop": 0.6007,
+      "tp1": 0.6272,
+      "rr": 1.755460569,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural"
       ]
     },
     {
@@ -832,7 +832,7 @@
       "entry": 8.296,
       "stop": 8.136,
       "tp1": 8.648,
-      "rr": 1.8828161366,
+      "rr": 1.88295080105,
       "reasons": [
         "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1"
@@ -862,7 +862,7 @@
       "entry": 0.1806,
       "stop": 0.1823,
       "tp1": 0.1769,
-      "rr": 1.49834253479,
+      "rr": 1.49855130294,
       "reasons": [
         "stop distante > 3 ATR",
         "R:R liquido inferior a 1.6 na entrada exata",
@@ -1133,7 +1133,7 @@
       "entry": 0.3383,
       "stop": 0.3436,
       "tp1": 0.3267,
-      "rr": 1.73646157092,
+      "rr": 1.78140759698,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -1294,7 +1294,7 @@
       "entry": 45.85,
       "stop": 46.36,
       "tp1": 44.73,
-      "rr": 1.66592435121,
+      "rr": 1.66612428212,
       "reasons": [
         "Aguardar preco cruzar gatilho e validar spread/volume novamente"
       ]
@@ -1354,7 +1354,7 @@
       "entry": 0.6033,
       "stop": 0.5936,
       "tp1": 0.6246,
-      "rr": 1.81599105394,
+      "rr": 1.81614538665,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -1401,7 +1401,7 @@
       "entry": 46.83,
       "stop": 46.31,
       "tp1": 47.97,
-      "rr": 1.66201419283,
+      "rr": 1.6622141189,
       "reasons": [
         "pivot estrutural entre entrada e TP1",
         "1h em tendencia contraria sem virada estrutural"
@@ -1416,7 +1416,7 @@
       "entry": 46.99,
       "stop": 46.5,
       "tp1": 48.06,
-      "rr": 1.62651961838,
+      "rr": 1.6267274332,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -1430,7 +1430,7 @@
       "entry": 47.09,
       "stop": 46.59,
       "tp1": 48.19,
-      "rr": 1.64829158379,
+      "rr": 1.64849801443,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -1444,7 +1444,7 @@
       "entry": 47.09,
       "stop": 46.59,
       "tp1": 48.19,
-      "rr": 1.64829158379,
+      "rr": 1.64849801443,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -1554,11 +1554,9 @@
       }
     },
     {
-      "symbol": "AERO-USDT-SWAP",
+      "symbol": "CRV-USDT-SWAP",
       "confirmed": {
-        "SHORT BREAKOUT": 1,
-        "LONG BREAKOUT": 6,
-        "LONG RETEST": 1
+        "LONG BREAKOUT": 2
       }
     },
     {
@@ -1599,14 +1597,14 @@
       }
     },
     {
-      "symbol": "WLD-USDT-SWAP",
-      "confirmed": {}
-    },
-    {
       "symbol": "OP-USDT-SWAP",
       "confirmed": {
         "SHORT BREAKOUT": 2
       }
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "confirmed": {}
     },
     {
       "symbol": "TAO-USDT-SWAP",
@@ -1759,9 +1757,11 @@
       }
     },
     {
-      "symbol": "CRV-USDT-SWAP",
+      "symbol": "AERO-USDT-SWAP",
       "confirmed": {
-        "LONG BREAKOUT": 2
+        "SHORT BREAKOUT": 1,
+        "LONG BREAKOUT": 6,
+        "LONG RETEST": 1
       }
     },
     {
