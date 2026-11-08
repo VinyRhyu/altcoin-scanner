@@ -1,55 +1,101 @@
 {
   "status": "EXPERIMENTAL_REPLAY",
-  "source_collected_utc": "2026-11-08T12:48:11.654000+00:00",
+  "source_collected_utc": "2026-11-08T13:04:16.574000+00:00",
   "timeframe": "15m_closed_only",
   "no_lookahead": true,
   "historical_tick_size_assumed_from_current_metadata": true,
   "historical_spread_assumed_from_current_snapshot": true,
   "not_a_profitability_backtest": true,
-  "asset_count": 21,
-  "samples_checked": 5460,
-  "confirmed": 55,
-  "conditional": 5,
-  "blocked": 50,
-  "unconfirmed": 5405,
+  "asset_count": 41,
+  "samples_checked": 10660,
+  "confirmed": 107,
+  "conditional": 8,
+  "blocked": 99,
+  "unconfirmed": 10553,
   "missing_tick_sz": 0,
   "reason_counts": {
-    "pivot estrutural entre entrada e TP1": 44,
-    "stop distante > 3 ATR": 22,
-    "R:R liquido inferior a 1.6 na entrada exata": 22,
-    "2h contraria: setup exige analise adicional": 10,
-    "Aguardar preco cruzar gatilho e validar spread/volume novamente": 5,
-    "1h em tendencia contraria sem virada estrutural": 3,
-    "gatilho distante > 0.9 ATR": 2
+    "pivot estrutural entre entrada e TP1": 84,
+    "stop distante > 3 ATR": 42,
+    "R:R liquido inferior a 1.6 na entrada exata": 38,
+    "2h contraria: setup exige analise adicional": 20,
+    "1h em tendencia contraria sem virada estrutural": 10,
+    "Aguardar preco cruzar gatilho e validar spread/volume novamente": 8,
+    "gatilho distante > 0.9 ATR": 4
   },
   "confirmed_examples": [
     {
-      "symbol": "LINK-USDT-SWAP",
+      "symbol": "TIA-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-07T20:45:00+00:00",
+      "candle_close_utc": "2026-11-07T21:00:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 10.783,
-      "stop": 10.835,
-      "tp1": 10.669,
-      "rr": 1.22613154166,
+      "entry": 0.4342,
+      "stop": 0.4413,
+      "tp1": 0.4186,
+      "rr": 1.81258360312,
       "reasons": [
-        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 243.45,
+      "stop": 257.31,
+      "tp1": 212.96,
+      "rr": 2.08911097124,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "gatilho distante > 0.9 ATR"
+      ]
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.7775,
+      "stop": 0.7898,
+      "tp1": 0.7505,
+      "rr": 1.81597798808,
+      "reasons": [
+        "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1"
       ]
     },
     {
-      "symbol": "LINK-USDT-SWAP",
+      "symbol": "ZEC-USDT-SWAP",
       "side": "SHORT",
-      "method": "RETEST",
-      "candle_close_utc": "2026-11-07T20:45:00+00:00",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:00:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 10.783,
-      "stop": 10.835,
-      "tp1": 10.669,
-      "rr": 1.22613154166,
+      "entry": 1240.54,
+      "stop": 1265.52,
+      "tp1": 1185.59,
+      "rr": 1.90961331697,
       "reasons": [
-        "R:R liquido inferior a 1.6 na entrada exata",
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.8858,
+      "stop": 0.8998,
+      "tp1": 0.855,
+      "rr": 1.82294991234,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "gatilho distante > 0.9 ATR",
         "pivot estrutural entre entrada e TP1"
       ]
     },
@@ -76,8 +122,53 @@
       "entry": 0.3383,
       "stop": 0.3436,
       "tp1": 0.3267,
-      "rr": 1.78047873592,
+      "rr": 1.73541269155,
       "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 8.134,
+      "stop": 8.211,
+      "tp1": 7.965,
+      "rr": 1.60979303832,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 1235.31,
+      "stop": 1262.22,
+      "tp1": 1176.11,
+      "rr": 1.92985804032,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
+      "side": "SHORT",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-07T21:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 1235.31,
+      "stop": 1262.22,
+      "tp1": 1176.11,
+      "rr": 1.92985804032,
+      "reasons": [
+        "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1"
       ]
     },
@@ -97,30 +188,75 @@
       ]
     },
     {
-      "symbol": "AVAX-USDT-SWAP",
+      "symbol": "LTC-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
       "candle_close_utc": "2026-11-07T21:15:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 8.134,
-      "stop": 8.211,
-      "tp1": 7.965,
-      "rr": 1.60956785111,
+      "entry": 51.66,
+      "stop": 52.13,
+      "tp1": 50.63,
+      "rr": 1.57161793068,
       "reasons": [
         "stop distante > 3 ATR",
+        "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
       ]
     },
     {
-      "symbol": "PENGU-USDT-SWAP",
+      "symbol": "DOT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.8835,
+      "stop": 0.8998,
+      "tp1": 0.8477,
+      "rr": 1.86814222583,
+      "reasons": [
+        "stop distante > 3 ATR"
+      ]
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-07T21:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.8835,
+      "stop": 0.8998,
+      "tp1": 0.8477,
+      "rr": 1.86814222583,
+      "reasons": [
+        "stop distante > 3 ATR"
+      ]
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 221.21,
+      "stop": 223.15,
+      "tp1": 216.95,
+      "rr": 1.59180720379,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
       "candle_close_utc": "2026-11-07T21:30:00+00:00",
       "decision": "GATILHO_CONDICIONAL",
-      "entry": 0.006323,
-      "stop": 0.00639,
-      "tp1": 0.006176,
-      "rr": 1.65381226146,
+      "entry": 45.85,
+      "stop": 46.36,
+      "tp1": 44.73,
+      "rr": 1.66552457933,
       "reasons": [
         "Aguardar preco cruzar gatilho e validar spread/volume novamente"
       ]
@@ -156,18 +292,75 @@
       ]
     },
     {
-      "symbol": "TAO-USDT-SWAP",
+      "symbol": "LTC-USDT-SWAP",
+      "side": "SHORT",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 51.61,
+      "stop": 52.06,
+      "tp1": 50.62,
+      "rr": 1.55690566685,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
       "candle_close_utc": "2026-11-07T21:30:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 221.21,
-      "stop": 223.15,
-      "tp1": 216.95,
-      "rr": 1.59156755332,
+      "entry": 0.8804,
+      "stop": 0.8972,
+      "tp1": 0.8435,
+      "rr": 1.87804109525,
+      "reasons": [
+        "stop distante > 3 ATR"
+      ]
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.8804,
+      "stop": 0.8972,
+      "tp1": 0.8435,
+      "rr": 1.87804109525,
+      "reasons": [
+        "stop distante > 3 ATR"
+      ]
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "decision": "GATILHO_CONDICIONAL",
+      "entry": 0.006323,
+      "stop": 0.00639,
+      "tp1": 0.006176,
+      "rr": 1.6540203671,
+      "reasons": [
+        "Aguardar preco cruzar gatilho e validar spread/volume novamente"
+      ]
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.10066,
+      "stop": 0.10197,
+      "tp1": 0.09778,
+      "rr": 1.73650520541,
       "reasons": [
         "stop distante > 3 ATR",
-        "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
       ]
     },
@@ -201,6 +394,23 @@
       ]
     },
     {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T23:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 3.695,
+      "stop": 3.66,
+      "tp1": 3.771,
+      "rr": 1.5585495836,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
       "symbol": "ALGO-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
@@ -223,7 +433,97 @@
       "entry": 0.6033,
       "stop": 0.5936,
       "tp1": 0.6246,
-      "rr": 1.81614538665,
+      "rr": 1.79045263374,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "LONG",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-07T23:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 3.703,
+      "stop": 3.66,
+      "tp1": 3.797,
+      "rr": 1.66526039487,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T23:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 46.83,
+      "stop": 46.31,
+      "tp1": 47.97,
+      "rr": 1.66161443077,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural"
+      ]
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T23:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 3.739,
+      "stop": 3.661,
+      "tp1": 3.91,
+      "rr": 1.87915223328,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T00:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 46.99,
+      "stop": 46.5,
+      "tp1": 48.06,
+      "rr": 1.62610408739,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T00:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 47.09,
+      "stop": 46.59,
+      "tp1": 48.19,
+      "rr": 1.64787881903,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-08T00:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 47.09,
+      "stop": 46.59,
+      "tp1": 48.19,
+      "rr": 1.64787881903,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -275,6 +575,34 @@
       ]
     },
     {
+      "symbol": "ENA-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T02:45:00+00:00",
+      "decision": "GATILHO_CONDICIONAL",
+      "entry": 0.15385,
+      "stop": 0.15618,
+      "tp1": 0.14873,
+      "rr": 1.81376262286,
+      "reasons": [
+        "Aguardar preco cruzar gatilho e validar spread/volume novamente"
+      ]
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T03:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 132.08,
+      "stop": 130.87,
+      "tp1": 134.74,
+      "rr": 1.60723665414,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
       "symbol": "PEPE-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
@@ -292,6 +620,20 @@
       ]
     },
     {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T03:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 47.7,
+      "stop": 46.93,
+      "tp1": 49.39,
+      "rr": 1.80947702841,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
       "symbol": "PEPE-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
@@ -304,6 +646,20 @@
       "reasons": [
         "pivot estrutural entre entrada e TP1",
         "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T04:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 47.86,
+      "stop": 47.2,
+      "tp1": 49.31,
+      "rr": 1.75470570317,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
       ]
     },
     {
@@ -338,34 +694,33 @@
       ]
     },
     {
-      "symbol": "PENGU-USDT-SWAP",
+      "symbol": "ZRO-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-08T04:45:00+00:00",
+      "candle_close_utc": "2026-11-08T04:30:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 0.006316,
-      "stop": 0.006354,
-      "tp1": 0.006233,
-      "rr": 1.34388868412,
+      "entry": 1.607,
+      "stop": 1.6176,
+      "tp1": 1.5837,
+      "rr": 1.43617771334,
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
       ]
     },
     {
-      "symbol": "CRV-USDT-SWAP",
+      "symbol": "ZRO-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
       "candle_close_utc": "2026-11-08T04:45:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 0.2633,
-      "stop": 0.2658,
-      "tp1": 0.2578,
-      "rr": 1.55821489811,
+      "entry": 1.5975,
+      "stop": 1.6176,
+      "tp1": 1.5533,
+      "rr": 1.74837504463,
       "reasons": [
-        "R:R liquido inferior a 1.6 na entrada exata",
-        "pivot estrutural entre entrada e TP1",
-        "2h contraria: setup exige analise adicional"
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
       ]
     },
     {
@@ -400,6 +755,65 @@
       ]
     },
     {
+      "symbol": "NEAR-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T04:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 3.667,
+      "stop": 3.711,
+      "tp1": 3.571,
+      "rr": 1.67581934496,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T04:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.006316,
+      "stop": 0.006354,
+      "tp1": 0.006233,
+      "rr": 1.34417548722,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T04:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.2633,
+      "stop": 0.2658,
+      "tp1": 0.2578,
+      "rr": 1.5584303109,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T05:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.4328,
+      "stop": 0.4376,
+      "tp1": 0.4223,
+      "rr": 1.65268508599,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
       "symbol": "HBAR-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
@@ -422,7 +836,7 @@
       "entry": 0.001581,
       "stop": 0.001541,
       "tp1": 0.001668,
-      "rr": 1.87850753509,
+      "rr": 1.87881701384,
       "reasons": [
         "stop distante > 3 ATR"
       ]
@@ -452,9 +866,40 @@
       "entry": 0.001597,
       "stop": 0.001568,
       "tp1": 0.00166,
-      "rr": 1.77427793235,
+      "rr": 1.77467880002,
       "reasons": [
         "Aguardar preco cruzar gatilho e validar spread/volume novamente"
+      ]
+    },
+    {
+      "symbol": "XRP-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T06:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 1.1666,
+      "stop": 1.1596,
+      "tp1": 1.182,
+      "rr": 1.3745094041,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T06:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 697.65,
+      "stop": 696.06,
+      "tp1": 701.14,
+      "rr": 0.696122267177,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
       ]
     },
     {
@@ -473,17 +918,61 @@
       ]
     },
     {
-      "symbol": "BNB-USDT-SWAP",
-      "side": "LONG",
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
       "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-08T06:30:00+00:00",
+      "candle_close_utc": "2026-11-08T06:45:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 697.65,
-      "stop": 696.06,
-      "tp1": 701.14,
-      "rr": 0.696122267177,
+      "entry": 245.3,
+      "stop": 247.57,
+      "tp1": 240.31,
+      "rr": 1.62031684684,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T06:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.776,
+      "stop": 0.7821,
+      "tp1": 0.7626,
+      "rr": 1.51519435358,
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T06:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.3283,
+      "stop": 0.3312,
+      "tp1": 0.322,
+      "rr": 1.5156821335,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T06:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 129.84,
+      "stop": 131.1,
+      "tp1": 127.07,
+      "rr": 1.63454193827,
+      "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
     },
@@ -519,6 +1008,35 @@
       ]
     },
     {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T07:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.4297,
+      "stop": 0.435,
+      "tp1": 0.4181,
+      "rr": 1.69933158161,
+      "reasons": [
+        "stop distante > 3 ATR"
+      ]
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T07:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 244.99,
+      "stop": 247.1,
+      "tp1": 240.35,
+      "rr": 1.58618253095,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
       "symbol": "RSR-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
@@ -527,9 +1045,25 @@
       "entry": 0.001615,
       "stop": 0.00158,
       "tp1": 0.001691,
-      "rr": 1.83100506546,
+      "rr": 1.8313549347,
       "reasons": [
         "Aguardar preco cruzar gatilho e validar spread/volume novamente"
+      ]
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T07:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.10178,
+      "stop": 0.10078,
+      "tp1": 0.10398,
+      "rr": 1.6152109528,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural",
+        "2h contraria: setup exige analise adicional"
       ]
     },
     {
@@ -541,7 +1075,7 @@
       "entry": 0.001619,
       "stop": 0.00158,
       "tp1": 0.001704,
-      "rr": 1.86910092604,
+      "rr": 1.86942339423,
       "reasons": [
         "Aguardar preco cruzar gatilho e validar spread/volume novamente"
       ]
@@ -555,7 +1089,7 @@
       "entry": 0.001619,
       "stop": 0.00158,
       "tp1": 0.001704,
-      "rr": 1.86910092604,
+      "rr": 1.86942339423,
       "reasons": [
         "Aguardar preco cruzar gatilho e validar spread/volume novamente"
       ]
@@ -573,6 +1107,79 @@
       "reasons": [
         "stop distante > 3 ATR",
         "R:R liquido inferior a 1.6 na entrada exata"
+      ]
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T08:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.4288,
+      "stop": 0.432,
+      "tp1": 0.4218,
+      "rr": 1.45263245369,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata"
+      ]
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T08:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.591,
+      "stop": 0.5938,
+      "tp1": 0.5849,
+      "rr": 1.18068413697,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "side": "SHORT",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-08T08:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.4284,
+      "stop": 0.4318,
+      "tp1": 0.421,
+      "rr": 1.47825651166,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata"
+      ]
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T08:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.5904,
+      "stop": 0.5938,
+      "tp1": 0.583,
+      "rr": 1.30769861935,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "side": "SHORT",
+      "method": "RETEST",
+      "candle_close_utc": "2026-11-08T08:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.5904,
+      "stop": 0.5938,
+      "tp1": 0.583,
+      "rr": 1.30769861935,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
       ]
     },
     {
@@ -606,6 +1213,49 @@
       ]
     },
     {
+      "symbol": "STRK-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T09:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.03914,
+      "stop": 0.03941,
+      "tp1": 0.03855,
+      "rr": 1.39996218106,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T09:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.7713,
+      "stop": 0.7759,
+      "tp1": 0.7612,
+      "rr": 1.35468660323,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata"
+      ]
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T09:15:00+00:00",
+      "decision": "GATILHO_CONDICIONAL",
+      "entry": 0.3261,
+      "stop": 0.3296,
+      "tp1": 0.3184,
+      "rr": 1.6340628637,
+      "reasons": [
+        "Aguardar preco cruzar gatilho e validar spread/volume novamente"
+      ]
+    },
+    {
       "symbol": "ADA-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
@@ -614,10 +1264,41 @@
       "entry": 0.1793,
       "stop": 0.1804,
       "tp1": 0.1769,
-      "rr": 1.24605060878,
+      "rr": 1.24630907352,
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T09:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 8.144,
+      "stop": 8.179,
+      "tp1": 8.067,
+      "rr": 1.14224638404,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T09:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 7.019,
+      "stop": 7.076,
+      "tp1": 6.894,
+      "rr": 1.52631402441,
+      "reasons": [
+        "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1",
+        "2h contraria: setup exige analise adicional"
       ]
     },
     {
@@ -636,17 +1317,45 @@
       ]
     },
     {
-      "symbol": "AVAX-USDT-SWAP",
+      "symbol": "LTC-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
       "candle_close_utc": "2026-11-08T09:15:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 8.144,
-      "stop": 8.179,
-      "tp1": 8.067,
-      "rr": 1.14191273419,
+      "entry": 51.81,
+      "stop": 52.04,
+      "tp1": 51.31,
+      "rr": 1.12444393044,
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T10:15:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 243.79,
+      "stop": 245.99,
+      "tp1": 238.95,
+      "rr": 1.60975097345,
+      "reasons": [
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "AERO-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T10:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.5981,
+      "stop": 0.6042,
+      "tp1": 0.5847,
+      "rr": 1.63631763047,
+      "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
     },
@@ -666,20 +1375,6 @@
       ]
     },
     {
-      "symbol": "AERO-USDT-SWAP",
-      "side": "SHORT",
-      "method": "BREAKOUT",
-      "candle_close_utc": "2026-11-08T10:30:00+00:00",
-      "decision": "NAO_ENTRAR",
-      "entry": 0.5981,
-      "stop": 0.6042,
-      "tp1": 0.5847,
-      "rr": 1.63631763047,
-      "reasons": [
-        "pivot estrutural entre entrada e TP1"
-      ]
-    },
-    {
       "symbol": "RSR-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
@@ -688,7 +1383,7 @@
       "entry": 0.001638,
       "stop": 0.001575,
       "tp1": 0.001776,
-      "rr": 1.98801991324,
+      "rr": 1.98823820522,
       "reasons": [
         "stop distante > 3 ATR"
       ]
@@ -702,7 +1397,7 @@
       "entry": 0.5958,
       "stop": 0.5892,
       "tp1": 0.6103,
-      "rr": 1.67369704534,
+      "rr": 1.64020991145,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -716,7 +1411,7 @@
       "entry": 223.55,
       "stop": 221.86,
       "tp1": 227.26,
-      "rr": 1.51495027326,
+      "rr": 1.51521214277,
       "reasons": [
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1",
@@ -732,7 +1427,7 @@
       "entry": 0.6008,
       "stop": 0.5915,
       "tp1": 0.6212,
-      "rr": 1.80121703732,
+      "rr": 1.77480138028,
       "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
@@ -754,18 +1449,18 @@
       ]
     },
     {
-      "symbol": "PENGU-USDT-SWAP",
+      "symbol": "ZRO-USDT-SWAP",
       "side": "LONG",
       "method": "BREAKOUT",
       "candle_close_utc": "2026-11-08T11:30:00+00:00",
       "decision": "NAO_ENTRAR",
-      "entry": 0.006434,
-      "stop": 0.006334,
-      "tp1": 0.006653,
-      "rr": 1.80124004135,
+      "entry": 1.6311,
+      "stop": 1.6101,
+      "tp1": 1.6772,
+      "rr": 1.75395493889,
       "reasons": [
-        "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural",
         "2h contraria: setup exige analise adicional"
       ]
     },
@@ -778,9 +1473,59 @@
       "entry": 224.94,
       "stop": 222.5,
       "tp1": 230.3,
-      "rr": 1.68965303924,
+      "rr": 1.68986167959,
       "reasons": [
         "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T11:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.3632,
+      "stop": 0.3593,
+      "tp1": 0.3717,
+      "rr": 1.62342628274,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1",
+        "1h em tendencia contraria sem virada estrutural",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T11:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.006434,
+      "stop": 0.006334,
+      "tp1": 0.006653,
+      "rr": 1.80139831753,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1",
+        "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "side": "LONG",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T12:00:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.3641,
+      "stop": 0.3605,
+      "tp1": 0.372,
+      "rr": 1.59670373074,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1",
         "2h contraria: setup exige analise adicional"
       ]
@@ -799,6 +1544,21 @@
         "R:R liquido inferior a 1.6 na entrada exata",
         "pivot estrutural entre entrada e TP1",
         "2h contraria: setup exige analise adicional"
+      ]
+    },
+    {
+      "symbol": "STRK-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T12:30:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 0.03884,
+      "stop": 0.03955,
+      "tp1": 0.03728,
+      "rr": 1.84581732801,
+      "reasons": [
+        "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
       ]
     },
     {
@@ -825,7 +1585,7 @@
       "entry": 0.3334,
       "stop": 0.3388,
       "tp1": 0.3216,
-      "rr": 1.7891198381,
+      "rr": 1.74518911991,
       "reasons": [
         "stop distante > 3 ATR",
         "pivot estrutural entre entrada e TP1"
@@ -843,6 +1603,20 @@
       "rr": 1.80360698724,
       "reasons": [
         "stop distante > 3 ATR",
+        "pivot estrutural entre entrada e TP1"
+      ]
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T12:45:00+00:00",
+      "decision": "NAO_ENTRAR",
+      "entry": 6.968,
+      "stop": 7.04,
+      "tp1": 6.81,
+      "rr": 1.64573319617,
+      "reasons": [
         "pivot estrutural entre entrada e TP1"
       ]
     }
@@ -870,27 +1644,66 @@
       }
     },
     {
-      "symbol": "ARB-USDT-SWAP",
-      "confirmed": {
-        "LONG BREAKOUT": 1
-      }
-    },
-    {
       "symbol": "STX-USDT-SWAP",
       "confirmed": {
         "SHORT BREAKOUT": 2
       }
     },
     {
-      "symbol": "ALGO-USDT-SWAP",
+      "symbol": "ARB-USDT-SWAP",
       "confirmed": {
-        "LONG BREAKOUT": 3,
+        "LONG BREAKOUT": 1
+      }
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "confirmed": {
+        "LONG BREAKOUT": 3
+      }
+    },
+    {
+      "symbol": "STRK-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2
+      }
+    },
+    {
+      "symbol": "ENA-USDT-SWAP",
+      "confirmed": {
         "SHORT BREAKOUT": 1
       }
     },
     {
-      "symbol": "INJ-USDT-SWAP",
-      "confirmed": {}
+      "symbol": "TIA-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 4,
+        "SHORT RETEST": 1
+      }
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 4
+      }
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 3
+      }
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2
+      }
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2,
+        "LONG BREAKOUT": 1
+      }
     },
     {
       "symbol": "ADA-USDT-SWAP",
@@ -899,22 +1712,82 @@
       }
     },
     {
-      "symbol": "HBAR-USDT-SWAP",
+      "symbol": "AERO-USDT-SWAP",
+      "confirmed": {
+        "LONG BREAKOUT": 2,
+        "SHORT BREAKOUT": 4
+      }
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 1
+      }
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 1,
+        "LONG BREAKOUT": 2
+      }
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "confirmed": {}
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2
+      }
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 1,
+        "LONG BREAKOUT": 5,
+        "LONG RETEST": 1
+      }
+    },
+    {
+      "symbol": "ZEC-USDT-SWAP",
       "confirmed": {
         "SHORT BREAKOUT": 2,
+        "SHORT RETEST": 1
+      }
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "confirmed": {}
+    },
+    {
+      "symbol": "XRP-USDT-SWAP",
+      "confirmed": {
         "LONG BREAKOUT": 1
       }
     },
     {
-      "symbol": "PENGU-USDT-SWAP",
+      "symbol": "DOGE-USDT-SWAP",
+      "confirmed": {}
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
       "confirmed": {
-        "SHORT BREAKOUT": 2,
-        "LONG BREAKOUT": 1
+        "LONG BREAKOUT": 2,
+        "LONG RETEST": 1,
+        "SHORT BREAKOUT": 1
       }
     },
     {
-      "symbol": "CRV-USDT-SWAP",
+      "symbol": "UNI-USDT-SWAP",
       "confirmed": {
+        "SHORT BREAKOUT": 2
+      }
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "confirmed": {
+        "LONG BREAKOUT": 1,
         "SHORT BREAKOUT": 1
       }
     },
@@ -926,34 +1799,40 @@
       }
     },
     {
-      "symbol": "AVAX-USDT-SWAP",
+      "symbol": "LINK-USDT-SWAP",
       "confirmed": {
-        "SHORT BREAKOUT": 2
+        "SHORT BREAKOUT": 1
       }
     },
     {
-      "symbol": "DOGE-USDT-SWAP",
+      "symbol": "INJ-USDT-SWAP",
       "confirmed": {}
     },
     {
-      "symbol": "AERO-USDT-SWAP",
+      "symbol": "ONDO-USDT-SWAP",
       "confirmed": {
-        "LONG BREAKOUT": 2,
-        "SHORT BREAKOUT": 4
+        "LONG BREAKOUT": 2
       }
     },
     {
-      "symbol": "LINK-USDT-SWAP",
+      "symbol": "LTC-USDT-SWAP",
       "confirmed": {
         "SHORT BREAKOUT": 2,
         "SHORT RETEST": 1
       }
     },
     {
-      "symbol": "TAO-USDT-SWAP",
+      "symbol": "DOT-USDT-SWAP",
       "confirmed": {
-        "SHORT BREAKOUT": 1,
-        "LONG BREAKOUT": 2
+        "SHORT BREAKOUT": 3,
+        "SHORT RETEST": 2
+      }
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2,
+        "LONG BREAKOUT": 1
       }
     },
     {
@@ -963,20 +1842,42 @@
       }
     },
     {
-      "symbol": "BNB-USDT-SWAP",
-      "confirmed": {
-        "LONG BREAKOUT": 3
-      }
-    },
-    {
-      "symbol": "XLM-USDT-SWAP",
+      "symbol": "SHIB-USDT-SWAP",
       "confirmed": {
         "SHORT BREAKOUT": 1
       }
     },
     {
-      "symbol": "SHIB-USDT-SWAP",
+      "symbol": "OP-USDT-SWAP",
       "confirmed": {
+        "SHORT BREAKOUT": 1,
+        "LONG BREAKOUT": 1
+      }
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 1
+      }
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2,
+        "SHORT RETEST": 1
+      }
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "confirmed": {
+        "SHORT BREAKOUT": 2,
+        "LONG BREAKOUT": 1
+      }
+    },
+    {
+      "symbol": "ALGO-USDT-SWAP",
+      "confirmed": {
+        "LONG BREAKOUT": 3,
         "SHORT BREAKOUT": 1
       }
     }
@@ -1027,6 +1928,39 @@
       "bars_checked": 1
     },
     {
+      "symbol": "ENA-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T02:45:00+00:00",
+      "entry": 0.15385,
+      "stop": 0.15618,
+      "tp1": 0.14873,
+      "outcome": "UNRESOLVED_IN_AVAILABLE_WINDOW",
+      "bars_checked": 16
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-08T09:15:00+00:00",
+      "entry": 0.3261,
+      "stop": 0.3296,
+      "tp1": 0.3184,
+      "outcome": "STOP_TOUCHED",
+      "bars_checked": 9
+    },
+    {
+      "symbol": "DASH-USDT-SWAP",
+      "side": "SHORT",
+      "method": "BREAKOUT",
+      "candle_close_utc": "2026-11-07T21:30:00+00:00",
+      "entry": 45.85,
+      "stop": 46.36,
+      "tp1": 44.73,
+      "outcome": "STOP_TOUCHED",
+      "bars_checked": 4
+    },
+    {
       "symbol": "PENGU-USDT-SWAP",
       "side": "SHORT",
       "method": "BREAKOUT",
@@ -1039,8 +1973,9 @@
     }
   ],
   "outcome_counts": {
+    "STOP_TOUCHED": 4,
     "NOT_TRIGGERED_NEXT_15M": 3,
-    "STOP_TOUCHED": 2
+    "UNRESOLVED_IN_AVAILABLE_WINDOW": 1
   },
   "forward_window": "Entry valid for next closed 15m; inspect up to 16 future 15m bars",
   "candle_outcomes_are_not_executed_trades": true
