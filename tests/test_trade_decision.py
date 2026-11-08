@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timezone, timedelta
 from trade_decision import analyze, candle_quality, levels, setup
-from tests.test_experimental_scan import source
+from test_experimental_scan import source
 
 
 class TradeDecisionTests(unittest.TestCase):
