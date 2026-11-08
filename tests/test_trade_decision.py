@@ -46,6 +46,19 @@ class TradeDecisionTests(unittest.TestCase):
         self.assertGreater(level, 0)
         self.assertGreater(volume, .65)
 
+    def test_reaction_and_rejection_are_monitored_independently(self):
+        # 40 candles laterais. Usar um unico candle fechado como gatilho.
+        from trade_decision import setup
+        base = [[i*900000, 10., 10.2, 9.8, 10., 100., 100.]
+                for i in range(40)]
+        hist = {"15m": base}
+        hist["15m"][-1] = [39*900000, 9.81, 9.92, 9.80, 9.90, 100., 200.]
+        stage_long, _, _ = setup(hist, {"atr_15m": .2}, "LONG")
+        self.assertEqual(stage_long, "REACAO_CONFIRMADA")
+        hist["15m"][-1] = [39*900000, 10.18, 10.20, 10.05, 10.08, 100., 200.]
+        stage_short, _, _ = setup(hist, {"atr_15m": .2}, "SHORT")
+        self.assertEqual(stage_short, "REJEICAO_CONFIRMADA")
+
     def test_stale_data_blocks_confirmed_entry(self):
         data = source()
         now = datetime(2026,11,8,tzinfo=timezone.utc) + timedelta(days=2)
