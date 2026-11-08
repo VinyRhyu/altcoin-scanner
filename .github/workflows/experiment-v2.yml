@@ -7,6 +7,8 @@ on:
     paths:
       - 'experimental_scan.py'
       - 'trade_decision.py'
+      - 'entry_trigger.py'
+      - 'tests/test_entry_trigger.py'
       - 'tests/test_trade_decision.py'
       - 'tests/test_experimental_scan.py'
       - '.github/workflows/experiment-v2.yml'
@@ -54,6 +56,12 @@ jobs:
           assert d['analyzed_asset_count'] == d['source_asset_count'], 'Alguns ativos nao foram analisados'
           assert len(d['ranked_setups']) == d['source_asset_count'] * 2
           assert not d['order_allowed']
+          assert len(d['ranked_setups']) == 2 * d['source_asset_count']
+          assert all(len(plan['entry_methods']) == 2 for plan in d['ranked_setups'])
+          assert not any(plan['order_allowed'] for side in d['ranked_setups']
+                         for plan in side['entry_methods'])
+          assert all(plan['entry_trigger_price'] is None or plan['tick_size']
+                     for side in d['ranked_setups'] for plan in side['entry_methods'])
           watch = json.load(open('experimental_entry_watch.json'))
           assert watch['retained_asset_count'] == d['retained_asset_count']
           assert watch['proximity_alert_count'] == len(watch['proximity_alerts'])
