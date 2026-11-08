@@ -298,6 +298,15 @@ def evaluate(symbol, history, ticker, side, info, stale, now_utc):
         # Exibir limite realmente usado pelo motor; nao reaproveitar a
         # confirmacao genérica da fase exploratoria como gatilho final.
         watch["confirmation_close_price"] = chosen["confirmation_close_price"]
+    if chosen and chosen["status"] == "CONFIRMADO":
+        # Um rompimento confirmado NAO e "proximo ao reteste".
+        # O evento de entrada tem prioridade sobre o aviso exploratorio.
+        watch["near_trigger_0_5_atr"] = False
+        watch["alert_type"] = "EVENTO_DE_ENTRADA"
+        watch["alert_message"] = (
+            "Gatilho condicional disponivel; conferir cotacao e custos"
+            if chosen["entry_state"] == "GATILHO_DISPONIVEL" else
+            "Gatilho confirmado, mas nao oferecer entrada: " + chosen["entry_state"])
     if chosen and chosen["entry_trigger_price"] is not None:
         exact = chosen["entry_trigger_price"]
         watch.update({
@@ -312,19 +321,21 @@ def evaluate(symbol, history, ticker, side, info, stale, now_utc):
             "confirmation_rule": chosen["confirmation_conditions"],
             "trigger_expires_utc": chosen["trigger_expires_utc"],
         })
+    public_stage = ("ROMPIMENTO_CONFIRMADO" if
+                    any(m["method"] == "BREAKOUT" and m["status"] == "CONFIRMADO"
+                        for m in methods)
+                    else "RETESTE_CONFIRMADO" if
+                    any(m["method"] == "RETEST" and m["status"] == "CONFIRMADO"
+                        for m in methods)
+                    else stage)
     return {
-        "symbol": symbol, "side": side, "stage": stage, "decision": decision,
+        "symbol": symbol, "side": side, "stage": public_stage,
+        "legacy_stage": stage, "decision": decision,
         "entry_methods": methods,
         "entry_trigger_price": valid_methods[0]["entry_trigger_price"] if valid_methods else None,
         "entry_method": valid_methods[0]["method"] if valid_methods else None,
         "entry_state": watch["entry_state"],
-        "public_stage": ("ROMPIMENTO_CONFIRMADO" if
-                         any(m["method"] == "BREAKOUT" and m["status"] == "CONFIRMADO"
-                             for m in methods)
-                         else "RETESTE_CONFIRMADO" if
-                         any(m["method"] == "RETEST" and m["status"] == "CONFIRMADO"
-                             for m in methods)
-                         else stage),
+        "public_stage": public_stage,
         "reference_level": pretty(level),
         "close_15m": pretty(close),
         "last_15m_close_utc": datetime.fromtimestamp(
@@ -363,7 +374,7 @@ def analyze(market, now_utc=None):
                            "error": str(exc), "plans": []})
     ranked.sort(key=lambda s: (
         {"ENTRADA_CONDICIONAL": 0, "AGUARDAR": 1, "NAO_ENTRAR": 2}[s["decision"]],
-        {"RETESTE_CONFIRMADO": 0, "REACAO_CONFIRMADA": 0,
+        {"ROMPIMENTO_CONFIRMADO": 0, "RETESTE_CONFIRMADO": 0, "REACAO_CONFIRMADA": 0,
          "REJEICAO_CONFIRMADA": 0, "AGUARDAR_RETESTE": 1,
          "PREPARANDO": 2, "PRE_REACAO": 2, "PRE_REJEICAO": 2,
          "ROMPIMENTO_FRACO": 3, "MONITORANDO": 4}[s["stage"]],
@@ -387,6 +398,22 @@ def analyze(market, now_utc=None):
             if method["decision"] == "GATILHO_CONDICIONAL"
         ],
         "entry_trigger_engine": "breakout_or_retest_independent_next_15m_tick_size",
+        "entry_events": [
+            {"symbol": p["symbol"], "side": p["side"],
+             "stage": p["stage"], "decision": p["decision"],
+             "method": m["method"], "entry_state": m["entry_state"],
+             "entry_trigger_price": m["entry_trigger_price"],
+             "stop_loss": m["stop_loss"],
+             "tp1_projected": m["tp1_projected"],
+             "tp2_projected": m["tp2_projected"],
+             "estimated_net_rr_tp1": m["estimated_net_rr_tp1"],
+             "trigger_expires_utc": m["trigger_expires_utc"],
+             "ticker_price_at_snapshot": m["ticker_price_at_snapshot"],
+             "trigger_crossed_in_snapshot": m["trigger_crossed_in_snapshot"],
+             "reasons": m["reasons"], "order_allowed": False}
+            for p in ranked for m in p["entry_methods"]
+            if m["status"] == "CONFIRMADO"
+        ],
         "entry_state_counts": {
             state: sum(m["entry_state"] == state
                        for p in ranked for m in p["entry_methods"])
@@ -441,6 +468,8 @@ def main():
             "confirmed_entry_triggers": out["confirmed_entry_triggers"],
             "entry_trigger_engine": out["entry_trigger_engine"],
             "entry_state_counts": out["entry_state_counts"],
+            "entry_events": out["entry_events"],
+            "entry_event_count": len(out["entry_events"]),
             "delivery": "Arquivo publicado em cada coleta; nao envia push por si so",
         }
         Path(args.watch_output).write_text(json.dumps(
