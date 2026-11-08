@@ -196,8 +196,10 @@ def tickers(allowed, now_ms):
         "public/instruments", instType="SWAP"
     )
 
+    # Guardar metadados oficiais da OKX (tickSz). Nao alterar
+    # elegibilidade em funcao de precisao disponivel.
     live = {
-        item["instId"]
+        item["instId"]: item
         for item in instruments
         if item.get("state") == "live"
         and item.get("instId", "").endswith("-USDT-SWAP")
@@ -271,6 +273,14 @@ def tickers(allowed, now_ms):
                     (high - low) / price * 100, 3
                 ),
                 "spread_pct": round(spread, 4),
+                # tickSz e string na API; preservar casas decimais.
+                "tick_size": (
+                    str(live[symbol].get("tickSz"))
+                    if live[symbol].get("tickSz")
+                    and math.isfinite(float(live[symbol]["tickSz"]))
+                    and float(live[symbol]["tickSz"]) > 0
+                    else None
+                ),
                 "ticker_time_utc": utc(timestamp),
             })
 
