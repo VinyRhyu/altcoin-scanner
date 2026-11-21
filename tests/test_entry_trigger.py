@@ -82,6 +82,29 @@ class EntryTriggersTests(unittest.TestCase):
         self.assertEqual(retest["status"], "CONFIRMADO")
         self.assertEqual(retest["entry_trigger_price"], 1.0471)
 
+    def test_retest_previous_breakout_does_not_use_next_candle_atr(self):
+        from experimental_scan import atr14
+        from trade_decision import setup
+
+        # O ultimo candle aumenta o ATR; nao deve alterar retroativamente
+        # a confirmacao do rompimento ocorrido no candle anterior.
+        bars = [[i*900000, 10., 10.1, 9.9, 10., 100., 100.]
+                for i in range(40)]
+        bars[-2][1:7] = [10.02, 10.16, 10., 10.14, 100., 300.]
+        bars[-1][1:7] = [10.03, 13., 9.95, 12., 100., 150.]
+        previous_atr = atr14(bars[:-1])
+        current_atr = atr14(bars)
+
+        self.assertGreater(current_atr, previous_atr)
+        self.assertTrue(is_breakout(bars, len(bars)-2, "LONG",
+                                    previous_atr)[0])
+        self.assertFalse(is_breakout(bars, len(bars)-2, "LONG",
+                                     current_atr)[0])
+        self.assertTrue(is_retest(bars, "LONG", current_atr)[0])
+        stage, _, _ = setup({"15m": bars},
+                            {"atr_15m": current_atr}, "LONG")
+        self.assertEqual(stage, "RETESTE_CONFIRMADO")
+
     def test_missing_tick_never_fabricates_price(self):
         h, price = prepare_breakout()
         plan = analyze_method(h, features(h), ticker(price, tick=None),
