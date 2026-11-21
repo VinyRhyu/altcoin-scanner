@@ -30,10 +30,12 @@ def aligned_history(history, close_ms, index):
 
 
 def forward_outcome(future, side, entry, stop, tp1, max_bars=16):
-    """Rotula candles FUTUROS apenas apos gerar sinal sem look-ahead.
+    """Classify outcomes without inferring an unknown intrabar order.
 
-    Ordem stop hipotetica valida apenas no candle seguinte (15 minutos).
-    Nao inferir ordem intrabar; gaps e stop/TP no mesmo candle sao ambiguos.
+    A target hit in the entry candle is certain when the protective stop
+    was not touched: reaching TP requires crossing the entry trigger first.
+    A stop touched in that candle remains ambiguous if price opened before
+    the entry trigger, since the stop may have been hit before the entry.
     """
     if not future:
         return {"outcome": "INSUFFICIENT_FUTURE_DATA", "bars_checked": 0}
@@ -49,17 +51,16 @@ def forward_outcome(future, side, entry, stop, tp1, max_bars=16):
         hi, lo = float(r[2]), float(r[3])
         stop_hit = lo <= stop if side == "LONG" else hi >= stop
         tp_hit = hi >= tp1 if side == "LONG" else lo <= tp1
-        if i == 0 and (stop_hit or tp_hit):
-            return {"outcome": "INTRABAR_AMBIGUOUS", "bars_checked": 1}
         if stop_hit and tp_hit:
             return {"outcome": "INTRABAR_AMBIGUOUS", "bars_checked": i+1}
+        if i == 0 and stop_hit and opening != entry:
+            return {"outcome": "INTRABAR_AMBIGUOUS", "bars_checked": 1}
         if stop_hit:
             return {"outcome": "STOP_TOUCHED", "bars_checked": i+1}
         if tp_hit:
             return {"outcome": "TP1_TOUCHED", "bars_checked": i+1}
     return {"outcome": "UNRESOLVED_IN_AVAILABLE_WINDOW",
             "bars_checked": min(len(future), max_bars)}
-
 
 
 def replay(market):
