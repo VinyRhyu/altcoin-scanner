@@ -23,3 +23,57 @@ jobs:
           python-version: '3.12'
       - name: Run offline data-quality regression tests
         run: python -m unittest discover -s tests -p 'test_market_history_audit.py' -v
+
+  historical-snapshot-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read latest 30 snapshots from market-data (read-only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=80 origin market-data
+          mkdir -p snapshots
+          for sha in $(git rev-list --max-count=30 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "snapshots/market_data_$sha.json"
+            fi
+          done
+          echo "Snapshots saved: $(find snapshots -name 'market_data*.json' | wc -l)"
+      - name: Audit real historical snapshots
+        run: |
+          python -m research.market_history_audit snapshots \
+            --report reports/market_data_smoke_report.json \
+            --normalized reports/market_data_smoke_candles.jsonl
+      - name: Assert basic availability and print integrity diagnostics
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("reports/market_data_smoke_report.json").read_text())
+          fields = ("snapshot_count", "symbols", "distinct_candles",
+                    "duplicate_observations", "conflicting_candles",
+                    "missing_candles_between_observations",
+                    "integrity_passed", "issues")
+          print(json.dumps({k: r[k] for k in fields}, indent=2))
+          for item in r["issue_examples"][:8]:
+              print("Example:", json.dumps(item, ensure_ascii=False))
+          assert r["snapshot_count"] >= 2, "insufficient real snapshots"
+          assert r["distinct_candles"] > 0, "no reconstructable candles"
+          assert not r["issues"].get("invalid_snapshot"), "invalid source snapshot"
+          PY
+      - name: Upload reproducible audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-market-data-audit
+          path: |
+            reports/market_data_smoke_report.json
+            reports/market_data_smoke_candles.jsonl
+          if-no-files-found: warn
+          retention-days: 7
