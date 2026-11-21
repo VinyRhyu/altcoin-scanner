@@ -86,24 +86,32 @@ class EntryTriggersTests(unittest.TestCase):
         from experimental_scan import atr14
         from trade_decision import setup
 
-        # O ultimo candle aumenta o ATR; nao deve alterar retroativamente
-        # a confirmacao do rompimento ocorrido no candle anterior.
-        bars = [[i*900000, 10., 10.1, 9.9, 10., 100., 100.]
-                for i in range(40)]
-        bars[-2][1:7] = [10.02, 10.16, 10., 10.14, 100., 300.]
-        bars[-1][1:7] = [10.03, 13., 9.95, 12., 100., 150.]
-        previous_atr = atr14(bars[:-1])
-        current_atr = atr14(bars)
+        # Um candle posterior volatil altera o ATR atual, mas nao deve
+        # modificar retroativamente a confirmacao do rompimento anterior.
+        cases = (
+            ("LONG", [10.02, 10.16, 10., 10.14, 100., 300.],
+             [10.03, 13., 9.95, 12., 100., 150.]),
+            ("SHORT", [9.98, 10., 9.84, 9.86, 100., 300.],
+             [9.97, 10.05, 7., 8., 100., 150.]),
+        )
+        for side, breakout_bar, retest_bar in cases:
+            with self.subTest(side=side):
+                bars = [[i*900000, 10., 10.1, 9.9, 10., 100., 100.]
+                        for i in range(40)]
+                bars[-2][1:7] = breakout_bar
+                bars[-1][1:7] = retest_bar
+                previous_atr = atr14(bars[:-1])
+                current_atr = atr14(bars)
 
-        self.assertGreater(current_atr, previous_atr)
-        self.assertTrue(is_breakout(bars, len(bars)-2, "LONG",
-                                    previous_atr)[0])
-        self.assertFalse(is_breakout(bars, len(bars)-2, "LONG",
-                                     current_atr)[0])
-        self.assertTrue(is_retest(bars, "LONG", current_atr)[0])
-        stage, _, _ = setup({"15m": bars},
-                            {"atr_15m": current_atr}, "LONG")
-        self.assertEqual(stage, "RETESTE_CONFIRMADO")
+                self.assertGreater(current_atr, previous_atr)
+                self.assertTrue(is_breakout(bars, len(bars)-2, side,
+                                            previous_atr)[0])
+                self.assertFalse(is_breakout(bars, len(bars)-2, side,
+                                             current_atr)[0])
+                self.assertTrue(is_retest(bars, side, current_atr)[0])
+                stage, _, _ = setup({"15m": bars},
+                                    {"atr_15m": current_atr}, side)
+                self.assertEqual(stage, "RETESTE_CONFIRMADO")
 
     def test_missing_tick_never_fabricates_price(self):
         h, price = prepare_breakout()
