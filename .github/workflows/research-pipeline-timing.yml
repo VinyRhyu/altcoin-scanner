@@ -10,6 +10,8 @@ on:
       - 'tests/test_pipeline_latency_probe.py'
       - 'research/asset_coverage_probe.py'
       - 'tests/test_asset_coverage_probe.py'
+      - 'research/scheduled_workflow_health.py'
+      - 'tests/test_scheduled_workflow_health.py'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +28,94 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -v
+
+  scheduled-run-health:
+    name: Compare observed master cron runs to expected 15m cadence
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read only public Actions run metadata, not orders or user accounts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs?branch=master&per_page=100" \
+            > reports/public_workflow_runs.json
+          python -m research.scheduled_workflow_health \
+            --input reports/public_workflow_runs.json \
+            --start 2026-11-22T00:00:00Z \
+            --end 2026-11-22T16:00:00Z \
+            --output reports/scheduled_run_health.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/scheduled_run_health.json").read_text())
+          assert r["status"]=="GITHUB_SCHEDULED_RUNS_RESEARCH_ONLY"
+          assert r["expected_nominal_cron_slots_in_window"]==64
+          assert r["production_changed"] is False
+          assert r["user_trade_data_read"] is False
+          assert r["github_scheduler_root_cause_proven"] is False
+          assert r["job_queue_delay_directly_measured"] is False
+          print("SCHEDULE_HEALTH_GUARDS",True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: master-schedule-cadence-readonly
+          path: reports/scheduled_run_health.json
+          if-no-files-found: warn
+          retention-days: 7
+
+  public-instrument-coverage:
+    name: Check public asset coverage independently of collector success
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check one PUBLIC ticker without recording a personal trade
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          if python -m research.asset_coverage_probe \
+              --symbol ORCA --check-provider \
+              --report reports/public_asset_coverage.json; then
+            echo "Provider metadata was queried successfully"
+          else
+            echo "::notice::Provider unavailable; listing status remains unknown"
+            python -m research.asset_coverage_probe \
+              --symbol ORCA --report reports/public_asset_coverage.json
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/public_asset_coverage.json").read_text())
+          assert r["asset_symbol"]=="ORCA"
+          assert r["is_in_curated_base_allowlist"] is False
+          assert r["user_trade_or_return_recorded"] is False
+          assert r["real_trade_verified"] is False
+          assert r["filters_or_production_changed"] is False
+          print("PUBLIC_ASSET_COVERAGE_GUARDS",True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-instrument-coverage-readonly
+          path: reports/public_asset_coverage.json
+          if-no-files-found: warn
+          retention-days: 7
 
   timed-dry-run:
     name: Time data acquisition and decision calculation without publishing
@@ -167,5 +257,6 @@ jobs:
             reports/pipeline_events.jsonl
             reports/pipeline_timing_report.json
             reports/public_asset_coverage.json
+            output/collector_status.json
           retention-days: 7
           if-no-files-found: warn
