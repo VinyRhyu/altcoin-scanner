@@ -18,7 +18,8 @@ import urllib.request
 from research.market_history_audit import DURATIONS_MS
 
 OKX_URL = "https://www.okx.com/api/v5/market/history-candles"
-BAR_CODES = {"15m": "15m", "1h": "1H", "2h": "2H"}
+BAR_CODES = {"1m": "1m", "15m": "15m", "1h": "1H", "2h": "2H"}
+EXPORT_DURATIONS_MS = {"1m": 60_000, **DURATIONS_MS}
 
 
 def utc_ms(s):
@@ -71,9 +72,9 @@ def retrieve(symbol, tf, start_ms, end_ms, max_pages=3,
     if (not isinstance(symbol, str) or not symbol.endswith("-USDT-SWAP") or
         any(c not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-" for c in symbol)):
         raise ValueError("invalid USDT perpetual instrument")
-    if tf not in DURATIONS_MS or not isinstance(max_pages, int) or not 1 <= max_pages <= 100:
+    if tf not in EXPORT_DURATIONS_MS or not isinstance(max_pages, int) or not 1 <= max_pages <= 100:
         raise ValueError("timeframe or page budget invalid")
-    duration = DURATIONS_MS[tf]
+    duration = EXPORT_DURATIONS_MS[tf]
     if (type(start_ms) is not int or type(end_ms) is not int or
         start_ms < 0 or end_ms <= start_ms or
         start_ms % duration or end_ms % duration):
@@ -139,7 +140,7 @@ def retrieve(symbol, tf, start_ms, end_ms, max_pages=3,
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--symbol", required=True)
-    p.add_argument("--tf", choices=tuple(DURATIONS_MS), required=True)
+    p.add_argument("--tf", choices=tuple(EXPORT_DURATIONS_MS), required=True)
     p.add_argument("--start", required=True, help="ISO UTC, inclusive, e.g. 2026-10-01T00:00:00Z")
     p.add_argument("--end", required=True, help="ISO UTC, exclusive, e.g. 2026-10-08T00:00:00Z")
     p.add_argument("--max-pages", type=int, default=3)
