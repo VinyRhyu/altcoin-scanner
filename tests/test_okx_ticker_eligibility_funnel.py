@@ -80,6 +80,31 @@ class TickerFunnelTests(unittest.TestCase):
                 "stale_or_future_exchange_ticker"],1)
             self.assertEqual(x["ticker_eligible_count"],0)
 
+    def test_pre_fetch_clock_rejects_newly_received_valid_tick_without_production_fix(self):
+        instrument=[{"instId":"SOL-USDT-SWAP","state":"live"}]
+        incoming=[row("SOL-USDT-SWAP",ts=str(NOW+400))]
+        early=inspect(instrument,incoming,{"SOL"},NOW,response_ms=NOW+950)
+        self.assertEqual(early["ticker_eligible_count"],0)
+        self.assertEqual(early["timestamp_rejection_breakdown"][
+            "provider_ts_after_pre_fetch_clock"],1)
+        self.assertEqual(early["timestamp_rejection_breakdown"][
+            "provider_ts_older_than_300s"],0)
+        alternate=early["counterfactual_end_of_public_fetch"]
+        self.assertEqual(alternate["eligible_ticker_count"],1)
+        self.assertEqual(alternate["time_shift_ms"],950)
+        self.assertTrue(alternate["not_a_change_to_production"])
+        with patch.object(collector,"okx",side_effect=[instrument,incoming]):
+            self.assertEqual(collector.tickers({"SOL"},NOW),[])
+
+    def test_truly_stale_tick_stays_blocked_after_fetch(self):
+        instrument=[{"instId":"SOL-USDT-SWAP","state":"live"}]
+        old=[row("SOL-USDT-SWAP",ts=str(NOW-400000))]
+        q=inspect(instrument,old,{"SOL"},NOW,response_ms=NOW+1000)
+        self.assertEqual(q["timestamp_rejection_breakdown"][
+            "provider_ts_older_than_300s"],1)
+        self.assertEqual(q["ticker_eligible_count"],0)
+        self.assertEqual(q["counterfactual_end_of_public_fetch"]["eligible_ticker_count"],0)
+
     def test_public_fetch_shares_original_allowlist_but_no_orders(self):
         inst=[{"instId":"SOL-USDT-SWAP","state":"live"}]
         calls=[]
@@ -91,6 +116,7 @@ class TickerFunnelTests(unittest.TestCase):
             a=live_read(ticker_fetch=fake_fetch,clock_ms=lambda:NOW)
         self.assertEqual(len(calls),2)
         self.assertEqual(a["ticker_eligible_count"],1)
+        self.assertEqual(a["counterfactual_end_of_public_fetch"]["eligible_ticker_count"],1)
         self.assertEqual(a["allowlist_source"],"curated_test_source")
         self.assertFalse(a["personal_trades_recorded"])
         self.assertFalse(a["production_changed"])
