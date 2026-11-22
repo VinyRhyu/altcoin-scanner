@@ -73,6 +73,15 @@ class OkxHistoryTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             retrieve("BTC-USDT", "15m", 0, D, clock=lambda: 9*D)
 
+    def test_1m_history_is_supported_without_adding_production_timeframe(self):
+        m = 60000
+        meta, bars = retrieve("SOL-USDT-SWAP", "1m", 0, 3*m, max_pages=1,
+            fetch=lambda sym,tf,cursor: [candle(2*m),candle(m),candle(0)],
+            clock=lambda: 9*m)
+        self.assertEqual([x["open_ms"] for x in bars], [0,m,2*m])
+        self.assertTrue(all(x["timeframe"]=="1m" for x in bars))
+        self.assertEqual(meta["candles_retrieved"],3)
+
     def test_requires_timezone(self):
         with self.assertRaises(ValueError):
             utc_ms("2026-11-01T00:00:00")
