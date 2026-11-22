@@ -18,10 +18,12 @@ from research.futures_scenario import Scenario, summarize
 from research.market_history_audit import DURATIONS_MS
 
 
-def load_history(directory, symbol="SOL-USDT-SWAP"):
+def load_history(directory, symbol="SOL-USDT-SWAP", days=30):
+    if type(days) is not int or not 1 <= days <= 365:
+        raise ValueError("days must be an integer between 1 and 365")
     history = {}
     for tf, duration in DURATIONS_MS.items():
-        path = Path(directory) / f"sol_{tf}_30d.jsonl"
+        path = Path(directory) / f"sol_{tf}_{days}d.jsonl"
         values = [json.loads(line) for line in path.read_text(
             encoding="utf-8").splitlines() if line.strip()]
         if not values:
@@ -133,11 +135,12 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--directory", type=Path, required=True)
     p.add_argument("--tick-proxy", required=True)
+    p.add_argument("--days", type=int, default=30, help="Historical file suffix in days; default 30")
     p.add_argument("--assumed-spread-pct", type=float, default=.05)
     p.add_argument("--assumed-funding-per-8h", type=float, default=0.)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args(argv)
-    history = load_history(args.directory)
+    history = load_history(args.directory, days=args.days)
     sc = Scenario(assumed_spread_pct=args.assumed_spread_pct,
                   assumed_funding_per_8h=args.assumed_funding_per_8h)
     report = pilot(history, args.tick_proxy, sc)
