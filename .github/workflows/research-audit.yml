@@ -6,6 +6,7 @@ on:
     paths:
       - 'research/**'
       - 'tests/test_market_history_audit.py'
+      - 'tests/test_continuous_history.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
@@ -132,11 +133,49 @@ jobs:
           for issue in ("invalid_snapshot", "invalid_candle", "conflicting_candle"):
               assert not r["issues"].get(issue), f"found {issue}"
           PY
+      - name: Build contiguous research segments and inspect 15m gap provenance
+        run: |
+          python -m research.continuous_history deep_snapshots \
+            --min-bars 100 \
+            --report reports/continuous_history_report.json \
+            --segments-jsonl reports/continuous_segments.jsonl \
+            --candles-jsonl reports/continuous_candles.jsonl
+      - name: Verify segmentation and preserve explicit gaps
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base = json.loads(Path("reports/deep_market_data_report.json").read_text())
+          r = json.loads(Path("reports/continuous_history_report.json").read_text())
+          assert r["source_snapshot_count"] == base["snapshot_count"]
+          assert r["source_distinct_candles"] == base["distinct_candles"]
+          assert r["source_integrity_passed"] == base["integrity_passed"]
+          assert r["missing_candles_total"] == base["missing_candles_between_observations"]
+          assert r["gaps_total"] == sum(s["gaps"] for s in base["per_series"])
+          assert r["series_count"] == len(base["per_series"])
+          assert r["segments_total"] == r["series_count"] + r["gaps_total"]
+          assert r["eligible_segments"] > 0, "no usable contiguous research segments"
+          assert r["eligible_candles"] == sum(
+              x["candles"] for x in r["segments"] if x["meets_min_bars"])
+          assert r["backtest_ready"] is False
+          for segment in r["segments"]:
+              duration = {"15m": 900000, "1h": 3600000, "2h": 7200000}[segment["timeframe"]]
+              assert segment["end_open_ms"] - segment["start_open_ms"] == (
+                  segment["candles"] - 1) * duration
+          print("GAP_CLASSIFICATIONS", json.dumps(r["gap_classifications"], sort_keys=True))
+          print("ELIGIBLE_SEGMENTS", r["eligible_segments"],
+                "ELIGIBLE_CANDLES", r["eligible_candles"])
+          PY
       - name: Upload extended history report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: extended-market-data-audit
-          path: reports/deep_market_data_report.json
+          path: |
+            reports/deep_market_data_report.json
+            reports/continuous_history_report.json
+            reports/continuous_segments.jsonl
+            reports/continuous_candles.jsonl
           if-no-files-found: warn
           retention-days: 7
