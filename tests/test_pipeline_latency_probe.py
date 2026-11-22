@@ -60,7 +60,7 @@ class TimingProbeTests(unittest.TestCase):
         self.assertEqual(r["event_name"],"workflow_dispatch")
         self.assertEqual(r["captured_ticker_count"],1)
         self.assertEqual(r["durations"]["ticker_discovery_seconds"],20.)
-        self.assertEqual(r["durations"]["collector_wall_seconds"],200.)
+        self.assertEqual(r["durations"]["collector_wall_seconds"],180.)
         self.assertEqual(r["durations"]["decision_wall_seconds"],20.)
         self.assertGreater(r["quote_age_at_decision_start_seconds"]["median"],180)
         self.assertTrue(r["snapshot_capture_initiated_not_completed"])
