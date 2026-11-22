@@ -46,7 +46,7 @@ def load_history(directory, symbol="SOL-USDT-SWAP", days=30):
     return history
 
 
-def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP"):
+def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP", *, stress_scenario=None):
     if (not isinstance(symbol,str) or not symbol.endswith("-USDT-SWAP") or
         not symbol[:-10].isalnum() or symbol != symbol.upper()):
         raise ValueError("invalid perpetual symbol")
@@ -103,7 +103,8 @@ def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP"):
                     "future_15m": timeframe[i+1:i+1+scenario.max_hold_bars],
                 })
     simulated = summarize(plans, scenario)
-    return {
+    stressed = summarize(plans, stress_scenario) if stress_scenario is not None else None
+    report = {
         "status": "RETROSPECTIVE_ASSUMPTION_HEAVY_PRICE_SCENARIO",
         "symbol": symbol,
         "closed_15m_bars": len(timeframe), "evaluated_15m_closes": evaluated_closes,
@@ -124,6 +125,10 @@ def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP"):
             "Single-asset window and overlapping signals invalidate edge inference; broader validation must compare multiple symbols",
         ],
     }
+    if stressed is not None:
+        report["cost_stress_scenario"] = stressed
+        assert [(t["method"],t["side"],t["signal_close_ms"]) for t in simulated["trades"]] == [(t["method"],t["side"],t["signal_close_ms"]) for t in stressed["trades"]]
+    return report
 
 
 def main(argv=None):
