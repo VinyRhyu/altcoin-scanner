@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/research-external-monitor-and-forward.yml'
       - 'research/external_cron_heartbeat.py'
+      - 'research/publication_cadence_audit.py'
+      - 'tests/test_publication_cadence_audit.py'
       - 'research/forward_shadow_summary.py'
       - 'research/mexc_ohlcv_provenance.py'
       - 'tests/test_external_cron_heartbeat.py'
@@ -44,6 +46,10 @@ jobs:
           mkdir -p reports
           gh api "repos/$GITHUB_REPOSITORY/actions/runs?branch=master&per_page=100" \
             > "$RUNNER_TEMP/github_runs.json"
+          gh api "repos/$GITHUB_REPOSITORY/commits?sha=market-data&per_page=100" \
+            > "$RUNNER_TEMP/market_data_publications.json"
+          gh api "repos/$GITHUB_REPOSITORY/contents/manifest.json?ref=market-data" \
+            > "$RUNNER_TEMP/market_data_manifest_api.json"
           python -m research.external_cron_heartbeat \
             --github-runs "$RUNNER_TEMP/github_runs.json" \
             --output reports/external_scheduler_health.json
@@ -59,12 +65,41 @@ jobs:
           assert r["orders_executed"]==0
           print("GITHUB_AND_EXTERNAL_NOT_CONFLATED",True)
           PY
+      - name: Audit actual published market-data freshness independently of cron heartbeat
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64,json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          from research.publication_cadence_audit import audit
+          root=Path(os.environ["RUNNER_TEMP"])
+          commits=json.loads((root/"market_data_publications.json").read_text())
+          api=json.loads((root/"market_data_manifest_api.json").read_text())
+          manifest=json.loads(base64.b64decode(api["content"]))
+          checked=datetime.now(timezone.utc).isoformat()
+          report=audit(commits,manifest,checked_at_utc=checked)
+          Path("reports/publication_health.json").write_text(
+              json.dumps(report,indent=2)+"\n")
+          assert report["external_http_checks_equal_publications"] is False
+          assert report["external_one_minute_http_checks_observed"] is False
+          assert report["market_data_update_timestamps_proven"] is True
+          assert report["trading_orders_seen"]==0
+          print("MARKET_DATA_PUBLICATION_LAG",json.dumps({
+              "last_collected_utc":report["last_market_data_collected_utc"],
+              "last_published_utc":report["last_market_data_published_utc"],
+              "publication_age_minutes":report["publication_age_minutes_at_check"],
+              "external_cron_checked":False,
+          },sort_keys=True))
+          PY
       - name: Archive public counts, no cronjob.org secrets or URLs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: external-heartbeat-not-directly-verified
-          path: reports/external_scheduler_health.json
+          path: |
+            reports/external_scheduler_health.json
+            reports/publication_health.json
           retention-days: 7
           if-no-files-found: warn
 
