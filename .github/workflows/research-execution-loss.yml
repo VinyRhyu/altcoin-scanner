@@ -7,6 +7,8 @@ on:
       - '.github/workflows/research-execution-loss.yml'
       - 'research/execution_loss_diagnostics.py'
       - 'research/signal_quality_audit.py'
+      - 'research/scan_schedule_audit.py'
+      - 'tests/test_scan_schedule_audit.py'
       - 'tests/test_signal_quality_audit.py'
   workflow_dispatch:
 
@@ -156,6 +158,24 @@ jobs:
                  "relative_volume_median":v["features"]["relative_volume_15m"]["median"]}
               for k,v in r["accepted_vs_blocked_at_snapshot"].items()},sort_keys=True))
           PY
+      - name: Compare 150 complete-collection timestamps against cron target +60s
+        run: |
+          python -m research.scan_schedule_audit loss_snapshots \
+            --report reports/scan_schedule_audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/scan_schedule_audit.json").read_text())
+          q=json.loads(Path("reports/execution_loss_diagnostics.json").read_text())
+          assert r["evaluated_archived_collections"] + sum(r["excluded_snapshot_counts"].values()) == q["source_snapshot_count"]
+          assert r["nominal_target_lag_seconds"]==60
+          assert r["root_cause_of_delay_verified"] is False
+          assert r["delivery_latency_measured"] is False
+          assert r["order_or_execution_time_measured"] is False
+          assert r["production_changed"] is False
+          assert r["collections_more_than_10m_after_close"]<=r["collections_more_than_3m_after_close"]<=r["evaluated_archived_collections"]
+          print("SCHEDULE_CAPTURE_CAUSALITY_GUARDS_PASSED")
+          PY
       - name: Archive frozen inputs and execution fidelity findings
         if: always()
         uses: actions/upload-artifact@v4
@@ -164,6 +184,7 @@ jobs:
           path: |
             reports/execution_loss_diagnostics.json
             reports/signal_quality_diagnostics.json
+            reports/scan_schedule_audit.json
             reports/source_market_data_tip.txt
             reports/source_snapshot_filenames.txt
           if-no-files-found: warn
