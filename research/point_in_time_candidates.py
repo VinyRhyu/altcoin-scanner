@@ -16,7 +16,9 @@ from experimental_scan import features
 from research.market_history_audit import _collected_ms, resolve_paths
 
 
-def inspect_snapshots(paths):
+def inspect_snapshots(paths, *, research_stop_bars=3):
+    if type(research_stop_bars) is not int or research_stop_bars not in (2, 3):
+        raise ValueError('unsupported research stop window')
     candidate_by_key = {}
     issues = Counter()
     seen = 0
@@ -46,7 +48,8 @@ def inspect_snapshots(paths):
                 info = features(candles)
                 decisions = [x for side in ("LONG", "SHORT")
                              for x in analyze_both(candles, info, ticker,
-                                                   side, now, False)]
+                                                   side, now, False,
+                                                   research_stop_bars=research_stop_bars)]
             except (ValueError, KeyError, TypeError, IndexError, ZeroDivisionError):
                 issues["signal_evaluation_error"] += 1
                 continue
@@ -86,6 +89,7 @@ def inspect_snapshots(paths):
         }
     report = {
         "status": "OBSERVED_SIGNAL_CANDIDATES_NOT_FILLS",
+        "research_stop_bars": research_stop_bars,
         "snapshots_analyzed": seen, "confirmed_candidates": len(candidates),
         "by_method": per_method, "issues": dict(sorted(issues.items())),
         "candidates": candidates,
