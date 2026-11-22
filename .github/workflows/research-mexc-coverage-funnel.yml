@@ -105,6 +105,13 @@ jobs:
               assert r["status"]=="OKX_PUBLIC_TICKER_ELIGIBILITY_DIAGNOSTICS_ONLY"
               assert sum(r["first_rejection_reason_counts"].values())==r["source_total_public_tickers"]
               assert r["ticker_eligible_count"]==r["first_rejection_reason_counts"]["eligible_ticker"]
+              breakdown=r["timestamp_rejection_breakdown"]
+              assert sum(breakdown.values())==r["first_rejection_reason_counts"]["stale_or_future_exchange_ticker"]
+              alt=r["counterfactual_end_of_public_fetch"]
+              assert alt is not None
+              assert alt["time_shift_ms"]>=0
+              assert alt["not_a_change_to_production"] is True
+              assert alt["eligible_ticker_count"]>=0
               assert r["minimum_validated_unchanged"]==15
               assert r["filter_thresholds_changed"] is False
               assert r["full_candle_validation_performed"] is False
@@ -114,6 +121,9 @@ jobs:
               results.append({"sample":i,"status":"PUBLIC_DATA_ONLY",
                               "checked_at_utc":r["checked_at_utc"],
                               "ticker_eligible_count":r["ticker_eligible_count"],
+                              "timestamp_rejection_breakdown":breakdown,
+                              "eligible_same_payload_after_fetch_reference":alt["eligible_ticker_count"],
+                              "fetch_clock_shift_ms":alt["time_shift_ms"],
                               "reason_counts":r["first_rejection_reason_counts"]})
           Path("reports/okx_funnel_summary.json").write_text(
               json.dumps({"samples":results,"orders":0,
