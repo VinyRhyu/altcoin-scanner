@@ -89,7 +89,7 @@ def shadow_compare(paths, max_candidates=40, max_pages=6, fetch_history=retrieve
         "status":"HYPOTHETICAL_SINGLE_FILTER_SHADOW_COMPARISON",
         "source_snapshot_count":observed["snapshots_analyzed"],
         "archived_confirmed":audit["baseline"]["confirmed"],
-        "archived_conditional":audit["baseline"]["conditional_baseline"],
+        "archived_conditional":audit["baseline"].get("conditional_baseline",0),
         "baseline_checked":len(baseline),
         "counterfactual_checked":len(counterfactual),
         "shadow_groups":summarized,
