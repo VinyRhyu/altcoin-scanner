@@ -1,0 +1,134 @@
+name: Research 90d BTC ETH SOL finance scenarios (no trading)
+on:
+  push:
+    branches: [test/systematic-trading-research]
+    paths:
+      - '.github/workflows/research-multiasset-90d.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {symbol: BTC-USDT-SWAP, prefix: btc}
+          - {symbol: ETH-USDT-SWAP, prefix: eth}
+          - {symbol: SOL-USDT-SWAP, prefix: sol}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download closed and bounded OKX 90d candles
+        shell: bash
+        run: |
+          set -euo pipefail
+          for spec in "15m 96" "1h 26" "2h 14"; do
+            read -r tf pages <<< "$spec"
+            python -m research.okx_history_backfill \
+              --symbol '${{ matrix.symbol }}' --tf "$tf" \
+              --start 2026-08-22T00:00:00Z \
+              --end 2026-11-20T00:00:00Z \
+              --max-pages "$pages" \
+              --output "reports/${{ matrix.prefix }}_${tf}_90d.jsonl" \
+              --report "reports/${{ matrix.prefix }}_${tf}_90d_metadata.json"
+          done
+      - name: Verify timestamps, continuity and public historical provenance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          symbol="${{ matrix.symbol }}"
+          prefix="${{ matrix.prefix }}"
+          for tf, (duration,n) in {
+            "15m":(900000,8640),"1h":(3600000,2160),"2h":(7200000,1080)}.items():
+              rows=[json.loads(s) for s in Path(
+                f"reports/{prefix}_{tf}_90d.jsonl").read_text().splitlines()]
+              m=json.loads(Path(
+                f"reports/{prefix}_{tf}_90d_metadata.json").read_text())
+              assert len(rows)==n and m["candles_retrieved"]==n
+              assert m["backtest_ready"] is False
+              assert rows[0]["open_ms"]==m["requested_start_ms"]
+              assert rows[-1]["open_ms"]+duration==m["requested_end_ms_exclusive"]
+              assert all(b["open_ms"]-a["open_ms"]==duration for a,b in zip(rows,rows[1:]))
+              assert all(x["point_in_time_eligible"] is False and
+                         x["source"]=="okx_history_candles" and
+                         x["symbol"]==symbol and x["timeframe"]==tf for x in rows)
+              print("VALIDATED_HISTORICAL_90D",symbol,tf,n,m["pages_requested"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: history-90d-${{ matrix.prefix }}
+          path: reports/${{ matrix.prefix }}_*_90d*
+          if-no-files-found: error
+          retention-days: 7
+
+  evaluate-multiasset:
+    needs: fetch-history
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline regression suite
+        run: python -m unittest discover -s tests -v
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: history-90d-*
+          path: reports
+          merge-multiple: true
+      - name: Same signal plans, base versus adverse assumed costs
+        run: |
+          python -m research.multi_asset_validation \
+            --directory reports --days 90 \
+            --start 2026-08-22T00:00:00Z \
+            --end 2026-11-20T00:00:00Z \
+            --output reports/multiasset_90d_financial_scenarios.json
+      - name: Refuse unsupported claims of fills or positive expectancy
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/multiasset_90d_financial_scenarios.json").read_text())
+          assert r["symbols"]==["BTC-USDT-SWAP","ETH-USDT-SWAP","SOL-USDT-SWAP"]
+          assert r["days"]==90 and len(r["by_30day_block"])==3
+          assert r["portfolio_pnl_verified"] is False
+          assert r["proven_positive_expectancy"] is False
+          assert r["production_changes"] is False
+          assert r["historical_real_fills_verified"]==0
+          count=sum(v["baseline"]["conditional_plans"] for v in r["by_symbol"].values())
+          assert count==r["aggregated"]["baseline"]["conditional_plans"]
+          assert count==r["aggregated"]["cost_stress"]["conditional_plans"]
+          assert count==sum(v["baseline"]["conditional_plans"]
+                            for v in r["by_30day_block"].values())
+          assert r["aggregated"]["matched_cost_sensitivity"]["stress_improved_any_net_r"] is False
+          for symbol in r["symbols"]:
+              assert r["by_symbol"][symbol]["closed_15m"]==8640
+              assert r["by_symbol"][symbol]["baseline"]["exchange_fills_verified"]==0
+          print("FINAL_MULTI_ASSET_ASSESSMENT",json.dumps({
+            "overall":r["aggregated"],
+            "by_asset":{k:{"baseline":v["baseline"],"cost_stress":v["cost_stress"]}
+                        for k,v in r["by_symbol"].items()},
+            "by_30day_block":{k:{"baseline":v["baseline"],"cost_stress":v["cost_stress"]}
+                              for k,v in r["by_30day_block"].items()},
+            "proven":r["proven_positive_expectancy"]
+          },sort_keys=True))
+          PY
+      - name: Upload fully reproducible research reports and source metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiasset-90d-financial-scenarios
+          path: |
+            reports/multiasset_90d_financial_scenarios.json
+            reports/*_90d_metadata.json
+          if-no-files-found: warn
+          retention-days: 7
