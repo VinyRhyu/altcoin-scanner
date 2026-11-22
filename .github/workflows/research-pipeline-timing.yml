@@ -1,0 +1,134 @@
+name: Experimental scanner stage timings (READ-ONLY, NO ORDERS)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-pipeline-timing.yml'
+      - 'research/pipeline_latency_probe.py'
+      - 'collector.py'
+      - 'tests/test_pipeline_latency_probe.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: Regression and no-orders guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+
+  timed-dry-run:
+    name: Time data acquisition and decision calculation without publishing
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MARKET_PROVIDER: okx_swap
+      UNIVERSE_SIZE: '50'
+      MIN_VALIDATED: '15'
+      MAX_PRESCREEN: '90'
+      MIN_VOLUME_USDT: '2000000'
+      PRIORITY_VOLUME_USDT: '5000000'
+      RESEARCH_TIMING_LOG: reports/pipeline_events.jsonl
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record first Python checkpoint on runner (not GitHub queue time)
+        run: |
+          mkdir -p reports
+          python -m research.pipeline_latency_probe mark \
+            --log "$RESEARCH_TIMING_LOG" --event runner_started
+      - name: Collect only public OKX market data and research phase timings
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.pipeline_latency_probe mark \
+            --log "$RESEARCH_TIMING_LOG" --event collector_started
+          if python collector.py; then
+            python -m research.pipeline_latency_probe mark \
+              --log "$RESEARCH_TIMING_LOG" --event collector_complete
+          else
+            echo "Public data collection failed; no fabricated complete report"
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("output/market_data.json").read_text())
+          assert data["status"]=="COLLECTED"
+          assert data["market_type"]=="USDT_PERPETUAL"
+          assert data["signals_allowed"] is False
+          assert len(data["universe"])>=15
+          print("RESEARCH_UNIVERSE_COUNT",len(data["universe"]))
+          PY
+      - name: Compute guarded signal decisions without any order path
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.pipeline_latency_probe mark \
+            --log "$RESEARCH_TIMING_LOG" --event decision_started
+          python trade_decision.py \
+            --market-data output/market_data.json \
+            --output output/trade_decisions.json \
+            --watch-output output/entry_watch.json
+          python -m research.pipeline_latency_probe mark \
+            --log "$RESEARCH_TIMING_LOG" --event decision_complete
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("output/trade_decisions.json").read_text())
+          w=json.loads(Path("output/entry_watch.json").read_text())
+          assert d["order_allowed"] is False
+          assert w["order_allowed"] is False
+          assert not any(x.get("order_allowed") for x in d.get("entry_events",[]))
+          print("RESEARCH_NO_ORDERS",True)
+          PY
+      - name: Summarize phase durations, last closed candle and quote staleness
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.pipeline_latency_probe mark \
+            --log "$RESEARCH_TIMING_LOG" \
+            --event artifact_handoff_started
+          python -m research.pipeline_latency_probe report \
+            --log "$RESEARCH_TIMING_LOG" \
+            --market-data output/market_data.json \
+            --decisions output/trade_decisions.json \
+            --output reports/pipeline_timing_report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/pipeline_timing_report.json").read_text())
+          assert r["status"]=="RESEARCH_ONLY_TIMED_OKX_DRY_RUN"
+          assert r["personal_trades_recorded"] is False
+          assert r["order_execution_verified"] is False
+          assert r["production_changed"] is False
+          assert r["cron_queue_latency_verified"] is False
+          assert r["publication_completed"] is False
+          assert r["alert_delivery_verified"] is False
+          assert r["snapshot_capture_initiated_not_completed"] is True
+          assert r["captured_ticker_count"]>=15
+          assert r["durations"]["collector_wall_seconds"]>=0
+          assert r["durations"]["decision_wall_seconds"]>=0
+          assert r["quote_age_at_decision_start_seconds"]["count"]>=15
+          print("RESEARCH_TIMING_SAFETY",True)
+          PY
+      - name: Upload research-only timings, never personal trades or raw full prices
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experimental-scanner-phase-latency
+          path: |
+            reports/pipeline_events.jsonl
+            reports/pipeline_timing_report.json
+          retention-days: 7
+          if-no-files-found: warn
