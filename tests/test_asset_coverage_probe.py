@@ -1,7 +1,8 @@
 """Discovery eligibility tests without exchange requests or private trade data."""
 import unittest
+from unittest.mock import patch
 
-from research.asset_coverage_probe import explain
+from research.asset_coverage_probe import explain, request_current_public_instrument
 
 
 class PublicCoverageTests(unittest.TestCase):
@@ -40,6 +41,28 @@ class PublicCoverageTests(unittest.TestCase):
         self.assertTrue(a["is_in_given_scanner_snapshot"])
         self.assertFalse(b["is_in_given_scanner_snapshot"])
         self.assertFalse(b["user_trade_or_return_recorded"])
+
+    def test_okx_51001_means_current_instrument_id_unknown(self):
+        with patch("research.asset_coverage_probe.request_json",
+                   return_value={"code":"51001","data":[],
+                                 "msg":"Instrument ID doesn't exist."}):
+            rows,code=request_current_public_instrument("ORCA")
+        self.assertEqual(rows,[])
+        self.assertEqual(code,"51001")
+        report=explain("ORCA",instruments=rows,provider_response_code=code)
+        self.assertFalse(report["public_okx_contract_check"][
+            "current_usdt_swap_contract_exists"])
+        self.assertEqual(report["public_okx_contract_check"][
+            "provider_response_code"],"51001")
+        self.assertFalse(report["public_okx_contract_check"][
+            "historical_listing_at_signal_time_verified"])
+
+    def test_other_provider_error_is_not_mislabeled_as_delisting(self):
+        with patch("research.asset_coverage_probe.request_json",
+                   return_value={"code":"50000","data":[],
+                                 "msg":"temporary"}):
+            with self.assertRaises(RuntimeError):
+                request_current_public_instrument("ORCA")
 
     def test_invalid_ticker_and_duplicate_provider_fails_closed(self):
         with self.assertRaises(ValueError):
