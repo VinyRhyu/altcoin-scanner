@@ -8,6 +8,8 @@ on:
       - 'research/pipeline_latency_probe.py'
       - 'collector.py'
       - 'tests/test_pipeline_latency_probe.py'
+      - 'research/asset_coverage_probe.py'
+      - 'tests/test_asset_coverage_probe.py'
   workflow_dispatch:
 
 permissions:
@@ -122,6 +124,40 @@ jobs:
           assert r["quote_age_at_decision_start_seconds"]["count"]>=15
           print("RESEARCH_TIMING_SAFETY",True)
           PY
+      - name: Check public ORCA instrument coverage, not any user's private trade
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python -m research.asset_coverage_probe \
+              --symbol ORCA \
+              --market-data output/market_data.json \
+              --check-provider \
+              --report reports/public_asset_coverage.json; then
+            echo "Public instrument metadata available"
+          else
+            echo "::notice::Public provider status unavailable; report only curated coverage"
+            python -m research.asset_coverage_probe \
+              --symbol ORCA \
+              --market-data output/market_data.json \
+              --report reports/public_asset_coverage.json
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/public_asset_coverage.json").read_text())
+          assert r["asset_symbol"]=="ORCA"
+          assert r["is_in_curated_base_allowlist"] is False
+          assert r["can_enter_collector_curated_selection"] is False
+          assert r["user_trade_or_return_recorded"] is False
+          assert r["real_trade_verified"] is False
+          assert r["scanner_trade_generated"] is False
+          assert r["filters_or_production_changed"] is False
+          print("PUBLIC_COVERAGE_ONLY",json.dumps({
+              "included_in_curated_filter":False,
+              "current_contract_check":r["public_okx_contract_check"],
+              "historical_trade_verification":False
+          },sort_keys=True))
+          PY
       - name: Upload research-only timings, never personal trades or raw full prices
         if: always()
         uses: actions/upload-artifact@v4
@@ -130,5 +166,6 @@ jobs:
           path: |
             reports/pipeline_events.jsonl
             reports/pipeline_timing_report.json
+            reports/public_asset_coverage.json
           retention-days: 7
           if-no-files-found: warn
