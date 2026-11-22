@@ -38,6 +38,8 @@ class HistoryAuditTests(unittest.TestCase):
         report, candles = audit([self.save("market_data1.json", snapshot())])
         self.assertTrue(report["integrity_passed"])
         self.assertEqual(len(candles), 6)
+        self.assertTrue(all(c["volume_contracts"] == 10. for c in candles))
+        self.assertTrue(all("base_volume" not in c for c in candles))
         self.assertTrue(all(c["first_seen_utc"] for c in candles))
         self.assertFalse(report["profitability_backtest_ready"])
 
