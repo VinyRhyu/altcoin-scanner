@@ -12,6 +12,8 @@ on:
       - 'tests/test_futures_scenario.py'
       - 'tests/test_point_in_time_candidates.py'
       - 'tests/test_retrospective_price_pilot.py'
+      - 'tests/test_minute_execution.py'
+      - 'tests/test_minute_archive_pilot.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
