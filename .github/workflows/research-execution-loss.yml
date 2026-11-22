@@ -100,6 +100,17 @@ jobs:
           assert r["profitability_or_causality_proven"] is False
           assert r["production_changed"] is False
           assert r["hypothetical_extra_delays_minutes"]==[0,1,3]
+          assert all(side in r["outcomes_by_side"]
+                     for side in ("LONG","SHORT"))
+          assert r["conditional_sample"]==sum(
+              sum(x.values()) for x in r["outcomes_by_side"].values())
+          for delay in ("1","3"):
+              paired=r["paired_extra_latency_sensitivity"][delay]
+              assert paired["both_modelled_candidate_count"]>=0
+              assert paired["base_modelled_later_censored"]>=0
+              assert paired["base_censored_later_modelled"]>=0
+              assert paired["both_modelled_candidate_count"]+paired["base_modelled_later_censored"] == (
+                  r["extra_latency_fixed_plan_sensitivity"]["0"]["modelled_exits_not_fills"])
           by_lag=r["observation_lag_buckets"]
           assert sum(z["candidates"] for z in by_lag.values())==r["conditional_sample"]
           for d in ("0","1","3"):
@@ -124,6 +135,12 @@ jobs:
               for outcome,v in r["by_outcome"].items()
           }
           print("QUALITY_OUTCOME_COMPARE",json.dumps(concise,sort_keys=True))
+          print("STOP_TP_BY_SIDE",json.dumps({
+              "outcomes":r["outcomes_by_side"],
+              "within_side_comparable":r["within_side_stop_target_comparison_possible"],
+          },sort_keys=True))
+          print("PAIRED_LATENCY_STRESS",json.dumps(
+              r["paired_extra_latency_sensitivity"],sort_keys=True))
           print("OBSERVED_LAG_GROUPS",json.dumps(by_lag,sort_keys=True))
           print("AFTER_SNAPSHOT_EXTRA_DELAY",json.dumps(
               r["extra_latency_fixed_plan_sensitivity"],sort_keys=True))
