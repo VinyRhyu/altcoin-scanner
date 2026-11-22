@@ -80,3 +80,63 @@ jobs:
             reports/market_data_smoke_candles.jsonl
           if-no-files-found: warn
           retention-days: 7
+
+  historical-depth-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read latest 100 archived snapshots (no writes to market-data)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=160 origin market-data
+          mkdir -p deep_snapshots
+          for sha in $(git rev-list --max-count=100 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "deep_snapshots/market_data_$sha.json"
+            fi
+          done
+          echo "Deep snapshots saved: $(find deep_snapshots -name 'market_data*.json' | wc -l)"
+      - name: Audit extended historic reconstruction
+        run: |
+          python -m research.market_history_audit deep_snapshots \
+            --report reports/deep_market_data_report.json
+      - name: Evaluate extended audit and coverage by timeframe
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from collections import defaultdict
+          from pathlib import Path
+          r = json.loads(Path("reports/deep_market_data_report.json").read_text())
+          print("EXTENDED_HISTORY_AUDIT", json.dumps({
+              key: r[key] for key in (
+                  "snapshot_count", "symbols", "distinct_candles",
+                  "duplicate_observations", "conflicting_candles",
+                  "missing_candles_between_observations", "integrity_passed", "issues")
+          }, sort_keys=True))
+          stats = defaultdict(lambda: {"series": 0, "candles": 0, "missing": 0, "gaps": 0})
+          for item in r["per_series"]:
+              z = stats[item["timeframe"]]
+              z["series"] += 1
+              z["candles"] += item["candles"]
+              z["missing"] += item["missing_candles"]
+              z["gaps"] += item["gaps"]
+          print("BY_TIMEFRAME", json.dumps(dict(sorted(stats.items())), sort_keys=True))
+          assert r["snapshot_count"] >= 30, "insufficient historic snapshots"
+          assert r["distinct_candles"] > 0, "empty normalized dataset"
+          for issue in ("invalid_snapshot", "invalid_candle", "conflicting_candle"):
+              assert not r["issues"].get(issue), f"found {issue}"
+          PY
+      - name: Upload extended history report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extended-market-data-audit
+          path: reports/deep_market_data_report.json
+          if-no-files-found: warn
+          retention-days: 7
