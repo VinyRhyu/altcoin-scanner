@@ -4,6 +4,10 @@ on:
     branches: [test/systematic-trading-research]
     paths:
       - '.github/workflows/research-multiasset-90d.yml'
+      - 'research/multi_asset_validation.py'
+      - 'research/retrospective_price_pilot.py'
+      - 'research/okx_history_backfill.py'
+      - 'research/futures_scenario.py'
   workflow_dispatch:
 
 permissions:
