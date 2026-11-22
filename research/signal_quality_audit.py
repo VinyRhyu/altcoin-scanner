@@ -303,6 +303,43 @@ def analyze(paths, source, windows, diagnosed):
                 "modelled_execution":base["modelled_execution"]},
             "hypothetical_extra_delay":hypothetical,
         })
+    outcomes_by_side={
+        side:dict(sorted(Counter(
+            x["outcome"]["outcome"] for x in rows if x["side"]==side).items()))
+        for side in ("LONG","SHORT")
+    }
+    outcomes_by_method={
+        method:dict(sorted(Counter(
+            x["outcome"]["outcome"] for x in rows if x["method"]==method).items()))
+        for method in ("BREAKOUT","RETEST")
+    }
+    within_side_comparison={
+        side:(outcomes_by_side[side].get("MODELLED_STOP",0)>0 and
+              outcomes_by_side[side].get("MODELLED_TP1",0)>0)
+        for side in ("LONG","SHORT")
+    }
+    paired_lag_sensitivity={}
+    for d in DELAY_MINUTES[1:]:
+        zero=[x["hypothetical_extra_delay"]["0"] for x in rows]
+        later=[x["hypothetical_extra_delay"][str(d)] for x in rows]
+        matched=[(a["net_r_scenario"],b["net_r_scenario"])
+                 for a,b in zip(zero,later)
+                 if a["modelled_execution"] and b["modelled_execution"]]
+        delta=[b-a for a,b in matched]
+        paired_lag_sensitivity[str(d)]={
+            "both_modelled_candidate_count":len(matched),
+            "base_modelled_later_censored":sum(
+                a["modelled_execution"] and not b["modelled_execution"]
+                for a,b in zip(zero,later)),
+            "base_censored_later_modelled":sum(
+                not a["modelled_execution"] and b["modelled_execution"]
+                for a,b in zip(zero,later)),
+            "mean_extra_delay_minus_baseline_r_on_matched":(
+                round(statistics.mean(delta),8) if delta else None),
+            "matched_outcomes_transitioned":sum(
+                a["outcome"]!=b["outcome"] for a,b in zip(zero,later)
+                if a["modelled_execution"] and b["modelled_execution"]),
+        }
     by_outcome={}
     for outcome in sorted(set(r["outcome"]["outcome"] for r in rows)):
         by_outcome[outcome]=summarize_group([
@@ -329,6 +366,10 @@ def analyze(paths, source, windows, diagnosed):
             "blocked":summarize_group(blocked_features),
         },
         "by_outcome":by_outcome,
+        "outcomes_by_side":outcomes_by_side,
+        "outcomes_by_method":outcomes_by_method,
+        "within_side_stop_target_comparison_possible":within_side_comparison,
+        "paired_extra_latency_sensitivity":paired_lag_sensitivity,
         "resolved_net_positive":summarize_group(winners),
         "resolved_net_negative":summarize_group(losers),
         "by_side":{s:summarize_group([r for r in rows if r["side"]==s])
@@ -357,6 +398,7 @@ def analyze(paths, source, windows, diagnosed):
             "Delay sensitivity freezes the original plan and spread; no updated quote, market depth or live revalidation",
             "Delay scenarios cannot establish whether early entry was really executable",
             "Different symbol, regime, trend and side composition confound feature contrasts",
+            "Within-side stop-vs-target contrast must be declared unidentifiable when no side contains both outcome types",
             "No p-values/optimization: do not promote best-looking thresholds based on these rows",
         ],
     }
