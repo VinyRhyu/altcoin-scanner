@@ -10,6 +10,7 @@ on:
       - 'tests/test_history_depth.py'
       - 'tests/test_okx_history_backfill.py'
       - 'tests/test_futures_scenario.py'
+      - 'tests/test_point_in_time_candidates.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
@@ -170,6 +171,24 @@ jobs:
           print("ELIGIBLE_SEGMENTS", r["eligible_segments"],
                 "ELIGIBLE_CANDLES", r["eligible_candles"])
           PY
+      - name: Extract timestamp-grounded BREAKOUT/RETEST candidates (never fills)
+        run: |
+          python -m research.point_in_time_candidates deep_snapshots \
+            --report reports/observed_candidates_report.json
+      - name: Verify archived candidates are not executed trades
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("reports/observed_candidates_report.json").read_text())
+          assert r["snapshots_analyzed"] >= 30
+          assert r["eligible_for_futures_pnl_backtest"] is False
+          assert all(not x["order_allowed"] and not x["execution_verified"]
+                     for x in r["candidates"])
+          assert all(x["first_observed_at_ms"] >= x["signal_close_ms"]
+                     for x in r["candidates"])
+          print("ARCHIVED_CANDIDATES", json.dumps(r["by_method"], sort_keys=True))
+          PY
       - name: Measure per-timeframe and per-symbol historical depth
         run: |
           python -m research.history_depth reports/continuous_history_report.json \
@@ -201,5 +220,6 @@ jobs:
             reports/continuous_segments.jsonl
             reports/continuous_candles.jsonl
             reports/history_depth_report.json
+            reports/observed_candidates_report.json
           if-no-files-found: warn
           retention-days: 7
