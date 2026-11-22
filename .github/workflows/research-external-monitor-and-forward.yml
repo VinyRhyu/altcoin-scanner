@@ -93,8 +93,15 @@ jobs:
                   report=validate("ORCA_USDT",interval,end-lookback,end,data,
                                   observed_at_s=int(time.time()))
               except Exception as exc:
+                  # ValueError messages come from our static schema validators,
+                  # never raw HTTP request headers, credentials or personal data.
+                  public_validation_issue=(
+                      str(exc)[:120] if isinstance(exc,ValueError)
+                      else "PUBLIC_REQUEST_OR_PROVIDER_UNAVAILABLE"
+                  )
                   report={"status":"UNAVAILABLE","instrument":"ORCA_USDT",
                           "interval":interval,"reason_type":type(exc).__name__,
+                          "validation_issue":public_validation_issue,
                           "signals_or_fills_estimated":0,
                           "profitable_edge_proven":False,"production_changed":False}
               Path(f"reports/mexc_{interval}_source.json").write_text(
