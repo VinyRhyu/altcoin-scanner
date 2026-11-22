@@ -113,7 +113,7 @@ class ReceiptClockTests(unittest.TestCase):
             patch.object(collector,"validated_liquidity",return_value=(5000000.,"priority")),
             patch.object(collector,"intraday_anomaly",return_value=(2.,2.)),
             patch.object(collector,"prescreen",side_effect=lambda vals:vals),
-            patch.object(collector,"choose_universe",side_effect=lambda vals:vals),
+            patch.object(collector,"choose_universe",side_effect=lambda vals:[{**x,"group":"liquidity_backfill"} for x in vals]),
             patch.object(collector.time,"sleep",return_value=None),
         ):
             r=collector.collect(base,research_clock_mode="receipt",
@@ -153,7 +153,7 @@ class ReceiptClockTests(unittest.TestCase):
             patch.object(collector,"validated_liquidity",return_value=(5000000.,"priority")),
             patch.object(collector,"intraday_anomaly",return_value=(2.,2.)),
             patch.object(collector,"prescreen",side_effect=lambda vals:vals),
-            patch.object(collector,"choose_universe",side_effect=lambda vals:vals),
+            patch.object(collector,"choose_universe",side_effect=lambda vals:[{**x,"group":"liquidity_backfill"} for x in vals]),
             patch.object(collector.time,"sleep",return_value=None),
         ):
             with self.assertRaises(ValueError):
