@@ -53,7 +53,7 @@ O exportador anota `point_in_time_eligible=false`, `retrieved_at_utc` e `backtes
 
 Total de 2.585 fechamentos 15m avaliados com histórico suficiente nos timeframes superiores. **Esses resultados derivam de hipóteses retrospectivas e não de operações reais.** A amostra de 6 e 3 planos condicionais é pequena demais para conclusões de rentabilidade. R:R, lucro, Sharpe, Profit Factor ou taxa de acerto derivados desses cenários não são evidência de vantagem matemática positiva. Não misturar esta população retrospectiva de SOL com as 241 confirmações dos 100 snapshots multimoedas.
 
-O replay foi posteriormente restringido aos últimos 99 candles de cada timeframe para igualar o horizonte do scanner. Validar o resultado do workflow mais recente antes de consolidar qualquer comparação quantitativa.
+O replay foi restringido aos últimos 99 candles de cada timeframe para igualar o horizonte do scanner. [O workflow final #44973909070](https://github.com/VinyRhyu/altcoin-scanner/actions/runs/44973909070) confirmou novamente as mesmas contagens (104/11 confirmações e 6/3 planos condicionais), com execução bem-sucedida.
 
 ## 5. Limitações prioritárias
 
