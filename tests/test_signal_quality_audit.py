@@ -132,6 +132,13 @@ class SignalQualityTests(unittest.TestCase):
         self.assertFalse(report["profitability_or_causality_proven"])
         self.assertEqual(report["real_exchange_fills_verified"],0)
         self.assertFalse(report["production_changed"])
+        self.assertEqual(report["outcomes_by_side"]["LONG"]["MODELLED_STOP"],1)
+        self.assertFalse(report["within_side_stop_target_comparison_possible"]["LONG"])
+        self.assertFalse(report["within_side_stop_target_comparison_possible"]["SHORT"])
+        paired=report["paired_extra_latency_sensitivity"]["1"]
+        self.assertEqual(paired["base_modelled_later_censored"],1)
+        self.assertEqual(paired["both_modelled_candidate_count"],0)
+        self.assertIsNone(paired["mean_extra_delay_minus_baseline_r_on_matched"])
 
     def test_zero_delay_uses_actual_scan_timestamp_when_full_minute_is_expired(self):
         # Later full-minute boundary is not the original observation time.
