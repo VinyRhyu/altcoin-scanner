@@ -12,8 +12,8 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 
-from entry_trigger import analyze_both, is_breakout
-from experimental_scan import atr14, features
+from entry_trigger import analyze_both
+from experimental_scan import features
 from research.futures_scenario import Scenario, summarize
 from research.market_history_audit import DURATIONS_MS
 
@@ -53,7 +53,6 @@ def pilot(history, assumed_tick, scenario):
     stats = {method: Counter() for method in ("BREAKOUT", "RETEST")}
     plans = []
     evaluated_closes = 0
-    avoided_retest_atr = 0
 
     for i in range(34, len(timeframe) - scenario.max_hold_bars):
         close_ms = timeframe[i][0]+DURATIONS_MS["15m"]
@@ -84,16 +83,6 @@ def pilot(history, assumed_tick, scenario):
                 if decision["status"] != "CONFIRMADO":
                     continue
                 stats[method]["confirmed"] += 1
-                if method == "RETEST":
-                    # Master detector uses current ATR for earlier breakout.
-                    # Reject any retest whose prior breakout fails with its own ATR.
-                    prev_atr = atr14(aligned["15m"][:-1])
-                    prior_passed, _ = is_breakout(
-                        aligned["15m"], len(aligned["15m"])-2, side, prev_atr)
-                    if not prior_passed:
-                        avoided_retest_atr += 1
-                        stats[method]["rejected_prior_atr_check"] += 1
-                        continue
                 if decision["decision"] != "GATILHO_CONDICIONAL":
                     stats[method]["blocked"] += 1
                     continue
@@ -113,7 +102,6 @@ def pilot(history, assumed_tick, scenario):
         "closed_15m_bars": len(timeframe), "evaluated_15m_closes": evaluated_closes,
         "assumed_tick_size": str(assumed_tick),
         "assumed_spread_pct": scenario.assumed_spread_pct,
-        "prior_atr_inconsistent_retests_discarded": avoided_retest_atr,
         "detection_summary": {k: dict(v) for k,v in stats.items()},
         "execution_scenario": simulated,
         "is_real_backtest": False, "proven_expectancy": False,
@@ -124,7 +112,7 @@ def pilot(history, assumed_tick, scenario):
             "Static tick and spread proxy may differ from actual market",
             "Signal is hypothetically armed at exact candle close, before +1min scan",
             "Funding is a signed, linear scenario assumption; not actual settlement events",
-            "Prior-ATR retest prefilter removes some time-leakage, but master detector may still miss setups",
+            "RETEST detector in this experiment validates breakout t-1 with ATR from t-1; previous ad hoc prefilter removed",
             "No liquidity/mark price/liquidation execution or fill timestamp verification",
             "Small single-asset window and overlapping signals invalidate edge inference",
         ],
