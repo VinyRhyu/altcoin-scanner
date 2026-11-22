@@ -1,0 +1,71 @@
+name: Research 1m post-snapshot execution (no trading)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-minute-execution.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-minutes-after-archived-signals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run complete offline unit tests before any exchange requests
+        run: python -m unittest discover -s tests -v
+      - name: Reconstruct 100 archived read-only snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=160 origin market-data
+          mkdir -p deep_snapshots
+          for sha in $(git rev-list --max-count=100 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "deep_snapshots/market_data_$sha.json"
+            fi
+          done
+          echo "Archived snapshots: $(find deep_snapshots -name 'market_data*.json' | wc -l)"
+      - name: Get bounded OKX 1m history AFTER actual scan timestamps
+        run: |
+          python -m research.minute_archive_pilot deep_snapshots \
+            --max-candidates 25 --max-pages-per-candidate 6 \
+            --report reports/minute_pilot_report.json \
+            --windows-jsonl reports/minute_pilot_windows.jsonl
+      - name: Assert no claims of verified fills and inspect outcome counts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/minute_pilot_report.json").read_text())
+          assert r["source_snapshot_count"] >= 30, "no historic sample"
+          assert r["source_conditional_candidates"] > 0, "no candidate in snapshots"
+          assert r["source_conditional_candidates"] == r["candidate_count"]
+          assert len(r["details"]) == r["candidate_count"]
+          assert sum(v["archived_candidates"] for v in r["by_method"].values()) == r["candidate_count"]
+          assert r["exchange_fills_verified"] == 0
+          assert r["proven_expectancy"] is False
+          assert r["trading_allowed"] is False
+          assert all(d["exchange_fill_verified"] is False for d in r["details"])
+          assert all(d["activation_full_minute_ms"] >= d["observed_at_ms"]
+                     for d in r["details"])
+          print("MINUTE_EXECUTION_OUTCOMES", json.dumps(r["by_method"],sort_keys=True))
+          print("MINUTE_FETCHED_ROWS", r["retrieved_minute_rows"])
+          PY
+      - name: Upload reproducible one-minute evidence and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-snapshot-minute-evidence
+          path: |
+            reports/minute_pilot_report.json
+            reports/minute_pilot_windows.jsonl
+          if-no-files-found: warn
+          retention-days: 7
