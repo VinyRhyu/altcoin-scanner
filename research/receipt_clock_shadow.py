@@ -73,12 +73,11 @@ def compare(market, *, at_utc=None):
         raise ValueError("duplicate shadow symbols")
     if added & removed:
         raise ValueError("shadow sets overlap")
-    if not added.issubset(
-        set(symbols)|set(p.get("shadow_added_but_unselected_symbols",[]))):
-        # A recovered ticker can be rejected by candle gates. It is NOT
-        # an error; there is no guarantee all first-gate candidates remain.
-        pass
-    baseline_symbols=set(symbols)-added
+    # Some tickers recovered at the first gate never finish liquidity/candle
+    # validation; explicitly account for them instead of silently ignoring.
+    selected=set(symbols)
+    recovered_not_selected=added-selected
+    baseline_symbols=selected-added
     control=dict(market)
     control["universe"]=[x for x in tickers if x["symbol"] in baseline_symbols]
     control["candles"]={
@@ -120,6 +119,7 @@ def compare(market, *, at_utc=None):
         "full_candle_validated_selected_symbols":len(symbols),
         "validated_selected_from_legacy_ticker_set":len(baseline_symbols),
         "validated_selected_only_due_to_receipt":len(set(symbols)&added),
+        "recovered_tickers_not_selected_or_validated":len(recovered_not_selected),
         "baseline_shadow_is_subset_not_independent_full_legacy_collection":True,
         "source_current_for_new_entries":experimental["current_for_new_entries"],
         "base_source_current_for_new_entries":baseline["current_for_new_entries"],
