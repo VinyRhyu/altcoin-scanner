@@ -76,7 +76,7 @@ jobs:
                   outcome=d[stop]
                   if outcome is None: continue
                   assert outcome["exchange_fill_verified"] is False
-                  assert (outcome["net_r_scenario"] is None) != bool(outcome["modelled_execution"]) is False
+                  assert (outcome["net_r_scenario"] is not None) == bool(outcome["modelled_execution"])
           print("AB_FILTER_TRANSITIONS",json.dumps(r["transition_counts"],sort_keys=True))
           print("AB_NET_R_SCENARIO",json.dumps(r["comparison"],sort_keys=True))
           print("AB_CHRONOLOGICAL_EXPLORATORY_SPLIT",json.dumps(
