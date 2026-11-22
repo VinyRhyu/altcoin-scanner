@@ -129,7 +129,7 @@ def audit(paths):
         timestamps[(symbol, tf)].append(opened)
         normalized.append({"symbol": symbol, "timeframe": tf, "open_ms": opened,
                            "open": bar[1], "high": bar[2], "low": bar[3],
-                           "close": bar[4], "base_volume": bar[5],
+                           "close": bar[4], "volume_contracts": bar[5],
                            "quote_volume": bar[6],
                            "first_seen_utc": datetime.fromtimestamp(
                                first_seen[key] / 1000, timezone.utc).isoformat()})
@@ -163,6 +163,7 @@ def audit(paths):
         "integrity_passed": passed,
         "profitability_backtest_ready": False,
         "limitations": ["historical orderbook/spread/funding not in these snapshots",
+                        "OKX vol field denotes contracts for SWAP instruments, not base asset volume",
                         "integrity is not sufficient sample size or proven edge",
                         "dynamic asset selection may cause survivorship/selection bias"],
         "issues": dict(sorted(counts.items())), "issue_examples": examples,
