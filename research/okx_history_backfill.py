@@ -39,17 +39,17 @@ def parse_row(raw, duration):
         return None  # exchange has not confirmed this bar
     try:
         ts = int(raw[0])
-        op, hi, lo, close, base_volume, quote_volume = [
-            float(raw[n]) for n in (1, 2, 3, 4, 5, 7)]
+        op, hi, lo, close, contracts, base_volume, quote_volume = [
+            float(raw[n]) for n in (1, 2, 3, 4, 5, 6, 7)]
     except (ValueError, TypeError, OverflowError) as exc:
         raise ValueError("non-numeric OKX candle") from exc
     if (ts < 0 or ts % duration or not all(map(math.isfinite,
-        (op, hi, lo, close, base_volume, quote_volume))) or
+        (op, hi, lo, close, contracts, base_volume, quote_volume))) or
         not (0 < lo <= min(op, close) <= max(op, close) <= hi) or
-        min(base_volume, quote_volume) < 0):
+        min(contracts, base_volume, quote_volume) < 0):
         raise ValueError("invalid OKX OHLCV")
     return {"open_ms": ts, "open": op, "high": hi, "low": lo,
-            "close": close, "base_volume": base_volume,
+            "close": close, "volume_contracts": contracts, "base_volume": base_volume,
             "quote_volume": quote_volume}
 
 
