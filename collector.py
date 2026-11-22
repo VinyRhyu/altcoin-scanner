@@ -551,10 +551,23 @@ def choose_universe(pool):
     return selected[:UNIVERSE_SIZE]
 
 
-def collect(now_ms):
-    allowed, source = eligible_bases()
+def _research_timing(event):
+    # Completely inert without explicit opt-in on the test-branch dry-run.
+    # Only stage names and clocks are written. No quotes/orders/users.
+    log_path = os.getenv("RESEARCH_TIMING_LOG")
+    if log_path:
+        from research.pipeline_latency_probe import mark_event
+        mark_event(log_path, event)
 
+
+def collect(now_ms):
+    _research_timing("allowlist_started")
+    allowed, source = eligible_bases()
+    _research_timing("allowlist_complete")
+
+    _research_timing("ticker_fetch_started")
     candidates = tickers(allowed, now_ms)
+    _research_timing("ticker_fetch_complete")
 
     if len(candidates) < MIN_VALIDATED:
         raise RuntimeError(
@@ -565,6 +578,7 @@ def collect(now_ms):
     rejected = {}
     cached_15m = {}
 
+    _research_timing("prescreen_15m_started")
     for original in prescreen(candidates):
         item = dict(original)
         symbol = item["symbol"]
@@ -605,6 +619,7 @@ def collect(now_ms):
 
         time.sleep(0.10)
 
+    _research_timing("prescreen_15m_complete")
     selected = choose_universe(pool)
     selected_symbols = {
         x["symbol"] for x in selected
@@ -622,6 +637,7 @@ def collect(now_ms):
     validated = {}
     universe = []
 
+    _research_timing("selected_multitf_started")
     for item in selected + fallback:
         if len(validated) >= UNIVERSE_SIZE:
             break
@@ -643,6 +659,7 @@ def collect(now_ms):
 
         time.sleep(0.10)
 
+    _research_timing("selected_multitf_complete")
     if len(validated) < MIN_VALIDATED:
         raise RuntimeError(
             f"Only {len(validated)} complete OHLCV assets"
