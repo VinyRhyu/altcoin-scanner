@@ -65,6 +65,32 @@ class PricePilotTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 load_history(root)
 
+    def test_other_swap_symbol_uses_its_own_file_prefix_and_provenance(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            write_history(root, history_fixture())
+            for tf in ("15m", "1h", "2h"):
+                path = root / f"sol_{tf}_30d.jsonl"
+                rows = [json.loads(x) for x in path.read_text().splitlines()]
+                for item in rows:
+                    item["symbol"] = "BTC-USDT-SWAP"
+                (root / f"btc_{tf}_30d.jsonl").write_text(
+                    "".join(json.dumps(x)+"\n" for x in rows))
+            loaded = load_history(root, symbol="BTC-USDT-SWAP")
+            self.assertEqual(loaded, history_fixture())
+            with self.assertRaises(ValueError):
+                load_history(root, symbol="INVALID")
+
+    def test_cost_stress_same_signals_and_no_real_fills(self):
+        sc = Scenario(assumed_spread_pct=.025)
+        stress = Scenario(assumed_spread_pct=.08, slippage_bps_side=12.5)
+        result = pilot(history_fixture(), ".01", sc,
+                       symbol="ETH-USDT-SWAP", stress_scenario=stress)
+        self.assertEqual(result["symbol"], "ETH-USDT-SWAP")
+        self.assertEqual(result["execution_scenario"]["trades"],
+                         result["cost_stress_scenario"]["trades"])
+        self.assertFalse(result["proven_expectancy"])
+
     def test_no_signal_is_not_counted_as_a_trade(self):
         report = pilot(history_fixture(), ".01", Scenario())
         self.assertGreater(report["evaluated_15m_closes"], 0)
