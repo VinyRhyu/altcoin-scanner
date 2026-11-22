@@ -39,7 +39,7 @@ def sample():
                     100,101,99,100,10,1000]]
                for tf,duration in collector.INTERVALS.items()
                if tf in ("15m","1h","2h")}
-            for s in SYMS,
+            for s in SYMS
         },
     }
 
