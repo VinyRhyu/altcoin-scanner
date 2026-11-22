@@ -5,6 +5,9 @@ on:
       - test/systematic-trading-research
     paths:
       - '.github/workflows/research-sol-30d.yml'
+      - 'research/retrospective_price_pilot.py'
+      - 'research/futures_scenario.py'
+      - 'research/okx_history_backfill.py'
   workflow_dispatch:
 
 permissions:
