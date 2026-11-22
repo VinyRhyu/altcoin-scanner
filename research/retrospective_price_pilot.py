@@ -46,7 +46,8 @@ def load_history(directory, symbol="SOL-USDT-SWAP", days=30):
     return history
 
 
-def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP", *, stress_scenario=None):
+def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP", *,
+          stress_scenario=None, include_research_plans=False):
     if (not isinstance(symbol,str) or not symbol.endswith("-USDT-SWAP") or
         not symbol[:-10].isalnum() or symbol != symbol.upper()):
         raise ValueError("invalid perpetual symbol")
@@ -125,6 +126,10 @@ def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP", *, stress_sce
             "Single-asset window and overlapping signals invalidate edge inference; broader validation must compare multiple symbols",
         ],
     }
+    if include_research_plans:
+        # Explicit opt-in for stricter, independent financial scenario analysis.
+        # Includes future bars, never exchange fills or point-in-time tick prices.
+        report["research_only_plans_with_future_bars"] = plans
     if stressed is not None:
         report["cost_stress_scenario"] = stressed
         assert [(t["method"],t["side"],t["signal_close_ms"]) for t in simulated["trades"]] == [(t["method"],t["side"],t["signal_close_ms"]) for t in stressed["trades"]]
