@@ -133,6 +133,23 @@ class SignalQualityTests(unittest.TestCase):
         self.assertEqual(report["real_exchange_fills_verified"],0)
         self.assertFalse(report["production_changed"])
 
+    def test_zero_delay_uses_actual_scan_timestamp_when_full_minute_is_expired(self):
+        # Later full-minute boundary is not the original observation time.
+        stamp=SIGNAL+900000-10000
+        c=candidate(stamp=stamp)
+        base=diagnoses(c,[])
+        self.assertEqual(base[0]["base"]["outcome"],
+                         "NO_COMPLETE_MINUTE_BEFORE_EXPIRY")
+        with TemporaryDirectory() as td:
+            p=Path(td)/"market_data_a.json"
+            p.write_text(json.dumps(snapshot(stamp=stamp)))
+            r=analyze([td],{"candidates":[c]},windows([]),base)
+        d=r["rows"][0]["hypothetical_extra_delay"]
+        self.assertEqual(d["0"]["outcome"],"NO_COMPLETE_MINUTE_BEFORE_EXPIRY")
+        self.assertEqual(d["1"]["outcome"],"INVALID_OR_EXPIRED_OBSERVATION")
+        self.assertIsNone(d["0"]["net_r_scenario"])
+        self.assertEqual(r["real_exchange_fills_verified"],0)
+
     def test_future_minute_prices_never_change_pre_signal_features(self):
         c=candidate()
         base=[minute(START,99.,100.5,99.,100.),
