@@ -69,6 +69,12 @@ O tempo entre início do scan e snapshot pronto ficou em cerca de **40,022 segun
 - `.github/workflows/research-receipt-clock.yml` e `research-ticker-clock-shadow.yml`: duas validações independentes, read-only, com tests e artifacts de **7 dias**. O primeiro faz análise real; o segundo testa a mesma fonte e candidatos LONG/SHORT.
 - Todos os **271** testes passaram na rodada concluída; testes anteriores fracassados durante o desenvolvimento foram corrigidos antes das rodadas aprovadas.
 
+## Validação final após reforço do controle de censura
+
+Após revisar o shadow, acrescentamos uma condição explícita: um ticker recuperado no primeiro filtro de timestamp mas **ausente do conjunto final de OHLCV validado** precisa ser registrado em `recovered_tickers_not_selected_or_validated` e **não pode gerar um sinal artificial**. Um novo teste sintético cobre essa condição.
+
+A execução final [Actions #45052157888](https://github.com/VinyRhyu/altcoin-scanner/actions/runs/45052157888), SHA `d0e30cf176eb5754a2fbc46c2bfd8d5e984bee05`, passou com **2/2 jobs success** e **272/272 testes**. A leitura real capturou 47 ativos OKX, sem diferenças entre relógios nessa observação, e zero gatilhos condicionais em ambas as versões. `scan_started_utc` = 17:55:48.127 UTC, `ticker_fetch_completed_utc` = 17:55:48.578 UTC e `decision_data_ready_utc` = 17:56:20.355 UTC. Nenhum fill ou retorno foi observado, e o cron da produção não foi modificado.
+
 ## O que não mudou e próximos critérios
 
 **Não** foi alterado `master`, `market-data`, workflow de produção, alavancagem, taxa, stop, gatilho ou critérios de risco. **Nenhuma ordem foi enviada**; nenhuma informação individual de terceiros foi coletada; nenhum sinal lucrativo ou expectativa matemática positiva foi inferido. A investigação da disponibilidade de contrato perpétuo na MEXC permanece separada do parser OKX, sem fusão indevida de preços.
