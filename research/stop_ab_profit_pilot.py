@@ -82,8 +82,9 @@ def _compare_sources(paths):
                       "spread_pct_observed","tick_size_observed"):
             if a[k][field]!=b[k][field]:
                 raise ValueError(f"mismatched snapshot provenance: {k} {field}")
-        if a[k]["decision_at_snapshot"]==ALLOW and b[k]["decision_at_snapshot"]!=ALLOW:
-            raise ValueError("shorter structural lookback disqualified an accepted plan")
+        # A shorter stop can worsen estimated NET R:R (fixed fees/spread),
+        # or move a pivot in front of TP1. Accepted three-bar plans may then
+        # fail legitimate unchanged risk/strategy gates in the two-bar variant.
         # Same entry means a narrower stop cannot increase price distance.
         if (a[k]["stop"] is not None and b[k]["stop"] is not None and
             ((b[k]["stop"] < a[k]["stop"]-1e-8) if k[2]=="LONG"
