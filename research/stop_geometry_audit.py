@@ -112,7 +112,7 @@ def audit(paths):
                     geometry=stop_components(
                         bars,side,method,ticker["tick_size"],float(candidate["entry"]))
                     tick=tick_decimal(ticker["tick_size"])
-                    tol=float(tick)*1e-6+1e-12
+                    tol=max(float(tick)*1e-6, 2e-11*abs(geometry["predicted_stop"]), 1e-12)  # numeric() rounds to 12 significant digits
                     if abs(geometry["predicted_stop"]-float(candidate["stop"]))>tol:
                         raise ValueError(f"stop reconstruction mismatch: {key}")
                     above=geometry["risk_atr"]>MAX_RISK_ATR
