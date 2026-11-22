@@ -4,6 +4,8 @@
 **PR draft:** [#3](https://github.com/VinyRhyu/altcoin-scanner/pull/3).  
 **Estado:** nenhuma ordem, nenhuma alteração na `master` ou `market-data`, nenhum merge, nenhum dado financeiro pessoal neste relatório.
 
+**Execução final integrada:** [GitHub Actions #45044104730](https://github.com/VinyRhyu/altcoin-scanner/actions/runs/45044104730), **4/4 jobs concluídos com sucesso**, **231/231 testes** aprovados. Inclui o teste real de coleta, análise da cadência do cron e consulta pública de cobertura.
+
 ## Pergunta investigada
 
 O scanner deixa de detectar oportunidades porque os cálculos são lentos, porque o agendamento não inicia coleta a cada fechamento de candle ou porque o ativo não integra o universo observado?
@@ -29,6 +31,8 @@ Fonte: [Actions #45043514392](https://github.com/VinyRhyu/altcoin-scanner/action
 O payload `collected_utc` é definido **antes** da chamada longa de coleta, portanto é timestamp de *início da captura*, não de conclusão nem publicação. O dry-run começou a coletar **485,318 s após o último fechamento 15m** naquele relógio, mas **não estava agendado pelo cron de produção** e portanto esta diferença não deve ser interpretada como fila do GitHub.
 
 Foi utilizado o coletor real em modo read-only: **sem publicação em `market-data`**, sem sinais em produção, sem ordens. As métricas de idade das cotações são comparações entre timestamps de tickers públicos da OKX e o relógio do runner, não prova de preço executável ou preenchimento de ordem.
+
+**Repetição completa aprovada no teste final [#45044104730](https://github.com/VinyRhyu/altcoin-scanner/actions/runs/45044104730):** novamente **47 ativos**, coleta em **37,786 s** (descoberta de ticker **0,468 s**, pré-seleção **13,777 s**, outros timeframes **23,159 s**), cálculo em **0,130 s** e idade mediana da cotação no cálculo de **38,038 s**. A inicialização do snapshot ocorreu **869,730 s após o último fechamento 15m**, mas por ser um workflow de **push** não é uma medição de atraso do cron. A repetição reforça a ordem de grandeza de dezenas de segundos para o processamento, e não a de vários minutos.
 
 ### 2. Cadência do cron principal — hipótese mais urgente
 
