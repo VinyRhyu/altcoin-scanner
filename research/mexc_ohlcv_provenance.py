@@ -57,12 +57,16 @@ def validate(symbol,interval,start_s,end_s,payload,*,observed_at_s):
         raise ValueError("mismatched or too many OHLCV arrays")
     duration=DURATIONS[interval]
     rows=[]
+    out_of_requested_range=0
     for i in range(n):
         ts=source["time"][i]
         if type(ts) is not int or ts%duration:
             raise ValueError("invalid provider candle open seconds")
         if not start_s<=ts<end_s:
-            raise ValueError("bar outside requested UTC range")
+            # MEXC sometimes returns an inclusive end or a broader window.
+            # Discard those bars; NEVER let them enter this sample.
+            out_of_requested_range+=1
+            continue
         prices=[]
         for name in ("open","high","low","close"):
             try:
@@ -98,6 +102,8 @@ def validate(symbol,interval,start_s,end_s,payload,*,observed_at_s):
         "requested_end_utc":datetime.fromtimestamp(end_s,timezone.utc).isoformat(),
         "observed_at_utc":datetime.fromtimestamp(observed_at_s,timezone.utc).isoformat(),
         "source_reported_bars":n,
+        "provider_out_of_requested_range_bars_excluded":out_of_requested_range,
+        "provider_returned_only_requested_range":out_of_requested_range==0,
         "completed_bars":len(rows),
         "excluded_incomplete_or_future_bars":n-len(rows),
         "first_closed_bar_open_utc":datetime.fromtimestamp(
@@ -117,6 +123,7 @@ def validate(symbol,interval,start_s,end_s,payload,*,observed_at_s):
             "Venue OHLCV quality only; not OKX price series",
             "Volume unit may be contracts; not assumed USDT quote volume",
             "Return is aggregated metadata, not user trade prices or inferred returns",
+            "Provider bars beyond request boundaries are excluded, not interpreted as this sample",
             "Empty/sparse provider history does not prove contract was absent",
         ],
     }
