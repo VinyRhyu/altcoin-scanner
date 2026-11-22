@@ -5,6 +5,8 @@ on:
       - test/systematic-trading-research
     paths:
       - '.github/workflows/research-filter-shadow.yml'
+      - 'research/filter_ablation.py'
+      - 'research/filter_shadow_1m.py'
   workflow_dispatch:
 
 permissions:
