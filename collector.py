@@ -735,6 +735,19 @@ def collect(now_ms, *, research_clock_mode="legacy", clock_ms=None):
                     raise ValueError("research candle uses future data")
                 if effective_now_ms-close_ms>INTERVALS[tf]*1000:
                     raise ValueError("research signal would use stale candles")
+        # An accepted quote must still be fresh when the entire snapshot
+        # becomes usable. Reject the batch rather than silently promote
+        # a stale quote to a valid signal.
+        for item in universe:
+            quote=item.get("ticker_time_utc")
+            if quote is None:
+                raise ValueError("research selected ticker lacks source timestamp")
+            ts=datetime.fromisoformat(quote.replace("Z","+00:00"))
+            if ts.tzinfo is None:
+                raise ValueError("research quote timestamp lacks timezone")
+            age=effective_now_ms-round(ts.timestamp()*1000)
+            if not 0<=age<=300_000:
+                raise ValueError("research quote not fresh at data-ready time")
         provenance["decision_data_ready_utc"]=utc(effective_now_ms)
         provenance["collected_at_means_data_ready"]=True
     return {
