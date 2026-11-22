@@ -273,12 +273,15 @@ def analyze(paths, source, windows, diagnosed):
             later=full+delay*MINUTE_MS
             if later<stamp:
                 raise ValueError("counterfactual activation precedes scan")
-            rec=dict(c,first_observed_at_ms=later)
+            # Zero delay is the REAL archived scan. Substituting the later
+            # minute boundary would misclassify near-expiry observations:
+            # original NO_COMPLETE_MINUTE could become INVALID_OR_EXPIRED.
+            rec=(c if delay==0 else dict(c,first_observed_at_ms=later))
             new=evaluate(rec,window["minute_rows"],Scenario())
             if delay==0 and (new["outcome"]!=base["outcome"] or
                 new["net_r_scenario"]!=base["net_r_scenario"] or
                 new["modelled_execution"]!=base["modelled_execution"]):
-                raise ValueError("zero-delay replay disagrees with base execution")
+                raise ValueError("unmodified archived replay disagrees with base execution")
             hypothetical[str(delay)]={
                 "outcome":new["outcome"],
                 "net_r_scenario":new["net_r_scenario"],
