@@ -60,8 +60,23 @@ def fetch_page(symbol, tf, after_ms):
     })
     request = urllib.request.Request(OKX_URL + "?" + params, headers={
         "User-Agent": "CryptoFuturesScannerResearch/1.0", "Accept": "application/json"})
-    with urllib.request.urlopen(request, timeout=18) as response:
-        payload = json.load(response)
+    payload = None
+    # Public OKX history rate limits can apply transiently to shared CI IPs.
+    # Bounded retry is for HTTP 429 and transient 5xx ONLY; never fill gaps.
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(request, timeout=18) as response:
+                payload = json.load(response)
+            break
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 500, 502, 503, 504) or attempt == 5:
+                raise
+            raw_retry = exc.headers.get("Retry-After", "") if exc.headers else ""
+            try:
+                wait = min(30.0, max(1.0, float(raw_retry)))
+            except (ValueError, OverflowError):
+                wait = min(30.0, 2.0 ** (attempt + 1))
+            time.sleep(wait)
     if payload.get("code") != "0" or not isinstance(payload.get("data"), list):
         raise ValueError("invalid OKX history-candles response")
     return payload["data"]
