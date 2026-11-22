@@ -49,6 +49,11 @@ def stop_components(bars,side,method,tick_size,entry):
     if level is None or not all(math.isfinite(x) for x in (atr,level,entry)):
         raise ValueError("invalid ATR or setup level")
     recent=bars[-3:]
+    extrema=[float(c[3] if side=="LONG" else c[2]) for c in recent]
+    extreme=min(extrema) if side=="LONG" else max(extrema)
+    extreme_positions=[i for i,x in enumerate(extrema) if x==extreme]
+    extreme_source=(str(extreme_positions[0]-3) if len(extreme_positions)==1
+                    else "tie")
     if side=="LONG":
         a=tick_round(level-.4*atr,tick,"down")
         b=tick_round(min(float(c[3]) for c in recent)-.15*atr,tick,"down")
@@ -71,6 +76,8 @@ def stop_components(bars,side,method,tick_size,entry):
         "level_component_risk_atr":level_risk,
         "recent_component_risk_atr":recent_risk,
         "risk_atr":risk_atr,"dominant_stop_anchor":dominance,
+        "recent_extreme_bar_offset":extreme_source,
+        "recent_vs_level_extra_risk_atr":max(0., recent_risk-level_risk),
     }
 
 
@@ -139,6 +146,9 @@ def audit(paths):
                             geometry["recent_component_risk_atr"],8),
                         "stop_above_3atr":above,
                         "dominant_anchor":geometry["dominant_stop_anchor"],
+                        "recent_extreme_bar_offset":geometry["recent_extreme_bar_offset"],
+                        "recent_vs_level_extra_risk_atr":round(
+                            geometry["recent_vs_level_extra_risk_atr"],8),
                         "threshold_driver":explanation,
                         "production_trade_executed":False,
                     })
@@ -161,6 +171,12 @@ def audit(paths):
                 r["dominant_anchor"] for r in group)),
             "dominant_anchor_over_3atr":dict(Counter(
                 r["dominant_anchor"] for r in blocked)),
+            "recent_extreme_source_all":dict(Counter(
+                r["recent_extreme_bar_offset"] for r in group)),
+            "recent_extreme_source_over_3atr":dict(Counter(
+                r["recent_extreme_bar_offset"] for r in blocked)),
+            "extra_recent_anchor_risk_atr_over_3atr":_quantiles(
+                [r["recent_vs_level_extra_risk_atr"] for r in blocked]),
             "threshold_driver_over_3atr":dict(Counter(
                 r["threshold_driver"] for r in blocked)),
             "distinct_symbols":len({r["symbol"] for r in group}),
