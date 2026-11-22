@@ -200,24 +200,60 @@ def safe_tick_size(instrument):
         return None
 
 
-def tickers(allowed, now_ms):
-    instruments = okx(
-        "public/instruments", instType="SWAP"
-    )
+def tickers(allowed, now_ms, *, research_clock_mode="legacy",
+            provenance=None, clock_ms=None):
+    """One provider payload, two clock interpretations in opt-in research.
 
-    # Guardar metadados oficiais da OKX (tickSz). Nao alterar
-    # elegibilidade em funcao de precisao disponivel.
+    Legacy defaults are byte-for-byte compatible in logic. Never accept
+    quote timestamps beyond response receipt, nor older than five minutes.
+    """
+    if research_clock_mode not in ("legacy", "receipt"):
+        raise ValueError("unsupported ticker clock mode")
+    if type(now_ms) is not int or now_ms<=0:
+        raise ValueError("invalid scan start")
+    if provenance is not None and not isinstance(provenance,dict):
+        raise ValueError("provenance output must be a dict")
+    clock = clock_ms or (lambda: int(time.time()*1000))
+    instruments=okx("public/instruments",instType="SWAP")
     live = {
-        item["instId"]: item
-        for item in instruments
-        if item.get("state") == "live"
-        and item.get("instId", "").endswith("-USDT-SWAP")
+        item["instId"]:item for item in instruments
+        if item.get("state")=="live"
+        and item.get("instId","").endswith("-USDT-SWAP")
     }
+    fetch_started_ms=clock() if research_clock_mode=="receipt" else None
+    raw=okx("market/tickers",instType="SWAP")
+    fetched_ms=clock() if research_clock_mode=="receipt" else None
+    if research_clock_mode=="legacy":
+        # No extra clock reads, no new filtering, no shadow calculations.
+        return _filter_ticker_rows(raw,live,allowed,now_ms)
+    if not (type(fetch_started_ms) is int and
+            type(fetched_ms) is int and
+            now_ms<=fetch_started_ms<=fetched_ms):
+        raise ValueError("invalid fetch chronology; refusing research quote")
+    legacy=_filter_ticker_rows(raw,live,allowed,now_ms)
+    receipt=_filter_ticker_rows(raw,live,allowed,fetched_ms)
+    original={r["symbol"] for r in legacy}
+    experimental={r["symbol"] for r in receipt}
+    if provenance is not None:
+        provenance.update({
+            "scan_started_utc":utc(now_ms),
+            "ticker_fetch_started_utc":utc(fetch_started_ms),
+            "ticker_fetch_completed_utc":utc(fetched_ms),
+            "ticker_eligibility_reference_utc":utc(fetched_ms),
+            "ticker_clock_mode":"receipt_research_only",
+            "legacy_eligible_tickers":len(legacy),
+            "receipt_eligible_tickers":len(receipt),
+            "shadow_added_symbols":sorted(experimental-original),
+            "shadow_removed_symbols":sorted(original-experimental),
+            "maximum_quote_age_seconds":300,
+            "no_order_execution":True,
+        })
+    return receipt
 
-    raw = okx(
-        "market/tickers", instType="SWAP"
-    )
 
+def _filter_ticker_rows(raw, live, allowed, reference_ms):
+    """Original eligibility conditions, shared by legacy and receipt modes."""
+    now_ms = reference_ms
     result = []
 
     for item in raw:
@@ -560,13 +596,22 @@ def _research_timing(event):
         mark_event(log_path, event)
 
 
-def collect(now_ms):
+def collect(now_ms, *, research_clock_mode="legacy", clock_ms=None):
+    if research_clock_mode not in ("legacy","receipt"):
+        raise ValueError("unsupported research clock mode")
+    clock = clock_ms or (lambda: int(time.time()*1000))
+    provenance = {}
     _research_timing("allowlist_started")
     allowed, source = eligible_bases()
     _research_timing("allowlist_complete")
 
     _research_timing("ticker_fetch_started")
-    candidates = tickers(allowed, now_ms)
+    if research_clock_mode=="legacy":
+        candidates = tickers(allowed, now_ms)
+    else:
+        candidates = tickers(allowed, now_ms,
+                             research_clock_mode="receipt",
+                             provenance=provenance,clock_ms=clock)
     _research_timing("ticker_fetch_complete")
 
     if len(candidates) < MIN_VALIDATED:
@@ -672,6 +717,26 @@ def collect(now_ms):
         "liquidity_backfill",
     )
 
+    # In opt-in research, the snapshot must NOT claim a time before the
+    # quote or candles were actually received. Keep the existing candle-close
+    # filter based on scan start: it never accepts future/in-progress bars.
+    effective_now_ms=now_ms
+    if research_clock_mode=="receipt":
+        effective_now_ms=clock()
+        quote_end=datetime.fromisoformat(
+            provenance["ticker_fetch_completed_utc"]).timestamp()*1000
+        if (effective_now_ms<quote_end or
+            effective_now_ms<now_ms):
+            raise ValueError("data availability would precede receipt")
+        for symbol,series in validated.items():
+            for tf,bars in series.items():
+                close_ms=bars[-1][0]+INTERVALS[tf]*1000
+                if close_ms>now_ms or close_ms>effective_now_ms:
+                    raise ValueError("research candle uses future data")
+                if effective_now_ms-close_ms>INTERVALS[tf]*1000:
+                    raise ValueError("research signal would use stale candles")
+        provenance["decision_data_ready_utc"]=utc(effective_now_ms)
+        provenance["collected_at_means_data_ready"]=True
     return {
         "status": "COLLECTED",
         "signals_allowed": False,
@@ -679,7 +744,9 @@ def collect(now_ms):
         "exchange": "OKX",
         "market_type": "USDT_PERPETUAL",
         "top100_filter": source,
-        "collected_utc": utc(now_ms),
+        "collected_utc": utc(effective_now_ms),
+        **({"research_clock_provenance":provenance}
+           if research_clock_mode=="receipt" else {}),
         "universe": universe,
         "candles": validated,
         "rejected": rejected,
@@ -717,7 +784,9 @@ def main():
     now_ms = int(time.time() * 1000)
 
     try:
-        payload = collect(now_ms)
+        # Explicit research opt-in; master workflow never sets this env var.
+        research_mode=os.getenv("RESEARCH_TICKER_CLOCK_MODE","legacy")
+        payload = collect(now_ms,research_clock_mode=research_mode)
 
         Path("output/market_data.json").write_text(
             json.dumps(payload, indent=2),
