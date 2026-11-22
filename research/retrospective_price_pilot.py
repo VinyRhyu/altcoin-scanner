@@ -55,13 +55,13 @@ def pilot(history, assumed_tick, scenario):
 
     for i in range(34, len(timeframe) - scenario.max_hold_bars):
         close_ms = timeframe[i][0]+DURATIONS_MS["15m"]
-        aligned = {"15m": timeframe[:i+1]}
+        aligned = {"15m": timeframe[max(0, i-98):i+1]}
         for tf in ("1h", "2h"):
             n = bisect_right(available_closes[tf], close_ms)
             if n < 35 or close_ms - available_closes[tf][n-1] >= DURATIONS_MS[tf]:
                 aligned = None
                 break
-            aligned[tf] = history[tf][:n]
+            aligned[tf] = history[tf][max(0, n-99):n]
         if aligned is None:
             continue
         try:
@@ -87,7 +87,7 @@ def pilot(history, assumed_tick, scenario):
                     # Reject any retest whose prior breakout fails with its own ATR.
                     prev_atr = atr14(aligned["15m"][:-1])
                     prior_passed, _ = is_breakout(
-                        aligned["15m"], i-1, side, prev_atr)
+                        aligned["15m"], len(aligned["15m"])-2, side, prev_atr)
                     if not prior_passed:
                         avoided_retest_atr += 1
                         stats[method]["rejected_prior_atr_check"] += 1
@@ -117,6 +117,7 @@ def pilot(history, assumed_tick, scenario):
         "is_real_backtest": False, "proven_expectancy": False,
         "warnings": [
             "Candles downloaded later from OKX history API; no point-in-time trade records",
+            "Signals use only the latest 99 fully closed candles per timeframe, like scanner snapshots",
             "Simulated ticker uses 15m candle close at +1min; not historical market price",
             "Static tick and spread proxy may differ from actual market",
             "Signal is hypothetically armed at exact candle close, before +1min scan",
