@@ -72,6 +72,22 @@ class ReceiptShadowTests(unittest.TestCase):
         self.assertFalse(r["profitability_verified"])
         self.assertFalse(r["any_orders_submitted"])
 
+    def test_recovered_ticker_can_fail_ohlcv_selection_without_fabricated_signal(self):
+        data=sample()
+        missing="UNSELECTED-USDT-SWAP"
+        data["research_clock_provenance"]["legacy_eligible_tickers"]=15
+        data["research_clock_provenance"]["receipt_eligible_tickers"]=16
+        data["research_clock_provenance"]["shadow_added_symbols"]=[missing]
+        with patch("research.receipt_clock_shadow.analyze",
+                   side_effect=fake_analyze):
+            result=compare(data,at_utc=datetime.fromtimestamp(
+                (READY+1000)/1000,timezone.utc))
+        self.assertEqual(result["recovered_tickers_at_first_filter"],1)
+        self.assertEqual(result["recovered_tickers_not_selected_or_validated"],1)
+        self.assertEqual(result["validated_selected_only_due_to_receipt"],0)
+        self.assertEqual(result["new_conditional_triggers_due_to_recovered_tickers"],0)
+        self.assertFalse(result["profitability_verified"])
+
     def test_quote_newer_than_fetch_receipt_rejected(self):
         data=sample()
         data["universe"][0]["ticker_time_utc"]=collector.utc(FETCH_END+1)
