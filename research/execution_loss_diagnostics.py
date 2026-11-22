@@ -21,6 +21,7 @@ from research.minute_execution import (
 )
 from research.okx_history_backfill import retrieve
 from research.point_in_time_candidates import inspect_snapshots
+from research.signal_quality_audit import analyze as analyze_signal_quality
 
 HOUR_MS=3_600_000
 SC=Scenario()
@@ -230,6 +231,9 @@ def diagnose(paths,max_candidates=80,max_pages=6,fetch_history=retrieve):
     by_symbol=defaultdict(list)
     for row in details:
         by_symbol[row["symbol"]].append(row)
+    quality=analyze_signal_quality(paths,source,windows,details)
+    if quality["conditional_sample"]!=len(details):
+        raise ValueError("signal quality sample does not match 1m audit")
     return {
         "status":"AUTHENTIC_SNAPSHOT_POST_OBSERVATION_1M_LOSS_DIAGNOSTICS",
         "source_snapshot_count":report["source_snapshot_count"],
@@ -251,6 +255,7 @@ def diagnose(paths,max_candidates=80,max_pages=6,fetch_history=retrieve):
                      for m in ("BREAKOUT","RETEST")},
         "by_symbol":{s:_group(rows) for s,rows in sorted(by_symbol.items())},
         "details":details,
+        "signal_quality_and_lag_stress":quality,
         "source_snapshot_metadata_reused_not_reconstructed_fill_prices":True,
         "source_quote_at_actual_execution_available":False,
         "real_exchange_fills_verified":0,
