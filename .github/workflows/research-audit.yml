@@ -11,6 +11,7 @@ on:
       - 'tests/test_okx_history_backfill.py'
       - 'tests/test_futures_scenario.py'
       - 'tests/test_point_in_time_candidates.py'
+      - 'tests/test_retrospective_price_pilot.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
