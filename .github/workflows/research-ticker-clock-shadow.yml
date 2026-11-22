@@ -1,0 +1,107 @@
+name: Research receipt-clock same-response shadow (NO ORDERS)
+on:
+  push:
+    branches: [test/systematic-trading-research]
+    paths:
+      - '.github/workflows/research-ticker-clock-shadow.yml'
+      - 'collector.py'
+      - 'research/receipt_clock_shadow.py'
+      - 'tests/test_ticker_receipt_clock.py'
+      - 'tests/test_receipt_clock_shadow.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  deterministic-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate original scanner behavior and opt-in receipt-clock guards
+        run: python -m unittest discover -s tests -v
+
+  same-response-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MARKET_PROVIDER: okx_swap
+      RESEARCH_TICKER_CLOCK_MODE: receipt
+      UNIVERSE_SIZE: '50'
+      MIN_VALIDATED: '15'
+      MAX_PRESCREEN: '90'
+      MIN_VOLUME_USDT: '2000000'
+      PRIORITY_VOLUME_USDT: '5000000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect once (OKX public GETs only) with strict source/decision clocks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python collector.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/market_data.json").read_text())
+          assert r["status"]=="COLLECTED"
+          assert r["signals_allowed"] is False
+          assert r["venue"]=="okx_swap"
+          assert len(r["universe"])>=15
+          p=r["research_clock_provenance"]
+          assert p["ticker_clock_mode"]=="receipt_research_only"
+          assert p["collected_at_means_data_ready"] is True
+          assert p["decision_data_ready_utc"]==r["collected_utc"]
+          assert p["maximum_quote_age_seconds"]==300
+          assert p["no_order_execution"] is True
+          assert p["receipt_eligible_tickers"]>=len(r["universe"])
+          assert p["legacy_eligible_tickers"]>=0
+          assert len(p["shadow_added_symbols"])>=0
+          print("RECEIPT_SOURCE_PROVENANCE",json.dumps({
+              "scan_started_utc":p["scan_started_utc"],
+              "ticker_fetch_started_utc":p["ticker_fetch_started_utc"],
+              "ticker_fetch_completed_utc":p["ticker_fetch_completed_utc"],
+              "decision_data_ready_utc":p["decision_data_ready_utc"],
+              "old_eligible":p["legacy_eligible_tickers"],
+              "research_receipt_eligible":p["receipt_eligible_tickers"],
+              "added":len(p["shadow_added_symbols"]),
+              "removed":len(p["shadow_removed_symbols"]),
+              "OHLCV_source_count":len(r["universe"]),
+          },sort_keys=True))
+          PY
+      - name: Compute both historical-clock and receipt-clock conditional signals on one payload
+        run: |
+          python -m research.receipt_clock_shadow \
+            --market-data output/market_data.json \
+            --report output/research_receipt_clock_shadow.json
+      - name: No-lookahead, 5m freshness, no-orders and baseline-subset checks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/research_receipt_clock_shadow.json").read_text())
+          assert r["status"]=="SAME_PAYLOAD_RECEIPT_CLOCK_SHADOW_ONLY"
+          assert r["any_orders_submitted"] is False
+          assert r["profitability_verified"] is False
+          assert r["master_or_market_data_changed"] is False
+          assert r["baseline_shadow_is_subset_not_independent_full_legacy_collection"] is True
+          assert r["validated_selected_from_legacy_ticker_set"]+r["validated_selected_only_due_to_receipt"]==r["full_candle_validated_selected_symbols"]
+          assert r["receipt_full_candle_validated_conditional_triggers"]>=r["old_full_candle_validated_conditional_triggers"]
+          assert r["new_conditional_triggers_due_to_recovered_tickers"]==r["receipt_full_candle_validated_conditional_triggers"]-r["old_full_candle_validated_conditional_triggers"]
+          print("SHADOW_INTEGRITY",True)
+          PY
+      - name: Retain only read-only source metadata and aggregate research comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clock-receipt-matched-ohlcv-signal-shadow
+          path: |
+            output/research_receipt_clock_shadow.json
+            output/collector_status.json
+          retention-days: 7
+          if-no-files-found: warn
