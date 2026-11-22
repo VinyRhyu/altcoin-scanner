@@ -34,11 +34,40 @@ jobs:
       actions: read
     env:
       GH_TOKEN: ${{ github.token }}
+      CRONJOB_ORG_JOB_ID: ${{ vars.CRONJOB_ORG_JOB_ID }}
+      CRONJOB_ORG_API_KEY: ${{ secrets.CRONJOB_ORG_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Optional read-only cronjob.org execution history using GitHub secret
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          from pathlib import Path
+          key=os.getenv("CRONJOB_ORG_API_KEY","")
+          job_id=os.getenv("CRONJOB_ORG_JOB_ID","")
+          if not key or not job_id:
+              print("EXTERNAL_CRONJOB_HISTORY_UNAVAILABLE_NOT_ZERO")
+          else:
+              if not job_id.isdecimal() or not 1<=int(job_id)<=2147483647:
+                  raise ValueError("invalid private job identifier")
+              request=urllib.request.Request(
+                  "https://api.cron-job.org/jobs/"+str(int(job_id))+"/history",
+                  method="GET",headers={
+                      "Authorization":"Bearer "+key,
+                      "Accept":"application/json"})
+              with urllib.request.urlopen(request,timeout=15) as response:
+                  data=json.load(response)
+              if not isinstance(data,dict) or not isinstance(data.get("history"),list):
+                  raise ValueError("cronjob.org did not return an execution history")
+              # Keep raw metadata ONLY on the temporary runner filesystem.
+              Path(os.environ["RUNNER_TEMP"],"private_cronjob_history.json").write_text(
+                  json.dumps(data),encoding="utf-8")
+              print("CRONJOB_HISTORY_AVAILABLE_SAFELY",len(data["history"]))
+          PY
       - name: Inspect GitHub run events separately from external scheduler
         shell: bash
         run: |
@@ -50,16 +79,23 @@ jobs:
             > "$RUNNER_TEMP/market_data_publications.json"
           gh api "repos/$GITHUB_REPOSITORY/contents/manifest.json?ref=market-data" \
             > "$RUNNER_TEMP/market_data_manifest_api.json"
-          python -m research.external_cron_heartbeat \
-            --github-runs "$RUNNER_TEMP/github_runs.json" \
-            --output reports/external_scheduler_health.json
+          if [ -f "$RUNNER_TEMP/private_cronjob_history.json" ]; then
+            python -m research.external_cron_heartbeat \
+              --history "$RUNNER_TEMP/private_cronjob_history.json" \
+              --github-runs "$RUNNER_TEMP/github_runs.json" \
+              --output reports/external_scheduler_health.json
+          else
+            python -m research.external_cron_heartbeat \
+              --github-runs "$RUNNER_TEMP/github_runs.json" \
+              --output reports/external_scheduler_health.json
+          fi
           python - <<'PY'
           import json
           from pathlib import Path
           r=json.loads(Path('reports/external_scheduler_health.json').read_text())
           assert r["scheduler_declared_by_user"]=="cron-job.org"
           assert r["scheduler_reported_interval_seconds"]==60
-          assert r["cronjob_history_available"] is False
+          assert r["cronjob_history_available"]==(r["cronjob_observed"] is not None)
           assert r["github_workflow_trigger_proven_from_external_history"] is False
           assert r["http_success_proves_market_publication"] is False
           assert r["orders_executed"]==0
