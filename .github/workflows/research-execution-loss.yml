@@ -1,0 +1,94 @@
+name: Research stage 1+2 timestamp and loss audit (no orders)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-execution-loss.yml'
+      - 'research/execution_loss_diagnostics.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived-snapshot-loss-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate all offline scenario and timestamp tests
+        run: python -m unittest discover -s tests -v
+      - name: Freeze 150 newest source snapshots with original git commit SHAs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=320 origin market-data
+          mkdir -p loss_snapshots reports
+          git rev-parse FETCH_HEAD > reports/source_market_data_tip.txt
+          for sha in $(git rev-list --max-count=150 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "loss_snapshots/market_data_$sha.json"
+            fi
+          done
+          find loss_snapshots -name 'market_data*.json' -printf '%f\n' | sort \
+            > reports/source_snapshot_filenames.txt
+          test "$(wc -l < reports/source_snapshot_filenames.txt)" -ge 100
+          echo "FROZEN_SOURCE_TIP $(cat reports/source_market_data_tip.txt)"
+          echo "FROZEN_SNAPSHOT_COUNT $(wc -l < reports/source_snapshot_filenames.txt)"
+      - name: Replay only authentic conditional decisions after snapshot with 1m OHLCV
+        run: |
+          python -m research.execution_loss_diagnostics loss_snapshots \
+            --max-candidates 80 --max-pages 6 \
+            --report reports/execution_loss_diagnostics.json
+      - name: Reconcile losses, timestamps, all censored cases and cost stress
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/execution_loss_diagnostics.json").read_text())
+          total=r["source_conditional_candidates"]
+          assert r["source_snapshot_count"]>=100
+          assert r["source_confirmed_candidates"]>=total
+          assert r["overall"]["candidates"]==total==len(r["details"])
+          assert r["overall"]["modelled_exits_not_fills"] + r["overall"]["non_modelled_or_censored"]==total
+          assert r["real_exchange_fills_verified"]==0
+          assert r["production_filters_changed"] is False
+          assert r["source_quote_at_actual_execution_available"] is False
+          assert r["net_profitability_proven"] is False
+          for x in r["details"]:
+              assert x["first_evaluable_minute_ms"]>=x["first_observed_at_ms"]
+              assert x["first_observed_at_ms"]>=x["signal_close_ms"]
+              assert x["snapshot_lag_s"]>=0
+              assert x["exchange_fill_verified"] is False
+              assert x["base"]["outcome"]==x["stress"]["outcome"]
+              assert x["base"]["modelled_execution"]==x["stress"]["modelled_execution"]
+              assert (x["base"]["net_r_scenario"] is not None)==bool(x["base"]["modelled_execution"])
+              if x["base"]["modelled_execution"]:
+                  assert x["stress"]["net_r_scenario"]<=x["base"]["net_r_scenario"]+1e-8
+              else:
+                  assert x["stress"]["net_r_scenario"] is None
+          print("EXECUTION_QUALITY_RESULT",json.dumps({
+              "snapshots":r["source_snapshot_count"],
+              "confirmed":r["source_confirmed_candidates"],
+              "conditional":total,
+              "minute_rows":r["retrieved_1m_observations_may_overlap"],
+              "overall":r["overall"],
+              "by_method":r["by_method"],
+              "by_side":r["by_side"],
+          },sort_keys=True))
+          PY
+      - name: Archive frozen inputs and execution fidelity findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-1-2-execution-loss-audit
+          path: |
+            reports/execution_loss_diagnostics.json
+            reports/source_market_data_tip.txt
+            reports/source_snapshot_filenames.txt
+          if-no-files-found: warn
+          retention-days: 7
