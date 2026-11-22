@@ -5,6 +5,11 @@ on:
       - test/systematic-trading-research
     paths:
       - 'research/**'
+      - 'entry_trigger.py'
+      - 'trade_decision.py'
+      - 'tests/test_entry_trigger.py'
+      - 'tests/test_stop_geometry_audit.py'
+      - 'tests/test_retest_atr_compare.py'
       - 'tests/test_market_history_audit.py'
       - 'tests/test_continuous_history.py'
       - 'tests/test_history_depth.py'
@@ -226,6 +231,45 @@ jobs:
               "filters":r["filters"],
           },sort_keys=True))
           PY
+      - name: Reconstruct exact stop components and audit LONG/SHORT risk asymmetry
+        run: |
+          python -m research.stop_geometry_audit deep_snapshots \
+            --report reports/stop_geometry_report.json
+      - name: Replay prior vs corrected RETEST ATR on identical archived snapshots
+        run: |
+          python -m research.retest_atr_compare deep_snapshots \
+            --report reports/retest_atr_comparison.json
+      - name: Reconcile stop and ATR audits with original risk-gate counts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          read=lambda name:json.loads(Path("reports",name).read_text())
+          stop=read("stop_geometry_report.json")
+          atr=read("retest_atr_comparison.json")
+          gates=read("filter_ablation_report.json")
+          assert stop["snapshot_count"] == atr["source_snapshot_count"] == gates["snapshot_count"]
+          assert stop["confirmed_candidates"] == atr["fixed_all_confirmed"]
+          assert atr["fixed_all_confirmed"] == gates["baseline"]["confirmed"]
+          assert stop["plan_reconstruction_rows"] + sum(stop["unavailable"].values()) == (
+              stop["confirmed_candidates"])
+          assert sum(x["over_3atr"] for x in stop["by_side"].values()) == (
+              gates["filters"].get("stop_above_3atr",{}).get("mentions",0))
+          assert atr["retest_fixed"].get("confirmed",0) == (
+              gates["by_method"].get("RETEST",{}).get("confirmed",0))
+          assert stop["stop_formula_changed"] is False
+          assert stop["risk_limit_changed"] is False
+          assert not stop["proven_expectancy"] and not atr["profitability_proven"]
+          assert atr["breakout_unchanged_count"] == (
+              gates["by_method"].get("BREAKOUT",{}).get("confirmed",0))
+          print("STOP_RISK_ASYMMETRY",json.dumps(stop["by_side"],sort_keys=True))
+          print("RETEST_ATR_CHANGED",json.dumps({
+              "legacy":atr["retest_legacy"],
+              "fixed":atr["retest_fixed"],
+              "added":atr["retest_newly_confirmed_count"],
+              "removed":atr["retest_no_longer_confirmed_count"],
+          },sort_keys=True))
+          PY
       - name: Measure per-timeframe and per-symbol historical depth
         run: |
           python -m research.history_depth reports/continuous_history_report.json \
@@ -259,5 +303,7 @@ jobs:
             reports/history_depth_report.json
             reports/observed_candidates_report.json
             reports/filter_ablation_report.json
+            reports/stop_geometry_report.json
+            reports/retest_atr_comparison.json
           if-no-files-found: warn
           retention-days: 7
