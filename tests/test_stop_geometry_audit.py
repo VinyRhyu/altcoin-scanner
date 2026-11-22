@@ -22,6 +22,8 @@ class StopGeometryTests(unittest.TestCase):
         self.assertAlmostEqual(long["risk_atr"],short["risk_atr"],places=8)
         self.assertEqual(long["dominant_stop_anchor"],"recent")
         self.assertEqual(short["dominant_stop_anchor"],"recent")
+        self.assertEqual(long["recent_extreme_bar_offset"],"tie")
+        self.assertEqual(short["recent_extreme_bar_offset"],"tie")
         self.assertGreater(long["predicted_stop"],0)
         self.assertLess(long["predicted_stop"],10.2)
         self.assertGreater(short["predicted_stop"],9.8)
@@ -32,6 +34,8 @@ class StopGeometryTests(unittest.TestCase):
         result=stop_components(bars,"SHORT","BREAKOUT",".01",9.8)
         self.assertGreater(result["risk_atr"],3.)
         self.assertEqual(result["dominant_stop_anchor"],"recent")
+        self.assertEqual(result["recent_extreme_bar_offset"],"-3")
+        self.assertGreater(result["recent_vs_level_extra_risk_atr"],0.)
         self.assertLess(result["level_component_risk_atr"],3.)
 
     def test_cannot_compute_with_missing_official_tick(self):
