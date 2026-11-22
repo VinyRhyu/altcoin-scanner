@@ -1,0 +1,317 @@
+name: Research audit tests (no trading)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - 'research/**'
+      - 'entry_trigger.py'
+      - 'trade_decision.py'
+      - 'tests/test_entry_trigger.py'
+      - 'tests/test_stop_geometry_audit.py'
+      - 'tests/test_retest_atr_compare.py'
+      - 'tests/test_stop_ab_profit_pilot.py'
+      - 'tests/test_market_history_audit.py'
+      - 'tests/test_continuous_history.py'
+      - 'tests/test_history_depth.py'
+      - 'tests/test_okx_history_backfill.py'
+      - 'tests/test_futures_scenario.py'
+      - 'tests/test_point_in_time_candidates.py'
+      - 'tests/test_retrospective_price_pilot.py'
+      - 'tests/test_multi_asset_validation.py'
+      - 'tests/test_minute_execution.py'
+      - 'tests/test_minute_archive_pilot.py'
+      - 'tests/test_filter_ablation.py'
+      - 'tests/test_filter_shadow_1m.py'
+      - '.github/workflows/research-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-unit-suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run complete repository unit-test suite
+        run: python -m unittest discover -s tests -v
+
+  historical-snapshot-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read latest 30 snapshots from market-data (read-only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=80 origin market-data
+          mkdir -p snapshots
+          for sha in $(git rev-list --max-count=30 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "snapshots/market_data_$sha.json"
+            fi
+          done
+          echo "Snapshots saved: $(find snapshots -name 'market_data*.json' | wc -l)"
+      - name: Audit real historical snapshots
+        run: |
+          python -m research.market_history_audit snapshots \
+            --report reports/market_data_smoke_report.json \
+            --normalized reports/market_data_smoke_candles.jsonl
+      - name: Assert basic availability and print integrity diagnostics
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("reports/market_data_smoke_report.json").read_text())
+          fields = ("snapshot_count", "symbols", "distinct_candles",
+                    "duplicate_observations", "conflicting_candles",
+                    "missing_candles_between_observations",
+                    "integrity_passed", "issues")
+          print(json.dumps({k: r[k] for k in fields}, indent=2))
+          for item in r["issue_examples"][:8]:
+              print("Example:", json.dumps(item, ensure_ascii=False))
+          assert r["snapshot_count"] >= 2, "insufficient real snapshots"
+          assert r["distinct_candles"] > 0, "no reconstructable candles"
+          assert not r["issues"].get("invalid_snapshot"), "invalid source snapshot"
+          assert not r["issues"].get("invalid_candle"), "malformed OHLCV"
+          assert not r["conflicting_candles"], "conflicting historical candles"
+          assert not r["issues"].get("missing_series"), "missing source timeframe"
+          PY
+      - name: Upload reproducible audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-market-data-audit
+          path: |
+            reports/market_data_smoke_report.json
+            reports/market_data_smoke_candles.jsonl
+          if-no-files-found: warn
+          retention-days: 7
+
+  historical-depth-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read latest 100 archived snapshots (no writes to market-data)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=160 origin market-data
+          mkdir -p deep_snapshots reports
+          git rev-parse FETCH_HEAD > reports/source_market_data_tip.txt
+          for sha in $(git rev-list --max-count=100 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "deep_snapshots/market_data_$sha.json"
+            fi
+          done
+          echo "Deep snapshots saved: $(find deep_snapshots -name 'market_data*.json' | wc -l)"
+          find deep_snapshots -name 'market_data*.json' -printf '%f\n' | sort \
+            > reports/source_snapshot_filenames.txt
+          echo "Snapshot source tip: $(cat reports/source_market_data_tip.txt)"
+      - name: Audit extended historic reconstruction
+        run: |
+          python -m research.market_history_audit deep_snapshots \
+            --report reports/deep_market_data_report.json
+      - name: Evaluate extended audit and coverage by timeframe
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from collections import defaultdict
+          from pathlib import Path
+          r = json.loads(Path("reports/deep_market_data_report.json").read_text())
+          print("EXTENDED_HISTORY_AUDIT", json.dumps({
+              key: r[key] for key in (
+                  "snapshot_count", "symbols", "distinct_candles",
+                  "duplicate_observations", "conflicting_candles",
+                  "missing_candles_between_observations", "integrity_passed", "issues")
+          }, sort_keys=True))
+          stats = defaultdict(lambda: {"series": 0, "candles": 0, "missing": 0, "gaps": 0})
+          for item in r["per_series"]:
+              z = stats[item["timeframe"]]
+              z["series"] += 1
+              z["candles"] += item["candles"]
+              z["missing"] += item["missing_candles"]
+              z["gaps"] += item["gaps"]
+          print("BY_TIMEFRAME", json.dumps(dict(sorted(stats.items())), sort_keys=True))
+          assert r["snapshot_count"] >= 30, "insufficient historic snapshots"
+          assert r["distinct_candles"] > 0, "empty normalized dataset"
+          for issue in ("invalid_snapshot", "invalid_candle", "conflicting_candle"):
+              assert not r["issues"].get(issue), f"found {issue}"
+          PY
+      - name: Build contiguous research segments and inspect 15m gap provenance
+        run: |
+          python -m research.continuous_history deep_snapshots \
+            --min-bars 100 \
+            --report reports/continuous_history_report.json \
+            --segments-jsonl reports/continuous_segments.jsonl \
+            --candles-jsonl reports/continuous_candles.jsonl
+      - name: Verify segmentation and preserve explicit gaps
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base = json.loads(Path("reports/deep_market_data_report.json").read_text())
+          r = json.loads(Path("reports/continuous_history_report.json").read_text())
+          assert r["source_snapshot_count"] == base["snapshot_count"]
+          assert r["source_distinct_candles"] == base["distinct_candles"]
+          assert r["source_integrity_passed"] == base["integrity_passed"]
+          assert r["missing_candles_total"] == base["missing_candles_between_observations"]
+          assert r["gaps_total"] == sum(s["gaps"] for s in base["per_series"])
+          assert r["series_count"] == len(base["per_series"])
+          assert r["segments_total"] == r["series_count"] + r["gaps_total"]
+          assert r["eligible_segments"] > 0, "no usable contiguous research segments"
+          assert r["eligible_candles"] == sum(
+              x["candles"] for x in r["segments"] if x["meets_min_bars"])
+          assert r["backtest_ready"] is False
+          for segment in r["segments"]:
+              duration = {"15m": 900000, "1h": 3600000, "2h": 7200000}[segment["timeframe"]]
+              assert segment["end_open_ms"] - segment["start_open_ms"] == (
+                  segment["candles"] - 1) * duration
+          print("GAP_CLASSIFICATIONS", json.dumps(r["gap_classifications"], sort_keys=True))
+          print("ELIGIBLE_SEGMENTS", r["eligible_segments"],
+                "ELIGIBLE_CANDLES", r["eligible_candles"])
+          PY
+      - name: Extract timestamp-grounded BREAKOUT/RETEST candidates (never fills)
+        run: |
+          python -m research.point_in_time_candidates deep_snapshots \
+            --report reports/observed_candidates_report.json
+      - name: Verify archived candidates are not executed trades
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("reports/observed_candidates_report.json").read_text())
+          assert r["snapshots_analyzed"] >= 30
+          assert r["eligible_for_futures_pnl_backtest"] is False
+          assert all(not x["order_allowed"] and not x["execution_verified"]
+                     for x in r["candidates"])
+          assert all(x["first_observed_at_ms"] >= x["signal_close_ms"]
+                     for x in r["candidates"])
+          print("ARCHIVED_CANDIDATES", json.dumps(r["by_method"], sort_keys=True))
+          PY
+      - name: Audit post-confirmation blockers and exclusive filter ablations
+        run: |
+          python -m research.filter_ablation deep_snapshots \
+            --report reports/filter_ablation_report.json
+      - name: Verify one-filter-at-a-time attribution never overrides safety
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/filter_ablation_report.json").read_text())
+          source=json.loads(Path("reports/observed_candidates_report.json").read_text())
+          assert r["snapshot_count"] == source["snapshots_analyzed"]
+          assert r["baseline"]["confirmed"] == source["confirmed_candidates"]
+          assert r["baseline"]["conditional_baseline"] == sum(
+              m["conditionally_eligible_at_snapshot"]
+              for m in source["by_method"].values())
+          assert r["baseline"]["blocked_baseline"] == (
+              r["baseline"]["confirmed"] - r["baseline"]["conditional_baseline"])
+          assert sum(v["sole_blocker"] for v in r["filters"].values()) + (
+              r["multi_blocker_candidates"]) == r["baseline"]["blocked_baseline"]
+          for key, f in r["filters"].items():
+              if f["category"] != "strategy":
+                  assert f["would_pass_other_recorded_gates"] == 0, key
+          assert r["production_gates_modified"] is False
+          assert r["profitability_proven"] is False
+          print("FILTER_ABLATION_COUNTS",json.dumps({
+              "baseline":r["baseline"],
+              "multi_blocker":r["multi_blocker_candidates"],
+              "exclusive_soft":r["hypothetical_single_strategy_filter_removal_candidates"],
+              "filters":r["filters"],
+          },sort_keys=True))
+          PY
+      - name: Reconstruct exact stop components and audit LONG/SHORT risk asymmetry
+        run: |
+          python -m research.stop_geometry_audit deep_snapshots \
+            --report reports/stop_geometry_report.json
+      - name: Replay prior vs corrected RETEST ATR on identical archived snapshots
+        run: |
+          python -m research.retest_atr_compare deep_snapshots \
+            --report reports/retest_atr_comparison.json
+      - name: Reconcile stop and ATR audits with original risk-gate counts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          read=lambda name:json.loads(Path("reports",name).read_text())
+          stop=read("stop_geometry_report.json")
+          atr=read("retest_atr_comparison.json")
+          gates=read("filter_ablation_report.json")
+          assert stop["snapshot_count"] == atr["source_snapshot_count"] == gates["snapshot_count"]
+          assert stop["confirmed_candidates"] == atr["fixed_all_confirmed"]
+          assert atr["fixed_all_confirmed"] == gates["baseline"]["confirmed"]
+          assert stop["plan_reconstruction_rows"] + sum(stop["unavailable"].values()) == (
+              stop["confirmed_candidates"])
+          assert sum(x["over_3atr"] for x in stop["by_side"].values()) == (
+              gates["filters"].get("stop_above_3atr",{}).get("mentions",0))
+          assert atr["retest_fixed"].get("confirmed",0) == (
+              gates["by_method"].get("RETEST",{}).get("confirmed",0))
+          assert stop["stop_formula_changed"] is False
+          assert stop["risk_limit_changed"] is False
+          assert not stop["proven_expectancy"] and not atr["profitability_proven"]
+          assert atr["breakout_unchanged_count"] == (
+              gates["by_method"].get("BREAKOUT",{}).get("confirmed",0))
+          print("STOP_RISK_ASYMMETRY",json.dumps(stop["by_side"],sort_keys=True))
+          print("RETEST_ATR_CHANGED",json.dumps({
+              "legacy":atr["retest_legacy"],
+              "fixed":atr["retest_fixed"],
+              "added":atr["retest_newly_confirmed_count"],
+              "removed":atr["retest_no_longer_confirmed_count"],
+          },sort_keys=True))
+          PY
+      - name: Measure per-timeframe and per-symbol historical depth
+        run: |
+          python -m research.history_depth reports/continuous_history_report.json \
+            --output reports/history_depth_report.json
+      - name: Assert 15m history depth metrics are consistent
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          depth = json.loads(Path("reports/history_depth_report.json").read_text())
+          source = json.loads(Path("reports/continuous_history_report.json").read_text())
+          assert depth["source_segments"] == source["segments_total"]
+          assert sum(v["total_candles"] for v in depth["timeframes"].values()) == source["source_distinct_candles"]
+          assert depth["timeframes"]["15m"]["segments"] == source["by_timeframe"]["15m"]["segments"]
+          assert depth["profitability_backtest_ready"] is False
+          print("15M_DEPTH_HOURS", depth["timeframes"]["15m"]["longest_segment_hours"])
+          print("15M_7_DAY_SEGMENTS", depth["timeframes"]["15m"]["segments_at_least_7_days"])
+          print("15M_30_DAY_SEGMENTS", depth["timeframes"]["15m"]["segments_at_least_30_days"])
+          PY
+      - name: Upload extended history report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extended-market-data-audit
+          path: |
+            reports/deep_market_data_report.json
+            reports/continuous_history_report.json
+            reports/continuous_segments.jsonl
+            reports/continuous_candles.jsonl
+            reports/history_depth_report.json
+            reports/observed_candidates_report.json
+            reports/filter_ablation_report.json
+            reports/stop_geometry_report.json
+            reports/retest_atr_comparison.json
+            reports/source_market_data_tip.txt
+            reports/source_snapshot_filenames.txt
+          if-no-files-found: warn
+          retention-days: 7

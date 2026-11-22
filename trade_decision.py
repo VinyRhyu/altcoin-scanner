@@ -11,7 +11,7 @@ import math
 import statistics
 from datetime import datetime, timezone
 from pathlib import Path
-from experimental_scan import features
+from experimental_scan import features, atr14
 from entry_trigger import analyze_both
 from sync_market_data import check_market_freshness
 
@@ -55,10 +55,12 @@ def setup(history, info, side):
     ratio = float(current[6]) / median_volume(base) if median_volume(base) > 0 else 0
     prev_ratio = float(prev[6]) / median_volume(oldbase) if median_volume(oldbase) > 0 else 0
     threshold = .12*atr
+    # Use o ATR disponivel no candle anterior para validar o breakout anterior.
+    previous_threshold = .12*atr14(bars[:-1])
     confirmed_break = (close > level+threshold if positive else close < level-threshold)
     confirmed_break = confirmed_break and candle_quality(current, side) and ratio >= 1.4
-    prev_break = (float(prev[4]) > oldlevel+threshold if positive else
-                  float(prev[4]) < oldlevel-threshold)
+    prev_break = (float(prev[4]) > oldlevel+previous_threshold if positive else
+                  float(prev[4]) < oldlevel-previous_threshold)
     prev_break = prev_break and candle_quality(prev, side) and prev_ratio >= 1.4
     retest = (prev_break and ratio >= .65 and (
         (float(current[3]) <= oldlevel+.30*atr and close > oldlevel+.05*atr

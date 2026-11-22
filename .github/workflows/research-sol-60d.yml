@@ -1,0 +1,93 @@
+name: Research 60-day SOL historical candles (read only)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-sol-60d.yml'
+      - 'research/retrospective_price_pilot.py'
+      - 'research/futures_scenario.py'
+      - 'research/okx_history_backfill.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  collect-sol-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch 60 days of SOL-USDT-SWAP closed 15m, 1h and 2h bars
+        shell: bash
+        run: |
+          set -euo pipefail
+          for spec in '15m 65' '1h 18' '2h 10'; do
+            read -r tf pages <<< "$spec"
+            python -m research.okx_history_backfill \
+              --symbol SOL-USDT-SWAP --tf "$tf" \
+              --start 2026-09-21T00:00:00Z \
+              --end 2026-11-20T00:00:00Z \
+              --max-pages "$pages" \
+              --output "reports/sol_${tf}_60d.jsonl" \
+              --report "reports/sol_${tf}_60d_metadata.json"
+          done
+      - name: Validate timestamp continuity and historical-only labeling
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          bars_per_period = {"15m": (900000, 60*96),
+                             "1h": (3600000, 60*24),
+                             "2h": (7200000, 60*12)}
+          for tf, (duration, expected_count) in bars_per_period.items():
+              rows = [json.loads(line) for line in Path(
+                  f"reports/sol_{tf}_60d.jsonl").read_text().splitlines()]
+              info = json.loads(Path(
+                  f"reports/sol_{tf}_60d_metadata.json").read_text())
+              print("SOL_60DAY_HISTORY", json.dumps({
+                  "timeframe": tf, "found": len(rows), "expected": expected_count,
+                  "pages": info["pages_requested"],
+                  "backtest_ready": info["backtest_ready"]
+              }, sort_keys=True))
+              assert len(rows) == expected_count, f"incomplete {tf} sample"
+              assert rows[0]["open_ms"] == info["requested_start_ms"]
+              assert rows[-1]["open_ms"] + duration == info["requested_end_ms_exclusive"]
+              assert all(b["open_ms"]-a["open_ms"] == duration for a,b in zip(rows,rows[1:]))
+              assert all(row["point_in_time_eligible"] is False for row in rows)
+              assert info["backtest_ready"] is False
+          PY
+      - name: Retrospective BREAKOUT / RETEST scenario (not actual trades)
+        run: |
+          python -m research.retrospective_price_pilot \
+            --directory reports --days 60 --tick-proxy 0.01 \
+            --assumed-spread-pct 0.0141 \
+            --assumed-funding-per-8h 0 \
+            --output reports/sol_60d_retrospective_pilot.json
+      - name: Validate explicit limits of the scenario
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("reports/sol_60d_retrospective_pilot.json").read_text())
+          assert r["evaluated_15m_closes"] > 0
+          assert r["is_real_backtest"] is False
+          assert r["proven_expectancy"] is False
+          assert r["execution_scenario"]["is_real_backtest"] is False
+          for method in ("BREAKOUT", "RETEST"):
+              assert method in r["detection_summary"]
+              assert method in r["execution_scenario"]["comparison"]
+          print("RETROSPECTIVE_60D_COUNTS", json.dumps(r["detection_summary"], sort_keys=True))
+          PY
+      - name: Upload research-only historical data and metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sol-60day-offline-history
+          path: reports/sol_*_60d*
+          if-no-files-found: warn
+          retention-days: 7

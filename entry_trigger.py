@@ -11,6 +11,8 @@ from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR, InvalidOperation
 import math
 import statistics
 
+from experimental_scan import atr14
+
 MIN_RR = 1.6
 MAX_RISK_ATR = 3.0
 MAX_TRIGGER_DISTANCE_ATR = 0.9
@@ -75,7 +77,12 @@ def is_breakout(bars, index, side, atr):
 
 
 def is_retest(bars, side, atr):
-    prev_passed, level = is_breakout(bars, len(bars)-2, side, atr)
+    if len(bars) < 23:
+        return False, None
+    # O breakout anterior so pode usar ATR conhecido naquele fechamento.
+    previous_atr = atr14(bars[:-1])
+    prev_passed, level = is_breakout(
+        bars, len(bars)-2, side, previous_atr)
     if not prev_passed:
         return False, level
     last = bars[-1]
@@ -142,7 +149,11 @@ def projection(history, side, price, stop, tick, spread_pct):
     }
 
 
-def analyze_method(history, info, ticker, side, method, now_utc, stale):
+def analyze_method(history, info, ticker, side, method, now_utc, stale,
+                   *, research_stop_bars=3):
+    # Opt-in sensitivity study only; live scanner calls always use original 3 bars.
+    if type(research_stop_bars) is not int or research_stop_bars not in (2, 3):
+        raise ValueError("stop window must be 2 or 3 candles")
     if side not in ("LONG", "SHORT") or method not in ("BREAKOUT", "RETEST"):
         raise ValueError("Metodo/direcao invalidos")
     bars = history["15m"]
@@ -206,7 +217,7 @@ def analyze_method(history, info, ticker, side, method, now_utc, stale):
         entry = tick_round(Decimal(str(extreme)) +
                            (tick if long else -tick), tick,
                            "up" if long else "down")
-        recent = bars[-3:]
+        recent = bars[-research_stop_bars:]
         stop_raw = (min(level-.4*atr,
                         min(float(c[3]) for c in recent)-.15*atr) if long
                     else max(level+.4*atr,
@@ -274,6 +285,8 @@ def analyze_method(history, info, ticker, side, method, now_utc, stale):
     return result
 
 
-def analyze_both(history, info, ticker, side, now_utc, stale):
-    return [analyze_method(history, info, ticker, side, method, now_utc, stale)
+def analyze_both(history, info, ticker, side, now_utc, stale,
+                 *, research_stop_bars=3):
+    return [analyze_method(history, info, ticker, side, method, now_utc, stale,
+                           research_stop_bars=research_stop_bars)
             for method in ("BREAKOUT", "RETEST")]

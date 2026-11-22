@@ -1,0 +1,105 @@
+name: Research same-payload ticker receipt-clock correction (NO ORDERS)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-receipt-clock.yml'
+      - 'collector.py'
+      - 'research/receipt_clock_validation.py'
+      - 'tests/test_receipt_clock_validation.py'
+      - 'tests/test_ticker_receipt_clock.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  all-regressions:
+    name: Scanner and provenance regression tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+
+  corrected-research-snapshot:
+    name: Full public OKX research-only data-ready snapshot and decision
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      MARKET_PROVIDER: okx_swap
+      UNIVERSE_SIZE: '50'
+      MIN_VALIDATED: '15'
+      MAX_PRESCREEN: '90'
+      MIN_VOLUME_USDT: '2000000'
+      PRIORITY_VOLUME_USDT: '5000000'
+      RESEARCH_TICKER_CLOCK_MODE: receipt
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run scanner with receive-time clock, preserving 15 asset minimum
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          success=0
+          for attempt in 1 2 3; do
+            rm -f output/market_data.json
+            echo "RESEARCH_RECEIPT_ATTEMPT $attempt"
+            if python collector.py; then
+              success=1
+              printf '%s\n' "$attempt" > reports/successful_attempt.txt
+              break
+            fi
+            echo "::warning::Attempt $attempt did not reach 15 complete validated assets"
+            if [ "$attempt" -lt 3 ]; then sleep 7; fi
+          done
+          test "$success" -eq 1 || {
+            echo "::error::All research-only attempts failed. No data-ready market snapshot produced."
+            exit 1
+          }
+      - name: Compute conditional decisions, no order capability
+        shell: bash
+        run: |
+          set -euo pipefail
+          python trade_decision.py \
+            --market-data output/market_data.json \
+            --output output/trade_decisions.json \
+            --watch-output output/entry_watch.json
+      - name: Fail closed if any quote or candle arrived after data-ready provenance
+        run: |
+          python -m research.receipt_clock_validation \
+            --market output/market_data.json \
+            --decision output/trade_decisions.json \
+            --report reports/receipt_clock_causality.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('reports/receipt_clock_causality.json').read_text())
+          assert r["status"]=="RECEIPT_CLOCK_SHADOW_CAUSALITY_VERIFIED"
+          assert r["decision_available_after_all_used_data"] is True
+          assert r["quotes_not_future_relative_to_receipt"] is True
+          assert r["no_candle_closed_after_scan_start"] is True
+          assert r["selected_ohlcv_complete_symbols"]>=15
+          assert r["real_exchange_fills_verified"]==0
+          assert r["profitability_proven"] is False
+          assert r["production_unchanged"] is True
+          print("RECEIPT_CLOCK_PROVENANCE_GUARDS_PASSED")
+          PY
+      - name: Publish only research counts and provenance; no personal trading data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-post-fetch-clock-causality
+          path: |
+            reports/receipt_clock_causality.json
+            reports/successful_attempt.txt
+            output/collector_status.json
+          retention-days: 7
+          if-no-files-found: warn

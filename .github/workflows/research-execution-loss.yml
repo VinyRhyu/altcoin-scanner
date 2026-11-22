@@ -1,0 +1,191 @@
+name: Research stage 1+2 timestamp and loss audit (no orders)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-execution-loss.yml'
+      - 'research/execution_loss_diagnostics.py'
+      - 'research/signal_quality_audit.py'
+      - 'research/scan_schedule_audit.py'
+      - 'tests/test_scan_schedule_audit.py'
+      - 'tests/test_signal_quality_audit.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived-snapshot-loss-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate all offline scenario and timestamp tests
+        run: python -m unittest discover -s tests -v
+      - name: Freeze the same 150 source snapshots at immutable prior research commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=320 origin market-data
+          # Same immutable 150-snapshot population as the prior stage 1/2 audit.
+          # Do not silently change the source as market-data collects new candles.
+          PINNED_TIP=0f4e1087a7acd0287a09b54893de36a9027904ca
+          git cat-file -e "$PINNED_TIP^{commit}" || {
+            echo "Frozen source commit unreachable. Refusing a moving sample."
+            exit 1
+          }
+          mkdir -p loss_snapshots reports
+          printf '%s\n' "$PINNED_TIP" > reports/source_market_data_tip.txt
+          for sha in $(git rev-list --max-count=150 "$PINNED_TIP"); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "loss_snapshots/market_data_$sha.json"
+            fi
+          done
+          find loss_snapshots -name 'market_data*.json' -printf '%f\n' | sort \
+            > reports/source_snapshot_filenames.txt
+          test "$(wc -l < reports/source_snapshot_filenames.txt)" -ge 100
+          echo "FROZEN_SOURCE_TIP $(cat reports/source_market_data_tip.txt)"
+          echo "FROZEN_SNAPSHOT_COUNT $(wc -l < reports/source_snapshot_filenames.txt)"
+      - name: Replay only authentic conditional decisions after snapshot with 1m OHLCV
+        run: |
+          python -m research.execution_loss_diagnostics loss_snapshots \
+            --max-candidates 80 --max-pages 6 \
+            --report reports/execution_loss_diagnostics.json
+      - name: Reconcile losses, timestamps, all censored cases and cost stress
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/execution_loss_diagnostics.json").read_text())
+          total=r["source_conditional_candidates"]
+          assert r["source_snapshot_count"]>=100
+          assert r["source_confirmed_candidates"]>=total
+          assert r["overall"]["candidates"]==total==len(r["details"])
+          assert r["overall"]["modelled_exits_not_fills"] + r["overall"]["non_modelled_or_censored"]==total
+          assert r["real_exchange_fills_verified"]==0
+          assert r["production_filters_changed"] is False
+          assert r["source_quote_at_actual_execution_available"] is False
+          assert r["net_profitability_proven"] is False
+          for x in r["details"]:
+              assert x["first_evaluable_minute_ms"]>=x["first_observed_at_ms"]
+              assert x["first_observed_at_ms"]>=x["signal_close_ms"]
+              assert x["snapshot_lag_s"]>=0
+              assert x["exchange_fill_verified"] is False
+              assert x["base"]["outcome"]==x["stress"]["outcome"]
+              assert x["base"]["modelled_execution"]==x["stress"]["modelled_execution"]
+              assert (x["base"]["net_r_scenario"] is not None)==bool(x["base"]["modelled_execution"])
+              if x["base"]["modelled_execution"]:
+                  assert x["stress"]["net_r_scenario"]<=x["base"]["net_r_scenario"]+1e-8
+              else:
+                  assert x["stress"]["net_r_scenario"] is None
+          print("EXECUTION_QUALITY_RESULT",json.dumps({
+              "snapshots":r["source_snapshot_count"],
+              "confirmed":r["source_confirmed_candidates"],
+              "conditional":total,
+              "minute_rows":r["retrieved_1m_observations_may_overlap"],
+              "overall":r["overall"],
+              "by_method":r["by_method"],
+              "by_side":r["by_side"],
+          },sort_keys=True))
+          PY
+      - name: Audit pre-signal momentum, volume, regime and +1/+3-minute latency
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          main=json.loads(Path("reports/execution_loss_diagnostics.json").read_text())
+          r=main["signal_quality_and_lag_stress"]
+          assert r["status"]=="PRE_SIGNAL_DESCRIPTIVE_FEATURE_ASSOCIATION_AND_DELAY_STRESS"
+          assert r["conditional_sample"]==main["source_conditional_candidates"]
+          assert r["confirmed_technical_sample"]==main["source_confirmed_candidates"]
+          assert r["confirmed_with_computable_feature_plan"] + r["excluded_confirmations_without_plan_or_spread"] == r["confirmed_technical_sample"]
+          assert r["features_extracted_from_exact_earliest_snapshot"] is True
+          assert r["post_snapshot_1m_used_only_for_labels_and_delay_replays"] is True
+          assert r["real_exchange_fills_verified"]==0
+          assert r["profitability_or_causality_proven"] is False
+          assert r["production_changed"] is False
+          assert r["hypothetical_extra_delays_minutes"]==[0,1,3]
+          assert all(side in r["outcomes_by_side"]
+                     for side in ("LONG","SHORT"))
+          assert r["conditional_sample"]==sum(
+              sum(x.values()) for x in r["outcomes_by_side"].values())
+          for delay in ("1","3"):
+              paired=r["paired_extra_latency_sensitivity"][delay]
+              assert paired["both_modelled_candidate_count"]>=0
+              assert paired["base_modelled_later_censored"]>=0
+              assert paired["base_censored_later_modelled"]>=0
+              assert paired["both_modelled_candidate_count"]+paired["base_modelled_later_censored"] == (
+                  r["extra_latency_fixed_plan_sensitivity"]["0"]["modelled_exits_not_fills"])
+          by_lag=r["observation_lag_buckets"]
+          assert sum(z["candidates"] for z in by_lag.values())==r["conditional_sample"]
+          for d in ("0","1","3"):
+              assert r["extra_latency_fixed_plan_sensitivity"][d]["candidate_count"]==r["conditional_sample"]
+          for row in r["rows"]:
+              assert row["first_observed_at_ms"]==row["feature_time_ms"]
+              assert row["features"]["feature_uses_future_minute_candles"] is False
+              assert row["lag_seconds"]>=0
+              assert not any(x["verified_fill"] for x in row["hypothetical_extra_delay"].values())
+              assert row["hypothetical_extra_delay"]["0"]["outcome"]==row["outcome"]["outcome"]
+              assert row["hypothetical_extra_delay"]["0"]["net_r_scenario"]==row["outcome"]["net_r_scenario"]
+          Path("reports/signal_quality_diagnostics.json").write_text(
+              json.dumps(r,indent=2)+"\n")
+          keep=("relative_volume_15m","candle_body_fraction",
+                "directional_three_candle_momentum_atr","risk_atr",
+                "snapshot_remaining_trigger_atr")
+          concise={
+              outcome:{"n":v["n"],
+                       "median_features":{f:v["features"][f]["median"] for f in keep},
+                       "trend_1h":v["context"]["trend_1h_relation"],
+                       "trend_2h":v["context"]["trend_2h_relation"]}
+              for outcome,v in r["by_outcome"].items()
+          }
+          print("QUALITY_OUTCOME_COMPARE",json.dumps(concise,sort_keys=True))
+          print("STOP_TP_BY_SIDE",json.dumps({
+              "outcomes":r["outcomes_by_side"],
+              "within_side_comparable":r["within_side_stop_target_comparison_possible"],
+          },sort_keys=True))
+          print("PAIRED_LATENCY_STRESS",json.dumps(
+              r["paired_extra_latency_sensitivity"],sort_keys=True))
+          print("OBSERVED_LAG_GROUPS",json.dumps(by_lag,sort_keys=True))
+          print("AFTER_SNAPSHOT_EXTRA_DELAY",json.dumps(
+              r["extra_latency_fixed_plan_sensitivity"],sort_keys=True))
+          print("SELECTED_VS_BLOCKED",json.dumps({
+              k:{"n":v["n"],
+                 "relative_volume_median":v["features"]["relative_volume_15m"]["median"]}
+              for k,v in r["accepted_vs_blocked_at_snapshot"].items()},sort_keys=True))
+          PY
+      - name: Compare 150 complete-collection timestamps against cron target +60s
+        run: |
+          python -m research.scan_schedule_audit loss_snapshots \
+            --report reports/scan_schedule_audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/scan_schedule_audit.json").read_text())
+          q=json.loads(Path("reports/execution_loss_diagnostics.json").read_text())
+          assert r["evaluated_archived_collections"] + sum(r["excluded_snapshot_counts"].values()) == q["source_snapshot_count"]
+          assert r["nominal_target_lag_seconds"]==60
+          assert r["root_cause_of_delay_verified"] is False
+          assert r["delivery_latency_measured"] is False
+          assert r["order_or_execution_time_measured"] is False
+          assert r["production_changed"] is False
+          assert r["collections_more_than_10m_after_close"]<=r["collections_more_than_3m_after_close"]<=r["evaluated_archived_collections"]
+          print("SCHEDULE_CAPTURE_CAUSALITY_GUARDS_PASSED")
+          PY
+      - name: Archive frozen inputs and execution fidelity findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-1-2-execution-loss-audit
+          path: |
+            reports/execution_loss_diagnostics.json
+            reports/signal_quality_diagnostics.json
+            reports/scan_schedule_audit.json
+            reports/source_market_data_tip.txt
+            reports/source_snapshot_filenames.txt
+          if-no-files-found: warn
+          retention-days: 7

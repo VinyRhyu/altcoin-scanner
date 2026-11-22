@@ -1,0 +1,81 @@
+name: Research filter ablation 1m shadow (no orders)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-filter-shadow.yml'
+      - 'research/filter_ablation.py'
+      - 'research/filter_shadow_1m.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-shadow-executions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify full repo unit tests (offline)
+        run: python -m unittest discover -s tests -v
+      - name: Archive a reproducible 100-snapshot input window
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=160 origin market-data
+          mkdir -p deep_snapshots reports
+          git rev-parse FETCH_HEAD > reports/source_market_data_tip.txt
+          for sha in $(git rev-list --max-count=100 FETCH_HEAD); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "deep_snapshots/market_data_$sha.json"
+            fi
+          done
+          find deep_snapshots -name 'market_data*.json' -printf '%f\n' | sort \
+            > reports/source_snapshot_filenames.txt
+          echo "Archived $(wc -l < reports/source_snapshot_filenames.txt) snapshots."
+      - name: Run baseline and one-soft-filter-at-a-time shadow comparison
+        run: |
+          python -m research.filter_shadow_1m deep_snapshots \
+            --max-candidates 50 --max-pages 6 \
+            --report reports/filter_shadow_1m_report.json
+      - name: Assert hard gates stay disabled for ablation and zero verified fills
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("reports/filter_shadow_1m_report.json")
+          r=json.loads(p.read_text())
+          assert r["source_snapshot_count"] == 100
+          assert r["archived_conditional"] == r["baseline_checked"]
+          assert r["baseline_checked"] > 0
+          assert r["safety_guards_modified"] is False
+          assert r["production_filters_modified"] is False
+          assert r["actual_exchange_fills_verified"] == 0
+          assert r["proven_expectancy"] is False
+          assert r["baseline_checked"] + r["counterfactual_checked"] == len(r["details"])
+          assert sum(x["candidates"] for x in r["shadow_groups"].values()) == len(r["details"])
+          assert all(x["first_evaluable_minute_ms"] >= x["first_observed_at_ms"]
+                     for x in r["details"])
+          assert all(x["exchange_fill_verified"] is False for x in r["details"])
+          assert all(x["original_scan_decision"] == "NAO_ENTRAR"
+                     for x in r["details"] if x["counterfactual_only"])
+          assert all(x["original_scan_decision"] == "GATILHO_CONDICIONAL"
+                     for x in r["details"] if not x["counterfactual_only"])
+          print("SHADOW_FILTER_GROUPS",json.dumps(r["shadow_groups"],sort_keys=True))
+          PY
+      - name: Publish reproducible evidence from experiment only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: filter-shadow-post-snapshot-1m
+          path: |
+            reports/filter_shadow_1m_report.json
+            reports/source_market_data_tip.txt
+            reports/source_snapshot_filenames.txt
+          if-no-files-found: warn
+          retention-days: 7

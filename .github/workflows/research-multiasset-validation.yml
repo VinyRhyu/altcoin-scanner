@@ -1,0 +1,164 @@
+name: Multiasset 60d chronological profitability scenarios (no orders)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-multiasset-validation.yml'
+      - 'research/multiasset_price_validation.py'
+      - 'research/retrospective_loss_attribution.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  symbol-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {symbol: BTC-USDT-SWAP, base: btc}
+          - {symbol: ETH-USDT-SWAP, base: eth}
+          - {symbol: XRP-USDT-SWAP, base: xrp}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Retrieve EXACT 60d OKX public candles (no keys or trades)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          for spec in '15m 65' '1h 18' '2h 10'; do
+            read -r tf pages <<< "$spec"
+            python -m research.okx_history_backfill \
+              --symbol '${{ matrix.symbol }}' --tf "$tf" \
+              --start 2026-09-22T00:00:00Z \
+              --end 2026-11-21T00:00:00Z \
+              --max-pages "$pages" \
+              --output "reports/${{ matrix.base }}_""$tf""_60d.jsonl" \
+              --report "reports/${{ matrix.base }}_""$tf""_60d_metadata.json"
+          done
+      - name: Reject gaps, incomplete histories and unverified provenance
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for tf, duration, n in [("15m",900000,5760),("1h",3600000,1440),("2h",7200000,720)]:
+              rows=[json.loads(z) for z in Path(f"reports/${{ matrix.base }}_{tf}_60d.jsonl").read_text().splitlines()]
+              meta=json.loads(Path(f"reports/${{ matrix.base }}_{tf}_60d_metadata.json").read_text())
+              assert len(rows)==n,(tf,len(rows),n)
+              assert meta["candles_retrieved"]==n and meta["backtest_ready"] is False
+              assert rows[0]["open_ms"]==meta["requested_start_ms"]
+              assert rows[-1]["open_ms"]+duration==meta["requested_end_ms_exclusive"]
+              assert all(b["open_ms"]-a["open_ms"]==duration for a,b in zip(rows,rows[1:]))
+              assert all(x["symbol"]=="${{ matrix.symbol }}" and x["point_in_time_eligible"] is False for x in rows)
+              print("CLOSED_HISTORY",tf,len(rows),meta["pages_requested"])
+          PY
+      - name: Compare chronological net R with normal versus stressed costs
+        run: |
+          python -m research.multiasset_price_validation asset \
+            --directory reports --symbol '${{ matrix.symbol }}' \
+            --output 'reports/${{ matrix.base }}_report.json'
+      - name: Verify no chronology violations or real fill claims
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/${{ matrix.base }}_report.json").read_text())
+          assert r["net_edge_proven"] is False and r["historical_fills_verified"]==0
+          assert sum(r["history_counts"].values())==7920
+          for t in r["trades_scenarios"]:
+              assert t["exchange_fill_verified"] is False
+              assert t["signal_close_ms"]+r["max_holding_15m_bars"]*900000 <= (
+                  r["split_ms"] if t["period"]=="exploration" else r["end_ms"])
+              assert t["base"]["executed"]==t["stress"]["executed"]
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiasset-research-${{ matrix.base }}-60d
+          path: |
+            reports/${{ matrix.base }}_report.json
+            reports/${{ matrix.base }}_*_60d.jsonl
+            reports/${{ matrix.base }}_*_60d_metadata.json
+          retention-days: 7
+          if-no-files-found: warn
+
+  aggregate:
+    runs-on: ubuntu-latest
+    needs: symbol-history
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: multiasset-research-*-60d
+          merge-multiple: true
+          path: reports/inputs
+      - name: Aggregate exactly BTC ETH XRP, 30d/30d and two cost scenarios
+        run: |
+          python -m research.multiasset_price_validation aggregate \
+            --directory reports/inputs --output reports/multiasset_final_report.json
+      - name: Assert zero exchange fills and accounting integrity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/multiasset_final_report.json").read_text())
+          assert r["assets"]==["BTC-USDT-SWAP","ETH-USDT-SWAP","XRP-USDT-SWAP"]
+          assert r["no_real_fills"] is True and r["net_edge_proven"] is False
+          assert r["real_ticker_at_signal_available"] is False
+          for p in ("exploration","temporal_evaluation"):
+              b=r["combined"][p]["base"]["overall"]
+              s=r["combined"][p]["cost_stress"]["overall"]
+              assert b["signals_eligible_and_evaluated"]==s["signals_eligible_and_evaluated"]
+              assert b["modelled_exits_not_fills"]==s["modelled_exits_not_fills"]
+              assert b["modelled_exits_not_fills"]+b["unresolved_or_unfilled"]==b["signals_eligible_and_evaluated"]
+              print("MULTIASSET_FINAL",p,json.dumps({"base":b,"stress":s},sort_keys=True))
+          PY
+      - name: Attribute 60d net R to stops, time exits and TP (descriptive only)
+        run: |
+          python -m research.retrospective_loss_attribution \
+            --reports-dir reports/inputs \
+            --output reports/retrospective_loss_attribution.json
+      - name: Reconcile exit attribution with original aggregate finances
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("reports/retrospective_loss_attribution.json").read_text())
+          r=json.loads(Path("reports/multiasset_final_report.json").read_text())
+          assert a["selected_symbols"]==r["assets"]
+          assert a["original_policy_modified"] is False
+          assert a["actual_verified_exchange_fills"]==0
+          assert a["causal_loss_attribution_proven"] is False
+          assert a["profitable_edge_proven"] is False
+          for p in ("exploration","temporal_evaluation"):
+              x=a["exploratory_and_temporal_evaluation"][p]
+              y=r["combined"][p]["base"]["overall"]
+              assert x["candidates_total"]==y["signals_eligible_and_evaluated"]
+              assert x["modelled_exits"]==y["modelled_exits_not_fills"]
+              assert abs(x["overall"]["modelled_net_r"]["sum"]-y["sum_net_r_modelled_only"])<1e-6
+              assert x["modelled_exits"]+x["nonexecutions_or_ambiguous"]==x["candidates_total"]
+              print("LOSS_CONTRIBUTION",p,json.dumps(x["overall"]["by_exit"],sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiasset-60d-chronological-validation-summary
+          path: |
+            reports/multiasset_final_report.json
+            reports/retrospective_loss_attribution.json
+          retention-days: 7
+          if-no-files-found: warn

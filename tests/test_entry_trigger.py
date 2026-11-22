@@ -82,6 +82,41 @@ class EntryTriggersTests(unittest.TestCase):
         self.assertEqual(retest["status"], "CONFIRMADO")
         self.assertEqual(retest["entry_trigger_price"], 1.0471)
 
+    def test_retest_previous_breakout_uses_only_prior_atr_long_and_short(self):
+        from experimental_scan import atr14
+        from trade_decision import setup
+
+        # A volatile retest candle changes current ATR, but cannot
+        # retroactively invalidate the previous already-closed breakout.
+        cases = (
+            ("LONG", [10.02, 10.16, 10., 10.14, 100., 300.],
+             [10.03, 13., 9.95, 12., 100., 150.]),
+            ("SHORT", [9.98, 10., 9.84, 9.86, 100., 300.],
+             [9.97, 10.05, 7., 8., 100., 150.]),
+        )
+        for side, breakout_bar, retest_bar in cases:
+            with self.subTest(side=side):
+                bars = [[i*900000, 10., 10.1, 9.9, 10., 100., 100.]
+                        for i in range(40)]
+                bars[-2][1:7] = breakout_bar
+                bars[-1][1:7] = retest_bar
+                previous_atr = atr14(bars[:-1])
+                current_atr = atr14(bars)
+                self.assertGreater(current_atr, previous_atr)
+                self.assertTrue(is_breakout(bars, len(bars)-2, side,
+                                            previous_atr)[0])
+                self.assertFalse(is_breakout(bars, len(bars)-2, side,
+                                             current_atr)[0])
+                self.assertTrue(is_retest(bars, side, current_atr)[0])
+                stage, _, _ = setup({"15m": bars},
+                                    {"atr_15m": current_atr}, side)
+                self.assertEqual(stage, "RETESTE_CONFIRMADO")
+
+    def test_retest_insufficient_bars_has_no_prior_breakout(self):
+        bars = [[i*900000, 10., 10.1, 9.9, 10., 100., 100.]
+                for i in range(22)]
+        self.assertEqual(is_retest(bars, "LONG", .2), (False, None))
+
     def test_missing_tick_never_fabricates_price(self):
         h, price = prepare_breakout()
         plan = analyze_method(h, features(h), ticker(price, tick=None),
