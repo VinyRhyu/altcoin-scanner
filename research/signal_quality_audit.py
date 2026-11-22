@@ -237,9 +237,18 @@ def _delay_report(records):
 def analyze(paths, source, windows, diagnosed):
     """All outcomes evaluated from the same fetched 1m rows, no extra API calls."""
     all_candidates=source["candidates"]
-    features_by_key=extract_first_snapshot_features(paths,all_candidates)
+    # Some technically confirmed signals have no tick/stop. Record that
+    # exclusion instead of inventing prices or dropping the confirmation.
+    feature_candidates=[
+        x for x in all_candidates
+        if x.get("entry") is not None and x.get("stop") is not None
+        and x.get("spread_pct_observed") is not None
+    ]
+    features_by_key=extract_first_snapshot_features(paths,feature_candidates)
     conditional={key(x):x for x in all_candidates
                  if x["decision_at_snapshot"]=="GATILHO_CONDICIONAL"}
+    if not set(conditional).issubset(features_by_key):
+        raise ValueError("conditional plan lacks required archived features")
     diag_by_key={key(x):x for x in diagnosed}
     window_by_key={key(x):x for x in windows}
     if len(diag_by_key)!=len(diagnosed) or len(window_by_key)!=len(windows):
@@ -299,14 +308,16 @@ def analyze(paths, source, windows, diagnosed):
              and r["outcome"]["net_r_scenario"]>0]
     losers=[r for r in rows if r["outcome"]["modelled_execution"]
             and r["outcome"]["net_r_scenario"]<0]
-    all_features=[{"features":features_by_key[key(c)]} for c in all_candidates]
+    all_features=[{"features":features_by_key[key(c)]} for c in feature_candidates]
     accepted_features=[{"features":features_by_key[key(c)]}
-        for c in all_candidates if c["decision_at_snapshot"]=="GATILHO_CONDICIONAL"]
+        for c in feature_candidates if c["decision_at_snapshot"]=="GATILHO_CONDICIONAL"]
     blocked_features=[{"features":features_by_key[key(c)]}
-        for c in all_candidates if c["decision_at_snapshot"]!="GATILHO_CONDICIONAL"]
+        for c in feature_candidates if c["decision_at_snapshot"]!="GATILHO_CONDICIONAL"]
     return {
         "status":"PRE_SIGNAL_DESCRIPTIVE_FEATURE_ASSOCIATION_AND_DELAY_STRESS",
         "confirmed_technical_sample":len(all_candidates),
+        "confirmed_with_computable_feature_plan":len(feature_candidates),
+        "excluded_confirmations_without_plan_or_spread":len(all_candidates)-len(feature_candidates),
         "conditional_sample":len(rows),
         "blocked_technical_sample":len(blocked_features),
         "all_confirmed_features":summarize_group(all_features),
