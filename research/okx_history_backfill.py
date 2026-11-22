@@ -88,6 +88,8 @@ def retrieve(symbol, tf, start_ms, end_ms, max_pages=3,
     stopped = "max_pages_reached"
 
     for page in range(max_pages):
+        if page and fetch is fetch_page:
+            time.sleep(0.12)  # below documented 20 requests / 2 seconds
         data = fetch(symbol, tf, cursor)
         pages += 1
         if not data:
