@@ -69,6 +69,19 @@ class MexcOHLCVTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate("ORCA_USDT","Min15",START,END,data,observed_at_s=END)
 
+    def test_out_of_requested_window_is_discarded_not_used_as_signal(self):
+        data=payload(indexes=(0,1,2,3,4))
+        r=validate("ORCA_USDT","Min15",START,END,data,observed_at_s=END)
+        self.assertEqual(r["provider_out_of_requested_range_bars_excluded"],1)
+        self.assertFalse(r["provider_returned_only_requested_range"])
+        self.assertEqual(r["completed_bars"],4)
+        self.assertEqual(r["signals_or_fills_estimated"],0)
+        only_outside=payload(indexes=(5,))
+        r=validate("ORCA_USDT","Min15",START,END,only_outside,
+                   observed_at_s=END)
+        self.assertEqual(r["completed_bars"],0)
+        self.assertEqual(r["provider_out_of_requested_range_bars_excluded"],1)
+
     def test_reject_wrong_venue_invalid_price_and_incomplete_arrays(self):
         data=payload()
         with self.assertRaises(ValueError):
