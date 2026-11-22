@@ -58,6 +58,28 @@ jobs:
               assert all(row["point_in_time_eligible"] is False for row in rows)
               assert info["backtest_ready"] is False
           PY
+      - name: Retrospective BREAKOUT / RETEST scenario (not actual trades)
+        run: |
+          python -m research.retrospective_price_pilot \
+            --directory reports --tick-proxy 0.01 \
+            --assumed-spread-pct 0.0141 \
+            --assumed-funding-per-8h 0 \
+            --output reports/sol_30d_retrospective_pilot.json
+      - name: Validate explicit limits of the scenario
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("reports/sol_30d_retrospective_pilot.json").read_text())
+          assert r["evaluated_15m_closes"] > 0
+          assert r["is_real_backtest"] is False
+          assert r["proven_expectancy"] is False
+          assert r["execution_scenario"]["is_real_backtest"] is False
+          for method in ("BREAKOUT", "RETEST"):
+              assert method in r["detection_summary"]
+              assert method in r["execution_scenario"]["comparison"]
+          print("RETROSPECTIVE_30D_COUNTS", json.dumps(r["detection_summary"], sort_keys=True))
+          PY
       - name: Upload research-only historical data and metadata
         if: always()
         uses: actions/upload-artifact@v4
