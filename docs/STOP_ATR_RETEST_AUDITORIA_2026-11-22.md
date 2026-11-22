@@ -72,7 +72,7 @@ A diferença é significativa **em magnitude descritiva**, mas não permite afir
 Dos **159 SHORT** bloqueados:
 - **114** ultrapassaram 3 ATR apenas devido ao componente dos extremos recentes (o componente de nível, sozinho, não excedia 3 ATR).
 - **45** ultrapassariam 3 ATR mesmo pelo componente de nível; ambos eram maiores que o limite.
-- O extremo relevante estava em `t-3` em **110** casos, em `t-2` em **45**, e empatou em **4**. **Nenhum** dos SHORT bloqueados teve o extremo definido isoladamente pelo candle mais recente `t-1` desta janela de três candles, onde `t` representa o candle de confirmação e os offsets são `-3`, `-2`, `-1` em ordem do bloco de três candles. Para evitar ambiguidade de nomenclatura, estes offsets são **posições relativas ao fim da janela**, correspondentes aos candles mais antigo, intermediário e atual, respectivamente.
+- O extremo relevante estava na posição **-3** (o mais antigo dos três candles, ou `t-2` em relação à confirmação) em **110** casos, na posição **-2** (`t-1`) em **45**, e empatou em **4**. **Nenhum** dos SHORT bloqueados teve o extremo definido isoladamente pela posição **-1** (candle de confirmação `t`). Os offsets são índices relativos ao fim da lista de candles, não diferenças cronológicas escritas como `t-3`.
   
 Nos **21 LONG** bloqueados, o componente recente foi o único que ultrapassou 3 ATR e seu extremo sempre veio do mais antigo dos três candles.
 
