@@ -11,6 +11,8 @@ from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR, InvalidOperation
 import math
 import statistics
 
+from experimental_scan import atr14
+
 MIN_RR = 1.6
 MAX_RISK_ATR = 3.0
 MAX_TRIGGER_DISTANCE_ATR = 0.9
@@ -75,7 +77,12 @@ def is_breakout(bars, index, side, atr):
 
 
 def is_retest(bars, side, atr):
-    prev_passed, level = is_breakout(bars, len(bars)-2, side, atr)
+    if len(bars) < 23:
+        return False, None
+    # O breakout anterior so pode usar ATR conhecido naquele fechamento.
+    previous_atr = atr14(bars[:-1])
+    prev_passed, level = is_breakout(
+        bars, len(bars)-2, side, previous_atr)
     if not prev_passed:
         return False, level
     last = bars[-1]
