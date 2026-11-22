@@ -39,9 +39,12 @@ def _number(value):
     return x
 
 
-def inspect(instruments,tickers,allowed,now_ms):
+def inspect(instruments,tickers,allowed,now_ms, *, response_ms=None):
     if type(now_ms) is not int or now_ms<=0:
         raise ValueError("invalid quote reference clock")
+    if response_ms is not None and (
+        type(response_ms) is not int or response_ms<now_ms):
+        raise ValueError("response timestamp precedes request reference")
     if not isinstance(instruments,list) or not isinstance(tickers,list):
         raise ValueError("invalid public OKX datasets")
     live={
@@ -59,6 +62,8 @@ def inspect(instruments,tickers,allowed,now_ms):
     if not isinstance(allowed,(set,frozenset)):
         raise ValueError("invalid eligible base universe")
     outcomes=Counter()
+    ticker_time_failure=Counter()
+    eligible_ticker_ages_ms=[]
     symbols=set()
     eligible=[]
     for item in tickers:
@@ -104,8 +109,15 @@ def inspect(instruments,tickers,allowed,now_ms):
                 if reason is None:
                     try:
                         tick_ms=int(item["ts"])
-                        if not 0<=now_ms-tick_ms<=300_000:
+                        age=now_ms-tick_ms
+                        if not 0<=age<=300_000:
                             reason="stale_or_future_exchange_ticker"
+                            if age<0:
+                                ticker_time_failure["provider_ts_after_pre_fetch_clock"]+=1
+                            else:
+                                ticker_time_failure["provider_ts_older_than_300s"]+=1
+                        else:
+                            eligible_ticker_ages_ms.append(age)
                     except (TypeError,ValueError,OverflowError,KeyError):
                         reason="stale_or_future_exchange_ticker"
                 if reason is None:
@@ -138,6 +150,22 @@ def inspect(instruments,tickers,allowed,now_ms):
         "first_rejection_reason_counts":{name:outcomes[name] for name in REASONS},
         "ticker_eligible_count":len(eligible),
         "ticker_eligible_symbols_public_only":sorted(eligible),
+        "timestamp_rejection_breakdown":{
+            "provider_ts_after_pre_fetch_clock":
+                ticker_time_failure["provider_ts_after_pre_fetch_clock"],
+            "provider_ts_older_than_300s":
+                ticker_time_failure["provider_ts_older_than_300s"],
+        },
+        "counterfactual_end_of_public_fetch":(
+            {
+                "reference_ms":response_ms,
+                "eligible_ticker_count":inspect(
+                    instruments,tickers,allowed,response_ms)["ticker_eligible_count"],
+                "time_shift_ms":response_ms-now_ms,
+                "not_a_change_to_production":True,
+            }
+            if response_ms is not None else None
+        ),
         "minimum_validated_unchanged":collector.MIN_VALIDATED,
         "full_candle_validation_performed":False,
         "filter_thresholds_changed":False,
@@ -149,6 +177,8 @@ def inspect(instruments,tickers,allowed,now_ms):
             "Only tests ticker eligibility, not prescreen, 15m liquidity, candle continuity or final universe",
             "Rejection reasons are EXCLUSIVE, in the same precedence as collector.tickers",
             "Counterfactual filters, technical entries and orders were not modified",
+            "A future-ticker timestamp measured against the pre-fetch clock is not evidence of exchange staleness",
+            "Counterfactual end-of-fetch check uses the same payload: diagnostic only, not production clock adjustment",
             "Large variations across samples cannot be assigned to cause without matched-time evidence",
         ],
     }
@@ -161,7 +191,8 @@ def live_read(*, ticker_fetch=None, clock_ms=None):
     fetch=ticker_fetch or collector.okx
     instruments=fetch("public/instruments",instType="SWAP")
     raw=fetch("market/tickers",instType="SWAP")
-    result=inspect(instruments,raw,allowed,now_ms)
+    after_fetch_ms=clk()
+    result=inspect(instruments,raw,allowed,now_ms,response_ms=after_fetch_ms)
     result["allowlist_source"]=allowed_source
     result["checked_at_utc"]=datetime.fromtimestamp(
         now_ms/1000,timezone.utc).isoformat()
@@ -180,6 +211,8 @@ def main(argv=None):
         "eligible":r["ticker_eligible_count"],
         "min_required_for_collector":r["minimum_validated_unchanged"],
         "reasons":r["first_rejection_reason_counts"],
+        "time_breakdown":r["timestamp_rejection_breakdown"],
+        "same_payload_retimed_after_fetch":r["counterfactual_end_of_public_fetch"],
         "private_trade_data":False,
     },sort_keys=True))
 
