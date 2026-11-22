@@ -73,6 +73,25 @@ class PricePilotTests(unittest.TestCase):
         self.assertFalse(report["is_real_backtest"])
         self.assertFalse(report["proven_expectancy"])
 
+    def test_60_day_historical_files_are_supported(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            fixture = history_fixture()
+            write_history(root, fixture)
+            for tf in ("15m", "1h", "2h"):
+                (root / f"sol_{tf}_30d.jsonl").rename(
+                    root / f"sol_{tf}_60d.jsonl")
+            loaded = load_history(root, days=60)
+            self.assertEqual(loaded, fixture)
+            with self.assertRaises(FileNotFoundError):
+                load_history(root, days=30)
+
+    def test_invalid_historical_window_is_rejected(self):
+        for value in (0, -1, 366, 60.0, "60"):
+            with self.subTest(days=value):
+                with self.assertRaises(ValueError):
+                    load_history(".", days=value)
+
     def test_requires_an_explicit_nonzero_tick_proxy(self):
         with self.assertRaises(ValueError):
             pilot(history_fixture(), "0", Scenario())
