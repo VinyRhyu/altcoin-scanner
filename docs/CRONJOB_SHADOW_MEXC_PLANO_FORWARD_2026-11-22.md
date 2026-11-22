@@ -69,3 +69,12 @@ A pesquisa de rentabilidade **não pode ser aprovada com base nas três varredur
 6. Antes de qualquer aprovação em produção exigir dados forward suficientes, integridade temporal comprovada, taxas verificadas, ausência de execução real de ordens no experimento, e um plano de rollback. **Nenhuma meta de lucro foi fabricada.**
 
 **Resultado esperado agora:** código de observabilidade e separação de venues pronto; avaliação de rentabilidade segue **não comprovada** até novas observações causais e custos. O monitor externo real depende da conexão do histórico privado sem divulgar chaves.
+
+
+## Verificação adicional: execução com auditoria conjunta de publicação e de eventos
+
+[GitHub Actions #45076972062](https://github.com/VinyRhyu/altcoin-scanner/actions/runs/45076972062) executou **292/292 testes aprovados** no job de regressão e as verificações independentes de agendamento/publicação. A auditoria às **22:18:33 UTC** registrou o último commit em `market-data` às **19:03:01 UTC**, com **195,548 minutos** de idade de publicação. O manifesto do mesmo ciclo indica início da coleta às **19:02:06.719 UTC**.
+
+O histórico privado do cronjob.org **não estava configurado** nessa execução: `EXTERNAL_CRONJOB_HISTORY_UNAVAILABLE_NOT_ZERO`. Isso não significa falha nem sucesso dos 60 checks por hora, mas impede classificar o serviço externo como a origem da atualização atrasada. O monitor somente poderá medir as chamadas externas quando um administrador registrar o secret `CRONJOB_ORG_API_KEY` e a variável `CRONJOB_ORG_JOB_ID` no GitHub Actions, sem compartilhar credenciais no chat ou no PR. **A frequência de 1 minuto e o destino real no cronjob.org não foram alterados.**
+
+O protocolo do ponto 4 está pronto, mas *não* podemos atribuir PnL aos 3 snapshots recentes: não houve gatilho adicional nem dados de fills, bid/ask histórico, funding realizado ou pagamento de taxas. A pesquisa permanece sem lucro demonstrado.
