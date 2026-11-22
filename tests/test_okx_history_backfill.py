@@ -1,7 +1,10 @@
 """Offline OKX history retrieval tests; never contact the exchange."""
 import unittest
+import io
+import urllib.error
+from unittest.mock import patch
 
-from research.okx_history_backfill import parse_row, retrieve, utc_ms
+from research.okx_history_backfill import fetch_page, parse_row, retrieve, utc_ms
 
 D = 900000
 
@@ -81,6 +84,42 @@ class OkxHistoryTests(unittest.TestCase):
         self.assertEqual([x["open_ms"] for x in bars], [0,m,2*m])
         self.assertTrue(all(x["timeframe"]=="1m" for x in bars))
         self.assertEqual(meta["candles_retrieved"],3)
+
+    def test_public_okx_429_retry_is_bounded_and_preserves_rows(self):
+        rate_limit=urllib.error.HTTPError(
+            "https://www.okx.com",429,"Too Many Requests",
+            {"Retry-After":"3"},None)
+        ok=io.BytesIO(b'{"code":"0","data":[]}')
+        with patch("research.okx_history_backfill.urllib.request.urlopen",
+                   side_effect=[rate_limit,ok]) as fetch,patch(
+                   "research.okx_history_backfill.time.sleep") as snooze:
+            rows=fetch_page("BTC-USDT-SWAP","15m",12345)
+        self.assertEqual(rows,[])
+        self.assertEqual(fetch.call_count,2)
+        snooze.assert_called_once_with(3.0)
+
+    def test_public_okx_non_retryable_http_error_is_not_hidden(self):
+        denied=urllib.error.HTTPError(
+            "https://www.okx.com",403,"Forbidden",{},None)
+        with patch("research.okx_history_backfill.urllib.request.urlopen",
+                   side_effect=denied) as fetch,patch(
+                   "research.okx_history_backfill.time.sleep") as snooze:
+            with self.assertRaises(urllib.error.HTTPError):
+                fetch_page("BTC-USDT-SWAP","15m",12345)
+        self.assertEqual(fetch.call_count,1)
+        snooze.assert_not_called()
+
+    def test_public_okx_429_retry_exhaustion_fails_closed(self):
+        def limited(*args,**kwargs):
+            raise urllib.error.HTTPError(
+                "https://www.okx.com",429,"Too Many Requests",{},None)
+        with patch("research.okx_history_backfill.urllib.request.urlopen",
+                   side_effect=limited) as fetch,patch(
+                   "research.okx_history_backfill.time.sleep") as snooze:
+            with self.assertRaises(urllib.error.HTTPError):
+                fetch_page("BTC-USDT-SWAP","15m",12345)
+        self.assertEqual(fetch.call_count,6)
+        self.assertEqual(snooze.call_count,5)
 
     def test_requires_timezone(self):
         with self.assertRaises(ValueError):
