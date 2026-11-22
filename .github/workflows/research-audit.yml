@@ -7,6 +7,8 @@ on:
       - 'research/**'
       - 'tests/test_market_history_audit.py'
       - 'tests/test_continuous_history.py'
+      - 'tests/test_history_depth.py'
+      - 'tests/test_okx_history_backfill.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
@@ -167,6 +169,26 @@ jobs:
           print("ELIGIBLE_SEGMENTS", r["eligible_segments"],
                 "ELIGIBLE_CANDLES", r["eligible_candles"])
           PY
+      - name: Measure per-timeframe and per-symbol historical depth
+        run: |
+          python -m research.history_depth reports/continuous_history_report.json \
+            --output reports/history_depth_report.json
+      - name: Assert 15m history depth metrics are consistent
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          depth = json.loads(Path("reports/history_depth_report.json").read_text())
+          source = json.loads(Path("reports/continuous_history_report.json").read_text())
+          assert depth["source_segments"] == source["segments_total"]
+          assert sum(v["total_candles"] for v in depth["timeframes"].values()) == source["source_distinct_candles"]
+          assert depth["timeframes"]["15m"]["segments"] == source["by_timeframe"]["15m"]["segments"]
+          assert depth["profitability_backtest_ready"] is False
+          print("15M_DEPTH_HOURS", depth["timeframes"]["15m"]["longest_segment_hours"])
+          print("15M_7_DAY_SEGMENTS", depth["timeframes"]["15m"]["segments_at_least_7_days"])
+          print("15M_30_DAY_SEGMENTS", depth["timeframes"]["15m"]["segments_at_least_30_days"])
+          PY
       - name: Upload extended history report
         if: always()
         uses: actions/upload-artifact@v4
@@ -177,5 +199,6 @@ jobs:
             reports/continuous_history_report.json
             reports/continuous_segments.jsonl
             reports/continuous_candles.jsonl
+            reports/history_depth_report.json
           if-no-files-found: warn
           retention-days: 7
