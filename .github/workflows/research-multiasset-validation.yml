@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/research-multiasset-validation.yml'
       - 'research/multiasset_price_validation.py'
+      - 'research/retrospective_loss_attribution.py'
   workflow_dispatch:
 
 permissions:
@@ -126,10 +127,38 @@ jobs:
               assert b["modelled_exits_not_fills"]+b["unresolved_or_unfilled"]==b["signals_eligible_and_evaluated"]
               print("MULTIASSET_FINAL",p,json.dumps({"base":b,"stress":s},sort_keys=True))
           PY
+      - name: Attribute 60d net R to stops, time exits and TP (descriptive only)
+        run: |
+          python -m research.retrospective_loss_attribution \
+            --reports-dir reports/inputs \
+            --output reports/retrospective_loss_attribution.json
+      - name: Reconcile exit attribution with original aggregate finances
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("reports/retrospective_loss_attribution.json").read_text())
+          r=json.loads(Path("reports/multiasset_final_report.json").read_text())
+          assert a["selected_symbols"]==r["assets"]
+          assert a["original_policy_modified"] is False
+          assert a["actual_verified_exchange_fills"]==0
+          assert a["causal_loss_attribution_proven"] is False
+          assert a["profitable_edge_proven"] is False
+          for p in ("exploration","temporal_evaluation"):
+              x=a["exploratory_and_temporal_evaluation"][p]
+              y=r["combined"][p]["base"]["overall"]
+              assert x["candidates_total"]==y["signals_eligible_and_evaluated"]
+              assert x["modelled_exits"]==y["modelled_exits_not_fills"]
+              assert abs(x["overall"]["modelled_net_r"]["sum"]-y["sum_net_r_modelled_only"])<1e-6
+              assert x["modelled_exits"]+x["nonexecutions_or_ambiguous"]==x["candidates_total"]
+              print("LOSS_CONTRIBUTION",p,json.dumps(x["overall"]["by_exit"],sort_keys=True))
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: multiasset-60d-chronological-validation-summary
-          path: reports/multiasset_final_report.json
+          path: |
+            reports/multiasset_final_report.json
+            reports/retrospective_loss_attribution.json
           retention-days: 7
           if-no-files-found: warn
