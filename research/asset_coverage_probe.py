@@ -1,7 +1,7 @@
 """Explain why a generic instrument may be absent from the scanner universe.
 
 Pure research. Public OKX instrument metadata is optional and current only,
-never evidence of a particular user's trade or historical 10:45 availability.
+never evidence of any individual's trade or historical instrument availability.
 No positions, performance, order endpoints, private keys or account data.
 """
 from __future__ import annotations
@@ -12,24 +12,44 @@ import json
 from pathlib import Path
 import re
 
-from collector import BLOCKED_BASES, CRYPTO_BASES, okx
+from collector import BLOCKED_BASES, CRYPTO_BASES, OKX, request_json
 
 _PATTERN=re.compile(r"^[A-Z0-9]{2,30}$")
 
 
-def explain(base, *, market_snapshot=None, instruments=None):
+def request_current_public_instrument(base):
+    """A 51001 response explicitly means unknown current instrument ID."""
+    base=base.upper()
+    if not _PATTERN.fullmatch(base):
+        raise ValueError("invalid public asset ticker")
+    raw=request_json(f"{OKX}/public/instruments",{
+        "instType":"SWAP","instId":f"{base}-USDT-SWAP"})
+    code=str(raw.get("code"))
+    data=raw.get("data")
+    if code=="0" and isinstance(data,list):
+        return data,code
+    if code=="51001" and data==[]:
+        return [],code
+    raise RuntimeError("public OKX instrument query did not return valid metadata")
+
+
+def explain(base, *, market_snapshot=None, instruments=None,
+            provider_response_code=None):
     base=base.upper()
     if not _PATTERN.fullmatch(base):
         raise ValueError("invalid public asset ticker")
     full=f"{base}-USDT-SWAP"
     curated=base in CRYPTO_BASES
     blocked=base in BLOCKED_BASES
+    if instruments is None and provider_response_code is not None:
+        raise ValueError("response code without provider evidence")
     provider=None
     if instruments is not None:
         matched=[i for i in instruments if i.get("instId")==full]
         if len(matched)>1:
             raise ValueError("duplicate exchange contract identifier")
         provider={
+            "provider_response_code":provider_response_code,
             "current_usdt_swap_contract_exists":bool(matched),
             "current_usdt_swap_contract_live":(
                 matched[0].get("state")=="live" if matched else False),
@@ -84,10 +104,10 @@ def main(argv=None):
     a=p.parse_args(argv)
     snap=(json.loads(a.market_data.read_text(encoding="utf-8"))
           if a.market_data else None)
-    rows=(okx("public/instruments",instType="SWAP",
-              instId=a.symbol.upper()+"-USDT-SWAP")
-          if a.check_provider else None)
-    report=explain(a.symbol,market_snapshot=snap,instruments=rows)
+    rows,provider_code=(request_current_public_instrument(a.symbol)
+                        if a.check_provider else (None,None))
+    report=explain(a.symbol,market_snapshot=snap,instruments=rows,
+                   provider_response_code=provider_code)
     a.report.parent.mkdir(parents=True,exist_ok=True)
     a.report.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print("PUBLIC_INSTRUMENT_COVERAGE",json.dumps({
