@@ -9,6 +9,7 @@ on:
       - 'tests/test_continuous_history.py'
       - 'tests/test_history_depth.py'
       - 'tests/test_okx_history_backfill.py'
+      - 'tests/test_futures_scenario.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
