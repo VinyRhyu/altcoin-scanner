@@ -14,6 +14,7 @@ on:
       - 'tests/test_retrospective_price_pilot.py'
       - 'tests/test_minute_execution.py'
       - 'tests/test_minute_archive_pilot.py'
+      - 'tests/test_filter_ablation.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
@@ -192,6 +193,38 @@ jobs:
                      for x in r["candidates"])
           print("ARCHIVED_CANDIDATES", json.dumps(r["by_method"], sort_keys=True))
           PY
+      - name: Audit post-confirmation blockers and exclusive filter ablations
+        run: |
+          python -m research.filter_ablation deep_snapshots \
+            --report reports/filter_ablation_report.json
+      - name: Verify one-filter-at-a-time attribution never overrides safety
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/filter_ablation_report.json").read_text())
+          source=json.loads(Path("reports/observed_candidates_report.json").read_text())
+          assert r["snapshot_count"] == source["snapshots_analyzed"]
+          assert r["baseline"]["confirmed"] == source["confirmed_candidates"]
+          assert r["baseline"]["conditional_baseline"] == sum(
+              m["conditionally_eligible_at_snapshot"]
+              for m in source["by_method"].values())
+          assert r["baseline"]["blocked_baseline"] == (
+              r["baseline"]["confirmed"] - r["baseline"]["conditional_baseline"])
+          assert sum(v["sole_blocker"] for v in r["filters"].values()) + (
+              r["multi_blocker_candidates"]) == r["baseline"]["blocked_baseline"]
+          for key, f in r["filters"].items():
+              if f["category"] != "strategy":
+                  assert f["would_pass_other_recorded_gates"] == 0, key
+          assert r["production_gates_modified"] is False
+          assert r["profitability_proven"] is False
+          print("FILTER_ABLATION_COUNTS",json.dumps({
+              "baseline":r["baseline"],
+              "multi_blocker":r["multi_blocker_candidates"],
+              "exclusive_soft":r["hypothetical_single_strategy_filter_removal_candidates"],
+              "filters":r["filters"],
+          },sort_keys=True))
+          PY
       - name: Measure per-timeframe and per-symbol historical depth
         run: |
           python -m research.history_depth reports/continuous_history_report.json \
@@ -224,5 +257,6 @@ jobs:
             reports/continuous_candles.jsonl
             reports/history_depth_report.json
             reports/observed_candidates_report.json
+            reports/filter_ablation_report.json
           if-no-files-found: warn
           retention-days: 7
