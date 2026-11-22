@@ -109,13 +109,17 @@ jobs:
         run: |
           set -euo pipefail
           git fetch --no-tags --depth=160 origin market-data
-          mkdir -p deep_snapshots
+          mkdir -p deep_snapshots reports
+          git rev-parse FETCH_HEAD > reports/source_market_data_tip.txt
           for sha in $(git rev-list --max-count=100 FETCH_HEAD); do
             if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
               git show "$sha:market_data.json" > "deep_snapshots/market_data_$sha.json"
             fi
           done
           echo "Deep snapshots saved: $(find deep_snapshots -name 'market_data*.json' | wc -l)"
+          find deep_snapshots -name 'market_data*.json' -printf '%f\n' | sort \
+            > reports/source_snapshot_filenames.txt
+          echo "Snapshot source tip: $(cat reports/source_market_data_tip.txt)"
       - name: Audit extended historic reconstruction
         run: |
           python -m research.market_history_audit deep_snapshots \
@@ -305,5 +309,7 @@ jobs:
             reports/filter_ablation_report.json
             reports/stop_geometry_report.json
             reports/retest_atr_comparison.json
+            reports/source_market_data_tip.txt
+            reports/source_snapshot_filenames.txt
           if-no-files-found: warn
           retention-days: 7
