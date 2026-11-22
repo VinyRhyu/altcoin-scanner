@@ -1,0 +1,96 @@
+name: Research A/B stop 3 vs 2 bars (profit scenario only)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-stop-ab.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  matched-stop-profit-scenario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run all local tests, including A/B no-lookahead regressions
+        run: python -m unittest discover -s tests -v
+      - name: Reconstruct 100 archived snapshots from frozen prior research tip
+        shell: bash
+        run: |
+          set -euo pipefail
+          PINNED_TIP=0f4e1087a7acd0287a09b54893de36a9027904ca
+          git fetch --no-tags --depth=240 origin market-data
+          git cat-file -e "$PINNED_TIP^{commit}" || {
+            echo "Fixed source tip not reachable. Refusing to change sample."
+            exit 1
+          }
+          mkdir -p deep_snapshots reports
+          printf '%s\n' "$PINNED_TIP" > reports/source_market_data_tip.txt
+          for sha in $(git rev-list --max-count=100 "$PINNED_TIP"); do
+            if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
+              git show "$sha:market_data.json" > "deep_snapshots/market_data_$sha.json"
+            fi
+          done
+          find deep_snapshots -name 'market_data*.json' -printf '%f\n' | sort \
+            > reports/source_snapshot_filenames.txt
+          echo "Frozen 100 snapshots: $(wc -l < reports/source_snapshot_filenames.txt)"
+          test "$(wc -l < reports/source_snapshot_filenames.txt)" -eq 100
+      - name: Confirm common signal universe and A/B eligibility without exchange calls
+        run: |
+          python -m research.stop_ab_profit_pilot deep_snapshots \
+            --preflight-only --report reports/stop_ab_preflight.json
+      - name: Compare net R with identical post-snapshot 1m evidence and fees
+        run: |
+          python -m research.stop_ab_profit_pilot deep_snapshots \
+            --max-pairs 160 --max-pages 5 \
+            --report reports/stop_ab_profit_report.json
+      - name: Check censored cases and prohibit false-profit claims
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          load=lambda name:json.loads(Path("reports",name).read_text())
+          p=load("stop_ab_preflight.json")
+          r=load("stop_ab_profit_report.json")
+          assert p["snapshots"]==r["snapshots_analyzed"]==100
+          assert p["confirmed"]==r["confirmed_same_signal_universe"]
+          assert p["eligible_union"]==r["eligible_union_checked"]
+          assert p["transitions"]==r["transition_counts"]
+          assert sum(r["transition_counts"].values())==r["confirmed_same_signal_universe"]
+          assert r["production_changed"] is False
+          assert r["verified_exchange_fills"]==0
+          assert r["actual_profit_proven"] is False
+          assert r["new_stop_strategy_approved"] is False
+          assert len(r["details"])==r["eligible_union_checked"]
+          for d in r["details"]:
+              assert d["first_evaluable_minute_ms"]>=d["first_observed_at_ms"]
+              assert d["historical_data_retrieved_after_signal"]
+              for stop in ("2","3"):
+                  outcome=d[stop]
+                  if outcome is None: continue
+                  assert outcome["exchange_fill_verified"] is False
+                  assert (outcome["net_r_scenario"] is None) != bool(outcome["modelled_execution"]) is False
+          print("AB_FILTER_TRANSITIONS",json.dumps(r["transition_counts"],sort_keys=True))
+          print("AB_NET_R_SCENARIO",json.dumps(r["comparison"],sort_keys=True))
+          print("AB_CHRONOLOGICAL_EXPLORATORY_SPLIT",json.dumps(
+              r["chronological_exploratory_splits"],sort_keys=True))
+          PY
+      - name: Upload comparable A/B diagnostics for independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: matched-stop-ab-1m-financial-scenarios
+          path: |
+            reports/stop_ab_profit_report.json
+            reports/stop_ab_preflight.json
+            reports/source_market_data_tip.txt
+            reports/source_snapshot_filenames.txt
+          retention-days: 7
+          if-no-files-found: warn
