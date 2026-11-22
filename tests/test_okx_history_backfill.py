@@ -12,8 +12,12 @@ def candle(ts, close="100", confirm="1"):
 
 class OkxHistoryTests(unittest.TestCase):
     def test_parse_closed_swap_quote_volume(self):
-        bar = parse_row(candle(0), D)
+        raw = candle(0)
+        raw[5], raw[6], raw[7] = "50", "0.25", "500"
+        bar = parse_row(raw, D)
         self.assertEqual(bar["open_ms"], 0)
+        self.assertEqual(bar["volume_contracts"], 50)
+        self.assertEqual(bar["base_volume"], .25)
         self.assertEqual(bar["quote_volume"], 500)
 
     def test_ignore_unfinished_bars(self):
