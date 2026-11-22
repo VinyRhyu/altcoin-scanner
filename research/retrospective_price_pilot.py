@@ -21,9 +21,13 @@ from research.market_history_audit import DURATIONS_MS
 def load_history(directory, symbol="SOL-USDT-SWAP", days=30):
     if type(days) is not int or not 1 <= days <= 365:
         raise ValueError("days must be an integer between 1 and 365")
+    if (not isinstance(symbol,str) or not symbol.endswith("-USDT-SWAP") or
+        not symbol[:-10].isalnum() or symbol != symbol.upper()):
+        raise ValueError("invalid perpetual symbol")
+    prefix = symbol.split("-")[0].lower()
     history = {}
     for tf, duration in DURATIONS_MS.items():
-        path = Path(directory) / f"sol_{tf}_{days}d.jsonl"
+        path = Path(directory) / f"{prefix}_{tf}_{days}d.jsonl"
         values = [json.loads(line) for line in path.read_text(
             encoding="utf-8").splitlines() if line.strip()]
         if not values:
@@ -42,7 +46,10 @@ def load_history(directory, symbol="SOL-USDT-SWAP", days=30):
     return history
 
 
-def pilot(history, assumed_tick, scenario):
+def pilot(history, assumed_tick, scenario, symbol="SOL-USDT-SWAP"):
+    if (not isinstance(symbol,str) or not symbol.endswith("-USDT-SWAP") or
+        not symbol[:-10].isalnum() or symbol != symbol.upper()):
+        raise ValueError("invalid perpetual symbol")
     if not isinstance(assumed_tick, (str, float)) or float(assumed_tick) <= 0:
         raise ValueError("tick proxy must be explicitly provided")
     timeframe = history["15m"]
@@ -88,7 +95,7 @@ def pilot(history, assumed_tick, scenario):
                     continue
                 stats[method]["conditional"] += 1
                 plans.append({
-                    "symbol": "SOL-USDT-SWAP", "side": side,
+                    "symbol": symbol, "side": side,
                     "method": method, "signal_close_ms": close_ms,
                     "entry": decision["entry_trigger_price"],
                     "stop": decision["stop_loss"],
@@ -98,7 +105,7 @@ def pilot(history, assumed_tick, scenario):
     simulated = summarize(plans, scenario)
     return {
         "status": "RETROSPECTIVE_ASSUMPTION_HEAVY_PRICE_SCENARIO",
-        "symbol": "SOL-USDT-SWAP",
+        "symbol": symbol,
         "closed_15m_bars": len(timeframe), "evaluated_15m_closes": evaluated_closes,
         "assumed_tick_size": str(assumed_tick),
         "assumed_spread_pct": scenario.assumed_spread_pct,
@@ -114,7 +121,7 @@ def pilot(history, assumed_tick, scenario):
             "Funding is a signed, linear scenario assumption; not actual settlement events",
             "RETEST detector in this experiment validates breakout t-1 with ATR from t-1; previous ad hoc prefilter removed",
             "No liquidity/mark price/liquidation execution or fill timestamp verification",
-            "Small single-asset window and overlapping signals invalidate edge inference",
+            "Single-asset window and overlapping signals invalidate edge inference; broader validation must compare multiple symbols",
         ],
     }
 
@@ -122,16 +129,17 @@ def pilot(history, assumed_tick, scenario):
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--directory", type=Path, required=True)
+    p.add_argument("--symbol", default="SOL-USDT-SWAP")
     p.add_argument("--tick-proxy", required=True)
     p.add_argument("--days", type=int, default=30, help="Historical file suffix in days; default 30")
     p.add_argument("--assumed-spread-pct", type=float, default=.05)
     p.add_argument("--assumed-funding-per-8h", type=float, default=0.)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args(argv)
-    history = load_history(args.directory, days=args.days)
+    history = load_history(args.directory, symbol=args.symbol, days=args.days)
     sc = Scenario(assumed_spread_pct=args.assumed_spread_pct,
                   assumed_funding_per_8h=args.assumed_funding_per_8h)
-    report = pilot(history, args.tick_proxy, sc)
+    report = pilot(history, args.tick_proxy, sc, symbol=args.symbol)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2)+"\n", encoding="utf-8")
     print("RETROSPECTIVE_PILOT", json.dumps({
