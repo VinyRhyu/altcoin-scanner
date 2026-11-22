@@ -1,0 +1,129 @@
+name: Research MEXC contract and OKX ticker funnel (no trades)
+on:
+  push:
+    branches: [test/systematic-trading-research]
+    paths:
+      - '.github/workflows/research-mexc-coverage-funnel.yml'
+      - 'research/mexc_public_coverage.py'
+      - 'research/okx_ticker_eligibility_funnel.py'
+      - 'tests/test_mexc_public_coverage.py'
+      - 'tests/test_okx_ticker_eligibility_funnel.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+
+  mexc-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Query only public contract details, no personal account or orders
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          if python -m research.mexc_public_coverage --symbol ORCA \
+              --check-provider --report reports/mexc_orca_public.json; then
+            echo "Public MEXC metadata retrieved"
+          else
+            echo "::warning::MEXC endpoint not verifiable from this runner. Do not assume contract absent."
+            python -m research.mexc_public_coverage --symbol ORCA \
+              --report reports/mexc_orca_public.json
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("reports/mexc_orca_public.json").read_text())
+          assert r["symbol"]=="ORCA" and r["expected_public_contract_symbol"]=="ORCA_USDT"
+          assert not r["historical_contract_availability_verified"]
+          assert not r["external_signal_or_personal_trade_saved"]
+          assert not r["same_scanner_signal_inferred"]
+          assert not r["production_changed"] and r["orders_submitted"]==0
+          print("MEXC_CURRENT_PUBLIC_CONTRACT_ONLY",json.dumps({
+              "status":r["current_contract_query_status"],
+              "contract":r["contract"],
+              "historical_listing_verified":False,
+              "personal_trade_data":False,
+          },sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mexc-orca-current-public-contract
+          path: reports/mexc_orca_public.json
+          retention-days: 7
+          if-no-files-found: warn
+
+  okx-ticker-rejections:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Three public snapshots, track WHY original OKX ticker gates exclude assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          for i in 1 2 3; do
+            if python -m research.okx_ticker_eligibility_funnel \
+                --report "reports/okx_funnel_$i.json"; then
+              echo "Public eligibility sample $i complete"
+            else
+              echo "::warning::OKX sample $i unavailable, not zero eligible."
+            fi
+            if [ "$i" -lt 3 ]; then sleep 7; fi
+          done
+      - name: Verify independent accounting and preserve missing samples
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          results=[]
+          for i in (1,2,3):
+              path=Path(f"reports/okx_funnel_{i}.json")
+              if not path.exists():
+                  results.append({"sample":i,"status":"UNAVAILABLE"})
+                  continue
+              r=json.loads(path.read_text())
+              assert r["status"]=="OKX_PUBLIC_TICKER_ELIGIBILITY_DIAGNOSTICS_ONLY"
+              assert sum(r["first_rejection_reason_counts"].values())==r["source_total_public_tickers"]
+              assert r["ticker_eligible_count"]==r["first_rejection_reason_counts"]["eligible_ticker"]
+              assert r["minimum_validated_unchanged"]==15
+              assert r["filter_thresholds_changed"] is False
+              assert r["full_candle_validation_performed"] is False
+              assert r["order_placement_enabled"] is False
+              assert r["personal_trades_recorded"] is False
+              assert r["production_changed"] is False
+              results.append({"sample":i,"status":"PUBLIC_DATA_ONLY",
+                              "checked_at_utc":r["checked_at_utc"],
+                              "ticker_eligible_count":r["ticker_eligible_count"],
+                              "reason_counts":r["first_rejection_reason_counts"]})
+          Path("reports/okx_funnel_summary.json").write_text(
+              json.dumps({"samples":results,"orders":0,
+                          "historical_8_to_47_causality_verified":False},indent=2)+"\n")
+          print("OKX_TICKER_GATE_SUMMARY",json.dumps(results,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: okx-ticker-rejection-funnel-three-samples
+          path: reports/okx_funnel_*.json
+          retention-days: 7
+          if-no-files-found: warn
