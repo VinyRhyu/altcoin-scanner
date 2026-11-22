@@ -10,6 +10,7 @@ on:
       - 'tests/test_entry_trigger.py'
       - 'tests/test_stop_geometry_audit.py'
       - 'tests/test_retest_atr_compare.py'
+      - 'tests/test_stop_ab_profit_pilot.py'
       - 'tests/test_market_history_audit.py'
       - 'tests/test_continuous_history.py'
       - 'tests/test_history_depth.py'
