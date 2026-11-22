@@ -15,6 +15,7 @@ on:
       - 'tests/test_minute_execution.py'
       - 'tests/test_minute_archive_pilot.py'
       - 'tests/test_filter_ablation.py'
+      - 'tests/test_filter_shadow_1m.py'
       - '.github/workflows/research-audit.yml'
   workflow_dispatch:
 
