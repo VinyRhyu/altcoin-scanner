@@ -119,7 +119,7 @@ def analyze_report(snapshot_report):
                     "symbol": candidate["symbol"],
                     "side": side, "method": method,
                     "signal_close_ms": candidate["signal_close_ms"],
-                    "observed_at_ms": candidate["first_observed_at_ms"],
+                    "first_observed_at_ms": candidate["first_observed_at_ms"],
                     "entry": candidate["entry"], "stop": candidate["stop"],
                     "tp1": candidate["tp1"],
                     "spread_pct_observed": candidate["spread_pct_observed"],
