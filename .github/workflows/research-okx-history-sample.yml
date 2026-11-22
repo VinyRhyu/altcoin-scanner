@@ -1,0 +1,57 @@
+name: Research OKX historical API sample (read only)
+on:
+  push:
+    branches:
+      - test/systematic-trading-research
+    paths:
+      - '.github/workflows/research-okx-history-sample.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sample-public-ohlcv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch historical SOL-USDT-SWAP 15m candles (public GET only)
+        run: |
+          python -m research.okx_history_backfill \
+            --symbol SOL-USDT-SWAP --tf 15m \
+            --start 2026-11-19T00:00:00Z \
+            --end 2026-11-20T00:00:00Z \
+            --max-pages 2 \
+            --output reports/sol_15m_historical_sample.jsonl \
+            --report reports/sol_15m_historical_sample_metadata.json
+      - name: Verify closed candles and historical provenance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("reports/sol_15m_historical_sample.jsonl")
+          rows = [json.loads(x) for x in p.read_text().splitlines()]
+          meta = json.loads(Path("reports/sol_15m_historical_sample_metadata.json").read_text())
+          assert rows, "no historical OKX bars returned"
+          assert len(rows) == meta["candles_retrieved"]
+          assert all(not row["point_in_time_eligible"] for row in rows)
+          assert all(row["timeframe"] == "15m" for row in rows)
+          assert all(row["volume_contracts"] >= 0 and row["base_volume"] >= 0
+                     and row["quote_volume"] >= 0 for row in rows)
+          assert all(b["open_ms"] > a["open_ms"] for a,b in zip(rows,rows[1:]))
+          print("OKX_SAMPLE_RESULT", json.dumps(meta, sort_keys=True))
+          PY
+      - name: Upload sample and provenance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-sol-15m-history
+          path: |
+            reports/sol_15m_historical_sample.jsonl
+            reports/sol_15m_historical_sample_metadata.json
+          if-no-files-found: warn
+          retention-days: 7
