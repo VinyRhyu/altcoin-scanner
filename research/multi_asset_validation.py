@@ -88,7 +88,7 @@ def multi_asset_report(directory,start_utc,end_utc,days=DAYS):
     if days!=90:
         raise ValueError("fixed pre-registered 90-day window only")
     start,end=_utc_ms(start_utc),_utc_ms(end_utc)
-    if end-start!=days*DAY_MS or start%BLOCK_MS!=start%BLOCK_MS:
+    if end-start!=days*DAY_MS or start%DAY_MS or end%DAY_MS:
         raise ValueError("expected exactly 90 complete UTC days")
     ends=[start+BLOCK_MS*(i+1) for i in range(3)]
     if ends[-1]!=end:
