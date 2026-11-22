@@ -24,14 +24,21 @@ jobs:
           python-version: '3.12'
       - name: Validate all offline scenario and timestamp tests
         run: python -m unittest discover -s tests -v
-      - name: Freeze 150 newest source snapshots with original git commit SHAs
+      - name: Freeze the same 150 source snapshots at immutable prior research commit
         shell: bash
         run: |
           set -euo pipefail
           git fetch --no-tags --depth=320 origin market-data
+          # Same immutable 150-snapshot population as the prior stage 1/2 audit.
+          # Do not silently change the source as market-data collects new candles.
+          PINNED_TIP=0f4e1087a7acd0287a09b54893de36a9027904ca
+          git cat-file -e "$PINNED_TIP^{commit}" || {
+            echo "Frozen source commit unreachable. Refusing a moving sample."
+            exit 1
+          }
           mkdir -p loss_snapshots reports
-          git rev-parse FETCH_HEAD > reports/source_market_data_tip.txt
-          for sha in $(git rev-list --max-count=150 FETCH_HEAD); do
+          printf '%s\n' "$PINNED_TIP" > reports/source_market_data_tip.txt
+          for sha in $(git rev-list --max-count=150 "$PINNED_TIP"); do
             if git cat-file -e "$sha:market_data.json" 2>/dev/null; then
               git show "$sha:market_data.json" > "loss_snapshots/market_data_$sha.json"
             fi
