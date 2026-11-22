@@ -47,7 +47,9 @@ def run_one(c, rows):
     with patch("research.minute_archive_pilot.inspect_snapshots",
                return_value=source(c)),patch(
              "research.execution_loss_diagnostics.inspect_snapshots",
-             return_value=source(c)):
+             return_value=source(c)),patch(
+             "research.execution_loss_diagnostics.analyze_signal_quality",
+             return_value={"conditional_sample":1}):
         r=diagnose(["synthetic"],fetch_history=fetch)
     return r,calls
 
